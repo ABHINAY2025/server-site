@@ -10,8 +10,10 @@ import { motion } from "framer-motion"
 export function Header() {
   const navItems = [
     { name: "Features", href: "#features-section" },
-    { name: "Pricing", href: "#pricing-section" },
+    { name: "How It Works", href: "#how-it-works-section" },
+    { name: "Benefits", href: "#benefits-section" },
     { name: "Testimonials", href: "#testimonials-section" },
+    { name: "Getting Started", href: "#getting-started-section" },
   ]
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -28,34 +30,62 @@ export function Header() {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-3">
-            <span className="text-foreground text-xl font-semibold">Pointer</span>
+            <motion.span 
+              className="text-white text-2xl font-bold tracking-tight"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              QDL
+            </motion.span>
           </div>
-          <nav className="hidden md:flex items-center gap-2">
+          <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
-              <motion.div key={item.name} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div 
+                key={item.name} 
+                whileHover={{ y: -2 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
                 <Link
                   href={item.href}
                   onClick={(e) => handleScroll(e, item.href)}
-                  className="text-muted-foreground hover:text-foreground px-4 py-2 rounded-full font-medium transition-colors duration-300"
+                  className="relative text-white/80 hover:text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 group"
                 >
-                  {item.name}
+                  <span className="relative z-10">{item.name}</span>
+                  {/* Hover underline effect with teal gradient */}
+                  <motion.div
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-400 origin-left"
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
+                  />
+                  {/* Subtle glow effect on hover */}
+                  <div className="absolute inset-0 rounded-lg bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300" />
                 </Link>
               </motion.div>
             ))}
           </nav>
         </div>
         <div className="flex items-center gap-4">
-          <Link href="https://vercel.com/home" target="_blank" rel="noopener noreferrer" className="hidden md:block">
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button className="bg-primary text-primary-foreground hover:bg-primary-dark px-6 py-2 rounded-full font-medium shadow-sm transition-all duration-300">
-                Try for Free
+          <Link href="#" className="hidden md:block">
+            <motion.div 
+              whileHover={{ scale: 1.05, y: -2 }} 
+              whileTap={{ scale: 0.98 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              <Button 
+                className="bg-white text-teal-600 hover:bg-white/95 hover:shadow-xl hover:shadow-teal-500/30 px-6 py-2 rounded-full font-semibold shadow-lg shadow-teal-500/20 transition-all duration-300"
+              >
+                Get Started Free
               </Button>
             </motion.div>
           </Link>
           <Sheet>
             <SheetTrigger asChild className="md:hidden">
-              <motion.button whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
-                <Button variant="ghost" size="icon" className="text-foreground">
+              <motion.button 
+                whileHover={{ scale: 1.1 }} 
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
                   <Menu className="h-7 w-7" />
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
@@ -71,14 +101,14 @@ export function Header() {
                     key={item.name}
                     href={item.href}
                     onClick={(e) => handleScroll(e, item.href)}
-                    className="text-muted-foreground hover:text-foreground justify-start text-lg py-2 transition-colors duration-300"
+                    className="text-muted-foreground hover:text-primary justify-start text-lg py-2 transition-colors duration-300"
                   >
                     {item.name}
                   </Link>
                 ))}
-                <Link href="https://vercel.com/home" target="_blank" rel="noopener noreferrer" className="w-full mt-4">
+                <Link href="#" className="w-full mt-4">
                   <Button className="bg-primary text-primary-foreground hover:bg-primary-dark px-6 py-2 rounded-full font-medium shadow-sm w-full">
-                    Try for Free
+                    Get Started Free
                   </Button>
                 </Link>
               </nav>
