@@ -7,10 +7,13 @@ import { GettingStartedSection } from "@/components/getting-started-section"
 import { FooterSection } from "@/components/footer-section"
 import { AnimatedSection } from "@/components/animated-section"
 import { TestimonialCarouselSection } from "@/components/testimonial-carousel-section"
+import { FlowingArrows } from "@/components/flowing-arrows"
 
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-background relative overflow-hidden pb-0">
+      <FlowingArrows />
+
       <div className="relative z-10">
         <main className="max-w-[1320px] mx-auto relative">
           <HeroSection />

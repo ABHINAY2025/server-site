@@ -71,16 +71,8 @@ export function PillarSection({ pillar }: PillarSectionProps) {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
               whileHover={{ y: -4, boxShadow: "0 12px 24px rgba(120, 252, 214, 0.15)" }}
-              className="overflow-hidden rounded-xl border border-white/20 px-6 py-4 flex flex-col justify-center items-center gap-2 relative transition-all duration-300 cursor-pointer group"
+              className="overflow-hidden rounded-xl border-2 border-border bg-card px-6 py-4 flex flex-col justify-center items-center gap-2 relative transition-all duration-300 cursor-pointer group shadow-sm hover:shadow-md"
             >
-              <div
-                className="absolute inset-0 rounded-xl"
-                style={{
-                  background: "rgba(231, 236, 235, 0.05)",
-                  backdropFilter: "blur(4px)",
-                  WebkitBackdropFilter: "blur(4px)",
-                }}
-              />
               <Icon className="relative z-10 w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
               <p className="relative z-10 text-foreground text-sm md:text-base font-medium text-center group-hover:text-primary transition-colors duration-300">
                 {label}

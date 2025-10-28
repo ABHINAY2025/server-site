@@ -36,7 +36,7 @@ export function Header() {
                 <Link
                   href={item.href}
                   onClick={(e) => handleScroll(e, item.href)}
-                  className="text-[#888888] hover:text-foreground px-4 py-2 rounded-full font-medium transition-colors duration-300"
+                  className="text-muted-foreground hover:text-foreground px-4 py-2 rounded-full font-medium transition-colors duration-300"
                 >
                   {item.name}
                 </Link>
@@ -47,7 +47,7 @@ export function Header() {
         <div className="flex items-center gap-4">
           <Link href="https://vercel.com/home" target="_blank" rel="noopener noreferrer" className="hidden md:block">
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-2 rounded-full font-medium shadow-sm transition-all duration-300">
+              <Button className="bg-primary text-primary-foreground hover:bg-primary-dark px-6 py-2 rounded-full font-medium shadow-sm transition-all duration-300">
                 Try for Free
               </Button>
             </motion.div>
@@ -71,13 +71,13 @@ export function Header() {
                     key={item.name}
                     href={item.href}
                     onClick={(e) => handleScroll(e, item.href)}
-                    className="text-[#888888] hover:text-foreground justify-start text-lg py-2 transition-colors duration-300"
+                    className="text-muted-foreground hover:text-foreground justify-start text-lg py-2 transition-colors duration-300"
                   >
                     {item.name}
                   </Link>
                 ))}
                 <Link href="https://vercel.com/home" target="_blank" rel="noopener noreferrer" className="w-full mt-4">
-                  <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 px-6 py-2 rounded-full font-medium shadow-sm w-full">
+                  <Button className="bg-primary text-primary-foreground hover:bg-primary-dark px-6 py-2 rounded-full font-medium shadow-sm w-full">
                     Try for Free
                   </Button>
                 </Link>

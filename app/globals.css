@@ -4,39 +4,43 @@
 
 @layer base {
   :root {
-    /* Themeable Colors - Restored to Original Vibe */
-    --background: 210 11% 7%; /* #0f1211 */
-    --foreground: 160 14% 93%; /* #e7eceb */
+    /* Updated background to F0EFEB (warm beige) and cards to FFFFFF (pure white) */
+    --background: 30 20% 94%; /* #F0EFEB - Warm light beige background */
+    --foreground: 210 11% 15%; /* #1f2937 - Dark text for 7.5:1 contrast */
 
-    --muted: 240 2% 16%; /* #27272a */
-    --muted-foreground: 160 14% 93% / 0.7; /* rgba(231, 236, 235, 0.7) */
-    --muted-foreground-light: 160 14% 93% / 0.5; /* rgba(231, 236, 235, 0.5) */
-    --muted-foreground-dark: 160 14% 93% / 0.6; /* rgba(231, 236, 235, 0.6) */
+    --muted: 210 11% 92%; /* #e5e7eb - Light gray for muted elements */
+    --muted-foreground: 210 11% 40% / 0.7; /* rgba(63, 81, 107, 0.7) - Muted text */
+    --muted-foreground-light: 210 11% 40% / 0.5; /* rgba(63, 81, 107, 0.5) - Light muted text */
+    --muted-foreground-dark: 210 11% 40% / 0.6; /* rgba(63, 81, 107, 0.6) - Medium muted text */
 
-    --card: 220 17% 98% / 0.01;
-    --card-foreground: 160 14% 93%;
+    /* Updated card color to FFFFFF (pure white) for clear distinction from background */
+    --card: 0 0% 100%; /* #FFFFFF - Pure white cards */
+    --card-foreground: 210 11% 15%; /* #1f2937 - Dark text on cards */
 
-    --popover: 210 11% 7%;
-    --popover-foreground: 160 14% 93%;
+    --section-bg: 30 20% 97%; /* #f5f3f0 - Slightly lighter than main background for section distinction */
+    --section-border: 30 20% 88%; /* #e8e4df - Subtle border for section separation */
 
-    /* Primary Accent Colors */
-    --primary: 165 96% 71%; /* #78fcd6 */
-    --primary-foreground: 160 8% 6%; /* #0d0f0e */
-    --primary-dark: 160 100% 50%; /* #00ffb6 */
-    --primary-light: 160 48% 87%; /* New variable for lighter teal/green shades */
+    --popover: 0 0% 100%; /* #FFFFFF - Pure white popover */
+    --popover-foreground: 210 11% 15%; /* #1f2937 - Dark text on popover */
 
-    /* Secondary Accent Colors (for buttons, etc.) */
-    --secondary: 160 14% 93%; /* #e7eceb */
-    --secondary-foreground: 165 14% 8%; /* #141a18 */
+    /* Primary Accent Colors - Teal maintained for consistency */
+    --primary: 165 96% 44%; /* #0dd9c4 - Vibrant teal for light theme */
+    --primary-foreground: 0 0% 100%; /* #ffffff - White text on primary */
+    --primary-dark: 165 100% 35%; /* #00b8a9 - Darker teal for hover states */
+    --primary-light: 165 100% 85%; /* #b3f5f0 - Light teal for backgrounds */
 
-    --accent: 240 2% 25%; /* #3f3f42 */
-    --accent-foreground: 240 2% 96%; /* #f4f4f5 */
+    /* Secondary Accent Colors */
+    --secondary: 210 11% 92%; /* #e5e7eb - Light gray secondary */
+    --secondary-foreground: 210 11% 15%; /* #1f2937 - Dark text on secondary */
 
-    --border: 240 100% 100% / 0.08; /* rgba(255, 255, 255, 0.08) */
-    --border-light: 210 17% 6% / 0.1; /* rgba(16,24,40,0.1) */
-    --border-dark: 210 17% 6% / 0.05; /* rgba(16,24,40,0.05) */
+    --accent: 210 11% 85%; /* #d1d5db - Light accent */
+    --accent-foreground: 210 11% 15%; /* #1f2937 - Dark text on accent */
 
-    --ring: 165 96% 71%;
+    --border: 30 20% 88%; /* #e8e4df - Warm border matching section theme */
+    --border-light: 30 20% 92% / 0.5; /* rgba(242, 240, 237, 0.5) - Very light border */
+    --border-dark: 30 20% 85% / 0.8; /* rgba(232, 228, 223, 0.8) - Medium border */
+
+    --ring: 165 96% 44%; /* #0dd9c4 - Teal ring for focus states */
 
     --radius: 0.5rem;
   }
@@ -48,5 +52,43 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-image: radial-gradient(circle, rgba(210, 180, 140, 0.15) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: 0 0;
   }
+}
+
+@keyframes flowingArrow {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}
+
+@keyframes floatingArrow {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.flowing-arrow {
+  animation: flowingArrow 2s ease-in-out infinite;
+}
+
+.floating-arrow {
+  animation: floatingArrow 3s ease-in-out infinite;
 }

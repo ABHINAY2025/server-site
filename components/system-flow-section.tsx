@@ -26,15 +26,7 @@ export function SystemFlowSection() {
         <div className="self-stretch flex flex-col md:flex-row justify-center items-center gap-4 z-10">
           {steps.map(({ label, icon: Icon }, index) => (
             <div key={label} className="flex items-center gap-4">
-              <div className="overflow-hidden rounded-xl border border-white/20 px-6 py-4 flex flex-col justify-center items-center gap-2 relative min-w-[140px] group cursor-pointer transition-all duration-300 hover:shadow-lg hover:shadow-primary/20">
-                <div
-                  className="absolute inset-0 rounded-xl"
-                  style={{
-                    background: "rgba(231, 236, 235, 0.08)",
-                    backdropFilter: "blur(4px)",
-                    WebkitBackdropFilter: "blur(4px)",
-                  }}
-                />
+              <div className="overflow-hidden rounded-xl border-2 border-border bg-card px-6 py-4 flex flex-col justify-center items-center gap-2 relative min-w-[140px] group cursor-pointer transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 shadow-sm">
                 <Icon className="relative z-10 w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
                 <p className="relative z-10 text-foreground text-sm md:text-base font-semibold text-center group-hover:text-primary transition-colors duration-300">
                   {label}

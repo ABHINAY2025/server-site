@@ -59,17 +59,8 @@ export function BenefitsSection() {
               key={label}
               variants={itemVariants}
               whileHover={{ y: -6, boxShadow: "0 16px 32px rgba(120, 252, 214, 0.12)" }}
-              className="overflow-hidden rounded-2xl border border-white/20 p-6 flex flex-col justify-center items-center gap-4 relative transition-all duration-300 cursor-pointer group"
+              className="overflow-hidden rounded-2xl border-2 border-border bg-card p-6 flex flex-col justify-center items-center gap-4 relative transition-all duration-300 cursor-pointer group shadow-sm hover:shadow-md"
             >
-              <div
-                className="absolute inset-0 rounded-2xl"
-                style={{
-                  background: "rgba(231, 236, 235, 0.08)",
-                  backdropFilter: "blur(4px)",
-                  WebkitBackdropFilter: "blur(4px)",
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl" />
               <Icon className="relative z-10 w-8 h-8 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
               <p className="relative z-10 text-foreground text-lg font-semibold text-center group-hover:text-primary transition-colors duration-300">
                 {label}

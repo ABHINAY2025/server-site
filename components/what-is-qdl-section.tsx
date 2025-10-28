@@ -24,17 +24,8 @@ export function WhatIsQDLSection() {
           ].map((module) => (
             <div
               key={module.title}
-              className="overflow-hidden rounded-2xl border border-white/20 p-6 flex flex-col justify-start items-start relative"
+              className="overflow-hidden rounded-2xl border-2 border-border bg-card p-6 flex flex-col justify-start items-start relative shadow-sm hover:shadow-md transition-shadow duration-300"
             >
-              <div
-                className="absolute inset-0 rounded-2xl"
-                style={{
-                  background: "rgba(231, 236, 235, 0.08)",
-                  backdropFilter: "blur(4px)",
-                  WebkitBackdropFilter: "blur(4px)",
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-2xl" />
               <div className="relative z-10 flex flex-col gap-2">
                 <h3 className="text-foreground text-lg font-semibold">{module.title}</h3>
                 <p className="text-muted-foreground text-sm">{module.description}</p>
