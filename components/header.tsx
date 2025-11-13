@@ -10,7 +10,7 @@ import { motion } from "framer-motion"
 export function Header() {
   const navItems = [
     { name: "Features", href: "#features-section" },
-    { name: "How It Works", href: "#how-it-works-section" },
+    { name: "How It Works", href: "#process-section" },
     { name: "Benefits", href: "#benefits-section" },
     { name: "Testimonials", href: "#testimonials-section" },
     { name: "Getting Started", href: "#getting-started-section" },

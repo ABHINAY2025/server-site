@@ -4,6 +4,7 @@ import { ProcessFlowSection } from "@/components/process-flow-section"
 import { BenefitsSection } from "@/components/benefits-section"
 import { TestimonialCarouselSection } from "@/components/testimonial-carousel-section"
 import { PremiumGettingStartedSection } from "@/components/premium-getting-started-section"
+import { FAQSection } from "@/components/faq-section"
 import { PremiumFooterSection } from "@/components/premium-footer-section"
 import { FlowingArrows } from "@/components/flowing-arrows"
 
@@ -27,6 +28,9 @@ export default function LandingPage() {
 
         {/* Testimonials Section */}
         <TestimonialCarouselSection />
+
+        {/* FAQ Section */}
+        <FAQSection />
 
         {/* Getting Started Section */}
         <PremiumGettingStartedSection />
