@@ -103,13 +103,13 @@ export function PremiumHeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start"
+              className="flex flex-col gap-4 sm:flex-row sm:gap-3 sm:justify-center lg:justify-start"
             >
               {/* Primary CTA - Animated pulse on load */}
               <Link href="http://10.30.0.104:3000/">
                 <Button
                   size="lg"
-                  className="group relative mx-auto h-14 w-56 rounded-full bg-white px-8 text-base font-semibold text-teal-600 shadow-xl shadow-teal-500/20 transition-all hover:scale-105 hover:bg-white/95 hover:shadow-2xl hover:shadow-teal-500/30"
+                  className="group relative mx-auto h-14 w-56 rounded-full bg-white px-8 text-base font-semibold text-teal-600 shadow-xl shadow-teal-500/20 transition-all hover:scale-105 hover:bg-white/95 hover:shadow-2xl hover:shadow-teal-500/30 sm:mx-0"
                   aria-label="Get started free"
                 >
                   <motion.span
@@ -132,13 +132,13 @@ export function PremiumHeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="group relative mx-auto h-14 w-56 rounded-full border-2 border-white/30 bg-white/10 px-8 text-base font-semibold text-white backdrop-blur-sm transition-all hover:scale-105 hover:border-white/50 hover:bg-white/95 hover:text-white"
+                className="group relative mx-auto h-14 w-56 rounded-full border-2 border-white/30 bg-white/10 px-8 text-base font-semibold text-white backdrop-blur-sm transition-all  hover:border-white/50 hover:bg-white/20 hover:text-white sm:mx-0"
                 // className="group relative h-14 rounded-full bg-white px-8 text-base font-semibold text-teal-600 shadow-xl shadow-teal-500/20 transition-all hover:scale-105 hover:bg-white/95 hover:shadow-2xl hover:shadow-teal-500/30"
 
                 onClick={() => setDemoModalOpen(true)}
                 aria-label="Request demo"
               >
-                <motion.span
+                {/* <motion.span
                     animate={{
                       scale: [1, 1.05, 1],
                       opacity: [1, 0.8, 1],
@@ -149,7 +149,7 @@ export function PremiumHeroSection() {
                       ease: "easeInOut",
                     }}
                     className="absolute inset-0 rounded-full bg-white/20"
-                  />
+                  /> */}
                 {/* <Play className="mr-2 h-5 w-5" /> */}
                 <span className="relative">Request Demo</span>
                 </Button>
