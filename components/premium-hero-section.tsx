@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { Play } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-// import { Header } from "./header"
+import { Header } from "./header"
 import { Button } from "./ui/button"
 import { DemoModal } from "./demo-modal"
 import { DashboardPreview } from "./dashboard-preview"
@@ -46,7 +46,7 @@ export function PremiumHeroSection() {
 
       {/* Header */}
       <div className="relative z-20">
-        {/* <Header /> */}
+        <Header />
       </div>
 
       {/* Hero Content */}

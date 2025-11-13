@@ -10,10 +10,11 @@ import { motion } from "framer-motion"
 export function Header() {
   const navItems = [
     { name: "Features", href: "#features-section" },
-    { name: "How It Works", href: "#how-it-works-section" },
+    { name: "How It Works", href: "#process-section" },
     { name: "Benefits", href: "#benefits-section" },
     { name: "Testimonials", href: "#testimonials-section" },
     { name: "Getting Started", href: "#getting-started-section" },
+    { name: "Blogs", href: "/blogs" },
   ]
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -47,7 +48,11 @@ export function Header() {
               >
                 <Link
                   href={item.href}
-                  onClick={(e) => handleScroll(e, item.href)}
+                  onClick={
+                    item.href.startsWith("#")
+                      ? (e) => handleScroll(e, item.href)
+                      : undefined
+                  }
                   className="relative text-white/80 hover:text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 group"
                 >
                   <span className="relative z-10">{item.name}</span>
@@ -100,7 +105,11 @@ export function Header() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    onClick={(e) => handleScroll(e, item.href)}
+                    onClick={
+                      item.href.startsWith("#")
+                        ? (e) => handleScroll(e, item.href)
+                        : undefined
+                    }
                     className="text-muted-foreground hover:text-primary justify-start text-lg py-2 transition-colors duration-300"
                   >
                     {item.name}
