@@ -59,7 +59,7 @@ export function DemoModal({ open, onOpenChange }: DemoModalProps) {
     setIsSubmitting(true)
     try {
       // Mock API call - replace with actual endpoint
-      const response = await fetch("/api/demo", {
+      const response = await fetch("/api/demo/demo-requests", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
