@@ -138,19 +138,8 @@ export function PremiumHeroSection() {
                 onClick={() => setDemoModalOpen(true)}
                 aria-label="Request demo"
               >
-                {/* <motion.span
-                    animate={{
-                      scale: [1, 1.05, 1],
-                      opacity: [1, 0.8, 1],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="absolute inset-0 rounded-full bg-white/20"
-                  /> */}
-                {/* <Play className="mr-2 h-5 w-5" /> */}
+                
+                <Play className="mr-2 h-5 w-5" />
                 <span className="relative">Request Demo</span>
                 </Button>
             </motion.div>
