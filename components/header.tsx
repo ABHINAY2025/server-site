@@ -66,17 +66,17 @@ export function Header() {
           </nav>
         </div>
         <div className="flex items-center gap-4">
-          <Link href="#" className="hidden md:block">
+          <Link href="http://10.30.0.104:3000/" className="hidden md:block">
             <motion.div 
               whileHover={{ scale: 1.05, y: -2 }} 
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <Button 
-                className="bg-white text-teal-600 hover:bg-white/95 hover:shadow-xl hover:shadow-teal-500/30 px-6 py-2 rounded-full font-semibold shadow-lg shadow-teal-500/20 transition-all duration-300"
-              >
-                Get Started Free
-              </Button>
+              <Link href="http://10.30.0.104:3000/" className="w-full mt-4">
+                  <Button className="bg-primary text-primary-foreground hover:bg-primary-dark px-6 py-2 rounded-full font-medium shadow-sm w-full">
+                    Get Started Free
+                  </Button>
+                </Link>
             </motion.div>
           </Link>
           <Sheet>
@@ -106,7 +106,7 @@ export function Header() {
                     {item.name}
                   </Link>
                 ))}
-                <Link href="#" className="w-full mt-4">
+                <Link href="http://10.30.0.104:3000/" className="w-full mt-4">
                   <Button className="bg-primary text-primary-foreground hover:bg-primary-dark px-6 py-2 rounded-full font-medium shadow-sm w-full">
                     Get Started Free
                   </Button>

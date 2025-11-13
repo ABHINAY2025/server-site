@@ -8,6 +8,8 @@ import { BarChart3, Shield, Settings, Database, ArrowRight } from "lucide-react"
 import { Button } from "./ui/button"
 import { AnimatedSection } from "./animated-section"
 import { cn } from "@/lib/utils"
+import Link from "next/link"
+
 
 const modules = [
   {
@@ -17,6 +19,7 @@ const modules = [
     description: "Monitor and optimize your cash flow with real-time liquidity insights",
     image: "/images/dashboard-preview.png",
     cta: "Explore Liquidity",
+    href: "http://10.30.0.104:3000/liquidity-dashboard",
   },
   {
     id: "fraud",
@@ -25,6 +28,7 @@ const modules = [
     description: "Protect your institution with AI-powered fraud detection and monitoring",
     image: "/images/dashboard-preview.png",
     cta: "Explore Fraud Detection",
+    href: "http://10.30.0.104:3000/fraud-control",
   },
   {
     id: "rules",
@@ -33,6 +37,7 @@ const modules = [
     description: "Automate compliance and business rules with our no-code engine",
     image: "/images/dashboard-preview.png",
     cta: "Explore Rules",
+    href: "http://10.30.0.104:3000/configuration",
   },
   {
     id: "data",
@@ -41,6 +46,7 @@ const modules = [
     description: "Take complete control of your banking data with intelligent management",
     image: "/images/dashboard-preview.png",
     cta: "Explore Data Control",
+    href: "http://10.30.0.104:3000/",
   },
 ]
 
@@ -128,14 +134,16 @@ export function PremiumGettingStartedSection() {
                     </p>
                   </div>
 
-                  <Button
-                    size="lg"
-                    className="group inline-flex items-center gap-2"
-                    aria-label={module.cta}
-                  >
-                    {module.cta}
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
+                  <Link href={module.href}>
+                    <Button
+                      size="lg"
+                      className="group inline-flex items-center gap-2"
+                      aria-label={module.cta}
+                    >
+                      {module.cta}
+                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  </Link>
                 </div>
 
                 {/* Right: Dashboard Preview with hover zoom */}

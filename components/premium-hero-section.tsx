@@ -4,6 +4,7 @@ import * as React from "react"
 import { motion } from "framer-motion"
 import { Play } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import { Header } from "./header"
 import { Button } from "./ui/button"
 import { DemoModal } from "./demo-modal"
@@ -105,25 +106,27 @@ export function PremiumHeroSection() {
               className="flex flex-col gap-4 sm:flex-row sm:justify-center lg:justify-start"
             >
               {/* Primary CTA - Animated pulse on load */}
-              <Button
-                size="lg"
-                className="group relative h-14 rounded-full bg-white px-8 text-base font-semibold text-teal-600 shadow-xl shadow-teal-500/20 transition-all hover:scale-105 hover:bg-white/95 hover:shadow-2xl hover:shadow-teal-500/30"
-                aria-label="Get started free"
-              >
-                <motion.span
-                  animate={{
-                    scale: [1, 1.05, 1],
-                    opacity: [1, 0.8, 1],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute inset-0 rounded-full bg-white/20"
-                />
-                <span className="relative">Get Started Free</span>
-              </Button>
+              <Link href="http://10.30.0.104:3000/">
+                <Button
+                  size="lg"
+                  className="group relative h-14 rounded-full bg-white px-8 text-base font-semibold text-teal-600 shadow-xl shadow-teal-500/20 transition-all hover:scale-105 hover:bg-white/95 hover:shadow-2xl hover:shadow-teal-500/30"
+                  aria-label="Get started free"
+                >
+                  <motion.span
+                    animate={{
+                      scale: [1, 1.05, 1],
+                      opacity: [1, 0.8, 1],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="absolute inset-0 rounded-full bg-white/20"
+                  />
+                  <span className="relative">Get Started Free</span>
+                </Button>
+              </Link>
 
               {/* Secondary CTA - Watch Demo */}
               <Button

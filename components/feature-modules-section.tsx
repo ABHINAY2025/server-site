@@ -3,6 +3,7 @@
 import * as React from "react"
 import { motion } from "framer-motion"
 import { Database, TrendingUp, Shield, FileCode } from "lucide-react"
+import Link from "next/link"
 import { ModuleCard } from "./module-card"
 import { AnimatedSection } from "./animated-section"
 
@@ -10,6 +11,7 @@ const modules = [
   {
     icon: <Database className="h-7 w-7" />,
     title: "Data Control",
+    href: "http://10.30.0.104:3000/",
     description:
       "Take complete control of your banking data with intelligent management, real-time synchronization, and comprehensive audit trails.",
     features: [
@@ -31,6 +33,7 @@ const modules = [
   {
     icon: <TrendingUp className="h-7 w-7" />,
     title: "Liquidity Management",
+    href: "http://10.30.0.104:3000/liquidity-dashboard",
     description:
       "Optimize cash flow and liquidity with AI-powered forecasting, automated compliance, and intelligent risk management.",
     features: [
@@ -52,6 +55,7 @@ const modules = [
   {
     icon: <Shield className="h-7 w-7" />,
     title: "Fraud Detection",
+    href: "http://10.30.0.104:3000/fraud-control",
     description:
       "Protect your institution with advanced AI-driven fraud detection, real-time monitoring, and automated response systems.",
     features: [
@@ -73,6 +77,7 @@ const modules = [
   {
     icon: <FileCode className="h-7 w-7" />,
     title: "Rules Engine",
+    href: "http://10.30.0.104:3000/configuration",
     description:
       "Automate complex business rules and compliance policies with a flexible, no-code rule engine that adapts to your needs.",
     features: [
@@ -123,14 +128,15 @@ export function FeatureModulesSection() {
       {/* Staggered grid on desktop, vertical stack on mobile */}
       <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-2">
         {modules.map((module, index) => (
-          <ModuleCard
-            key={index}
-            icon={module.icon}
-            title={module.title}
-            description={module.description}
-            features={module.features}
-            delay={index * 0.1}
-          />
+          <Link key={index} href={module.href}>
+            <ModuleCard
+              icon={module.icon}
+              title={module.title}
+              description={module.description}
+              features={module.features}
+              delay={index * 0.1}
+            />
+          </Link>
         ))}
       </div>
     </AnimatedSection>
