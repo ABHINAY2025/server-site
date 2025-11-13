@@ -1,0 +1,9 @@
+[
+  {
+    "name": "John",
+    "email": "random@example.com",
+    "bankSize": "medium",
+    "role": "cfo",
+    "createdAt": "2025-11-13T06:31:30.303Z"
+  }
+]
