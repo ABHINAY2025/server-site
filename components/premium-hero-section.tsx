@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 import { Play } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { Header } from "./header"
+// import { Header } from "./header"
 import { Button } from "./ui/button"
 import { DemoModal } from "./demo-modal"
 import { DashboardPreview } from "./dashboard-preview"
@@ -46,7 +46,7 @@ export function PremiumHeroSection() {
 
       {/* Header */}
       <div className="relative z-20">
-        <Header />
+        {/* <Header /> */}
       </div>
 
       {/* Hero Content */}
@@ -109,7 +109,7 @@ export function PremiumHeroSection() {
               <Link href="http://10.30.0.104:3000/">
                 <Button
                   size="lg"
-                  className="group relative h-14 rounded-full bg-white px-8 text-base font-semibold text-teal-600 shadow-xl shadow-teal-500/20 transition-all hover:scale-105 hover:bg-white/95 hover:shadow-2xl hover:shadow-teal-500/30"
+                  className="group relative mx-auto h-14 w-56 rounded-full bg-white px-8 text-base font-semibold text-teal-600 shadow-xl shadow-teal-500/20 transition-all hover:scale-105 hover:bg-white/95 hover:shadow-2xl hover:shadow-teal-500/30"
                   aria-label="Get started free"
                 >
                   <motion.span
@@ -132,13 +132,27 @@ export function PremiumHeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="h-14 rounded-full border-2 border-white/30 bg-white/10 px-8 text-base font-semibold text-white backdrop-blur-sm transition-all hover:border-white/50 hover:bg-white/20 hover:text-white"
+                className="group relative mx-auto h-14 w-56 rounded-full border-2 border-white/30 bg-white/10 px-8 text-base font-semibold text-white backdrop-blur-sm transition-all hover:scale-105 hover:border-white/50 hover:bg-white/95 hover:text-white"
+                // className="group relative h-14 rounded-full bg-white px-8 text-base font-semibold text-teal-600 shadow-xl shadow-teal-500/20 transition-all hover:scale-105 hover:bg-white/95 hover:shadow-2xl hover:shadow-teal-500/30"
+
                 onClick={() => setDemoModalOpen(true)}
-                aria-label="Watch demo"
+                aria-label="Request demo"
               >
-                <Play className="mr-2 h-5 w-5" />
-                Request Demo
-              </Button>
+                <motion.span
+                    animate={{
+                      scale: [1, 1.05, 1],
+                      opacity: [1, 0.8, 1],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                    className="absolute inset-0 rounded-full bg-white/20"
+                  />
+                {/* <Play className="mr-2 h-5 w-5" /> */}
+                <span className="relative">Request Demo</span>
+                </Button>
             </motion.div>
 
             {/* Trust indicators */}

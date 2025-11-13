@@ -5,5 +5,12 @@
     "bankSize": "medium",
     "role": "cfo",
     "createdAt": "2025-11-13T06:31:30.303Z"
+  },
+  {
+    "name": "Manoj M",
+    "email": "Manojm@fisecglobal.net",
+    "bankSize": "large",
+    "role": "it-director",
+    "createdAt": "2025-11-13T07:16:18.233Z"
   }
 ]

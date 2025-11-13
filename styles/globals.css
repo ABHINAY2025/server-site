@@ -90,3 +90,30 @@
     @apply bg-background text-foreground;
   }
 }
+
+@media (max-width: 768px) {
+  .min-h-screen {
+    min-height: auto;
+  }
+
+  .relative {
+    padding: 1rem;
+  }
+
+  .z-10 > div {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .bg-background {
+    background-size: cover;
+  }
+
+  .text-foreground {
+    font-size: 1rem;
+  }
+
+  .flex {
+    flex-direction: column;
+  }
+}
