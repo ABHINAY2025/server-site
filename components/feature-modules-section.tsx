@@ -35,7 +35,7 @@ const modules = [
     title: "Liquidity Management",
     href: "http://10.30.0.104:3000/liquidity-dashboard",
     description:
-      "Optimize cash flow and liquidity with AI-powered forecasting, automated compliance, and intelligent risk management.",
+      "Optimize cash flow and liquidity with AI-powered forecasting, automated compliance, and intelligent risk management with QDL.",
     features: [
       {
         label: "AI Forecasting",

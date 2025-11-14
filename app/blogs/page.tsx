@@ -28,15 +28,15 @@ const categoryToneClasses: Record<BlogPost["categoryTone"], string> = {
 const blogPosts: BlogPost[] = [
   {
     id: 1,
-    title: "How Quantum Liquidity Unlocks Real-Time Treasury Ops",
+    title: "Unlock Treasury Alpha: Why QDL Liquidity Management Dominates Cash Concentration in 2025",
     excerpt:
-      "Discover the architecture that powers instant liquidity decisions across enterprises and global markets.",
+      "QDL redefines corporate cash optimization with real-time, multi-bank sweeping and notional pooling that outperforms legacy systems like Oracle OBLM.",
     category: "Technology",
     categoryTone: "teal",
     author: "Carrie Brewer",
     authorRole: "Director of Treasury Innovation",
-    publishedAgo: "2 hours ago",
-    readTime: "8 min read",
+    publishedAgo: "January 15, 2025",
+    readTime: "12 min read",
     imageUrl:
       "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
   },
@@ -184,13 +184,17 @@ export default function BlogsPage() {
             className="mt-14 grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3"
           >
             {blogPosts.map((post, index) => (
-              <motion.article
+              <Link
                 key={post.id}
-                custom={index}
-                variants={cardVariants}
-                whileHover={{ y: -10 }}
-                className="group flex flex-col overflow-hidden rounded-3xl border border-white/40 bg-white shadow-lg shadow-black/5 transition-transform"
+                href={post.id === 1 ? `/blogs/${post.id}` : "#"}
+                className="block"
               >
+                <motion.article
+                  custom={index}
+                  variants={cardVariants}
+                  whileHover={{ y: -10 }}
+                  className="group flex flex-col overflow-hidden rounded-3xl border border-white/40 bg-white shadow-lg shadow-black/5 transition-transform cursor-pointer"
+                >
                 <div className="relative h-40 w-full overflow-hidden">
                   <div
                     className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
@@ -221,15 +225,13 @@ export default function BlogsPage() {
                       <span>{post.publishedAgo}</span>
                     </div>
 
-                    <Link
-                      href="#"
-                      className="inline-flex items-center text-sm font-semibold text-teal-500 transition-colors hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-                    >
+                    <span className="inline-flex items-center text-sm font-semibold text-teal-500 transition-colors hover:text-teal-600">
                       Read →
-                    </Link>
+                    </span>
                   </div>
                 </div>
               </motion.article>
+              </Link>
             ))}
           </motion.div>
         </main>
