@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import { motion } from "framer-motion"
 import { Zap, Brain, Lock, MessageSquare, TrendingUp, Building2 } from "lucide-react"
 import { AnimatedSection } from "./animated-section"
@@ -10,31 +11,37 @@ const benefits = [
     icon: Zap,
     title: "Automated Workflows",
     description: "Streamline operations with intelligent automation that adapts to your business needs",
+    href: "/benefits/automated-workflows",
   },
   {
     icon: Brain,
     title: "Predictive Intelligence",
     description: "Make data-driven decisions with AI-powered insights and forecasting",
+    href: "/benefits/predictive-intelligence",
   },
   {
     icon: Lock,
     title: "Enhanced Security",
     description: "Bank-level encryption and compliance standards protecting your data",
+    href: "/benefits/enhanced-security",
   },
   {
     icon: MessageSquare,
     title: "Natural Language Queries",
     description: "Ask questions in plain English and get instant answers from your data",
+    href: "/benefits/natural-language-queries",
   },
   {
     icon: TrendingUp,
     title: "Real-Time Insights",
     description: "Monitor your operations with live dashboards and instant analytics",
+    href: "/benefits/real-time-insights",
   },
   {
     icon: Building2,
     title: "Multi-Bank Integration",
     description: "Connect seamlessly with multiple banking systems and platforms",
+    href: "/benefits/multi-bank-integration",
   },
 ]
 
@@ -75,50 +82,51 @@ export function BenefitsSection() {
         {benefits.map((benefit, index) => {
           const Icon = benefit.icon
           return (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{
-                type: "spring",
-                stiffness: 100,
-                damping: 15,
-                delay: index * 0.1,
-              }}
-              whileHover={{
-                y: -8,
-                transition: { type: "spring", stiffness: 300, damping: 20 },
-              }}
-              className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-sm transition-shadow hover:shadow-xl hover:shadow-primary/5"
-            >
-              {/* Icon with spring animation */}
+            <Link key={index} href={benefit.href}>
               <motion.div
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{
                   type: "spring",
-                  stiffness: 200,
+                  stiffness: 100,
                   damping: 15,
-                  delay: index * 0.1 + 0.2,
+                  delay: index * 0.1,
                 }}
-                whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-                className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20"
+                whileHover={{
+                  y: -8,
+                  transition: { type: "spring", stiffness: 300, damping: 20 },
+                }}
+                className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-sm transition-shadow hover:shadow-xl hover:shadow-primary/5 cursor-pointer"
               >
-                <Icon className="h-7 w-7" />
+                {/* Icon with spring animation */}
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 200,
+                    damping: 15,
+                    delay: index * 0.1 + 0.2,
+                  }}
+                  whileHover={{ rotate: [0, -10, 10, -10, 0] }}
+                  className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20"
+                >
+                  <Icon className="h-7 w-7" />
+                </motion.div>
+
+                {/* Title */}
+                <h3 className="mb-3 text-xl font-semibold text-card-foreground">
+                  {benefit.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-muted-foreground leading-relaxed">
+                  {benefit.description}
+                </p>
               </motion.div>
-
-              {/* Title */}
-              <h3 className="mb-3 text-xl font-semibold text-card-foreground">
-                {benefit.title}
-              </h3>
-
-              {/* Description */}
-              <p className="text-muted-foreground leading-relaxed">
-                {benefit.description}
-              </p>
-            </motion.div>
+            </Link>
           )
         })}
       </div>

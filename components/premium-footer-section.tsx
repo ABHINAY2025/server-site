@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Link from "next/link"
 import { motion } from "framer-motion"
 import { Twitter, Github, Linkedin, Heart } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -12,12 +13,7 @@ const footerLinks = {
     { label: "Fraud Detection", href: "#" },
     { label: "Rules Management", href: "#" },
   ],
-  company: [
-    { label: "About us", href: "#" },
-    { label: "Our team", href: "#" },
-    { label: "Careers", href: "#" },
-    { label: "Contact", href: "#" },
-  ],
+ 
   resources: [
     { label: "Documentation", href: "#" },
     { label: "API Reference", href: "#" },
@@ -25,8 +21,8 @@ const footerLinks = {
     { label: "Community", href: "#" },
   ],
   legal: [
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Terms of Service", href: "/terms-of-service" },
     { label: "Cookie Policy", href: "#" },
     { label: "Security", href: "#" },
   ],
@@ -102,7 +98,7 @@ export function PremiumFooterSection() {
           </motion.div>
 
           {/* Company Column */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -123,7 +119,7 @@ export function PremiumFooterSection() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </motion.div> */}
 
           {/* Resources Column */}
           <motion.div
@@ -162,12 +158,12 @@ export function PremiumFooterSection() {
             <ul className="space-y-3">
               {footerLinks.legal.map((link, index) => (
                 <li key={index}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-foreground transition-colors hover:text-primary"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -186,7 +182,7 @@ export function PremiumFooterSection() {
             © {new Date().getFullYear()} Quantum Data Leap. All rights reserved.
           </p>
           <p className="flex items-center gap-1 text-sm text-muted-foreground">
-            Made with <Heart className="h-4 w-4 fill-red-500 text-red-500" /> by QDL
+            Made by QDL
           </p>
         </motion.div>
       </div>

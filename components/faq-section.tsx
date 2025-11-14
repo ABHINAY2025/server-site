@@ -6,34 +6,34 @@ import { ChevronDown } from "lucide-react"
 
 const faqData = [
   {
-    question: "What is Pointer and who is it for?",
+    question: "What is the Quantum Data Leap (QDL) Project?",
     answer:
-      "Pointer is an AI-powered development platform designed for developers, teams, and organizations who want toaccelerate their coding workflow. It's perfect for both individual developers looking to enhance their productivity and teams seeking seamless collaboration tools.",
+      "Quantum Data Leap (QDL) is an advanced data infrastructure and analytics platform designed to enable real-time financial intelligence and decision-making. It integrates liquidity control, fund allocation, and counterparty position management within a unified, high-performance environment optimized for microsecond-level data processing.",
   },
   {
-    question: "How does Pointer's AI code review work?",
+    question: "Who can benefit from using Quantum Data Leap?",
     answer:
-      "Our AI analyzes your code in real-time, providing intelligent suggestions for improvements, catching potential bugs, and ensuring best practices. It learns from your coding patterns and adapts to your team's standards, making code reviews faster and more consistent.",
+      "QDL is designed for financial institutions, investment firms, and treasury teams that manage high-volume transactions and require real-time risk visibility. It also benefits data scientists and analysts who need a scalable environment for data modeling, trend forecasting, and liquidity optimization.",
   },
   {
-    question: "Can I integrate Pointer with my existing tools?",
+    question: "Can non-technical users create and manage rules without coding?",
     answer:
-      "Yes! Pointer offers one-click integrations with popular development tools including GitHub, GitLab, VS Code, Slack, and many more. Our MCP connectivity allows you to easily manage and configure server access across your entire development stack.",
+      "Yes. The Rules Management Engine uses a conversational AI interface that allows business users to define, edit, and query operational rules in plain language. Real-time validation and AI-guided prompts ensure accuracy and prevent duplicate or conflicting rules—no technical expertise required.",
   },
   {
-    question: "What's included in the free plan?",
+    question: "How does the system detect and prevent fraudulent transactions?",
     answer:
-      "The free plan includes real-time code suggestions, basic integrations, single MCP server connection, up to 2 AI coding agents, and Vercel deployments with Pointer branding. It's perfect for individual developers getting started.",
+      "The Fraud Management Platform leverages machine learning models for anomaly detection and pattern recognition. It identifies suspicious transactions in real time, flags potential risks, and allows compliance officers to take immediate action through secure Maker/Checker workflows.",
   },
   {
-    question: "How do parallel coding agents work?",
+    question: "How does the platform ensure compliance and data security?",
     answer:
-      "Our parallel coding agents can work on different parts of your codebase simultaneously, solving complex problems faster than traditional single-threaded approaches. You can launch multiple agents to handle different tasks like bug fixes, feature development, and code optimization concurrently.",
+      "Compliance and security are built into every layer, with role-based access control (RBAC), data encryption (in transit and at rest), full audit trails, and policy enforcement. Maker/Checker workflows ensure segregation of duties and adherence to regulatory requirements.",
   },
   {
-    question: "Is my code secure with Pointer?",
+    question: "Can the platforms integrate with multiple data sources and legacy systems?",
     answer:
-      "Absolutely. We use enterprise-grade security measures including end-to-end encryption, secure data transmission, and compliance with industry standards. Your code never leaves your secure environment without your explicit permission, and we offer on-premises deployment options for enterprise customers.",
+      "Yes. The architecture supports both real-time streaming (via Kafka) and batch ETL pipelines, allowing seamless integration with legacy banking systems, payment networks, and external data sources without major infrastructure changes.",
   },
 ]
 
