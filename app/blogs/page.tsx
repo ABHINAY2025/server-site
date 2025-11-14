@@ -42,15 +42,15 @@ const blogPosts: BlogPost[] = [
   },
   {
     id: 2,
-    title: "Designing Resilient Payment Flows for Global Banks",
+    title: "Stop Fraud Before It Starts: Why Quantum Data Fraud (QDF) Outsmarts 2025 Payment Threats",
     excerpt:
-      "From legacy cores to AI-first orchestration: lessons learned implementing adaptive payment rails.",
-    category: "Popular",
+      "Quantum Data Fraud leverages agentic AI to detect and block payment fraud in real time. Learn how banks cut losses by 63% and achieve zero false positives with QDF in 2025.",
+    category: "AI & Fraud",
     categoryTone: "blue",
-    author: "Jerome Walton",
-    authorRole: "Lead Solutions Architect",
-    publishedAgo: "Yesterday",
-    readTime: "6 min read",
+    author: "Elena Varga",
+    authorRole: "Chief AI Officer, QDF Labs",
+    publishedAgo: "Today",
+    readTime: "16 min read",
     imageUrl:
       "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80",
   },
@@ -186,7 +186,7 @@ export default function BlogsPage() {
             {blogPosts.map((post, index) => (
               <Link
                 key={post.id}
-                href={post.id === 1 ? `/blogs/${post.id}` : "#"}
+                href={`/blogs/${post.id}`}
                 className="block"
               >
                 <motion.article
