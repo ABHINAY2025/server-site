@@ -78,11 +78,11 @@ export function BenefitsSection() {
       </div>
 
       {/* 3-column grid with icon + title + description */}
-      <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 h-full">
         {benefits.map((benefit, index) => {
           const Icon = benefit.icon
           return (
-            <Link key={index} href={benefit.href}>
+            <Link key={index} href={benefit.href} className="h-full">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -97,7 +97,7 @@ export function BenefitsSection() {
                   y: -8,
                   transition: { type: "spring", stiffness: 300, damping: 20 },
                 }}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-sm transition-shadow hover:shadow-xl hover:shadow-primary/5 cursor-pointer"
+                className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-sm transition-shadow hover:shadow-xl hover:shadow-primary/5 cursor-pointer h-full flex flex-col"
               >
                 {/* Icon with spring animation */}
                 <motion.div
