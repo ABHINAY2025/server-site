@@ -210,7 +210,7 @@ export function PremiumHeroSection() {
               }}
               className="relative z-10"
             >
-              <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-white/5 p-2 shadow-2xl backdrop-blur-sm">
+              {/* <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-white/5 p-2 shadow-2xl backdrop-blur-sm">
                 <div className="relative aspect-video overflow-hidden rounded-xl bg-gradient-to-br from-white/10 to-white/5">
                   <Image
                     src="/images/Data-Control.png"
@@ -219,11 +219,11 @@ export function PremiumHeroSection() {
                     height={700}
                     priority
                     className="h-full w-full object-cover"
-                  />
+                  /> */}
                   {/* Glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-teal-500/20 via-transparent to-transparent" />
+                  {/* <div className="absolute inset-0 bg-gradient-to-t from-teal-500/20 via-transparent to-transparent" />
                 </div>
-              </div>
+              </div> */} 
             </motion.div>
 
             {/* Decorative elements */}
