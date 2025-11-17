@@ -213,7 +213,7 @@ export function PremiumHeroSection() {
               {/* <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-white/5 p-2 shadow-2xl backdrop-blur-sm">
                 <div className="relative aspect-video overflow-hidden rounded-xl bg-gradient-to-br from-white/10 to-white/5">
                   <Image
-                    src="/images/Data-Control.png"
+                    src="/images/Data-Control.webp"
                     alt="QDL Dashboard Preview"
                     width={1200}
                     height={700}

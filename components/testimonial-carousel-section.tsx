@@ -14,7 +14,7 @@ const testimonials = [
     name: "Annette Black",
     role: "CTO",
     company: "Sony",
-    avatar: "/images/avatars/annette-black.png",
+    avatar: "/images/avatars/annette-black.webp",
     rating: 5,
   },
   {
@@ -23,7 +23,7 @@ const testimonials = [
     name: "Dianne Russell",
     role: "CFO",
     company: "McDonald's",
-    avatar: "/images/avatars/dianne-russell.png",
+    avatar: "/images/avatars/dianne-russell.webp",
     rating: 5,
   },
   {
@@ -32,7 +32,7 @@ const testimonials = [
     name: "Cameron Williamson",
     role: "IT Director",
     company: "IBM",
-    avatar: "/images/avatars/cameron-williamson.png",
+    avatar: "/images/avatars/cameron-williamson.webp",
     rating: 5,
   },
   {
@@ -41,7 +41,7 @@ const testimonials = [
     name: "Robert Fox",
     role: "VP of Operations",
     company: "MasterCard",
-    avatar: "/images/avatars/robert-fox.png",
+    avatar: "/images/avatars/robert-fox.webp",
     rating: 5,
   },
   {
@@ -50,7 +50,7 @@ const testimonials = [
     name: "Darlene Robertson",
     role: "Operations Manager",
     company: "Ferrari",
-    avatar: "/images/avatars/darlene-robertson.png",
+    avatar: "/images/avatars/darlene-robertson.webp",
     rating: 5,
   },
   {
@@ -59,7 +59,7 @@ const testimonials = [
     name: "Cody Fisher",
     role: "Data Analyst",
     company: "Apple",
-    avatar: "/images/avatars/cody-fisher.png",
+    avatar: "/images/avatars/cody-fisher.webp",
     rating: 5,
   },
   {
@@ -68,7 +68,7 @@ const testimonials = [
     name: "Albert Flores",
     role: "Technology Lead",
     company: "Louis Vuitton",
-    avatar: "/images/avatars/albert-flores.png",
+    avatar: "/images/avatars/albert-flores.webp",
     rating: 5,
   },
 ]

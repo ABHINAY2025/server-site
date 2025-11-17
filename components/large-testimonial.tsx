@@ -14,7 +14,7 @@ export function LargeTestimonial() {
               </div>
               <div className="flex justify-start items-center gap-5">
                 <Image
-                  src="/images/guillermo-rauch.png"
+                  src="/images/guillermo-rauch.webp"
                   alt="Guillermo Rauch avatar"
                   width={48}
                   height={48}
