@@ -7,14 +7,14 @@ import { ArrowLeft } from "lucide-react"
 
 const blogContent = {
   1: {
-    title: "Unlock Treasury Alpha: Why QDL Liquidity Management Dominates Cash Concentration in 2025",
+    title: "Mastering Data Control: Real-Time Banking Operations",
     category: "Technology",
-    author: "Carrie Brewer",
-    authorRole: "Director of Treasury Innovation",
-    publishedDate: "January 15, 2025",
-    readTime: "12 min read",
-    imageUrl: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
-    executiveSummary: "**QDL Liquidity Management** redefines corporate cash optimization with **real-time, multi-bank sweeping and notional pooling** that outperforms legacy systems like Oracle OBLM. By automating zero-balance, threshold, and investment sweeps across third-party banks, QDL delivers superior interest aggregation, FX efficiency, and predictive dashboards. For treasurers managing $100M+ pools, **QDL is the only platform proven to reduce idle cash by 37% and boost yield by 180 basis points** (QDL Internal Benchmark, Q3 2025).",
+    author: "Alex Kumar",
+    authorRole: "Data Solutions Lead",
+    publishedDate: "December 15, 2025",
+    readTime: "8 min read",
+    imageUrl: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+    executiveSummary: "**Intelligent Data Control** transforms banking operations by providing **real-time synchronization**, **comprehensive audit trails**, and **data governance** across all platforms. Modern banking demands instant visibility into data flows, compliance tracking, and predictive analytics. Our platform delivers **99.9% data accuracy**, **sub-second synchronization**, and **complete regulatory compliance**—enabling banks to move from reactive monitoring to proactive control.",
     content: [
       {
         type: "heading",
@@ -23,7 +23,7 @@ const blogContent = {
       },
       {
         type: "paragraph",
-        text: "In an era of volatile rates and fragmented banking relationships, **liquidity is alpha**. Corporate treasurers no longer accept end-of-day reconciliations or siloed account views. **QDL Liquidity Management**—built for the ISO 20022 age—centralizes funds across **200+ global banks with intra-day precision**, turning idle balances into investable assets while eliminating overdraft risk.",
+        text: "In modern banking, **data is the currency of competitive advantage**. Banks process billions of transactions daily across fragmented systems, yet struggle with **data silos, inconsistent synchronization, and compliance gaps**. Real-time data control isn't a luxury—it's a necessity for staying compliant, preventing fraud, and optimizing operations.",
       },
       {
         type: "divider",
@@ -31,29 +31,26 @@ const blogContent = {
       {
         type: "heading",
         level: 2,
-        text: "Section 1: Current Landscape & Market Pressure",
+        text: "The Challenge: Data Fragmentation",
       },
       {
         type: "paragraph",
-        text: "Global corporate cash pools hit **$12.4 trillion in 2025** (JPMorgan), with **68% of CFOs citing liquidity optimization as their #1 priority** (AFP 2025 Survey). Yet, **84% still rely on manual sweeps or outdated batch systems**—costing millions in lost yield.",
-      },
-      {
-        type: "paragraph",
-        text: "**QDL solves this with:**",
+        text: "Legacy banking systems operate in **isolated islands**. Core banking platforms, payment processors, compliance systems, and analytics engines rarely communicate seamlessly. This fragmentation creates:",
       },
       {
         type: "list",
         items: [
-          "**Intra-day MBCC**: Move funds across 47 currencies in **<3 seconds**.",
-          "**Basel III-compliant HQLA sweeps**: Auto-invest surpluses into money markets.",
-          "**200+ bank integrations**: Including JPM, Citi, HSBC, and regional players.",
+          "**Data inconsistency**: A transaction recorded differently across systems.",
+          "**Regulatory blind spots**: Audit trails that don't align with actual activity.",
+          "**Delayed insights**: Decision-makers working with yesterday's data.",
+          "**Compliance risk**: Non-repudiation failures, audit complications.",
         ],
       },
       {
         type: "image",
-        url: "https://via.placeholder.com/600x350?text=QDL+Outperforms+OBLM+by+37%25+on+Idle+Cash+Reduction",
-        alt: "QDL vs Legacy Performance",
-        caption: "Source: QDL Labs, 2025; QDL reduces idle cash 37% faster than Oracle OBLM.",
+        url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+        alt: "Data Control Dashboard",
+        caption: "Unified data visibility across all banking operations.",
       },
       {
         type: "divider",
@@ -61,23 +58,24 @@ const blogContent = {
       {
         type: "heading",
         level: 2,
-        text: "Section 2: ISO 20022 & The Data Opportunity",
+        text: "Real-Time Synchronization: The Foundation",
       },
       {
         type: "paragraph",
-        text: "ISO 20022 isn't just compliance—it's **liquidity intelligence**. **QDL ingests CAMT.053 real-time flows** and enriches them with predictive analytics, enabling:",
+        text: "**True data control starts with real-time sync**. Our platform ingests feeds from all your banking systems—core ledgers, payment processors, FX platforms, compliance engines—and maintains a **unified golden source** updated in **sub-second intervals**.",
       },
       {
         type: "list",
         items: [
-          "**FX-alpha sweeps**: Auto-convert at **12bps below mid-rate**.",
-          "**Threshold forecasting**: AI predicts overdrafts **4 hours in advance**.",
-          "**Zero-touch interest optimization**: Notional pooling with **Fair Share + Reverse Fair Share** models.",
+          "**<300ms latency**: Data propagates across all systems in under 300 milliseconds.",
+          "**Event-driven architecture**: Changes trigger immediate downstream updates.",
+          "**Bidirectional sync**: Updates flow in real-time, eliminating reconciliation delays.",
+          "**Zero data loss**: Enterprise-grade redundancy ensures 99.99% availability.",
         ],
       },
       {
         type: "blockquote",
-        text: "**Legacy systems choke on data volume.**\n\n**QDL processes 1.2M messages/hour** with **99.999% uptime**.",
+        text: "**Real-time synchronization transforms banking from batch-processing to event-driven excellence.**",
       },
       {
         type: "divider",
@@ -85,51 +83,36 @@ const blogContent = {
       {
         type: "heading",
         level: 2,
-        text: "Section 3: Why Traditional Monitoring Isn't Enough",
+        text: "Comprehensive Audit Trails",
       },
       {
         type: "paragraph",
-        text: "Oracle OBLM's **offline batch mode** = decisions on yesterday's data.\n\n**QDL's Real-Time Balance Fabric™** pulls **T-1 + intra-day turns via webhooks**, ensuring:",
-      },
-      {
-        type: "list",
-        items: [
-          "**No stale sweeps**: Zero-balance accuracy to the cent.",
-          "**Predictive overdraft cover**: Auto-fund **before** debit hits.",
-          "**Collar sweeps with AI guardrails**: Leave optimal buffers, not fixed ones.",
-        ],
-      },
-      {
-        type: "blockquote",
-        text: "_\"We cut overdraft fees by $2.1M in Q1 alone.\"_ – Treasury Head, Fortune 500 Manufacturer",
-      },
-      {
-        type: "divider",
-      },
-      {
-        type: "heading",
-        level: 2,
-        text: "Section 4: Customer Expectations & Service Outcomes",
-      },
-      {
-        type: "paragraph",
-        text: "CFOs demand **predictability at scale**. **QDL delivers:**",
+        text: "Regulatory compliance demands **immutable, auditable records**. Every data change—whether in customer info, transaction status, or account balances—must be tracked with full context:",
       },
       {
         type: "table",
-        headers: ["Outcome", "QDL Advantage"],
+        headers: ["Audit Element", "Coverage"],
         rows: [
-          ["**Yield**", "**+180 bps** via auto-investment sweeps"],
-          ["**Visibility**", "Color-coded RM dashboards (Green = Surplus, Red = Risk)"],
-          ["**Control**", "Granular third-party bank controls (No Debit/Frozen)"],
-          ["**Reporting**", "Instant PDF advices—Interest Reallocation in **3 clicks**"],
+          ["**User Identity**", "Who initiated the change (system, user, API)"],
+          ["**Timestamp**", "Precise UTC timestamp down to microseconds"],
+          ["**Data Changed**", "Before/after values with delta analysis"],
+          ["**Reason/Comment**", "Why the change (business context, system logic)"],
+          ["**System Source**", "Which system initiated the change"],
+          ["**Impact Analysis**", "Downstream effects on related records"],
         ],
       },
       {
-        type: "image",
-        url: "https://via.placeholder.com/600x300?text=QDL+Real-Time+Currency+Heatmap",
-        alt: "QDL RM Dashboard",
-        caption: "Live view: 30-day rolling balances across 18 entities.",
+        type: "paragraph",
+        text: "This creates a **forensic record** that satisfies:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Regulatory requirements**: MiFID II, GDPR, Basel III compliance.",
+          "**Internal investigations**: Trace any issue back to its root cause.",
+          "**Fraud detection**: Identify suspicious patterns in data access/changes.",
+          "**Customer disputes**: Prove transaction accuracy with timestamped evidence.",
+        ],
       },
       {
         type: "divider",
@@ -137,24 +120,76 @@ const blogContent = {
       {
         type: "heading",
         level: 2,
-        text: "Section 5: The Path Forward for Modern Banks",
+        text: "Data Governance Framework",
       },
       {
         type: "paragraph",
-        text: "**QDL isn't just software—it's Treasury OS.** Deploy in **6 weeks** with:",
+        text: "Control means **establishing policies and enforcing them consistently**. Our governance framework allows you to:",
+      },
+      {
+        type: "list",
+        items: [
+          "**Define data ownership**: Who manages what data domains.",
+          "**Set access controls**: Role-based, attribute-based, or rules-based access.",
+          "**Enforce data quality**: Validation rules, completeness checks, format standards.",
+          "**Manage data lineage**: Track data from source to consumption.",
+          "**Classify data**: PII, confidential, public—with handling rules for each.",
+        ],
+      },
+      {
+        type: "image",
+        url: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80",
+        alt: "Governance Framework",
+        caption: "Multi-layered data governance ensures compliance and security.",
+      },
+      {
+        type: "divider",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "Real-World Impact",
+      },
+      {
+        type: "paragraph",
+        text: "Banks implementing intelligent data control report:",
+      },
+      {
+        type: "table",
+        headers: ["Metric", "Improvement"],
+        rows: [
+          ["**Audit cycle time**", "Reduced by 67%"],
+          ["**Data accuracy**", "Improved to 99.97%"],
+          ["**Fraud detection**", "False positives cut by 78%"],
+          ["**Regulatory rework**", "Eliminated for 94% of findings"],
+          ["**Incident response**", "Average resolution time: 15 minutes"],
+        ],
+      },
+      {
+        type: "divider",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "Implementation Path",
+      },
+      {
+        type: "paragraph",
+        text: "Deploying data control doesn't require a **big bang** migration:",
       },
       {
         type: "list",
         ordered: true,
         items: [
-          "**Plug-and-play MBCC**: Onboard third-party banks via **BIC upload**.",
-          "**AI Sweep Engine**: Self-optimizing thresholds based on **cash flow DNA**.",
-          "**Banker + RM Dashboards**: Role-based, mobile-first, exportable.",
+          "**Phase 1**: Connect core systems (week 1-2). Real-time feeds from ledgers, payment engines.",
+          "**Phase 2**: Establish golden source (week 3-4). Create unified data model, reconciliation logic.",
+          "**Phase 3**: Deploy governance layer (week 5-6). Define policies, access controls, data quality rules.",
+          "**Phase 4**: Enable analytics & dashboards (week 7-8). Build insights on top of clean, unified data.",
         ],
       },
       {
         type: "blockquote",
-        text: "Unlike rigid Oracle setups, **QDL offers no-code structure builder**—drag, drop, sweep.",
+        text: "Most banks see **ROI within 90 days** of deployment.",
       },
       {
         type: "divider",
@@ -166,11 +201,11 @@ const blogContent = {
       },
       {
         type: "paragraph",
-        text: "In 2025, liquidity management separates **winners from survivors**.\n\n**QDL Liquidity Management** is the **only platform** combining **real-time MBCC**, **AI-driven sweeps**, and **ISO 20022-native intelligence** to deliver **alpha-grade cash efficiency**.",
+        text: "**Data control isn't a cost center—it's a revenue driver.** Real-time synchronization, comprehensive audit trails, and intelligent governance transform data from a compliance headache into a competitive advantage. Banks that master data control see faster decisions, better fraud prevention, and regulatory confidence.",
       },
       {
         type: "blockquote",
-        text: "**Legacy systems optimize yesterday. QDL predicts tomorrow.**",
+        text: "**Control your data. Control your destiny.**",
       },
       {
         type: "divider",
@@ -178,170 +213,329 @@ const blogContent = {
       {
         type: "heading",
         level: 2,
-        text: "Request a Demo",
+        text: "Ready to Transform Your Data Operations?",
       },
       {
         type: "paragraph",
-        text: "**Claim your edge.**\n\nSchedule a **15-minute QDL Liquidity Assessment** and see how much idle cash you're leaving on the table.",
-      },
-      {
-        type: "paragraph",
-        text: "[https://qdl.com/demo](https://qdl.com/demo) | **Download:** *\"The $12T Liquidity Opportunity\"* whitepaper",
+        text: "Schedule a **free 20-minute data control assessment** and discover how much control you're missing.",
       },
     ],
   },
-  2: {
-    title: "Stop Fraud Before It Starts: Why Quantum Data Fraud (QDF) Outsmarts 2025 Payment Threats",
-    category: "AI & Fraud",
-    author: "Elena Varga",
-    authorRole: "Chief AI Officer, QDF Labs",
-    publishedDate: "Today",
-    readTime: "16 min read",
-    imageUrl:
-      "https://via.placeholder.com/600x350?text=QDF+Detects+78%25+More+Emerging+Threats+Than+Rules-Based+Systems",
-    executiveSummary: `**Quantum Data Fraud (QDF)** delivers **agentic AI-powered fraud detection** that obliterates legacy rule-based systems with **real-time anomaly detection, zero false positives, and adaptive learning**. Unlike traditional platforms that miss 78% of emerging fraud vectors (FraudTech 2025 Report), QDF combines **supervised + unsupervised AI, generative modeling, and network analysis** to predict and prevent fraud **4.2 seconds before execution**. For banks processing **$1B+ daily**, QDF cuts fraud losses by **63%** and operational overhead by **41%** (QDF Internal Benchmark, Q4 2025).`,
-    content: [
-      { type: "heading", level: 2, text: "Introduction" },
-      { type: "paragraph", text: `In 2025, **payment fraud isn’t just evolving—it’s mutating**. Synthetic identities, AI-generated deepfake invoices, and cross-border micro-laundering bypass static rules in milliseconds. **Quantum Data Fraud**, powered by **Agentic AI and Quantum Data Leap**, autonomously detects, learns, and neutralizes threats **without human touchpoints**, turning fraud prevention from reactive firefighting into **predictive dominance**.` },
-      { type: "divider" },
-      { type: "heading", level: 2, text: "Section 1: Current Landscape & Market Pressure" },
-      { type: "paragraph", text: `Global payment fraud losses hit **$48.7 billion in 2025** (Nilson Report), with **71% of attacks originating from AI-driven automation** (Cybersecurity Ventures). Yet, **89% of banks still rely on 1990s-era rule engines**—triggering **1.2M false positives daily** and costing **$117 per alert** in manual review (Aite-Novarica).` },
-      { type: "paragraph", text: `**QDF ends this chaos with:**` },
-      { type: "list", items: [
-        "**Real-time data signal orchestration**: Ingests CAMT.053, SWIFT MT, and ISO 20022 streams **instantly**.",
-        "**Agentic AI autonomy**: No predefined rules. Learns from **your** transaction DNA.",
-        "**200+ fraud pattern libraries**: Updated hourly via secure RAG pipelines."
-      ]},
-      { type: "image", url: "https://via.placeholder.com/600x350?text=QDF+Detects+78%25+More+Emerging+Threats+Than+Rules-Based+Systems", alt: "QDF vs Legacy Detection", caption: "(Source: QDF Labs, 2025; QDF outperforms legacy systems by 78% on zero-day fraud vectors.)" },
-      { type: "divider" },
-      { type: "heading", level: 2, text: "Section 2: ISO 20022 & The Data Opportunity" },
-      { type: "paragraph", text: `ISO 20022 isn’t just rich data—it’s **fraud intelligence fuel**. **QDF ingests structured payloads** to:` },
-      { type: "list", items: [
-        "**Map beneficiary networks**: Uncover shell company webs in **<2 seconds**.",
-        "**Score behavioral drift**: Detect 0.3% velocity anomalies missed by thresholds.",
-        "**Enrich with QGPT**: Generate plain-language fraud narratives for auditors."
-      ]},
-      { type: "blockquote", text: `**Legacy systems parse. QDF predicts.**  
-**99.97% STP rate** with **zero compliance rework**.` },
-      { type: "divider" },
-      { type: "heading", level: 2, text: "Section 3: Why Traditional Monitoring Isn’t Enough" },
-      { type: "paragraph", text: `Rule-based systems are **blind to context**. A $50K transfer to a new vendor? Legit—or mule drop?  
-**QDF’s multi-layered AI stack** sees what rules can’t:` },
-      { type: "table", headers: ["Layer", "QDF Advantage"], rows: [
-        ["**Unsupervised Agent AI**", "Finds **unknown-unknowns** (e.g., AI-generated invoices)"],
-        ["**Supervised Learning**", "97.4% accuracy on known fraud (ACH push, card-not-present)"],
-        ["**Generative AI**", "Simulates attack variants to **stress-test defenses**"],
-        ["**Network Analysis**", "Flags **mule rings** via graph clustering"],
-        ["**Real-Time Monitoring**", "Blocks in **<1.2s** with auto-escalation"]
-      ]},
-      { type: "blockquote", text: `_“We stopped a $14M synthetic identity ring in 47 seconds.”_ – CISO, Tier-1 Global Bank` },
-      { type: "divider" },
-      { type: "heading", level: 2, text: "Section 4: Customer Expectations & Service Outcomes" },
-      { type: "paragraph", text: `CFOs and regulators demand **zero-tolerance fraud** with **zero friction**. **QDF delivers:**` },
-      { type: "table", headers: ["Outcome", "QDF Advantage"], rows: [
-        ["**Loss Prevention**", "**63% reduction** in confirmed fraud"],
-        ["**False Positives**", "**<0.03%** (vs. industry 8.7%)"],
-        ["**Audit Readiness**", "Auto-generated **QGPT fraud reports** in PDF/NLP"],
-        ["**Scalability**", "Processes **2.1M TPS** with **99.999% uptime**"]
-      ]},
-      { type: "image", url: "https://via.placeholder.com/600x300?text=QDF+Live+Fraud+Heatmap+-+Anomaly+Score+by+Region", alt: "QDF Real-Time Dashboard", caption: "(Live view: Risk scoring across 42 payment corridors.)" },
-      { type: "divider" },
-      { type: "heading", level: 2, text: "Section 5: The Path Forward for Modern Banks" },
-      { type: "paragraph", text: `**QDF isn’t a tool—it’s Fraud OS.** Deploy in **72 hours** with:` },
-      { type: "list", ordered: true, items: [
-        "**Zero-code onboarding**: Connect via API, SFTP, or SWIFT.",
-        "**Self-evolving models**: Retrain nightly on **your** data (no PII exposure).",
-        "**QGPT Explainer**: “Why was this blocked?” in **natural language**.",
-        "**Banker + Compliance Dashboards**: Drill-down from $14M alert to root txn."
-      ]},
-      { type: "blockquote", text: `Unlike brittle rules engines, **QDF adapts before the next attack lands**.` },
-      { type: "divider" },
-      { type: "heading", level: 2, text: "Conclusion" },
-      { type: "paragraph", text: `In 2025, **fraud isn’t a cost center—it’s an existential risk**.  
-**Quantum Data Fraud** is the **only platform** fusing **agentic AI, generative modeling, and real-time orchestration** to deliver **preemptive, scalable, explainable defense**.` },
-      { type: "blockquote", text: `**Rules react. QDF predicts. You win.**` },
-      { type: "divider" },
-      { type: "heading", level: 2, text: "Call-to-Action" },
-      { type: "paragraph", text: `**Secure your payments. Now.**  
-Book a **15-minute QDF Threat Scan** and see live fraud vectors in your transaction flow.` },
-      { type: "paragraph", text: `[https://qdf.ai/demo](https://qdf.ai/demo) | **Download:** *“The $48B Fraud Tsunami: How AI Stops It”* whitepaper` },
-    ],
-  },
+ 
   3: {
-    title: "Master Payment Data Sovereignty: Why Quantum Data Leap (QDL) Delivers Ironclad Control in an ISO 20022 World",
-    category: "Payments & Compliance",
-    author: "Klaus Richter",
-    authorRole: "Chief Compliance Architect, QDL",
-    publishedDate: "March 17, 2025",
-    readTime: "14 min read",
-    imageUrl:
-      "https://via.placeholder.com/600x350?text=QDL+On-Prem+vs+Cloud+AI:+0%25+Data+Exposure",
-    executiveSummary: `**Quantum Data Leap (QDL)** empowers banks with **agentic AI auto-correction, local QGPT, and zero-trust RAG**—ensuring **100% on-prem data residency** while achieving **94% STP uplift** and **zero external LLM exposure**. Unlike cloud AI platforms that risk €4M+ GDPR fines per breach, QDL’s **autonomous, self-healing message engine** repairs 142+ ISO 20022 fields in **<400ms**, all within your firewall. For institutions processing **15M+ messages daily**, QDL slashes compliance rework by **$22.3M** and audit cycles by **89%** (QDL Internal Benchmark, Q1 2025).`,
+    title: "Liquidity Management: Optimize Your Cash Flow",
+    category: "Finance",
+    author: "Michael Torres",
+    authorRole: "Treasury Specialist",
+    publishedDate: "December 10, 2025",
+    readTime: "7 min read",
+    imageUrl: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80",
+    executiveSummary: "**AI-Powered Liquidity Management** optimizes cash positioning across multiple banks, automates sweep strategies, and maximizes returns on idle balances. Modern treasurers demand **real-time visibility**, **predictive forecasting**, and **automated optimization** without manual intervention. Our platform delivers **180 basis points** yield improvement, **37% idle cash reduction**, and **99.9% sweep accuracy**—enabling treasury teams to focus on strategy instead of operations.",
     content: [
       { type: "heading", level: 2, text: "Introduction" },
-      { type: "paragraph", text: `In 2025, **data control is non-negotiable**. ISO 20022’s structured richness amplifies PII exposure, while regulators demand **real-time auditability** and **sovereign AI**. **Quantum Data Leap** transforms payment data from liability to fortress: **Agentic AI runs locally**, learning from *your* golden source, repairing messages, and generating compliant insights—**without ever phoning home**. No cloud. No leaks. Just **unbreakable governance**.` },
+      { type: "paragraph", text: "In today's volatile interest rate environment, **liquidity management is a competitive advantage**. Treasurers managing multi-bank cash pools face an impossible choice: optimize yield or maintain safety. **Intelligent liquidity management** removes that tradeoff, automating sweep logic, forecasting cash positions, and maximizing returns—all without human intervention." },
       { type: "divider" },
-      { type: "heading", level: 2, text: "Section 1: Current Landscape & Market Pressure" },
-      { type: "paragraph", text: `Global data fines reached **€4.7 billion in 2025** (ENISA), with **67% tied to unstructured payment fields** (ISO 20022 Compliance Report). Meanwhile, **93% of AI payment tools rely on public LLMs**—exposing UETR, LEI, and remittance data to third-party training (OWASP AI Security).` },
-      { type: "paragraph", text: `**QDL locks it down with:**` },
+      { type: "heading", level: 2, text: "The Challenge: Manual Treasury Operations" },
+      { type: "paragraph", text: "Legacy liquidity management relies on **manual sweeps, static thresholds, and offline reconciliations**:" },
       { type: "list", items: [
-        "**Local SLM + QGPT**: Fully on-prem generative AI—**no external inference**.",
-        "**RAG-isolated knowledge base**: Repairs using **your** sanctioned BIC/LEI registry.",
-        "**Agentic autonomy**: Self-corrects **97.8%** of schema + business rule violations."
-      ]},
-      { type: "image", url: "https://via.placeholder.com/600x350?text=QDL+On-Prem+vs+Cloud+AI:+0%25+Data+Exposure", alt: "QDL Data Sovereignty Fortress", caption: "(Source: QDL Security Labs, 2025; QDL vs. leading cloud AI payment platforms.)" },
+        "**Idle cash costs**: Balances sitting in low-yield accounts overnight.",
+        "**Overdraft risk**: Insufficient cover leads to emergency borrowing at premium rates.",
+        "**Manual errors**: Sweeps triggered by outdated balance reports.",
+        "**Lost optimization**: No dynamic response to rate changes or cash flow patterns.",
+      ] },
+      { type: "paragraph", text: "The impact? Treasurers leave **millions in unrealized yield** on the table annually." },
+      { type: "image", url: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80", alt: "Liquidity Dashboard", caption: "Real-time liquidity visibility across accounts and banks." },
       { type: "divider" },
-      { type: "heading", level: 2, text: "Section 2: ISO 20022 & The Data Opportunity" },
-      { type: "paragraph", text: `ISO 20022 isn’t just format—it’s **governance gold**. **QDL ingests full pacs.008/camt.053 payloads** and:` },
+      { type: "heading", level: 2, text: "Multi-Bank Cash Concentration" },
+      { type: "paragraph", text: "**Centralizing cash is complex.** Our platform enables:" },
       { type: "list", items: [
-        "**Auto-enriches 142+ fields**: BIC, UETR, structured remittance, purpose codes.",
-        "**Enforces dynamic rules**: Prevents sanctioned name variants pre-submission.",
-        "**QGPT redaction engine**: Anonymizes PII before archival—**GDPR/CCPA by design**."
-      ]},
-      { type: "blockquote", text: `**Legacy DQM validates syntax. QDL enforces semantics.**  
-**99.97% first-pass compliance**.` },
+        "**Intra-day MBCC**: Move funds between 50+ global banks in <3 seconds.",
+        "**Multi-currency optimization**: Auto-convert FX at algorithmic mid-rates.",
+        "**Threshold-based sweeps**: Define zero-balance, collar, or investment sweep rules.",
+        "**Notional pooling**: Virtual consolidation without moving physical cash.",
+      ] },
+      { type: "paragraph", text: "Result: **Consolidated cash positions** available for investment or debt reduction." },
       { type: "divider" },
-      { type: "heading", level: 2, text: "Section 3: Why Traditional Monitoring Isn’t Enough" },
-      { type: "paragraph", text: `Static validation rules **break on Day 2**. A malformed <CdtrAgt>? Rejected. Missing <RmtInf>? Manual fix.  
-**QDL’s agentic control stack** operates at machine speed:` },
-      { type: "table", headers: ["Governance Layer", "QDL Advantage"], rows: [
-        ["**Agentic Auto-Correction**", "Repairs **97.8%** of ISO errors in-flight"],
-        ["**Local RAG + SLM**", "Contextual repair from **your** data—no external LLM"],
-        ["**Policy Drift Detection**", "Flags schema creep (e.g., new purpose code)"],
-        ["**Immutable Audit Trail**", "QGPT-explained logs: '*Fixed BIC mismatch using internal registry*'"],
-        ["**Zero Data Exfiltration**", "**100% on-prem**—even model updates stay internal"]
-      ]},
-      { type: "blockquote", text: `_“We cut ISO rework from 1,200 hours to 47 minutes monthly.”_ – Head of Payments Ops, EU Tier-1 Bank` },
+      { type: "heading", level: 2, text: "Predictive Forecasting" },
+      { type: "paragraph", text: "AI learns your cash flow patterns and predicts future positions:" },
+      { type: "table", headers: ["Forecast Element", "Benefit"], rows: [
+        ["**Intra-day flows**", "Predict disbursements 4 hours in advance"],
+        ["**Seasonal patterns**", "Adjust sweep strategies for predictable cycles"],
+        ["**Threshold optimization**", "Maintain optimal buffers, not fixed minimums"],
+        ["**Overdraft prevention**", "Auto-fund before debit risk emerges"],
+      ] },
+      { type: "blockquote", text: "**Forecasting transforms Treasury from reactive to proactive.**" },
       { type: "divider" },
-      { type: "heading", level: 2, text: "Section 4: Customer Expectations & Service Outcomes" },
-      { type: "paragraph", text: `CROs and regulators demand **sovereignty + speed**. **QDL delivers:**` },
-      { type: "table", headers: ["Outcome", "QDL Advantage"], rows: [
-        ["**Compliance**", "**0 fines** in 2025 (vs. industry avg. €2.9M)"],
-        ["**STP Rate**", "**+94%** first-time pass"],
-        ["**Audit Velocity**", "**89% faster** with QGPT natural-language narratives"],
-        ["**Control**", "Full admin over **RAG sources, repair logic, SLM weights**"]
-      ]},
-      { type: "image", url: "https://via.placeholder.com/600x300?text=QDL+Live+Data+Quality+Heatmap+-+ISO+Field+Compliance", alt: "QDL Governance Dashboard", caption: "(Live view: Real-time field-level compliance across 41 corridors.)" },
+      { type: "heading", level: 2, text: "Real-World Impact" },
+      { type: "paragraph", text: "Enterprises deploying intelligent liquidity management report:" },
+      { type: "table", headers: ["Metric", "Improvement"], rows: [
+        ["**Yield uplift**", "+180 basis points annually"],
+        ["**Idle cash reduction**", "37% decrease in low-yield balances"],
+        ["**Overdraft elimination**", "99.2% success rate on prevention"],
+        ["**Manual effort**", "-78% reduction in daily treasury tasks"],
+        ["**Sweep accuracy**", "99.9% first-time execution"],
+      ] },
       { type: "divider" },
-      { type: "heading", level: 2, text: "Section 5: The Path Forward for Modern Banks" },
-      { type: "paragraph", text: `**QDL isn’t a validator—it’s Data Control OS.** Deploy in **48 hours** with:` },
+      { type: "heading", level: 2, text: "Implementation" },
+      { type: "paragraph", text: "Deploying liquidity automation is straightforward:" },
       { type: "list", ordered: true, items: [
-        "**Air-gapped install**: On-prem, private cloud, or hybrid—**your infrastructure**.",
-        "**No-code policy studio**: Drag-drop ISO field rules + RAG sources.",
-        "**QGPT Query**: “Show all unrepaired LEI mismatches” → **PDF in 2.1s**.",
-        "**Agentic Console**: Watch AI repair messages live—**explainable, auditable**."
-      ]},
-      { type: "blockquote", text: `Unlike cloud AI that **monetizes your data**, **QDL ensures you own it—forever**.` },
+        "**Week 1**: Connect to core banking and bank APIs.",
+        "**Week 2**: Define sweep rules and thresholds.",
+        "**Week 3**: Run parallel with existing system (validation).",
+        "**Week 4**: Go-live with auto-optimization enabled.",
+      ] },
+      { type: "blockquote", text: "Most organizations achieve **positive ROI within 60 days**." },
       { type: "divider" },
       { type: "heading", level: 2, text: "Conclusion" },
-      { type: "paragraph", text: `In 2025, **data control defines trust**.  
-**Quantum Data Leap** is the **only platform** delivering **agentic auto-correction, local generative AI, and zero-trust RAG** to govern, enrich, and secure payment data **entirely within your perimeter**.` },
-      { type: "blockquote", text: `**Cloud AI exposes. QDL protects. You lead.**` },
+      { type: "paragraph", text: "**Intelligent liquidity management** transforms treasury from a cost center to a profit center. By automating sweeps, forecasting cash flows, and optimizing across multi-bank networks, treasurers unlock hidden value while reducing operational risk." },
+      { type: "blockquote", text: "**Automate your liquidity. Amplify your returns.**" },
       { type: "divider" },
-      { type: "heading", level: 2, text: "Call-to-Action" },
-      { type: "paragraph", text: `**Reclaim your data.**  
-Book a **30-minute QDL Sovereignty Scan** and see live PII and compliance risks in your ISO 20022 flow.` },
-      { type: "paragraph", text: `[https://qdl.ai/control-scan](https://qdl.ai/control-scan) | **Download:** *“The €4.7B Data Control Imperative”* whitepaper` },
+      { type: "heading", level: 2, text: "Schedule Your Liquidity Assessment" },
+      { type: "paragraph", text: "Discover how much idle cash you're leaving on the table. Book a **free treasury optimization audit** today." },
+    ],
+  },
+  4: {
+    title: "Compliance Automation: Reduce Risk & Complexity",
+    category: "Compliance",
+    author: "Jennifer Lee",
+    authorRole: "Compliance Director",
+    publishedDate: "December 8, 2025",
+    readTime: "8 min read",
+    imageUrl: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
+    executiveSummary: "**Intelligent Compliance Automation** shifts banking compliance from manual reviews to intelligent, rule-driven governance. Traditional compliance workflows rely on spreadsheets and manual checks—slow, error-prone, and audit-risky. Our platform automates **142+ regulatory controls**, detects violations in real-time, and generates audit-ready documentation automatically. Banks report **89% reduction in audit cycles**, **zero compliance fines**, and **94% faster incident resolution**.",
+    content: [
+      { type: "heading", level: 2, text: "Introduction" },
+      { type: "paragraph", text: "Regulatory compliance is **increasingly complex**. Anti-money laundering (AML), Know Your Customer (KYC), sanctions screening, transaction monitoring—the rulebook never stops growing. **Intelligent compliance automation** shifts this burden from human reviewers to intelligent systems that learn, adapt, and enforce rules consistently." },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "The Manual Compliance Nightmare" },
+      { type: "paragraph", text: "Traditional compliance workflows struggle with:" },
+      { type: "list", items: [
+        "**Volume overload**: Thousands of alerts daily; 95%+ are false positives.",
+        "**Manual reviews**: Compliance teams drown in investigation tickets.",
+        "**Inconsistent enforcement**: Rules applied differently by different reviewers.",
+        "**Audit gaps**: Decisions not properly documented or justified.",
+        "**Regulatory fines**: Non-detection or slow response leads to penalties.",
+      ] },
+      { type: "paragraph", text: "The cost? **$15M+ annually** in fines, investigations, and operational overhead per institution." },
+      { type: "image", url: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80", alt: "Compliance Dashboard", caption: "Centralized compliance monitoring and enforcement." },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "Automated Compliance Controls" },
+      { type: "paragraph", text: "Our platform automates **core compliance functions**:" },
+      { type: "table", headers: ["Control", "Automation"],  rows: [
+        ["**Sanctions Screening**", "Real-time name/entity matching against OFAC, EU, UN lists"],
+        ["**AML Transaction Monitoring**", "Flag suspicious velocity, structuring, high-risk jurisdictions"],
+        ["**KYC Validation**", "Verify customer identity, beneficial ownership, occupation"],
+        ["**PEP Detection**", "Identify politically-exposed persons and relatives"],
+        ["**Adverse Media**", "Monitor news feeds for reputational risk"],
+        ["**Transaction Reporting**", "Auto-generate CTR, SAR, and regulatory submissions"],
+      ] },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "Real-Time Enforcement" },
+      { type: "paragraph", text: "Rather than **post-transaction reviews**, intelligent compliance enforces rules in real-time:" },
+      { type: "list", items: [
+        "**Straight-through Processing (STP)**: 94% of transactions clear automatically.",
+        "**Smart alerts**: False positives drop 85%; alerts are high-confidence.",
+        "**Exception management**: Reviewers focus on genuine risks, not noise.",
+        "**Explainability**: AI explains why each transaction was flagged.",
+      ] },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "Audit-Ready Governance" },
+      { type: "paragraph", text: "Compliance automation creates **comprehensive audit trails**:" },
+      { type: "list", items: [
+        "**Decision logs**: Who reviewed what, when, and why.",
+        "**Rule versions**: Track what rules were active when.",
+        "**Escalation workflows**: Approval chains fully documented.",
+        "**Regulatory submissions**: Auto-generated reports with supporting evidence.",
+      ] },
+      { type: "blockquote", text: "**Auditors are impressed. Regulators are satisfied.**" },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "Real-World Impact" },
+      { type: "paragraph", text: "Institutions deploying compliance automation report:" },
+      { type: "table", headers: ["Metric", "Result"], rows: [
+        ["**Audit cycle time**", "Reduced by 89%"],
+        ["**Compliance fines**", "Reduced to $0 in first 18 months"],
+        ["**False positives**", "Reduced by 85%"],
+        ["**Reviewer productivity**", "+340% cases handled per analyst"],
+        ["**Regulatory response time**", "From 30 days to <2 hours"],
+      ] },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "Implementation Path" },
+      { type: "paragraph", text: "Automating compliance is a phased approach:" },
+      { type: "list", ordered: true, items: [
+        "**Phase 1**: Map current controls to automated rules.",
+        "**Phase 2**: Deploy to pilot business units.",
+        "**Phase 3**: Expand enterprise-wide with governance framework.",
+        "**Phase 4**: Continuous optimization based on audit feedback.",
+      ] },
+      { type: "blockquote", text: "Most institutions achieve **ROI within 6 months**." },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "Conclusion" },
+      { type: "paragraph", text: "**Intelligent compliance automation** transforms compliance from a cost center to a strategic advantage. By automating controls, reducing false positives, and generating audit-ready documentation, compliance teams can focus on strategic initiatives instead of firefighting." },
+      { type: "blockquote", text: "**Automate compliance. Amplify trust.**" },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "Schedule Your Compliance Assessment" },
+      { type: "paragraph", text: "Discover how much compliance risk you're exposed to. Book a **free compliance audit** today." },
+    ],
+  },
+  5: {
+    title: "Real-Time Insights: Transform Your Banking Dashboard",
+    category: "Analytics",
+    author: "David Chen",
+    authorRole: "Analytics Manager",
+    publishedDate: "December 6, 2025",
+    readTime: "9 min read",
+    imageUrl: "https://images.unsplash.com/photo-1526374965328-7f5ae4e8b69e?auto=format&fit=crop&w=1200&q=80",
+    executiveSummary: "**Intelligent Banking Dashboards** consolidate data from multiple sources, providing executives with actionable insights and predictive analytics. Discover how real-time analytics transform decision-making.",
+    content: [
+      { type: "heading", level: 2, text: "Introduction" },
+      { type: "paragraph", text: "Real-time insights are critical for modern banking. Our dashboard platform delivers consolidated data visibility across all banking operations." },
+    ],
+  },
+  
+  2: {
+    title: "Advanced Fraud Detection: AI-Powered Protection",
+    category: "Security",
+    author: "Sarah Mitchell",
+    authorRole: "Security Officer",
+    publishedDate: "December 12, 2025",
+    readTime: "9 min read",
+    imageUrl: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
+    executiveSummary: "**Intelligent Fraud Detection** powered by AI identifies suspicious patterns in real-time, blocking threats **before they execute**. Traditional rule-based systems miss 78% of emerging fraud vectors. Our AI-driven platform achieves **99.97% accuracy** with **zero false positives**, leveraging machine learning to learn from your transaction patterns and adapt to evolving threats. Banks report **63% reduction in fraud losses** and **41% reduction in operational costs** within 90 days.",
+    content: [
+      { type: "heading", level: 2, text: "Introduction" },
+      { type: "paragraph", text: "In 2025, **payment fraud isn't just evolving—it's mutating**. Synthetic identities, AI-generated deepfake invoices, and cross-border micro-laundering bypass static rules in milliseconds. **Intelligent Fraud Detection** autonomously detects, learns, and neutralizes threats **without human touchpoints**, turning fraud prevention from reactive firefighting into **predictive dominance**." },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "The Challenge: Current Fraud Landscape" },
+      { type: "paragraph", text: "Global payment fraud losses hit **$48.7 billion in 2025**, with **71% of attacks originating from AI-driven automation**. Yet, **89% of banks still rely on rule engines**—triggering **1.2M false positives daily** and costing **$117 per alert** in manual review." },
+      { type: "list", items: [
+        "**Real-time data signal orchestration**: Ingests transaction streams instantly.",
+        "**Agentic AI autonomy**: No predefined rules. Learns from **your** transaction DNA.",
+        "**200+ fraud pattern libraries**: Updated hourly via secure data pipelines."
+      ]},
+      { type: "image", url: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80", alt: "Fraud Detection System", caption: "AI-powered fraud detection catches threats in real-time." },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "Why Traditional Monitoring Isn't Enough" },
+      { type: "paragraph", text: "Rule-based systems are **blind to context**. A $50K transfer to a new vendor? Legit—or mule drop?" },
+      { type: "list", items: [
+        "**Unsupervised Agent AI**: Finds unknown-unknowns (e.g., AI-generated invoices).",
+        "**Supervised Learning**: 97.4% accuracy on known fraud (ACH push, card-not-present).",
+        "**Generative AI**: Simulates attack variants to stress-test defenses.",
+        "**Network Analysis**: Flags mule rings via graph clustering.",
+        "**Real-Time Monitoring**: Blocks in <1.2s with auto-escalation"
+      ]},
+      { type: "blockquote", text: "**Rules react. AI predicts. You win.**" },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "Real-World Impact" },
+      { type: "paragraph", text: "Banks deploying AI fraud detection report:" },
+      { type: "table", headers: ["Outcome", "Result"], rows: [
+        ["**Loss Prevention**", "63% reduction in confirmed fraud"],
+        ["**False Positives**", "<0.03% (vs. industry 8.7%)"],
+        ["**Audit Readiness**", "Auto-generated fraud reports"],
+        ["**Scalability**", "Processes 2.1M TPS with 99.999% uptime"]
+      ]},
+      { type: "divider" },
+      { type: "heading", level: 2, text: "Implementation Timeline" },
+      { type: "paragraph", text: "Deploy intelligent fraud detection in phases:" },
+      { type: "list", ordered: true, items: [
+        "**Phase 1**: Map current controls to automated rules.",
+        "**Phase 2**: Integrate with transaction/customer data sources.",
+        "**Phase 3**: Calibrate thresholds using historical data.",
+        "**Phase 4**: Deploy with human-in-the-loop for validation.",
+      ] },
+      { type: "blockquote", text: "**Typical timeline: 16 weeks to full automation.**" },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "Conclusion" },
+      { type: "paragraph", text: "**Intelligent fraud detection** transforms how banks manage payment risk. By automating threat detection, reducing false positives, and enabling real-time blocking, security teams shift from 'firefighting' to 'strategy.'" },
+      { type: "blockquote", text: "**Automate fraud detection. Eliminate risk. Win customer trust.**" },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "Schedule Your Fraud Assessment" },
+      { type: "paragraph", text: "Discover how many threats your current system is missing. Book a **free fraud risk assessment** today." },
+    ],
+  },
+  6: {
+    title: "Intelligent Banking: The Future is Now",
+    category: "Strategy",
+    author: "Rebecca Harris",
+    authorRole: "VP Product",
+    publishedDate: "December 4, 2025",
+    readTime: "10 min read",
+    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    executiveSummary: "**Intelligent banking** integrates data control, fraud detection, liquidity management, and compliance into a unified platform. Rather than maintaining siloed systems for each function, forward-thinking banks adopt integrated solutions that share data, enforce consistent governance, and drive operational excellence. Our platform delivers **47% cost reduction**, **3.2x faster incident response**, and **99.97% STP rates**—enabling banks to compete in the AI era.",
+    content: [
+      { type: "heading", level: 2, text: "Introduction" },
+      { type: "paragraph", text: "The banking industry is at an inflection point. Legacy architectures—with separate systems for payments, compliance, fraud, and liquidity—create **silos, inconsistencies, and inefficiencies**. **Intelligent banking** represents a new paradigm: **unified platforms** that integrate data, governance, and AI across all functions." },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "The Evolution of Banking Technology" },
+      { type: "paragraph", text: "Banking systems have evolved in three eras:" },
+      { type: "list", items: [
+        "**Era 1 (1980s-2000s)**: Monolithic mainframes. Slow, inflexible, expensive.",
+        "**Era 2 (2000s-2020s)**: Distributed systems. Siloed applications, data fragmentation.",
+        "**Era 3 (2020s+)**: Intelligent platforms. Unified data, AI-driven insights, real-time governance.",
+      ] },
+      { type: "paragraph", text: "Banks still operating in **Era 2** are vulnerable to disruption." },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "The Four Pillars of Intelligent Banking" },
+      { type: "paragraph", text: "Modern intelligent banking platforms rest on four pillars:" },
+      { type: "table", headers: ["Pillar", "Capability"], rows: [
+        ["**Data Control**", "Real-time sync, audit trails, governance—unified source of truth"],
+        ["**Fraud Detection**", "AI-powered detection, zero false positives, explainability"],
+        ["**Liquidity Mgmt**", "Automated sweeps, forecasting, multi-bank optimization"],
+        ["**Compliance**", "Real-time controls, audit-ready documentation, zero penalties"],
+      ] },
+      { type: "paragraph", text: "**When integrated**, these pillars create synergies:" },
+      { type: "list", items: [
+        "**Shared data**: Fraud system learns from transactions flowing through liquidity management.",
+        "**Consistent governance**: Same data quality rules apply to compliance and treasury.",
+        "**Rapid response**: Incident in one area triggers coordinated response across all systems.",
+        "**Unified dashboards**: Executives see enterprise health at a glance.",
+      ] },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "Real-World: Bank Digital Transformation" },
+      { type: "paragraph", text: "A Tier-1 European bank deployed intelligent banking and saw:" },
+      { type: "table", headers: ["Area", "Result"], rows: [
+        ["**Operations cost**", "-47% through automation"],
+        ["**Incident response**", "3.2x faster (from 4 hours to 75 minutes)"],
+        ["**STP rate**", "99.97% (vs. industry avg. 92%)"],
+        ["**Compliance fines**", "$0 in 18 months (saved €8M)"],
+        ["**Revenue impact**", "+$12M from liquidity optimization"],
+      ] },
+      { type: "paragraph", text: "_\"We finally have one version of the truth. One set of controls. One team managing enterprise risk.\"_ – Chief Risk Officer" },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "The AI-Native Advantage" },
+      { type: "paragraph", text: "Intelligent banking platforms are **AI-native from the ground up**:" },
+      { type: "list", items: [
+        "**Machine learning models** continuously learn from your data.",
+        "**Natural language**: Explain decisions in plain English.",
+        "**Adaptive rules**: Detect new fraud patterns autonomously.",
+        "**Predictive analytics**: Forecast risks before they materialize.",
+      ] },
+      { type: "paragraph", text: "This creates a **virtuous cycle**: More data → Better models → More insights → Better decisions." },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "Competitive Imperatives" },
+      { type: "paragraph", text: "Banks **must modernize** to remain competitive:" },
+      { type: "list", items: [
+        "**Fintechs are agile**: They build on modern, unified architectures.",
+        "**Regulators demand speed**: Real-time reporting, instant compliance verification.",
+        "**Customer expectations**: 24/7 service, instant decisions, zero friction.",
+        "**Talent wars**: Engineers want to work on modern platforms, not legacy code.",
+      ] },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "The Path Forward" },
+      { type: "paragraph", text: "Intelligent banking adoption follows this pattern:" },
+      { type: "list", ordered: true, items: [
+        "**Year 1**: Implement data control + fraud detection (quick wins).",
+        "**Year 2**: Add liquidity management + compliance automation.",
+        "**Year 3**: Decommission legacy systems; consolidate on unified platform.",
+      ] },
+      { type: "paragraph", text: "Total transformation cost: **20% of annual IT budget**. Annual savings: **47% of operations cost**." },
+      { type: "blockquote", text: "**Payback period: 18 months.**" },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "Conclusion" },
+      { type: "paragraph", text: "**Intelligent banking** isn't the future—it's the present. Banks that delay modernization risk being outcompeted by more agile rivals. Those that embrace intelligent platforms see immediate cost reductions, revenue uplift, and regulatory confidence." },
+      { type: "blockquote", text: "**The time to move is now. The future belongs to intelligent banks.**" },
+      { type: "divider" },
+      { type: "heading", level: 2, text: "Start Your Intelligent Banking Journey" },
+      { type: "paragraph", text: "Schedule a **personalized 30-minute assessment** to understand how intelligent banking can transform your institution. We'll benchmark you against peers and identify quick wins." },
     ],
   },
 }
@@ -352,15 +546,15 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
 
   if (!post) {
     return (
-      <div className="relative min-h-screen w-full overflow-hidden text-white">
-        <div className="absolute inset-0 bg-gradient-to-br from-teal-500 via-cyan-400 to-blue-500">
-          <div className="absolute inset-0 bg-black/40" />
+      <div className="relative min-h-screen w-full overflow-hidden text-slate-900">
+        <div className="absolute inset-0 bg-gradient-to-br from-teal-50 via-white to-sky-50">
+          <div className="absolute inset-0 bg-white/0" />
         </div>
         <div className="relative z-10">
           <Header />
           <main className="mx-auto max-w-4xl px-4 py-24 text-center">
             <h1 className="text-4xl font-semibold">Post not found</h1>
-            <Link href="/blogs" className="mt-4 inline-block text-teal-200 hover:text-white">
+            <Link href="/blogs" className="mt-4 inline-block text-slate-700 hover:text-slate-900">
               ← Back to blogs
             </Link>
           </main>
@@ -370,10 +564,10 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
   }
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden text-white">
+    <div className="relative min-h-screen w-full overflow-hidden text-slate-900">
       {/* Background matching hero section */}
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-500 via-cyan-400 to-blue-500">
-        <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-br from-teal-50 via-white to-sky-50">
+        <div className="absolute inset-0 bg-white/0" />
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
@@ -403,7 +597,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
           >
             <Link
               href="/blogs"
-              className="mb-8 inline-flex items-center gap-2 text-white/80 transition-colors hover:text-white"
+              className="mb-8 inline-flex items-center gap-2 text-slate-600 transition-colors hover:text-slate-900"
             >
               <ArrowLeft className="h-4 w-4" />
               <span>Back to blogs</span>

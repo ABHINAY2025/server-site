@@ -33,7 +33,7 @@ export default function LandingPage() {
         <FAQSection />
 
         {/* Getting Started Section */}
-        <PremiumGettingStartedSection />
+        {/* <PremiumGettingStartedSection /> */}
 
         {/* Footer Section */}
         <PremiumFooterSection />

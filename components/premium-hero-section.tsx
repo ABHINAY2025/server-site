@@ -13,17 +13,32 @@ import { DashboardPreview } from "./dashboard-preview"
 export function PremiumHeroSection() {
   const [demoModalOpen, setDemoModalOpen] = React.useState(false)
 
+  const videoRef = React.useRef<HTMLVideoElement | null>(null)
+  const [isPlaying, setIsPlaying] = React.useState(false)
+  const [isMuted, setIsMuted] = React.useState(true)
+  const [progress, setProgress] = React.useState(0)
+  const [duration, setDuration] = React.useState(0)
+  const progressRef = React.useRef(0)
+  const lastUpdateRef = React.useRef(0)
+
   // Animated gradient text using letter-by-letter reveal
   const headline = "Intelligent Banking Powered by AI"
   const subheadline =
     "Transform your banking operations with intelligent data control, liquidity management, fraud detection, and automated compliance rules."
 
+  function formatTime(seconds: number) {
+    if (!seconds || Number.isNaN(seconds)) return "0:00"
+    const m = Math.floor(seconds / 60)
+    const s = Math.floor(seconds % 60)
+    return `${m}:${s.toString().padStart(2, "0")}`
+  }
+
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
       {/* Full-width gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-500 via-cyan-400 to-blue-500">
-        {/* Dark overlay for contrast */}
-        <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-br from-cyan-50 via-white to-blue-50">
+        {/* Subtle overlay */}
+        <div className="absolute inset-0 bg-white/10" />
         {/* Subtle noise texture */}
         <div
           className="absolute inset-0 opacity-[0.03]"
@@ -74,9 +89,9 @@ export function PremiumHeroSection() {
                           duration: 0.5,
                         }}
                         className={
-                          wordIndex === 0 || wordIndex === 2
-                            ? "bg-gradient-to-r from-white via-cyan-100 to-teal-200 bg-clip-text text-transparent"
-                            : "text-white"
+                          wordIndex === 3
+                            ? "bg-gradient-to-r from-teal-600 to-emerald-500 bg-clip-text text-transparent"
+                            : "text-gray-900"
                         }
                       >
                         {letter === " " ? "\u00A0" : letter}
@@ -93,7 +108,7 @@ export function PremiumHeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-lg leading-relaxed text-white/90 sm:text-xl"
+              className="text-lg leading-relaxed text-gray-600 sm:text-xl"
             >
               {subheadline}
             </motion.p>
@@ -109,7 +124,8 @@ export function PremiumHeroSection() {
               <Link href="http://10.30.0.104:3000/">
                 <Button
                   size="lg"
-                  className="group relative mx-auto h-14 w-56 rounded-full bg-white px-8 text-base font-semibold text-teal-600 shadow-xl shadow-teal-500/20 transition-all hover:scale-105 hover:bg-white/95 hover:shadow-2xl hover:shadow-teal-500/30 sm:mx-0"
+                  className="group relative mx-auto h-14 w-56 rounded-lg bg-gray-900 px-8 text-base font-semibold text-white shadow-lg hover:scale-105 hover:bg-gray-800 sm:mx-0"
+                  style={{ backgroundColor: "#10b483" }}
                   aria-label="Get started free"
                 >
                   <motion.span
@@ -122,7 +138,7 @@ export function PremiumHeroSection() {
                       repeat: Infinity,
                       ease: "easeInOut",
                     }}
-                    className="absolute inset-0 rounded-full bg-white/20"
+                    className="absolute inset-0 rounded-lg bg-gray-800/20"
                   />
                   <span className="relative">Get Started Free</span>
                 </Button>
@@ -132,7 +148,7 @@ export function PremiumHeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="group relative mx-auto h-14 w-56 rounded-full border-2 border-white/30 bg-white/10 px-8 text-base font-semibold text-white backdrop-blur-sm transition-all  hover:border-white/50 hover:bg-white/20 hover:text-white sm:mx-0"
+                className="group relative mx-auto h-14 w-56 rounded-lg border-2 border-gray-300 bg-white px-8 text-base font-semibold text-gray-900 transition-all hover:border-gray-400 hover:bg-gray-50 sm:mx-0"
                 // className="group relative h-14 rounded-full bg-white px-8 text-base font-semibold text-teal-600 shadow-xl shadow-teal-500/20 transition-all hover:scale-105 hover:bg-white/95 hover:shadow-2xl hover:shadow-teal-500/30"
 
                 onClick={() => setDemoModalOpen(true)}
@@ -149,11 +165,11 @@ export function PremiumHeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className="flex flex-wrap items-center justify-center gap-6 pt-4 text-sm text-white/70 lg:justify-start"
+              className="flex flex-wrap items-center justify-center gap-6 pt-4 text-sm text-gray-600 lg:justify-start"
             >
               <div className="flex items-center gap-2">
                 <svg
-                  className="h-5 w-5 text-white"
+                  className="h-5 w-5 text-teal-600"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -167,7 +183,7 @@ export function PremiumHeroSection() {
               </div>
               <div className="flex items-center gap-2">
                 <svg
-                  className="h-5 w-5 text-white"
+                  className="h-5 w-5 text-teal-600"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -181,7 +197,7 @@ export function PremiumHeroSection() {
               </div>
               <div className="flex items-center gap-2">
                 <svg
-                  className="h-5 w-5 text-white"
+                  className="h-5 w-5 text-teal-600"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -199,32 +215,151 @@ export function PremiumHeroSection() {
             transition={{ delay: 0.3, duration: 1, ease: [0.33, 1, 0.68, 1] }}
             className="relative"
           >
-            <motion.div
-              animate={{
-                y: [0, -10, 0],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="relative z-10"
-            >
-              {/* <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-white/5 p-2 shadow-2xl backdrop-blur-sm">
+            <div className="relative z-10">
+              <div className="relative overflow-hidden rounded-2xl border border-white/20 bg-white/5 p-2 shadow-2xl backdrop-blur-sm">
                 <div className="relative aspect-video overflow-hidden rounded-xl bg-gradient-to-br from-white/10 to-white/5">
-                  <Image
-                    src="/images/Data-Control.webp"
-                    alt="QDL Dashboard Preview"
-                    width={1200}
-                    height={700}
-                    priority
+                  <video
+                    ref={videoRef}
+                    src="/video/invideo.mp4"
                     className="h-full w-full object-cover"
-                  /> */}
-                  {/* Glow effect */}
-                  {/* <div className="absolute inset-0 bg-gradient-to-t from-teal-500/20 via-transparent to-transparent" />
+                    autoPlay
+                    muted={isMuted}
+                    playsInline
+                    preload="metadata"
+                    crossOrigin="anonymous"
+                    aria-label="Demo video"
+                    onCanPlayThrough={() => {
+                      if (videoRef.current?.paused) {
+                        videoRef.current.play().catch(() => {})
+                      }
+                    }}
+                    onLoadedMetadata={() => {
+                      if (!videoRef.current) return
+                      setDuration(videoRef.current.duration || 0)
+                    }}
+                    onTimeUpdate={() => {
+                      if (!videoRef.current || !videoRef.current.duration) return
+                      const newProgress = (videoRef.current.currentTime / videoRef.current.duration) * 100
+                      if (Math.abs(newProgress - progressRef.current) > 1) {
+                        progressRef.current = newProgress
+                        setProgress(newProgress)
+                      }
+                    }}
+                    onPlay={() => setIsPlaying(true)}
+                    onPause={() => setIsPlaying(false)}
+                    onStalled={() => {
+                      if (!videoRef.current || videoRef.current.readyState >= 3) return
+                      console.warn("Video stalled, buffering...")
+                    }}
+                    onWaiting={() => {
+                      console.warn("Video waiting for data...")
+                    }}
+                    onError={(e) => {
+                      console.error("Video error:", e.currentTarget.error)
+                    }}
+                    onEnded={() => {
+                      if (videoRef.current) videoRef.current.currentTime = 0
+                      setIsPlaying(false)
+                    }}
+                  />
+
+                  {/* Custom Controls Overlay (non-blurred for better performance) */}
+                  <div className="absolute left-0 right-0 bottom-0 z-20 px-3 pb-3">
+                    <div className="rounded-lg bg-black/50 backdrop-blur-sm px-3 py-2 flex items-center gap-3">
+                      <button
+                        onClick={() => {
+                          const v = videoRef.current
+                          if (!v) return
+                          if (v.paused) {
+                            v.play()
+                          } else {
+                            v.pause()
+                          }
+                        }}
+                        aria-label={isPlaying ? "Pause video" : "Play video"}
+                        className="rounded-full bg-white/10 p-2 hover:bg-white/20"
+                      >
+                        {isPlaying ? (
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M6 4h3v12H6zM11 4h3v12h-3z" />
+                          </svg>
+                        ) : (
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M6.5 5.5v9l7-4.5-7-4.5z" />
+                          </svg>
+                        )}
+                      </button>
+
+                      <button
+                        onClick={() => {
+                          const v = videoRef.current
+                          if (!v) return
+                          v.muted = !v.muted
+                          setIsMuted(v.muted)
+                        }}
+                        aria-label={isMuted ? "Unmute video" : "Mute video"}
+                        className="rounded-full bg-white/10 p-2 hover:bg-white/20"
+                      >
+                        {isMuted ? (
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9 5v10l-4-4H3V9h2l4-4zM14.536 5.464a6 6 0 010 8.486l1.414-1.414a4 4 0 000-5.657L14.536 5.464z" />
+                          </svg>
+                        ) : (
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9 5v10l-4-4H3V9h2l4-4zM13.121 6.879a4 4 0 010 6.243l1.415-1.414a2 2 0 000-3.172L13.12 6.88zM15.536 4.464a6 6 0 010 11.072l1.414-1.414a4 4 0 000-8.244L15.536 4.464z" />
+                          </svg>
+                        )}
+                      </button>
+
+                      <div className="flex-1">
+                        <div
+                          className="h-2 w-full bg-white/20 rounded cursor-pointer relative"
+                          onClick={(e) => {
+                            const bar = e.currentTarget
+                            const rect = bar.getBoundingClientRect()
+                            const clickX = (e as React.MouseEvent<HTMLDivElement>).clientX - rect.left
+                            const pct = Math.max(0, Math.min(1, clickX / rect.width))
+                            if (!videoRef.current) return
+                            videoRef.current.currentTime = (videoRef.current.duration || 0) * pct
+                            setProgress(pct * 100)
+                          }}
+                        >
+                          <div className="absolute left-0 top-0 h-2 bg-teal-400 rounded" style={{ width: `${progress}%` }} />
+                        </div>
+                        <div className="mt-1 flex items-center justify-between text-xs text-white/80">
+                          <span>{formatTime(videoRef.current?.currentTime || 0)}</span>
+                          <span>{formatTime(duration || 0)}</span>
+                        </div>
+                      </div>
+
+                      <button
+                        onClick={async () => {
+                          const el = videoRef.current?.parentElement
+                          if (!el) return
+                          try {
+                            if (document.fullscreenElement) {
+                              await document.exitFullscreen()
+                            } else {
+                              // vendor prefixed fallbacks
+                              if ((el as any).requestFullscreen) await (el as any).requestFullscreen()
+                              else if ((el as any).webkitRequestFullscreen) await (el as any).webkitRequestFullscreen()
+                            }
+                          } catch (err) {
+                            console.error(err)
+                          }
+                        }}
+                        aria-label="Toggle fullscreen"
+                        className="rounded-full bg-white/10 p-2 hover:bg-white/20"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" viewBox="0 0 20 20" fill="currentColor">
+                          <path d="M3 3h6v2H5v4H3V3zm14 0v6h-2V5h-4V3h6zM3 17v-6h2v4h4v2H3zm14 0h-6v-2h4v-4h2v6z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
                 </div>
-              </div> */} 
-            </motion.div>
+              </div>
+            </div>
 
             {/* Decorative elements */}
             <motion.div
@@ -236,7 +371,7 @@ export function PremiumHeroSection() {
                 repeat: Infinity,
                 ease: "linear",
               }}
-              className="absolute -right-4 -top-4 h-32 w-32 rounded-full bg-gradient-to-br from-teal-400/20 to-cyan-400/20 blur-3xl"
+              className="absolute -right-4 -top-4 h-32 w-32 rounded-full bg-gradient-to-br from-teal-200/30 to-cyan-200/30 blur-3xl"
             />
             <motion.div
               animate={{
@@ -247,7 +382,7 @@ export function PremiumHeroSection() {
                 repeat: Infinity,
                 ease: "linear",
               }}
-              className="absolute -bottom-4 -left-4 h-40 w-40 rounded-full bg-gradient-to-br from-blue-400/20 to-teal-400/20 blur-3xl"
+              className="absolute -bottom-4 -left-4 h-40 w-40 rounded-full bg-gradient-to-br from-cyan-200/30 to-teal-200/30 blur-3xl"
             />
           </motion.div>
         </div>

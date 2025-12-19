@@ -8,14 +8,14 @@ import { AnimatedSection } from "./animated-section"
 const processSteps = [
   {
     step: "01",
-    title: "Connect Your Systems",
+    title: "Integrate with the System",
     description:
       "Integrate seamlessly with your existing banking infrastructure and data sources using our secure APIs.",
     icon: CheckCircle2,
   },
   {
     step: "02",
-    title: "Configure AI Modules",
+    title: "Configurations",
     description:
       "Set up intelligent modules for data control, liquidity management, fraud detection, and rule automation.",
     icon: CheckCircle2,

@@ -13,7 +13,6 @@ export function Header() {
     { name: "How It Works", href: "#process-section" },
     { name: "Benefits", href: "#benefits-section" },
     { name: "Testimonials", href: "#testimonials-section" },
-    { name: "Getting Started", href: "#getting-started-section" },
     { name: "Blogs", href: "/blogs" },
   ]
 
@@ -23,26 +22,30 @@ export function Header() {
     const targetElement = document.getElementById(targetId)
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: "smooth" })
+    } else {
+      // If section doesn't exist on current page, navigate to home first
+      window.location.href = "/#" + targetId
     }
   }
 
   return (
-    <header className="w-full py-4 px-6">
+    <header className="fixed top-0 left-0 right-0 w-full py-4 px-6 z-50 bg-white/98 backdrop-blur-sm border-b border-gray-200">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-3">
-            <motion.span 
-              className="text-white text-2xl font-bold tracking-tight"
+            <motion.button
+              onClick={(e) => handleScroll(e as any, "#hero-section")}
+              className="text-black text-2xl font-bold tracking-tight hover:opacity-80 transition-opacity"
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               QDL
-            </motion.span>
+            </motion.button>
           </div>
           <nav className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
-              <motion.div 
-                key={item.name} 
+              <motion.div
+                key={item.name}
                 whileHover={{ y: -2 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
@@ -53,7 +56,7 @@ export function Header() {
                       ? (e) => handleScroll(e, item.href)
                       : undefined
                   }
-                  className="relative text-white/80 hover:text-white px-4 py-2 rounded-lg font-medium transition-all duration-300 group"
+                  className="relative text-gray-700 hover:text-black px-4 py-2 rounded-lg font-medium transition-all duration-300 group"
                 >
                   <span className="relative z-10">{item.name}</span>
                   {/* Hover underline effect with teal gradient */}
@@ -72,8 +75,8 @@ export function Header() {
         </div>
         <div className="flex items-center gap-4">
           <Link href="http://10.30.0.104:3000/" className="hidden md:block">
-            <motion.div 
-              whileHover={{ scale: 1.05, y: -2 }} 
+            <motion.div
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
@@ -86,17 +89,17 @@ export function Header() {
           </Link>
           <Sheet>
             <SheetTrigger asChild className="md:hidden">
-              <motion.button 
-                whileHover={{ scale: 1.1 }} 
+              <motion.button
+                whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button variant="ghost" size="icon" className="text-white hover:bg-white/10">
+                <Button variant="ghost" size="icon" className="text-black hover:bg-gray-200/50">
                   <Menu className="h-7 w-7" />
                   <span className="sr-only">Toggle navigation menu</span>
                 </Button>
               </motion.button>
             </SheetTrigger>
-            <SheetContent side="bottom" className="bg-background border-t border-border text-foreground">
+            <SheetContent side="bottom" className="bg-white border-t border-gray-200 text-black">
               <SheetHeader>
                 <SheetTitle className="text-left text-xl font-semibold text-foreground">Navigation</SheetTitle>
               </SheetHeader>
@@ -128,3 +131,5 @@ export function Header() {
     </header>
   )
 }
+
+

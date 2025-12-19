@@ -128,19 +128,22 @@ export function FeatureModulesSection() {
       {/* Staggered grid on desktop, vertical stack on mobile */}
       <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-2">
         {modules.map((module, index) => (
-          <Link key={index} href={module.href} className="h-full">
-            <ModuleCard
-              icon={module.icon}
-              title={module.title}
-              description={module.description}
-              features={module.features}
-              delay={index * 0.1}
-              className="h-full"
-            />
-          </Link>
+
+
+<ModuleCard
+            key={index}
+            icon={module.icon}
+            title={module.title}
+            description={module.description}
+            features={module.features}
+            delay={index * 0.1}
+            className="h-full"
+          />
         ))}
       </div>
     </AnimatedSection>
   )
 }
+
+
 

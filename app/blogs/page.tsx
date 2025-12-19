@@ -28,87 +28,87 @@ const categoryToneClasses: Record<BlogPost["categoryTone"], string> = {
 const blogPosts: BlogPost[] = [
   {
     id: 1,
-    title: "Unlock Treasury Alpha: Why QDL Liquidity Management Dominates Cash Concentration in 2025",
+    title: "Mastering Data Control: Real-Time Banking Operations",
     excerpt:
-      "QDL redefines corporate cash optimization with real-time, multi-bank sweeping and notional pooling that outperforms legacy systems like Oracle OBLM.",
+      "Discover how intelligent data control systems provide real-time synchronization across all banking platforms with complete audit trails and comprehensive governance.",
     category: "Technology",
     categoryTone: "teal",
-    author: "Carrie Brewer",
-    authorRole: "Director of Treasury Innovation",
-    publishedAgo: "January 15, 2025",
-    readTime: "12 min read",
+    author: "Alex Kumar",
+    authorRole: "Data Solutions Lead",
+    publishedAgo: "December 15, 2025",
+    readTime: "8 min read",
     imageUrl:
-      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: 2,
-    title: "Stop Fraud Before It Starts: Why Quantum Data Fraud (QDF) Outsmarts 2025 Payment Threats",
+    title: "Advanced Fraud Detection: AI-Powered Protection",
     excerpt:
-      "Quantum Data Fraud leverages agentic AI to detect and block payment fraud in real time. Learn how banks cut losses by 63% and achieve zero false positives with QDF in 2025.",
-    category: "AI & Fraud",
+      "Learn how AI-driven fraud detection systems monitor transactions in real-time, identify patterns, and prevent unauthorized access before it happens.",
+    category: "Security",
     categoryTone: "blue",
-    author: "Elena Varga",
-    authorRole: "Chief AI Officer, QDF Labs",
-    publishedAgo: "Today",
-    readTime: "16 min read",
+    author: "Sarah Mitchell",
+    authorRole: "Security Officer",
+    publishedAgo: "December 12, 2025",
+    readTime: "9 min read",
     imageUrl:
-      "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: 3,
-    title: "Dashboard Playbook: From Noise to Narrative",
+    title: "Liquidity Management: Optimize Your Cash Flow",
     excerpt:
-      "Explore how federated data models transform executive dashboards into predictive control rooms.",
-    category: "Design",
+      "Explore AI-powered forecasting techniques to optimize liquidity, automate cash positioning, and maximize returns on your banking assets.",
+    category: "Finance",
     categoryTone: "pink",
-    author: "Lewis Daniels",
-    authorRole: "Head of Product Design",
-    publishedAgo: "Dec 23, 2024",
-    readTime: "11 min read",
+    author: "Michael Torres",
+    authorRole: "Treasury Specialist",
+    publishedAgo: "December 10, 2025",
+    readTime: "7 min read",
     imageUrl:
-      "https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: 4,
-    title: "The Compliance Graph: Automating Regulatory Assurance",
+    title: "Compliance Automation: Reduce Risk & Complexity",
     excerpt:
-      "How graph-native rules engines reduce manual reviews and surface anomalies before they surface risk.",
+      "Automate compliance workflows, streamline regulatory reporting, and ensure consistent adherence to banking regulations across all operations.",
     category: "Compliance",
     categoryTone: "purple",
-    author: "Nina Patel",
-    authorRole: "Chief Risk Officer",
-    publishedAgo: "Dec 15, 2024",
-    readTime: "9 min read",
+    author: "Jennifer Lee",
+    authorRole: "Compliance Director",
+    publishedAgo: "December 8, 2025",
+    readTime: "8 min read",
     imageUrl:
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: 5,
-    title: "AI Signal Hubs: Turning Anomalies into Actionable Insight",
+    title: "Real-Time Insights: Transform Your Banking Dashboard",
     excerpt:
-      "Architecting cross-channel fraud intelligence that learns, adapts, and defends across the enterprise.",
-    category: "AI & Data",
+      "Build intelligent dashboards that consolidate data from multiple sources, providing executives with actionable insights and predictive analytics.",
+    category: "Analytics",
     categoryTone: "teal",
-    author: "Maria Gomez",
-    authorRole: "VP Fraud Intelligence",
-    publishedAgo: "Nov 30, 2024",
-    readTime: "7 min read",
+    author: "David Chen",
+    authorRole: "Analytics Manager",
+    publishedAgo: "December 6, 2025",
+    readTime: "9 min read",
     imageUrl:
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1526374965328-7f5ae4e8b69e?auto=format&fit=crop&w=1200&q=80",
   },
   {
     id: 6,
-    title: "Building Trust with Transparent Liquidity Analytics",
+    title: "Intelligent Banking: The Future is Now",
     excerpt:
-      "A blueprint for aligning treasury, risk, and regulators with shared analytics and explainable AI.",
+      "Understand how intelligent banking platforms integrate data control, fraud detection, liquidity management, and compliance into a unified solution.",
     category: "Strategy",
     categoryTone: "blue",
-    author: "David Lin",
-    authorRole: "Chief Strategy Officer",
-    publishedAgo: "Nov 12, 2024",
+    author: "Rebecca Harris",
+    authorRole: "VP Product",
+    publishedAgo: "December 4, 2025",
     readTime: "10 min read",
     imageUrl:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
   },
 ]
 
@@ -127,9 +127,9 @@ const cardVariants = {
 
 export default function BlogsPage() {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden text-white">
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-500 via-cyan-400 to-blue-500">
-        <div className="absolute inset-0 bg-black/40" />
+    <div className="relative min-h-screen w-full overflow-hidden text-slate-900">
+      <div className="absolute inset-0 bg-gradient-to-br from-teal-50 via-white to-sky-50">
+        <div className="absolute inset-0 bg-white/0" />
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
@@ -157,13 +157,13 @@ export default function BlogsPage() {
             transition={{ duration: 0.7, ease: [0.33, 1, 0.68, 1] as const }}
             className="mx-auto max-w-3xl text-center sm:text-left"
           >
-            <span className="inline-flex items-center rounded-full bg-white/15 px-4 py-1 text-sm font-medium text-white/80 backdrop-blur">
+            <span className="inline-flex items-center rounded-full bg-slate-100 px-4 py-1 text-sm font-medium text-slate-700">
               Insights & Stories
             </span>
             <h1 className="mt-6 text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
               Perspectives on intelligent banking, data, and design.
             </h1>
-            <p className="mt-4 text-base text-white/80 sm:text-lg">
+            <p className="mt-4 text-base text-slate-600 sm:text-lg">
               Explore best practices, technical deep dives, and strategic viewpoints from the teams
               building the next generation of financial intelligence.
             </p>
@@ -193,7 +193,7 @@ export default function BlogsPage() {
                   custom={index}
                   variants={cardVariants}
                   whileHover={{ y: -10 }}
-                  className="group flex flex-col overflow-hidden rounded-3xl border border-white/40 bg-white shadow-lg shadow-black/5 transition-transform cursor-pointer"
+                  className="group flex flex-col overflow-hidden rounded-3xl border border-white/40 bg-white shadow-lg shadow-black/5 transition-transform cursor-pointer h-full"
                 >
                 <div className="relative h-40 w-full overflow-hidden">
                   <div
@@ -216,8 +216,8 @@ export default function BlogsPage() {
                 </div>
 
                 <div className="flex flex-1 flex-col px-6 pb-6 pt-5 text-slate-800">
-                  <h3 className="text-lg font-semibold sm:text-xl">{post.title}</h3>
-                  <p className="mt-3 text-sm text-slate-500">{post.excerpt}</p>
+                  <h3 className="text-lg font-semibold sm:text-xl line-clamp-2">{post.title}</h3>
+                  <p className="mt-3 text-sm text-slate-500 line-clamp-2">{post.excerpt}</p>
 
                   <div className="mt-6 flex flex-1 flex-col justify-end gap-3">
                     <div className="flex items-center justify-between text-xs text-slate-500">
@@ -239,4 +239,5 @@ export default function BlogsPage() {
     </div>
   )
 }
+
 
