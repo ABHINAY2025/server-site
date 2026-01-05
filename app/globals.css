@@ -219,48 +219,46 @@
   }
 }
 
-/* Smooth Wave Animations */
+/* Smooth Wave Animations - Stripe Style Diagonal Waves */
 .wave {
   position: absolute;
-  bottom: 0;
+  bottom: -2px;
   left: 0;
   width: 200%;
-  height: 150%;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 Q300,40 600,60 T1200,60 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.08)"/></svg>') repeat-x;
-  background-size: 600px 100%;
-  animation: wave 30s linear infinite;
+  height: 120px;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><defs><linearGradient id="waveGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%%" style="stop-color:rgba(255,255,255,0.15);stop-opacity:1" /><stop offset="100%%" style="stop-color:rgba(255,255,255,0.02);stop-opacity:1" /></linearGradient></defs><path d="M0,50 Q150,20 300,50 T600,50 T900,50 T1200,50 L1200,120 L0,120 Z" fill="url(%23waveGrad)"/></svg>') repeat-x;
+  background-size: 600px 120px;
+  animation: wave 25s ease-in-out infinite;
+  opacity: 0.8;
 }
 
 .wave.wave-2 {
-  bottom: 20px;
-  opacity: 0.7;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,50 Q300,70 600,50 T1200,50 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.06)"/></svg>') repeat-x;
-  background-size: 800px 100%;
-  animation: wave 40s linear infinite reverse;
+  bottom: 15px;
+  height: 140px;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><defs><linearGradient id="waveGrad2" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" /><stop offset="100%%" style="stop-color:rgba(255,255,255,0.01);stop-opacity:1" /></linearGradient></defs><path d="M0,40 Q150,70 300,40 T600,40 T900,40 T1200,40 L1200,120 L0,120 Z" fill="url(%23waveGrad2)"/></svg>') repeat-x;
+  background-size: 800px 140px;
+  animation: wave 35s ease-in-out infinite reverse;
+  opacity: 0.6;
 }
 
 .wave.wave-3 {
-  bottom: 40px;
+  bottom: 35px;
+  height: 160px;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><defs><linearGradient id="waveGrad3" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%%" style="stop-color:rgba(255,255,255,0.08);stop-opacity:1" /><stop offset="100%%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" /></linearGradient></defs><path d="M0,60 Q150,30 300,60 T600,60 T900,60 T1200,60 L1200,120 L0,120 Z" fill="url(%23waveGrad3)"/></svg>') repeat-x;
+  background-size: 1000px 160px;
+  animation: wave 40s ease-in-out infinite;
   opacity: 0.5;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,45 Q300,55 600,45 T1200,45 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.05)"/></svg>') repeat-x;
-  background-size: 1000px 100%;
-  animation: wave 45s linear infinite;
-}
-
-.wave.wave-4 {
-  bottom: 60px;
-  opacity: 0.6;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,55 Q300,35 600,55 T1200,55 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.04)"/></svg>') repeat-x;
-  background-size: 1200px 100%;
-  animation: wave 50s linear infinite reverse;
 }
 
 @keyframes wave {
   0% {
-    transform: translateX(0);
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(50px) translateY(-20px);
   }
   100% {
-    transform: translateX(600px);
+    transform: translateX(0) translateY(0);
   }
 }
 

@@ -40,11 +40,10 @@ export function PremiumHeroSection() {
         {/* Subtle overlay */}
         <div className="absolute inset-0 bg-white/5" />
         
-        {/* Layered wave effects */}
-        <div className="absolute bottom-0 left-0 w-full h-96 wave" />
-        <div className="absolute bottom-0 left-0 w-full h-96 wave wave-2" />
-        <div className="absolute bottom-0 left-0 w-full h-96 wave wave-3" />
-        <div className="absolute bottom-0 left-0 w-full h-96 wave wave-4" />
+        {/* Layered diagonal wave effects - Stripe style */}
+        <div className="absolute bottom-0 left-0 w-full wave" />
+        <div className="absolute bottom-0 left-0 w-full wave wave-2" />
+        <div className="absolute bottom-0 left-0 w-full wave wave-3" />
       </div>
 
       {/* Header */}
