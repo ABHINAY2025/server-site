@@ -1,8 +1,13 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1.0,
+}
 
 export const metadata: Metadata = {
   title: 'Quantum Data Leap - Intelligent Banking Platform',
@@ -10,7 +15,6 @@ export const metadata: Metadata = {
   generator: 'Next.js',
   keywords: ['banking', 'data management', 'fraud detection', 'compliance', 'intelligent platform', 'liquidity management'],
   authors: [{ name: 'Quantum Data Leap' }],
-  viewport: 'width=device-width, initial-scale=1.0',
   robots: 'index, follow',
   alternates: {
     canonical: 'https://quantumdata leap.com',

@@ -35,33 +35,21 @@ export function PremiumHeroSection() {
 
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
-      {/* Full-width gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-cyan-50 via-white to-blue-50">
+      {/* Animated diagonal gradient background like Stripe */}
+      <div className="absolute inset-0 animated-gradient-bg">
         {/* Subtle overlay */}
-        <div className="absolute inset-0 bg-white/10" />
-        {/* Subtle noise texture */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-          }}
-        />
-      </div>
-
-      {/* Floating grid pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div
-          className="h-full w-full"
-          style={{
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-            backgroundSize: "50px 50px",
-          }}
-        />
+        <div className="absolute inset-0 bg-white/5" />
+        
+        {/* Layered wave effects */}
+        <div className="absolute bottom-0 left-0 w-full h-96 wave" />
+        <div className="absolute bottom-0 left-0 w-full h-96 wave wave-2" />
+        <div className="absolute bottom-0 left-0 w-full h-96 wave wave-3" />
+        <div className="absolute bottom-0 left-0 w-full h-96 wave wave-4" />
       </div>
 
       {/* Header */}
       <div className="relative z-20">
-        <Header />
+        <Header onDemoClick={() => setDemoModalOpen(true)} />
       </div>
 
       {/* Hero Content */}
@@ -74,41 +62,32 @@ export function PremiumHeroSection() {
             transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
             className="space-y-8 text-center lg:text-left"
           >
-            {/* Gradient Headline with letter-by-letter animation */}
-            <h1 className="text-4xl font-bold leading-tight sm:text-5xl md:text-6xl lg:text-7xl">
-              <span className="block">
-                {headline.split(" ").map((word, wordIndex) => (
-                  <span key={wordIndex} className="inline-block">
-                    {word.split("").map((letter, letterIndex) => (
-                      <motion.span
-                        key={letterIndex}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                          delay: wordIndex * 0.1 + letterIndex * 0.03,
-                          duration: 0.5,
-                        }}
-                        className={
-                          wordIndex === 3
-                            ? "bg-gradient-to-r from-teal-600 to-emerald-500 bg-clip-text text-transparent"
-                            : "text-gray-900"
-                        }
-                      >
-                        {letter === " " ? "\u00A0" : letter}
-                      </motion.span>
-                    ))}
-                    <span className="inline-block w-2" />
-                  </span>
-                ))}
-              </span>
-            </h1>
+            {/* QDL Gradient Title */}
+            <div className="space-y-4">
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-5xl font-bold sm:text-6xl md:text-7xl lg:text-8xl leading-tight text-white"
+              >
+               Quantum Data Leap 
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+                className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight text-white"
+              >
+                Intelligent Banking Powered <span className="by-gradient">by</span> AI
+              </motion.p>
+            </div>
 
             {/* Subheadline */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-lg leading-relaxed text-gray-600 sm:text-xl"
+              className="text-lg leading-relaxed text-white sm:text-xl"
             >
               {subheadline}
             </motion.p>
@@ -121,7 +100,7 @@ export function PremiumHeroSection() {
               className="flex flex-col gap-4 sm:flex-row sm:gap-3 sm:justify-center lg:justify-start"
             >
               {/* Primary CTA - Animated pulse on load */}
-              <Link href="http://10.30.0.104:3000/">
+              {/* <Link href="http://10.30.0.104:3000/">
                 <Button
                   size="lg"
                   className="group relative mx-auto h-14 w-56 rounded-lg bg-gray-900 px-8 text-base font-semibold text-white shadow-lg hover:scale-105 hover:bg-gray-800 sm:mx-0"
@@ -142,12 +121,13 @@ export function PremiumHeroSection() {
                   />
                   <span className="relative">Get Started Free</span>
                 </Button>
-              </Link>
+              </Link> */}
 
               {/* Secondary CTA - Watch Demo */}
-              <Button
+              {/* <Button
                 size="lg"
                 variant="outline"
+                  style={{ backgroundColor: "#b41052ff" }}
                 className="group relative mx-auto h-14 w-56 rounded-lg border-2 border-gray-300 bg-white px-8 text-base font-semibold text-gray-900 transition-all hover:border-gray-400 hover:bg-gray-50 sm:mx-0"
                 // className="group relative h-14 rounded-full bg-white px-8 text-base font-semibold text-teal-600 shadow-xl shadow-teal-500/20 transition-all hover:scale-105 hover:bg-white/95 hover:shadow-2xl hover:shadow-teal-500/30"
 
@@ -157,11 +137,11 @@ export function PremiumHeroSection() {
                 
                 <Play className="mr-2 h-5 w-5" />
                 <span className="relative">Request Demo</span>
-                </Button>
+                </Button> */}
             </motion.div>
 
             {/* Trust indicators */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
@@ -205,7 +185,7 @@ export function PremiumHeroSection() {
                 </svg>
                 <span>99.9% uptime</span>
               </div>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
 
           {/* Right Column - Floating Dashboard Preview */}

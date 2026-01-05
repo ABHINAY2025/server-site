@@ -92,3 +92,184 @@
 .floating-arrow {
   animation: floatingArrow 3s ease-in-out infinite;
 }
+
+/* Animated Diagonal Gradient Background */
+.animated-gradient-bg {
+  background: linear-gradient(
+    135deg,
+    #7c3aed 0%,
+    #d946ef 20%,
+    #ec4899 35%,
+    #f43f5e 50%,
+    #fb7185 65%,
+    #fbbf24 80%,
+    #60a5fa 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite, waveMotion 6s ease-in-out infinite;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 15%,
+    85% 35%,
+    70% 55%,
+    50% 75%,
+    20% 95%,
+    0 100%
+  );
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes waveMotion {
+  0% {
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 15%,
+      85% 35%,
+      70% 55%,
+      50% 75%,
+      20% 95%,
+      0 100%
+    );
+  }
+  25% {
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 12%,
+      87% 32%,
+      72% 52%,
+      52% 72%,
+      18% 92%,
+      0 100%
+    );
+  }
+  50% {
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 18%,
+      83% 38%,
+      68% 58%,
+      48% 78%,
+      22% 98%,
+      0 100%
+    );
+  }
+  75% {
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 12%,
+      87% 32%,
+      72% 52%,
+      52% 72%,
+      18% 92%,
+      0 100%
+    );
+  }
+  100% {
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 15%,
+      85% 35%,
+      70% 55%,
+      50% 75%,
+      20% 95%,
+      0 100%
+    );
+  }
+}
+
+/* Gradient for "by" word */
+.by-gradient {
+  color: #fff;
+  background-size: 300% 100%;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  animation: qdlFlow 3.5s ease-in-out infinite;
+}
+
+@keyframes qdlFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Smooth Wave Animations */
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 150%;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,60 Q300,40 600,60 T1200,60 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.08)"/></svg>') repeat-x;
+  background-size: 600px 100%;
+  animation: wave 30s linear infinite;
+}
+
+.wave.wave-2 {
+  bottom: 20px;
+  opacity: 0.7;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,50 Q300,70 600,50 T1200,50 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.06)"/></svg>') repeat-x;
+  background-size: 800px 100%;
+  animation: wave 40s linear infinite reverse;
+}
+
+.wave.wave-3 {
+  bottom: 40px;
+  opacity: 0.5;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,45 Q300,55 600,45 T1200,45 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.05)"/></svg>') repeat-x;
+  background-size: 1000px 100%;
+  animation: wave 45s linear infinite;
+}
+
+.wave.wave-4 {
+  bottom: 60px;
+  opacity: 0.6;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,55 Q300,35 600,55 T1200,55 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.04)"/></svg>') repeat-x;
+  background-size: 1200px 100%;
+  animation: wave 50s linear infinite reverse;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(600px);
+  }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animated-gradient-bg {
+    animation: none;
+  }
+  .wave {
+    animation: none;
+  }
+}
