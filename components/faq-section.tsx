@@ -98,7 +98,7 @@ export function FAQSection() {
           <h2 className="mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl">
             Frequently Asked Questions
           </h2>
-          <p className="self-stretch text-center text-muted-foreground text-sm font-medium leading-[18.20px] break-words">
+          <p className="self-stretch text-center text-[#4b535c] text-sm font-medium leading-[18.20px] break-words">
             Everything you need to know about Pointer and how it can transform your development workflow
           </p>
         </div>

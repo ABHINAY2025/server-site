@@ -174,6 +174,8 @@ export function TestimonialCarouselSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-lg text-muted-foreground"
+                    style={{color: "#4b535c"}}
+
         >
           See how QDL is transforming banking operations worldwide
         </motion.p>
@@ -214,7 +216,7 @@ export function TestimonialCarouselSection() {
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.95 }}
               className={`h-2 rounded-full transition-all duration-300 ${
-                current === index ? "bg-primary w-8" : "bg-muted-foreground/30 w-2 hover:bg-muted-foreground/50"
+                current === index ? "bg-[#c564c2] w-8": "bg-muted-foreground/30 w-2 hover:bg-muted-foreground/50"
               }`}
               aria-label={`Go to testimonial ${index + 1}`}
             />

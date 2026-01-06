@@ -76,6 +76,8 @@ export function BenefitsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-lg text-muted-foreground"
+          style={{color: "#4b535c"}}
+
         >
           Experience the benefits of intelligent banking automation
         </motion.p>
@@ -115,9 +117,21 @@ export function BenefitsSection() {
                     delay: index * 0.1 + 0.2,
                   }}
                   whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-                  className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20"
+                  className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl transition-colors"
+                  style={{
+                    backgroundColor: "rgba(255, 107, 154, 0.1)",
+                    backgroundImage: "linear-gradient(135deg, rgba(255, 107, 154, 0.08), rgba(123, 92, 246, 0.08))",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = "rgba(255, 107, 154, 0.15)";
+                    e.currentTarget.style.backgroundImage = "linear-gradient(135deg, rgba(255, 107, 154, 0.15), rgba(123, 92, 246, 0.15))";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "rgba(255, 107, 154, 0.1)";
+                    e.currentTarget.style.backgroundImage = "linear-gradient(135deg, rgba(255, 107, 154, 0.08), rgba(123, 92, 246, 0.08))";
+                  }}
                 >
-                  <Icon className="h-7 w-7" />
+                  <Icon className="h-7 w-7" style={{background: "linear-gradient(135deg, #FF6B9A, #7B5CF6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"}} />
                 </motion.div>
 
                 {/* Title */}

@@ -66,23 +66,19 @@ export function PremiumHeroSection() {
             transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
             className="space-y-6 text-center lg:text-left"
           >
-            <span className="inline-block rounded-full bg-black/20 px-4 py-1 text-xs text-white">
-              Preview
-            </span>
+          
 
-
-            <h1 className="text-5xl pb-10 font-bold leading-tight text-white sm:text-6xl lg:text-7xl">
+            <h1 className="text-5xl pb-10 font-bold leading-tight text-black sm:text-6xl lg:text-7xl">
               Quantum Data Leap
               </h1>
               <span className="bg-clip-text text-2xl pt-16 text-transparent bg-black">
-              Intelligent Banking <span className="font-bold text-red-500">Powered</span> by AI
+              Intelligent Banking Powered by <span className="font-bold text-[#883c72]">AI</span>
               </span>
             
 
             <p className="max-w-xl text-lg text-slate-700">
-              QDL (Quantum Data Leap) enables real-time payments, AI-driven fraud
-              detection, digital KYC, and automated compliance for
-              next-generation banks.
+              Real-time payments. Intelligent fraud defense. Digital KYC. Automated compliance.
+Quantum Data Leap is the intelligence layer for modern banking.
             </p>
           </motion.div>
 
