@@ -93,21 +93,18 @@ export function PremiumHeroSection() {
             transition={{ duration: 1, ease: [0.33, 1, 0.68, 1] }}
             className="relative z-30 mx-auto lg:mx-0"
           >
-      <div className="overflow-hidden rounded-2xl bg-white p-2 
-                      shadow-[0_30px_80px_rgba(0,0,0,0.25)]
-                      w-[720px] h-[420px] lg:w-[600px] lg:h-[380px]">
-        <video
-          ref={videoRef}
-          src="/invideo.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster="/mcp-intgretion/hero-bg-webp"
-          className="h-full w-full rounded-xl object-cover"
-        />
-      </div>
+<div
+  className="overflow-hidden rounded-2xl bg-white p-2 
+             shadow-[0_30px_80px_rgba(0,0,0,0.25)]
+             w-[720px] h-[420px] lg:w-[600px] lg:h-[380px]"
+>
+  <iframe
+    src="https://drive.google.com/file/d/1w6eovCY_0Go1X9cNBO6qnXu55r9ahioI/preview"
+    className="h-full w-full rounded-xl"
+    allow="autoplay"
+    allowFullScreen
+  />
+</div>
 
           </motion.div>
         </div>
