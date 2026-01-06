@@ -109,7 +109,8 @@ export function FeatureModulesSection() {
           className="mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl"
         >
           Powerful Modules for
-          <span className="block bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent">
+          <span className="block bg-gradient-to-r from-[#FF6B9A] to-[#7B5CF6] bg-clip-text text-transparent
+">
             Intelligent Banking
           </span>
         </motion.h2>

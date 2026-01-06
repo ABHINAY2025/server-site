@@ -64,7 +64,11 @@ export function BenefitsSection() {
           transition={{ duration: 0.6 }}
           className="mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl"
         >
-          Why Businesses Love QDL
+          Why Businesses Love{" "}
+            <span className="inline-block bg-gradient-to-r from-[#FF6B9A] to-[#7B5CF6] bg-clip-text text-transparent">
+              QDL
+            </span>
+
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
