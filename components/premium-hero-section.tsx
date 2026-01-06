@@ -68,19 +68,17 @@ export function PremiumHeroSection() {
           >
           
 
-
-            <h1 className="text-5xl pb-10 font-bold leading-tight text-white sm:text-6xl lg:text-7xl">
+            <h1 className="text-5xl pb-10 font-bold leading-tight text-black sm:text-6xl lg:text-7xl">
               Quantum Data Leap
               </h1>
-              <span className="bg-clip-text text-2xl pt-16 text-transparent bg-white">
-              Intelligent Banking Powered by AI
+              <span className="bg-clip-text text-2xl pt-16 text-transparent bg-black">
+              Intelligent Banking Powered by <span className="font-bold text-[#883c72]">AI</span>
               </span>
             
 
-            <p className="max-w-xl text-lg text-white">
-              QDL (Quantum Data Leap) enables real-time payments, AI-driven fraud
-              detection, digital KYC, and automated compliance for
-              next-generation banks.
+            <p className="max-w-xl text-lg text-slate-700">
+              Real-time payments. Intelligent fraud defense. Digital KYC. Automated compliance.
+Quantum Data Leap is the intelligence layer for modern banking.
             </p>
           </motion.div>
 
@@ -91,21 +89,19 @@ export function PremiumHeroSection() {
             transition={{ duration: 1, ease: [0.33, 1, 0.68, 1] }}
             className="relative z-30 mx-auto lg:mx-0"
           >
-      <div className="overflow-hidden rounded-2xl bg-white p-2 
-                      shadow-[0_30px_80px_rgba(0,0,0,0.25)]
-                      w-[720px] h-[420px] lg:w-[600px] lg:h-[380px]">
-        <video
-          ref={videoRef}
-          src="/invideo.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster="/mcp-intgretion/hero-bg-webp"
-          className="h-full w-full rounded-xl object-cover"
-        />
-      </div>
+<div
+  className="overflow-hidden rounded-2xl bg-white p-2 
+             shadow-[0_30px_80px_rgba(0,0,0,0.25)]
+             w-[720px] h-[420px] lg:w-[600px] lg:h-[380px]"
+>
+  <iframe
+    src="https://drive.google.com/file/d/10ruiMkWDigPWYj0XvhJKLlrDjDEABe2I/preview
+"
+    className="h-full w-full rounded-xl"
+    allow="autoplay"
+    allowFullScreen
+  />
+</div>
 
           </motion.div>
         </div>

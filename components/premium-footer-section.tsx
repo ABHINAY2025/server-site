@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Twitter, Github, Linkedin, Heart } from "lucide-react"
+import {Linkedin, Heart } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const footerLinks = {
@@ -29,14 +29,12 @@ const footerLinks = {
 }
 
 const socialLinks = [
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Github, href: "#", label: "GitHub" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/fisecglobalinc", label: "LinkedIn" },
 ]
 
 export function PremiumFooterSection() {
   return (
-    <footer className="relative z-10 border-t border-border bg-background">
+    <footer className="relative z-10 border-t border-border bg-gradient-to-br from-white via-[#FF6B9A]/15 to-[#7B5CF6]/15">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-6">
           {/* Brand Section */}
@@ -181,9 +179,7 @@ export function PremiumFooterSection() {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Quantum Data Leap. All rights reserved.
           </p>
-          <p className="flex items-center gap-1 text-sm text-muted-foreground">
-            Made by QDL
-          </p>
+          
         </motion.div>
       </div>
     </footer>

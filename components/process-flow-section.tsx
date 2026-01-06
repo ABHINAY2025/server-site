@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { motion } from "framer-motion"
+import { color, motion } from "framer-motion"
 import { CheckCircle2, ArrowRight } from "lucide-react"
 import { AnimatedSection } from "./animated-section"
 
@@ -62,6 +62,7 @@ export function ProcessFlowSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-lg text-muted-foreground"
+          style={{color: "#4b535c"}}
         >
           Get started with QDL in four straightforward steps
         </motion.p>

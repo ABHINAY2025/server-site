@@ -174,6 +174,8 @@ export function TestimonialCarouselSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-lg text-muted-foreground"
+                    style={{color: "#4b535c"}}
+
         >
           See how QDL is transforming banking operations worldwide
         </motion.p>

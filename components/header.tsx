@@ -8,6 +8,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
 
 interface HeaderProps {
   onDemoClick?: () => void
@@ -15,6 +16,8 @@ interface HeaderProps {
 
 export function Header({ onDemoClick }: HeaderProps) {
   const [isInHero, setIsInHero] = useState(true)
+  const pathname = usePathname()
+  const isBlogsPage = pathname?.includes('/blogs')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,17 +52,17 @@ export function Header({ onDemoClick }: HeaderProps) {
     }
   }
 
-  const headerBgClass = isInHero 
+  const shouldShowBg = isBlogsPage || !isInHero
+  const headerBgClass = shouldShowBg 
     ? "bg-transparent" 
     : ""
-  const headerBorderClass = isInHero ? "" : "border-b border-[#6b0f40]"
   const headerBlurClass = "backdrop-blur-sm"
-  const headerStyle = isInHero 
-    ? {} 
-    : { background: "linear-gradient(90deg, #F9687F 0%, #FBA750 100%)" }
+  const headerStyle = shouldShowBg 
+    ? { background: "linear-gradient(90deg, #F9687F 0%, #FBA750 100%)" }
+    : {}
 
   return (
-    <header style={headerStyle} className={`fixed top-0 left-0 right-0 w-full  px-6 z-50 transition-all duration-300 ${headerBgClass} ${headerBlurClass}`}>
+    <header style={headerStyle} className={`fixed top-0 left-0 right-0 w-full pb-2 pt-2 px-6 z-50 transition-all duration-300 ${headerBgClass} ${headerBlurClass}`}>
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-3">
