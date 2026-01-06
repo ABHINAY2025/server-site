@@ -70,6 +70,7 @@ export function PremiumHeroSection() {
               Preview
             </span>
 
+
             <h1 className="text-5xl pb-10 font-bold leading-tight text-white sm:text-6xl lg:text-7xl">
               Quantum Data Leap
               </h1>
