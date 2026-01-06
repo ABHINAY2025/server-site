@@ -104,7 +104,7 @@ export function PremiumHeroSection() {
           loop
           playsInline
           preload="auto"
-          poster="/video/poster.png"
+          poster="/mcp-intgretion/hero-bg-webp"
           className="h-full w-full rounded-xl object-cover"
         />
       </div>
