@@ -66,8 +66,8 @@ export function Header({ onDemoClick }: HeaderProps) {
             <Image
               src="/logos/logo.png"
               alt="QDL Logo"
-              width={60}
-              height={60}
+              width={50}
+              height={50}
               className="hover:opacity-80 transition-opacity"
             />
             <motion.button
