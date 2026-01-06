@@ -70,7 +70,7 @@ export function ProcessFlowSection() {
       {/* Process Steps */}
       <div className="mt-16 relative">
         {/* Connection Line (hidden on mobile) */}
-        <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20 transform -translate-y-1/2" />
+        <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 transform -translate-y-1/2" style={{backgroundImage: "linear-gradient(to right, rgba(255, 107, 154, 0.2), rgba(123, 92, 246, 0.4), rgba(255, 107, 154, 0.2))"}} />
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((process, index) => {
@@ -90,15 +90,15 @@ export function ProcessFlowSection() {
                 className="relative group"
               >
                 {/* Step Card */}
-                <div className="relative h-full rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10">
+                <div className="relative h-full rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300" style={{borderColor: "rgba(0, 0, 0, 0.1)"}} onMouseEnter={(e) => {e.currentTarget.style.borderColor = "rgba(255, 107, 154, 0.5)"; e.currentTarget.style.boxShadow = "0 20px 25px -5px rgba(255, 107, 154, 0.1), 0 10px 10px -5px rgba(123, 92, 246, 0.05)";}} onMouseLeave={(e) => {e.currentTarget.style.borderColor = "rgba(0, 0, 0, 0.1)"; e.currentTarget.style.boxShadow = "0 1px 2px 0 rgb(0 0 0 / 0.05)";}}>
                   {/* Step Number Badge */}
                   <div className="mb-4 flex items-center justify-between">
-                    <span className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
+                    <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{color: "#22262a", backgroundColor: "rgba(255, 107, 154, 0.1)"}}>
                       {process.step}
                     </span>
                     {index < processSteps.length - 1 && (
                       <div className="hidden lg:block">
-                        <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                        <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-[#c564c2] transition-colors" />
                       </div>
                     )}
                   </div>
@@ -114,9 +114,21 @@ export function ProcessFlowSection() {
                       damping: 15,
                       delay: index * 0.15 + 0.2,
                     }}
-                    className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20"
+                    className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl transition-colors group-hover:shadow-lg"
+                    style={{
+                      backgroundColor: "rgba(255, 107, 154, 0.1)",
+                      backgroundImage: "linear-gradient(135deg, rgba(255, 107, 154, 0.08), rgba(123, 92, 246, 0.08))",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = "rgba(255, 107, 154, 0.15)";
+                      e.currentTarget.style.backgroundImage = "linear-gradient(135deg, rgba(255, 107, 154, 0.15), rgba(123, 92, 246, 0.15))";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = "rgba(255, 107, 154, 0.1)";
+                      e.currentTarget.style.backgroundImage = "linear-gradient(135deg, rgba(255, 107, 154, 0.08), rgba(123, 92, 246, 0.08))";
+                    }}
                   >
-                    <Icon className="h-6 w-6" />
+                    <Icon className="h-6 w-6" style={{background: "linear-gradient(135deg, #FF6B9A, #7B5CF6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"}} />
                   </motion.div>
 
                   {/* Title */}

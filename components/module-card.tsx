@@ -44,7 +44,7 @@ export function ModuleCard({
         onHoverStart={() => setIsHovered(true)}
         onHoverEnd={() => setIsHovered(false)}
         className={cn(
-          "group relative rounded-2xl border border-border bg-card p-8 transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 h-full flex flex-col",
+          "group relative rounded-2xl border border-border bg-card p-8 transition-all duration-300 hover:border-[#FF6B9A]/20 hover:shadow-xl hover:shadow-[#FF6B9A]/10 h-full flex flex-col",
           className
         )}
       >
@@ -53,7 +53,7 @@ export function ModuleCard({
           initial={{ opacity: 0 }}
           animate={{ opacity: isHovered ? 1 : 0 }}
           transition={{ duration: 0.3 }}
-          className="absolute inset-0 rounded-2xl bg-gradient-to-r from-primary/20 via-primary/10 to-transparent blur-xl"
+          className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#FF6B9A]/10 via-[#7B5CF6]/10 to-transparent blur-xl"
         />
 
         {/* Icon with hover animation */}
@@ -63,7 +63,11 @@ export function ModuleCard({
             rotate: isHovered ? 5 : 0,
           }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/20"
+          className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl transition-all group-hover:shadow-lg"
+          style={{
+            background: "linear-gradient(135deg, #FF6B9A 0%, #7B5CF6 100%)",
+            color: "white",
+          }}
         >
           {icon}
         </motion.div>
@@ -88,7 +92,7 @@ export function ModuleCard({
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: delay + index * 0.1 }}
-                  className="inline-flex cursor-help items-center rounded-full border border-border bg-background px-3 py-1 text-sm font-medium text-foreground transition-colors hover:border-primary hover:bg-primary/5"
+                  className="inline-flex cursor-help items-center rounded-full border border-border bg-background px-3 py-1 text-sm font-medium text-foreground transition-colors hover:border-[#FF6B9A] hover:bg-[#FF6B9A]/5"
                 >
                   {feature.label}
                 </motion.span>
