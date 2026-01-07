@@ -95,12 +95,13 @@ export function DemoModal({ open, onOpenChange }: DemoModalProps) {
 
         {submitSuccess ? (
           <div className="flex flex-col items-center justify-center py-8 text-center">
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full" style={{background:"rgba(255, 107, 154, 0.1)"}}>
               <svg
-                className="h-6 w-6 text-primary"
+                className="h-6 w-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                style={{color:"#FF6B9A"}}
               >
                 <path
                   strokeLinecap="round"
@@ -126,6 +127,10 @@ export function DemoModal({ open, onOpenChange }: DemoModalProps) {
                 placeholder="John Doe"
                 {...register("name")}
                 aria-invalid={errors.name ? "true" : "false"}
+                className="focus:ring-[#FF6B9A] focus:border-[#FF6B9A]"
+                style={{
+                  "--tw-ring-color": "#FF6B9A"
+                } as React.CSSProperties}
               />
               {errors.name && (
                 <p className="text-sm text-destructive">{errors.name.message}</p>
@@ -142,6 +147,10 @@ export function DemoModal({ open, onOpenChange }: DemoModalProps) {
                 placeholder="john@example.com"
                 {...register("email")}
                 aria-invalid={errors.email ? "true" : "false"}
+                className="focus:ring-[#FF6B9A] focus:border-[#FF6B9A]"
+                style={{
+                  "--tw-ring-color": "#FF6B9A"
+                } as React.CSSProperties}
               />
               {errors.email && (
                 <p className="text-sm text-destructive">
@@ -158,7 +167,7 @@ export function DemoModal({ open, onOpenChange }: DemoModalProps) {
                 value={bankSize}
                 onValueChange={(value) => setValue("bankSize", value)}
               >
-                <SelectTrigger id="bankSize" aria-invalid={errors.bankSize ? "true" : "false"}>
+                <SelectTrigger id="bankSize" aria-invalid={errors.bankSize ? "true" : "false"} className="focus:ring-[#FF6B9A] focus:border-[#FF6B9A]" style={{"--tw-ring-color": "#FF6B9A"} as React.CSSProperties}>
                   <SelectValue placeholder="Select bank size" />
                 </SelectTrigger>
                 <SelectContent>
@@ -183,7 +192,7 @@ export function DemoModal({ open, onOpenChange }: DemoModalProps) {
                 value={role}
                 onValueChange={(value) => setValue("role", value)}
               >
-                <SelectTrigger id="role" aria-invalid={errors.role ? "true" : "false"}>
+                <SelectTrigger id="role" aria-invalid={errors.role ? "true" : "false"} className="focus:ring-[#FF6B9A] focus:border-[#FF6B9A]" style={{"--tw-ring-color": "#FF6B9A"} as React.CSSProperties}>
                   <SelectValue placeholder="Select your role" />
                 </SelectTrigger>
                 <SelectContent>
@@ -203,7 +212,11 @@ export function DemoModal({ open, onOpenChange }: DemoModalProps) {
 
             <Button
               type="submit"
-              className="w-full"
+              className="w-full font-semibold text-white transition-all hover:shadow-lg"
+              style={{
+                background: "linear-gradient(90deg, #FF6B9A 0%, #7B5CF6 100%)",
+                border: "none"
+              }}
               disabled={isSubmitting}
               aria-label="Submit demo request"
             >
