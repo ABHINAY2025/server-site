@@ -114,20 +114,15 @@ export function Header({ onDemoClick }: HeaderProps) {
           </nav>
         </div>
         <div className="flex items-center gap-4">
-            <Button
-                size="lg"
-                variant="outline"
-                style={{ 
-                  backgroundColor: "white",
-                  color: "rgb(249, 105, 126)",
-                  borderColor: "rgb(249, 105, 126)"
-                }}
-                className="group relative mx-auto h-9 w-36 rounded-full border-1 px-8 text-base font-semibold transition-all hover:bg-gray-50 sm:mx-0"
-                onClick={onDemoClick}
-                aria-label="Request demo"
-              >
-                <span className="relative">Request Demo</span>
-            </Button>
+            
+            <motion.button
+                            onClick={onDemoClick}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
+                          >
+                            Request Demo
+                          </motion.button>
         </div>
       </div>
     </header>
