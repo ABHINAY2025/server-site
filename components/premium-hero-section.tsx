@@ -84,7 +84,7 @@ export function PremiumHeroSection() {
             >
               <div className="overflow-hidden rounded-3xl bg-white/10 backdrop-blur-md p-3 border border-white/30 shadow-2xl">
                 <iframe
-                  src="https://drive.google.com/file/d/1v_pUguU9-Mbw5oC5vtlPKT639m7arSXB/preview"
+                  src="https://drive.google.com/file/d/1u6sENoDL-EBAX56_QCh9nAIwRJra3Jkr/preview"
                   className="h-full w-full rounded-2xl aspect-video"
                   allow="autoplay"
                   allowFullScreen
