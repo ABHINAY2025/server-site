@@ -27,7 +27,7 @@ const footerLinks = {
     { label: "Security", href: "#" },
   ],
   contact: [
-    { label: "quantumdataleapai@gmail.com", href: "mailto:quantumdataleapai@gmail.com" },
+    { label: "quantumdataleap.ai@gmail.com", href: "mailto:quantumdataleap.ai@gmail.com" },
   ],
 }
 

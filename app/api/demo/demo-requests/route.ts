@@ -15,6 +15,9 @@ const demoRequestSchema = z.object({
 const dataDir = path.join(process.cwd(), "data")
 const filePath = path.join(dataDir, "demoRequests.json")
 
+// Google Apps Script webhook URL - Replace with your deployed script URL
+const GOOGLE_APPS_SCRIPT_URL = process.env.GOOGLE_APPS_SCRIPT_URL || ""
+
 export async function POST(request: Request) {
   try {
     const body = await request.json()
@@ -38,6 +41,26 @@ export async function POST(request: Request) {
 
     // Write back to file
     await writeFile(filePath, JSON.stringify(existingData, null, 2))
+
+    // Send to Google Sheets via Apps Script
+    if (GOOGLE_APPS_SCRIPT_URL) {
+      try {
+        await fetch(GOOGLE_APPS_SCRIPT_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: validatedData.name,
+            email: validatedData.email,
+            bankSize: validatedData.bankSize,
+            role: validatedData.role,
+            timestamp: new Date().toISOString(),
+          }),
+        })
+      } catch (googleError) {
+        console.error("Error sending to Google Sheets:", googleError)
+        // Continue anyway - local data is still saved
+      }
+    }
 
     return NextResponse.json(
       { success: true, message: "Demo request saved", data: newEntry },
