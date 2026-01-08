@@ -46,24 +46,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google tag (gtag.js) */}
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-70DFDL0XW8"
-          strategy="afterInteractive"
-        />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-70DFDL0XW8');
-            `,
-          }}
-        />
         {/* Meta Tags for SEO and Social Media */}
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -87,11 +69,30 @@ html {
   --font-mono: ${GeistMono.variable};
 }
         `}</style>
+        
+        {/* Google tag (gtag.js) - Deferred to improve LCP */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-70DFDL0XW8"
+          strategy="lazyOnload"
+        />
       </head>
       <body>
         {children}
         <Analytics />
       </body>
+      <Script
+        id="google-analytics"
+        strategy="lazyOnload"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-70DFDL0XW8');
+          `,
+        }}
+      />
     </html>
   )
 }
