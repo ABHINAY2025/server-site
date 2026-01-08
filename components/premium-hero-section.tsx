@@ -10,6 +10,7 @@ export function PremiumHeroSection() {
   const [demoModalOpen, setDemoModalOpen] = React.useState(false)
   const videoRef = React.useRef<HTMLVideoElement | null>(null)
   const [heroVisible, setHeroVisible] = React.useState(true)
+  const [videoClosedByUser, setVideoClosedByUser] = React.useState(false)
   const heroSectionRef = React.useRef<HTMLDivElement | null>(null)
 
   // Stripe-style animated canvas gradient
@@ -100,12 +101,35 @@ export function PremiumHeroSection() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: [0.33, 1, 0.68, 1], delay: 0.1 }}
               className={`order-1 lg:order-2 hidden lg:block ${
-                heroVisible 
+                heroVisible && !videoClosedByUser
                   ? 'w-full' 
-                  : 'fixed bottom-6 right-6 w-96 z-50'
+                  : !videoClosedByUser
+                  ? 'fixed bottom-6 right-6 w-96 z-50'
+                  : 'hidden'
               }`}
             >
-              <div className="overflow-hidden rounded-3xl bg-white/10 backdrop-blur-md p-3 border border-white/30 shadow-2xl">
+              <div className="relative overflow-hidden rounded-3xl bg-white/10 backdrop-blur-md p-3 border border-white/30 shadow-2xl">
+                {!heroVisible && (
+                  <button
+                    onClick={() => setVideoClosedByUser(true)}
+                    className="absolute top-2 right-2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 hover:bg-black/70 transition-colors"
+                    aria-label="Close video"
+                  >
+                    <svg
+                      className="h-5 w-5 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                )}
                 <iframe
                   ref={videoRef}
                   src="https://drive.google.com/file/d/1u6sENoDL-EBAX56_QCh9nAIwRJra3Jkr/preview"

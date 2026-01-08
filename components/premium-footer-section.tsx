@@ -26,6 +26,9 @@ const footerLinks = {
     { label: "Cookie Policy", href: "#" },
     { label: "Security", href: "#" },
   ],
+  contact: [
+    { label: "quantumdataleap.ai@gmail.com", href: "mailto:quantumdataleap.ai@gmail.com" },
+  ],
 }
 
 const socialLinks = [
@@ -162,6 +165,30 @@ export function PremiumFooterSection() {
                   >
                     {link.label}
                   </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Contact Column */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <h4 className="mb-4 text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+              Contact Us
+            </h4>
+            <ul className="space-y-3">
+              {footerLinks.contact.map((link, index) => (
+                <li key={index}>
+                  <a
+                    href={link.href}
+                    className="text-sm text-foreground transition-colors hover:text-primary"
+                  >
+                    {link.label}
+                  </a>
                 </li>
               ))}
             </ul>
