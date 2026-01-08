@@ -1,16 +1,24 @@
+import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
 import { PremiumHeroSection } from "@/components/premium-hero-section"
 import { FeatureModulesSection } from "@/components/feature-modules-section"
-import { ProcessFlowSection } from "@/components/process-flow-section"
-import { BenefitsSection } from "@/components/benefits-section"
-import { TestimonialCarouselSection } from "@/components/testimonial-carousel-section"
-import { PremiumGettingStartedSection } from "@/components/premium-getting-started-section"
-import { FAQSection } from "@/components/faq-section"
-import { PremiumFooterSection } from "@/components/premium-footer-section"
 import { FlowingArrows } from "@/components/flowing-arrows"
+
+// Lazy load non-critical sections
+const ProcessFlowSection = dynamic(() => import('@/components/process-flow-section').then(mod => ({ default: mod.ProcessFlowSection })))
+const BenefitsSection = dynamic(() => import('@/components/benefits-section').then(mod => ({ default: mod.BenefitsSection })))
+const TestimonialCarouselSection = dynamic(() => import('@/components/testimonial-carousel-section').then(mod => ({ default: mod.TestimonialCarouselSection })))
+const FAQSection = dynamic(() => import('@/components/faq-section').then(mod => ({ default: mod.FAQSection })))
+const PremiumFooterSection = dynamic(() => import('@/components/premium-footer-section').then(mod => ({ default: mod.PremiumFooterSection })))
+
+// Loading skeleton component
+function SectionSkeleton() {
+  return <div className="min-h-[400px] bg-gradient-to-b from-background to-transparent animate-pulse" />
+}
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
+    <main className="min-h-screen bg-background relative overflow-hidden">
       <FlowingArrows />
 
       <div className="relative z-10">
@@ -20,24 +28,31 @@ export default function LandingPage() {
         {/* Feature Modules Section */}
         <FeatureModulesSection />
 
-        {/* Process Flow Section */}
-        <ProcessFlowSection />
+        {/* Process Flow Section - Lazy loaded */}
+        <Suspense fallback={<SectionSkeleton />}>
+          <ProcessFlowSection />
+        </Suspense>
 
-        {/* Benefits Section */}
-        <BenefitsSection />
+        {/* Benefits Section - Lazy loaded */}
+        <Suspense fallback={<SectionSkeleton />}>
+          <BenefitsSection />
+        </Suspense>
 
-        {/* Testimonials Section */}
-        <TestimonialCarouselSection />
+        {/* Testimonials Section - Lazy loaded */}
+        <Suspense fallback={<SectionSkeleton />}>
+          <TestimonialCarouselSection />
+        </Suspense>
 
-        {/* FAQ Section */}
-        <FAQSection />
+        {/* FAQ Section - Lazy loaded */}
+        <Suspense fallback={<SectionSkeleton />}>
+          <FAQSection />
+        </Suspense>
 
-        {/* Getting Started Section */}
-        {/* <PremiumGettingStartedSection /> */}
-
-        {/* Footer Section */}
-        <PremiumFooterSection />
+        {/* Footer Section - Lazy loaded */}
+        <Suspense fallback={<SectionSkeleton />}>
+          <PremiumFooterSection />
+        </Suspense>
       </div>
-    </div>
+    </main>
   )
 }

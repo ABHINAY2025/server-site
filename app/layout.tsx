@@ -49,6 +49,7 @@ export default function RootLayout({
         {/* Meta Tags for SEO and Social Media */}
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#000000" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -78,6 +79,10 @@ html {
         />
       </head>
       <body>
+        {/* Skip to main content link for accessibility */}
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-0 focus:left-0 focus:z-50 focus:bg-primary focus:text-primary-foreground focus:p-2">
+          Skip to main content
+        </a>
         {children}
         <Analytics />
       </body>

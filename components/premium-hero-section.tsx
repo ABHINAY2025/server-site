@@ -136,6 +136,8 @@ export function PremiumHeroSection() {
                   className="h-full w-full rounded-2xl aspect-video"
                   allow="autoplay"
                   allowFullScreen
+                  title="Quantum Data Leap Video"
+                  loading="lazy"
                 />
               </div>
             </motion.div>
