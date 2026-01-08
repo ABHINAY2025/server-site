@@ -1,16 +1,16 @@
 [
   {
-    "name": "John",
-    "email": "random@example.com",
+    "name": "John Doe",
+    "email": "john@gmail.com",
     "bankSize": "medium",
-    "role": "cfo",
-    "createdAt": "2025-11-13T06:31:30.303Z"
+    "role": "developer",
+    "createdAt": "2026-01-08T08:29:21.856Z"
   },
   {
-    "name": "Manoj M",
-    "email": "Manojm@fisecglobal.net",
-    "bankSize": "large",
-    "role": "it-director",
-    "createdAt": "2025-11-13T07:16:18.233Z"
+    "name": "Demo",
+    "email": "demo@fisecglobal.net",
+    "bankSize": "enterprise",
+    "role": "cfo",
+    "createdAt": "2026-01-08T08:31:43.542Z"
   }
 ]

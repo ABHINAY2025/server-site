@@ -9,6 +9,9 @@ import { DemoModal } from "./demo-modal"
 export function PremiumHeroSection() {
   const [demoModalOpen, setDemoModalOpen] = React.useState(false)
   const videoRef = React.useRef<HTMLVideoElement | null>(null)
+  const [heroVisible, setHeroVisible] = React.useState(true)
+  const [videoClosedByUser, setVideoClosedByUser] = React.useState(false)
+  const heroSectionRef = React.useRef<HTMLDivElement | null>(null)
 
   // Stripe-style animated canvas gradient
   React.useEffect(() => {
@@ -34,6 +37,22 @@ export function PremiumHeroSection() {
     return () => window.removeEventListener("resize", resize)
   }, [])
 
+  // Track hero section visibility
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setHeroVisible(entry.isIntersecting)
+      },
+      { threshold: 0.1 }
+    )
+
+    if (heroSectionRef.current) {
+      observer.observe(heroSectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section className="relative w-full overflow-hidden">
       {/* STRIPE CANVAS BACKGROUND - FULL HEIGHT */}
@@ -49,7 +68,8 @@ export function PremiumHeroSection() {
       </div>
 
       {/* MAIN HERO - FULL BLEED LAYOUT */}
-      <div className="relative z-20 min-h-[calc(100vh-120px)] flex items-center">        <div className="mx-auto max-w-7xl px-6 w-full py-20 lg:py-0">
+      <div className="relative z-20 min-h-[calc(100vh-120px)] flex items-center" ref={heroSectionRef}>
+        <div className="mx-auto max-w-7xl px-6 w-full py-20 lg:py-0">
           {/* TWO COLUMN LAYOUT - LEFT TEXT, RIGHT VIDEO */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full">
             
@@ -75,16 +95,44 @@ export function PremiumHeroSection() {
 
             </motion.div>
 
-            {/* RIGHT SIDE - VIDEO */}
+            {/* RIGHT SIDE - VIDEO CONTAINER */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: [0.33, 1, 0.68, 1], delay: 0.1 }}
-              className="w-full order-1 lg:order-2"
+              className={`order-1 lg:order-2 hidden lg:block ${
+                heroVisible && !videoClosedByUser
+                  ? 'w-full' 
+                  : !videoClosedByUser
+                  ? 'fixed bottom-6 right-6 w-96 z-50'
+                  : 'hidden'
+              }`}
             >
-              <div className="overflow-hidden rounded-3xl bg-white/10 backdrop-blur-md p-3 border border-white/30 shadow-2xl">
+              <div className="relative overflow-hidden rounded-3xl bg-white/10 backdrop-blur-md p-3 border border-white/30 shadow-2xl">
+                {!heroVisible && (
+                  <button
+                    onClick={() => setVideoClosedByUser(true)}
+                    className="absolute top-2 right-2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 hover:bg-black/70 transition-colors"
+                    aria-label="Close video"
+                  >
+                    <svg
+                      className="h-5 w-5 text-white"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                )}
                 <iframe
-                  src="https://drive.google.com/file/d/1v_pUguU9-Mbw5oC5vtlPKT639m7arSXB/preview"
+                  ref={videoRef}
+                  src="https://drive.google.com/file/d/1u6sENoDL-EBAX56_QCh9nAIwRJra3Jkr/preview"
                   className="h-full w-full rounded-2xl aspect-video"
                   allow="autoplay"
                   allowFullScreen
