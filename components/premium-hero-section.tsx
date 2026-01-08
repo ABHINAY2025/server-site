@@ -9,6 +9,8 @@ import { DemoModal } from "./demo-modal"
 export function PremiumHeroSection() {
   const [demoModalOpen, setDemoModalOpen] = React.useState(false)
   const videoRef = React.useRef<HTMLVideoElement | null>(null)
+  const [heroVisible, setHeroVisible] = React.useState(true)
+  const heroSectionRef = React.useRef<HTMLDivElement | null>(null)
 
   // Stripe-style animated canvas gradient
   React.useEffect(() => {
@@ -34,6 +36,22 @@ export function PremiumHeroSection() {
     return () => window.removeEventListener("resize", resize)
   }, [])
 
+  // Track hero section visibility
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setHeroVisible(entry.isIntersecting)
+      },
+      { threshold: 0.1 }
+    )
+
+    if (heroSectionRef.current) {
+      observer.observe(heroSectionRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section className="relative w-full overflow-hidden">
       {/* STRIPE CANVAS BACKGROUND - FULL HEIGHT */}
@@ -49,7 +67,8 @@ export function PremiumHeroSection() {
       </div>
 
       {/* MAIN HERO - FULL BLEED LAYOUT */}
-      <div className="relative z-20 min-h-[calc(100vh-120px)] flex items-center">        <div className="mx-auto max-w-7xl px-6 w-full py-20 lg:py-0">
+      <div className="relative z-20 min-h-[calc(100vh-120px)] flex items-center" ref={heroSectionRef}>
+        <div className="mx-auto max-w-7xl px-6 w-full py-20 lg:py-0">
           {/* TWO COLUMN LAYOUT - LEFT TEXT, RIGHT VIDEO */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full">
             
@@ -75,15 +94,20 @@ export function PremiumHeroSection() {
 
             </motion.div>
 
-            {/* RIGHT SIDE - VIDEO */}
+            {/* RIGHT SIDE - VIDEO CONTAINER */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: [0.33, 1, 0.68, 1], delay: 0.1 }}
-              className="w-full order-1 lg:order-2"
+              className={`order-1 lg:order-2 hidden lg:block ${
+                heroVisible 
+                  ? 'w-full' 
+                  : 'fixed bottom-6 right-6 w-96 z-50'
+              }`}
             >
               <div className="overflow-hidden rounded-3xl bg-white/10 backdrop-blur-md p-3 border border-white/30 shadow-2xl">
                 <iframe
+                  ref={videoRef}
                   src="https://drive.google.com/file/d/1u6sENoDL-EBAX56_QCh9nAIwRJra3Jkr/preview"
                   className="h-full w-full rounded-2xl aspect-video"
                   allow="autoplay"
