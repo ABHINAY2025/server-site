@@ -8,49 +8,35 @@ import { DemoModal } from "./demo-modal"
 
 export function PremiumHeroSection() {
   const [demoModalOpen, setDemoModalOpen] = React.useState(false)
-  const videoRef = React.useRef<HTMLVideoElement | null>(null)
-  const [heroVisible, setHeroVisible] = React.useState(true)
   const [videoClosedByUser, setVideoClosedByUser] = React.useState(false)
-  const heroSectionRef = React.useRef<HTMLDivElement | null>(null)
 
-  // Stripe-style animated canvas gradient
+  // Stripe-style animated canvas gradient - deferred to avoid blocking LCP
   React.useEffect(() => {
     if (typeof window === "undefined") return
 
-    const canvas = document.getElementById(
-      "gradient-canvas"
-    ) as HTMLCanvasElement | null
+    // Use requestIdleCallback to defer gradient initialization
+    const timeoutId = setTimeout(() => {
+      const canvas = document.getElementById(
+        "gradient-canvas"
+      ) as HTMLCanvasElement | null
 
-    if (!canvas) return
+      if (!canvas) return
 
-    const resize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-    }
+      const resize = () => {
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+      }
 
-    resize()
+      resize()
 
-    const gradient = new Gradient()
-    gradient.initGradient("#gradient-canvas")
+      const gradient = new Gradient()
+      gradient.initGradient("#gradient-canvas")
 
-    window.addEventListener("resize", resize)
-    return () => window.removeEventListener("resize", resize)
-  }, [])
+      window.addEventListener("resize", resize)
+      return () => window.removeEventListener("resize", resize)
+    }, 0)
 
-  // Track hero section visibility
-  React.useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setHeroVisible(entry.isIntersecting)
-      },
-      { threshold: 0.1 }
-    )
-
-    if (heroSectionRef.current) {
-      observer.observe(heroSectionRef.current)
-    }
-
-    return () => observer.disconnect()
+    return () => clearTimeout(timeoutId)
   }, [])
 
   return (
@@ -59,7 +45,7 @@ export function PremiumHeroSection() {
       <canvas
         id="gradient-canvas"
         className="absolute inset-0 z-0"
-        style={{ pointerEvents: "none", height: "100%" }}
+        style={{ pointerEvents: "none", height: "100%", contentVisibility: "auto" }}
       />
 
       {/* HEADER */}
@@ -68,20 +54,20 @@ export function PremiumHeroSection() {
       </div>
 
       {/* MAIN HERO - FULL BLEED LAYOUT */}
-      <div className="relative z-20 min-h-[calc(100vh-120px)] flex items-center" ref={heroSectionRef}>
+      <div className="relative z-20 min-h-[calc(100vh-120px)] flex items-center">
         <div className="mx-auto max-w-7xl px-6 w-full py-20 lg:py-0">
           {/* TWO COLUMN LAYOUT - LEFT TEXT, RIGHT VIDEO */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full">
             
             {/* LEFT SIDE - TEXT CONTENT */}
             <motion.div
-              initial={{ opacity: 0, x: -40 }}
+              initial={{ opacity: 1, x: 0 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
+              transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
               className="space-y-6 text-left order-2 lg:order-1"
             >
               <div className="space-y-4">
-                <h1 className="text-6xl sm:text-7xl lg:text-7xl font-bold leading-tight text-white drop-shadow-lg">
+                <h1 className="text-6xl sm:text-7xl lg:text-7xl font-bold leading-tight text-white" style={{ textShadow: '0 4px 6px rgba(0, 0, 0, 0.3)' }}>
                   Quantum Data Leap
                 </h1>
                 <p className="text-2xl sm:text-3xl font-semibold text-white/90">
@@ -97,46 +83,25 @@ export function PremiumHeroSection() {
 
             {/* RIGHT SIDE - VIDEO CONTAINER */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, ease: [0.33, 1, 0.68, 1], delay: 0.1 }}
-              className={`order-1 lg:order-2 hidden lg:block ${
-                heroVisible && !videoClosedByUser
-                  ? 'w-full' 
-                  : !videoClosedByUser
-                  ? 'fixed bottom-6 right-6 w-96 z-50'
-                  : 'hidden'
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, ease: [0.33, 1, 0.68, 1], delay: 0.1 }}
+              className={`order-1 lg:order-2 hidden lg:block w-full ${
+                videoClosedByUser ? 'invisible h-0' : ''
               }`}
             >
               <div className="relative overflow-hidden rounded-3xl bg-white/10 backdrop-blur-md p-3 border border-white/30 shadow-2xl">
-                {!heroVisible && (
-                  <button
-                    onClick={() => setVideoClosedByUser(true)}
-                    className="absolute top-2 right-2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/50 hover:bg-black/70 transition-colors"
-                    aria-label="Close video"
-                  >
-                    <svg
-                      className="h-5 w-5 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
-                )}
-                <iframe
-                  ref={videoRef}
-                  src="https://drive.google.com/file/d/1u6sENoDL-EBAX56_QCh9nAIwRJra3Jkr/preview"
-                  className="h-full w-full rounded-2xl aspect-video"
-                  allow="autoplay"
-                  allowFullScreen
-                />
+                {/* YouTube Video Embed - aspect ratio container */}
+                <div className="relative w-full bg-black rounded-2xl overflow-hidden" style={{ paddingBottom: '56.25%' }}>
+                  <iframe
+                    src="https://www.youtube-nocookie.com/embed/fXzGYmUcVf0?modestbranding=1&rel=0&controls=1&autoplay=0&fs=1"
+                    title="Quantum Data Leap Demo"
+                    className="absolute inset-0 w-full h-full"
+                    style={{ border: 'none' }}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  />
+                </div>
               </div>
             </motion.div>
           </div>

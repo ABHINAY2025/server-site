@@ -68,6 +68,7 @@ export async function POST(request: Request) {
     )
   } catch (error) {
     if (error instanceof z.ZodError) {
+      console.error("Validation error:", error.errors)
       return NextResponse.json(
         { success: false, message: "Invalid form data", errors: error.errors },
         { status: 400 }
@@ -75,8 +76,17 @@ export async function POST(request: Request) {
     }
 
     console.error("Internal server error:", error)
+    console.error("Error details:", {
+      message: error instanceof Error ? error.message : String(error),
+      stack: error instanceof Error ? error.stack : undefined,
+      timestamp: new Date().toISOString(),
+    })
     return NextResponse.json(
-      { success: false, message: "Internal server error" },
+      { 
+        success: false, 
+        message: "Internal server error",
+        error: process.env.NODE_ENV === 'development' ? (error instanceof Error ? error.message : String(error)) : undefined
+      },
       { status: 500 }
     )
   }

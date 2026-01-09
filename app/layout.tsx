@@ -46,21 +46,26 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Google tag (gtag.js) */}
+        {/* Google Analytics - Consent-based loading */}
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-70DFDL0XW8"
           strategy="afterInteractive"
         />
         <Script
-          id="google-analytics"
+          id="google-analytics-consent"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
+              if (!window.trackingConsent) {
+                window.trackingConsent = false;
+              }
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-70DFDL0XW8');
+              if (window.trackingConsent === true) {
+                gtag('config', 'G-70DFDL0XW8', { 'allow_google_signals': false, 'anonymize_ip': true });
+              }
             `,
           }}
         />
@@ -68,8 +73,10 @@ export default function RootLayout({
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#000000" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        {/* Restrictive CSP to prevent unauthorized iframe access and cookies */}
+        <meta httpEquiv="Content-Security-Policy" content="frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://*.quantumdataleap.ai; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests" />
         
         {/* Preconnect to external resources */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
