@@ -170,11 +170,76 @@ export default function BlogsPage() {
             </p>
           </motion.section>
 
+          {/* Featured Blog Cards Section */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3, ease: [0.33, 1, 0.68, 1] as const }}
             className="mt-14"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {blogPosts.slice(0, 3).map((post) => (
+                <Link
+                  key={post.id}
+                  href={`/blogs/${post.id}`}
+                  className="block h-full"
+                >
+                  <motion.article
+                    whileHover={{ y: -8 }}
+                    className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-lg transition-shadow hover:shadow-xl h-full"
+                  >
+                    {/* Image Section */}
+                    <div className="relative h-48 overflow-hidden bg-slate-200">
+                      <img
+                        src={post.imageUrl}
+                        alt={post.title}
+                        className="h-full w-full object-cover transition-transform group-hover:scale-105"
+                      />
+                      {/* Category Badge */}
+                      <div className="absolute top-4 left-4">
+                        <span
+                          className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white ${categoryToneClasses[post.categoryTone]}`}
+                        >
+                          {post.category.toUpperCase()}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Content Section */}
+                    <div className="flex flex-col justify-between flex-1 p-6">
+                      <div>
+                        <h3 className="text-lg font-bold leading-snug text-slate-900 mb-3">
+                          {post.title}
+                        </h3>
+                        <p className="text-sm text-slate-600 line-clamp-2 mb-4">
+                          {post.excerpt}
+                        </p>
+                      </div>
+
+                      {/* Footer */}
+                      <div className="flex flex-col gap-4 border-t border-slate-200 pt-4">
+                        <div className="flex items-center justify-between text-xs text-slate-500">
+                          <span className="font-medium">{post.author}</span>
+                          <span>{post.publishedAgo}</span>
+                        </div>
+
+                        <span className="inline-flex items-center text-sm font-semibold text-teal-600 transition-colors group-hover:text-teal-700 w-fit">
+                          Read →
+                        </span>
+                      </div>
+                    </div>
+                  </motion.article>
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Carousel Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5, ease: [0.33, 1, 0.68, 1] as const }}
+            className="mt-16"
           >
             <Carousel
               opts={{
@@ -184,7 +249,7 @@ export default function BlogsPage() {
               className="w-full"
             >
               <CarouselContent className="-ml-4">
-                {blogPosts.map((post, index) => (
+                {blogPosts.slice(3).map((post, index) => (
                   <CarouselItem
                     key={post.id}
                     className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3"
