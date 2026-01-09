@@ -4,6 +4,13 @@
 import { Header } from "@/components/header"
 import { motion } from "framer-motion"
 import Link from "next/link"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 type BlogPost = {
   id: number
@@ -19,11 +26,18 @@ type BlogPost = {
 }
 
 const categoryToneClasses: Record<BlogPost["categoryTone"], string> = {
-  teal: "from-teal-400/90 to-emerald-400/90 text-teal-950",
-  blue: "from-sky-400/90 to-cyan-400/90 text-sky-950",
-  pink: "from-pink-400/90 to-rose-400/90 text-pink-950",
-  purple: "from-violet-400/90 to-indigo-400/90 text-indigo-950",
+  teal: "bg-gradient-to-br from-teal-500 via-cyan-500 to-teal-700",
+  blue: "bg-gradient-to-br from-blue-600 via-blue-500 to-indigo-700",
+  pink: "bg-gradient-to-br from-rose-500 via-pink-500 to-rose-700",
+  purple: "bg-gradient-to-br from-violet-600 via-purple-600 to-purple-800",
 }
+
+const colorCycle = [
+  "bg-gradient-to-r from-pink-500 to-purple-600",
+  "bg-gradient-to-r from-cyan-500 to-teal-600",
+  "bg-gradient-to-r from-blue-500 to-indigo-600",
+  "bg-gradient-to-r from-rose-500 to-pink-600",
+]
 
 const blogPosts: BlogPost[] = [
   {
@@ -112,19 +126,6 @@ const blogPosts: BlogPost[] = [
   },
 ]
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  show: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      delay: index * 0.08,
-      ease: [0.33, 1, 0.68, 1] as const,
-    },
-  }),
-}
-
 export default function BlogsPage() {
   return (
     <div className="relative min-h-screen w-full overflow-hidden text-slate-900">
@@ -160,7 +161,7 @@ export default function BlogsPage() {
             <span className="inline-flex items-center rounded-full bg-slate-100 px-4 py-1 text-sm font-medium text-slate-700">
               Insights & Stories
             </span>
-            <h1 className="mt-6 text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
+            <h1 className="mt-6 text-4xl font-semibold leading-tight sm:text-5xl ">
               Perspectives on intelligent banking, data, and design.
             </h1>
             <p className="mt-4 text-base text-slate-600 sm:text-lg">
@@ -170,69 +171,56 @@ export default function BlogsPage() {
           </motion.section>
 
           <motion.div
-            initial="hidden"
-            animate="show"
-            variants={{
-              hidden: {},
-              show: {
-                transition: {
-                  staggerChildren: 0.05,
-                  delayChildren: 0.2,
-                },
-              },
-            }}
-            className="mt-14 grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: [0.33, 1, 0.68, 1] as const }}
+            className="mt-14"
           >
-            {blogPosts.map((post, index) => (
-              <Link
-                key={post.id}
-                href={`/blogs/${post.id}`}
-                className="block"
-              >
-                <motion.article
-                  custom={index}
-                  variants={cardVariants}
-                  whileHover={{ y: -10 }}
-                  className="group flex flex-col overflow-hidden rounded-3xl border border-white/40 bg-white shadow-lg shadow-black/5 transition-transform cursor-pointer h-full"
-                >
-                <div className="relative h-40 w-full overflow-hidden">
-                  <div
-                    className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
-                    style={{
-                      backgroundImage: `linear-gradient(180deg, rgba(17,24,39,0.15), rgba(17,24,39,0.55)), url("${post.imageUrl}")`,
-                      backgroundPosition: "center",
-                      backgroundSize: "cover",
-                    }}
-                    role="img"
-                    aria-label={post.title}
-                  />
-                  <div className="absolute left-4 top-4 inline-flex items-center rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-900 shadow-lg">
-                    <span
-                      className={`rounded-full bg-gradient-to-r px-2 py-0.5 text-xs font-semibold uppercase tracking-wide ${categoryToneClasses[post.categoryTone]}`}
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-4">
+                {blogPosts.map((post, index) => (
+                  <CarouselItem
+                    key={post.id}
+                    className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3"
+                  >
+                    <Link
+                      href={`/blogs/${post.id}`}
+                      className="block h-full"
                     >
-                      {post.category}
-                    </span>
-                  </div>
-                </div>
+                      <motion.article
+                        whileHover={{ y: -10 }}
+                        className={`group flex flex-col overflow-hidden rounded-2xl p-8 transition-transform cursor-pointer h-full ${colorCycle[index % colorCycle.length]}`}
+                      >
+                        <div className="flex flex-col justify-between h-full">
+                          <div>
+                            <h3 className="text-xl font-bold leading-snug text-white mb-4">{post.title}</h3>
+                            <p className="text-sm text-white/90 mb-6">{post.excerpt}</p>
+                          </div>
 
-                <div className="flex flex-1 flex-col px-6 pb-6 pt-5 text-slate-800">
-                  <h3 className="text-lg font-semibold sm:text-xl line-clamp-2">{post.title}</h3>
-                  <p className="mt-3 text-sm text-slate-500 line-clamp-2">{post.excerpt}</p>
+                          <div className="flex flex-col gap-4">
+                            <div className="flex items-center justify-between text-xs text-white/80">
+                              <span className="font-semibold">{post.publishedAgo}</span>
+                            </div>
 
-                  <div className="mt-6 flex flex-1 flex-col justify-end gap-3">
-                    <div className="flex items-center justify-between text-xs text-slate-500">
-                      <span className="font-medium text-slate-700">{post.author}</span>
-                      <span>{post.publishedAgo}</span>
-                    </div>
-
-                    <span className="inline-flex items-center text-sm font-semibold text-teal-500 transition-colors hover:text-teal-600">
-                      Read →
-                    </span>
-                  </div>
-                </div>
-              </motion.article>
-              </Link>
-            ))}
+                            <span className="inline-flex items-center text-sm font-semibold text-white transition-colors hover:text-white/80 w-fit">
+                              Learn more →
+                            </span>
+                          </div>
+                        </div>
+                      </motion.article>
+                    </Link>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2 hidden lg:flex" />
+              <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2 hidden lg:flex" />
+            </Carousel>
           </motion.div>
         </main>
       </div>
