@@ -58,9 +58,10 @@ const nextConfig = {
             key: 'Permissions-Policy',
             value: 'geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()',
           },
-          {
-            key: 'Content-Security-Policy',
-            value: "frame-src 'self' http://localhost:* https://localhost:* https://www.youtube.com https://www.youtube-nocookie.com; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://*.quantumdataleap.ai; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+{
+            key: "Content-Security-Policy",
+            value:
+              "frame-src 'self' https://drive.google.com https://www.youtube.com https://www.youtube-nocookie.com;",
           },
         ],
       },
