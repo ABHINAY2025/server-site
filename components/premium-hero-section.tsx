@@ -92,16 +92,23 @@ export function PremiumHeroSection() {
             >
               <div className="relative overflow-hidden rounded-3xl bg-white/10 backdrop-blur-md p-3 border border-white/30 shadow-2xl">
                 {/* YouTube Video Embed - aspect ratio container */}
-                <div className="relative w-full bg-black rounded-2xl overflow-hidden" style={{ paddingBottom: '56.25%' }}>
-                  <iframe
-                    src="https://www.youtube-nocookie.com/embed/fXzGYmUcVf0?modestbranding=1&rel=0&controls=1&autoplay=0&fs=1"
-                    title="Quantum Data Leap Demo"
-                    className="absolute inset-0 w-full h-full"
-                    style={{ border: 'none' }}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                </div>
+<div
+  className="relative w-full bg-black rounded-2xl overflow-hidden"
+  style={{ paddingBottom: '56.25%' }}
+>
+  <iframe
+    src="https://drive.google.com/file/d/19JNH4q8s1yToCcCquhUHSXfQSWPBTWxH/preview"
+    title="Quantum Data Leap Demo"
+    className="absolute inset-0 w-full h-full"
+    frameBorder="0"
+    allow="autoplay; fullscreen"
+    allowFullScreen
+    sandbox="allow-scripts allow-same-origin allow-presentation"
+    referrerPolicy="no-referrer"
+  />
+</div>
+
+
               </div>
             </motion.div>
           </div>
