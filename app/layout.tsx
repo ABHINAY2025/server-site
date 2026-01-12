@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   keywords: ['banking', 'data management', 'fraud detection', 'compliance', 'intelligent platform', 'liquidity management'],
   authors: [{ name: 'Quantum Data Leap' }],
   robots: 'index, follow',
+  icons: {
+    icon: '/logos/logo.png',
+  },
   alternates: {
     canonical: 'https://quantumdata leap.com',
   },
