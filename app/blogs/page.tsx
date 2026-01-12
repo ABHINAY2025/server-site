@@ -1,9 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 "use client"
-
+import Link from "next/link"
 import { Header } from "@/components/header"
 import { motion } from "framer-motion"
-import Link from "next/link"
 import {
   Carousel,
   CarouselContent,
@@ -23,6 +22,14 @@ type BlogPost = {
   publishedAgo: string
   readTime: string
   imageUrl: string
+  externalUrl: string
+}
+type ExternalBlog = {
+  title: string
+  description: string
+  url: string
+  tag: string
+  source: string
 }
 
 const categoryToneClasses: Record<BlogPost["categoryTone"], string> = {
@@ -32,265 +39,554 @@ const categoryToneClasses: Record<BlogPost["categoryTone"], string> = {
   purple: "bg-gradient-to-br from-violet-600 via-purple-600 to-purple-800",
 }
 
-const colorCycle = [
-  "bg-gradient-to-r from-pink-500 to-purple-600",
-  "bg-gradient-to-r from-cyan-500 to-teal-600",
-  "bg-gradient-to-r from-blue-500 to-indigo-600",
-  "bg-gradient-to-r from-rose-500 to-pink-600",
-]
+/* ------------------------------------------------------------------ */
+/* BLOG DATA (External Redirects Only)                                 */
+/* ------------------------------------------------------------------ */
 
 const blogPosts: BlogPost[] = [
   {
     id: 1,
     title: "The Rise of AI in Finance Automation",
     excerpt:
-      "Explore how artificial intelligence is transforming financial automation, improving efficiency, and enabling banks to process transactions faster than ever before.",
+      "An in-depth exploration of how artificial intelligence is transforming financial automation through predictive analytics, fraud detection, and real-time decision systems.",
     category: "AI & Finance",
     categoryTone: "teal",
-    author: "Medium Contributor",
-    authorRole: "Financial Tech Expert",
+    author: "AIX Circle (Medium)",
+    authorRole: "AI & Finance Publisher",
     publishedAgo: "2025",
-    readTime: "8 min read",
+    readTime: "11 min read",
     imageUrl:
       "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+    externalUrl:
+      "https://medium.com/@aixcircleblogs/the-rise-of-ai-in-finance-automation-1509766e2b69",
   },
   {
     id: 2,
-    title: "AI in Finance: Growth and Strategic Implementation",
+    title: "AI in Finance: Automation, Use Cases, and Business Impact",
     excerpt:
-      "Discover strategic approaches to implementing AI in financial services, from fraud prevention to customer experience enhancement.",
+      "A strategic overview of how AI is being implemented in finance to automate processes, personalize services, and drive sustainable business growth.",
     category: "Strategy",
     categoryTone: "blue",
     author: "Growth Jockey",
-    authorRole: "Financial Growth Specialist",
-    publishedAgo: "2025",
+    authorRole: "AI & Digital Strategy Experts",
+    publishedAgo: "2024",
     readTime: "9 min read",
     imageUrl:
       "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
+    externalUrl:
+      "https://www.growthjockey.com/blogs/ai-in-finance",
   },
   {
     id: 3,
-    title: "Financial Report Analysis: Key Indicators and Evaluation",
+    title: "Financial Statement Analysis: Key Indicators and Evaluation Techniques",
     excerpt:
-      "Master the essential financial indicators and evaluation techniques for comprehensive financial analysis in the digital age.",
+      "This article explains crucial financial indicators and how AI-powered analytics improve financial evaluation and decision-making accuracy.",
     category: "Analytics",
     categoryTone: "pink",
-    author: "Simplifa",
-    authorRole: "Financial Analysis Expert",
-    publishedAgo: "2025",
+    author: "Simplifa AI",
+    authorRole: "Financial Intelligence Platform",
+    publishedAgo: "2024",
     readTime: "7 min read",
     imageUrl:
       "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1200&q=80",
+    externalUrl:
+      "https://simplifa.ai/en/blog/analisis-laporan-keuangan-indikator-penting-dan-teknik-evaluasi",
   },
   {
     id: 4,
-    title: "AI in FinTech: Fraud Detection and Risk Management",
+    title: "AI in FinTech: Enhancing Fraud Detection and Risk Management",
     excerpt:
-      "Learn how AI enhances fraud detection capabilities and strengthens risk management in financial technology platforms.",
+      "An in-depth analysis of how AI-driven models strengthen fraud detection, minimize false positives, and optimize real-time risk management in fintech platforms.",
     category: "Security",
     categoryTone: "purple",
     author: "MetaMatrix Tech",
-    authorRole: "FinTech Security Lead",
+    authorRole: "FinTech Technology Provider",
     publishedAgo: "2025",
     readTime: "8 min read",
     imageUrl:
       "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80",
+    externalUrl:
+      "https://metamatrixtech.com/blogs/2025/05/01/ai-in-fintech-enhancing-fraud-detection-and-risk-management/",
   },
   {
     id: 5,
     title: "AI Development for Financial Services: FinTech AI Guide 2025",
     excerpt:
-      "Complete guide to financial services AI: fraud detection, credit scoring, algorithmic trading, AML compliance. Learn cost, ROI, and implementation strategies.",
+      "A comprehensive guide to AI development in financial services covering fraud detection, credit scoring, AML compliance, implementation costs, and ROI.",
     category: "Development",
     categoryTone: "teal",
     author: "TensorBlue",
-    authorRole: "FinTech AI Architect",
+    authorRole: "AI Development Company",
     publishedAgo: "2025",
     readTime: "10 min read",
     imageUrl:
-      "https://images.unsplash.com/photo-1526374965328-7f5ae4e8b69e?auto=format&fit=crop&w=1200&q=80",
+      "https://codewave.com/insights/wp-content/uploads/2025/08/AI-in-Fintech-Top-Companies-and-Use-Cases-2025.png",
+    externalUrl:
+      "https://tensorblue.com/blog/ai-development-financial-services-fintech-guide-2025",
   },
   {
     id: 6,
-    title: "Banking, Insurance & Trading: AI's Transformative Impact",
+    title: "How AI and Machine Learning Are Strengthening Fraud Detection in FinTech",
     excerpt:
-      "Comprehensive overview of how AI is revolutionizing banking, insurance, and trading sectors with advanced automation and predictive intelligence.",
-    category: "Industry",
+      "This article details how machine learning models detect fraudulent behavior, enhance transaction security, and protect fintech ecosystems at scale.",
+    category: "Machine Learning",
     categoryTone: "blue",
-    author: "Financial Services Experts",
-    authorRole: "Industry Analyst",
-    publishedAgo: "2025",
-    readTime: "10 min read",
+    author: "GeekyAnts",
+    authorRole: "Technology Consulting Team",
+    publishedAgo: "2024",
+    readTime: "9 min read",
     imageUrl:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+    externalUrl:
+      "https://geekyants.com/blog/how-ai-and-machine-learning-are-strengthening-fraud-detection-in-fintech",
   },
 ]
+
+
+/* ------------------------------------------------------------------ */
+/* BLOG DATA (Internal Redirects Only)                                 */
+/* ------------------------------------------------------------------ */
+
+const carouselBlogs: ExternalBlog[] = [
+  {
+    title: "Agentic AI",
+    description:
+      "An introduction to agentic AI systems and how autonomous decisioning is reshaping enterprise workflows.",
+    url: "https://medium.com/@abhinayabhi226/b1d3969ab1b5",
+    tag: "AGENTIC AI",
+    source: "Medium",
+  },
+  {
+    title: "Payment Intelligence: Beyond Processing",
+    description:
+      "Why modern payment systems must move beyond transaction processing to intelligence-driven decisioning.",
+    url: "https://abhinay2025.blogspot.com/2026/01/payment-intelligence-beyond-processing.html",
+    tag: "PAYMENTS",
+    source: "Blogspot",
+  },
+  {
+    title: "AI-Powered Payment Fraud Detection for Real-Time Security",
+    description:
+      "How AI detects fraud patterns in milliseconds while reducing false positives.",
+    url: "https://medium.com/@abhinayabhi226/ai-powered-payment-fraud-detection-for-real-time-security-fd68d886eec0",
+    tag: "FRAUD",
+    source: "Medium",
+  },
+  {
+    title: "FedNow vs RTP: What Banks Need to Know Before Adoption",
+    description:
+      "A comparison of FedNow and RTP across settlement, risk, and readiness.",
+    url: "https://medium.com/@aishwaryad274/fednow-vs-rtp-what-banks-need-to-know-before-adoption-1fece72bc476",
+    tag: "REAL-TIME PAYMENTS",
+    source: "Medium",
+  },
+  {
+    title: "Top Payment Compliance Risks Banks Will Face in 2026",
+    description:
+      "Key compliance threats emerging from faster, high-volume payment rails.",
+    url: "https://medium.com/@aishwaryad274/top-payment-compliance-risks-banks-will-face-in-2026-79aeb1a16726",
+    tag: "COMPLIANCE",
+    source: "Medium",
+  },
+  {
+    title: "Replacing Manual Payment Controls with Intelligent Rules Engines",
+    description:
+      "How automated rules reduce human effort while improving STP rates.",
+    url: "https://medium.com/@abhinayabhi226/replacing-manual-payment-controls-with-intelligent-rules-engines-c9e666a9397f",
+    tag: "AUTOMATION",
+    source: "Medium",
+  },
+  {
+    title: "AI-Powered Exception Management for Real-Time Payments",
+    description:
+      "Using AI to triage, resolve, and prevent payment exceptions in real time.",
+    url: "https://medium.com/@abhinayabhi226/ai-powered-exception-management-for-real-time-payments-64b567f92215",
+    tag: "EXCEPTIONS",
+    source: "Medium",
+  },
+  {
+    title: "How Agentic AI Reduces Operational Risk in Payment Processing",
+    description:
+      "How autonomous agents lower operational risk by acting before failures escalate.",
+    url: "https://abhinay2025.blogspot.com/2026/01/how-agentic-ai-reduces-operational-risk.html",
+    tag: "AGENTIC AI",
+    source: "Blogspot",
+  },
+  {
+    title: "Treasury Visibility in Real Time: How AI Changes Cash Decisioning",
+    description:
+      "AI-driven visibility enables faster, more confident intraday liquidity decisions.",
+    url: "https://abhinay2025.blogspot.com/2026/01/treasury-visibility-in-real-time-how-ai.html",
+    tag: "TREASURY",
+    source: "Blogspot",
+  },
+  {
+    title: "From Alerts to Actions: AI-Driven Payment Operations Explained",
+    description:
+      "Turning alert fatigue into prioritized, action-ready workflows.",
+    url: "https://abhinay2025.blogspot.com/2026/01/from-alerts-to-actions-ai-driven.html",
+    tag: "OPERATIONS",
+    source: "Blogspot",
+  },
+  {
+    title: "Why Traditional Fraud Tools Fail in Modern Payment Environments",
+    description:
+      "Why rule-based fraud models break down in real-time payment systems.",
+    url: "https://abhinay2025.blogspot.com/2026/01/why-traditional-fraud-tools-fail-in.html",
+    tag: "FRAUD",
+    source: "Blogspot",
+  },
+  {
+    title: "Using AI to Automate Payment Compliance Checks at Scale",
+    description:
+      "Automating sanctions, AML, and compliance checks using AI.",
+    url: "https://abhinay2025.blogspot.com/2026/01/using-ai-to-automate-payment-compliance.html",
+    tag: "COMPLIANCE",
+    source: "Blogspot",
+  },
+  {
+    title: "How Banks Achieve Higher STP Rates Using Intelligent Automation",
+    description:
+      "Reducing manual intervention to maximize straight-through processing.",
+    url: "https://abhinay2025.blogspot.com/2026/01/how-banks-achieve-higher-stp-rates.html",
+    tag: "STP",
+    source: "Blogspot",
+  },
+  {
+    title: "Designing AI-First Payment Operations Without Replacing Your Core",
+    description:
+      "How banks layer intelligence without re-platforming core systems.",
+    url: "https://abhinay2025.blogspot.com/2026/01/designing-ai-first-payment-operations.html",
+    tag: "ARCHITECTURE",
+    source: "Blogspot",
+  },
+  {
+    title: "Operationalizing AI in Payments: A Practical Roadmap for Banks",
+    description:
+      "A step-by-step guide to moving AI from pilots to production.",
+    url: "https://abhinay2025.blogspot.com/2026/01/operationalizing-ai-in-payments.html",
+    tag: "STRATEGY",
+    source: "Blogspot",
+  },
+  {
+    title: "How AI Improves Payment Data Accuracy Before Settlement",
+    description:
+      "Using AI to clean, enrich, and validate payment data pre-settlement.",
+    url: "https://abhinay2025.blogspot.com/2026/01/how-ai-improves-payment-data-accuracy.html",
+    tag: "DATA QUALITY",
+    source: "Blogspot",
+  },
+  {
+    title: "Liquidity Stress Testing Using Predictive AI Models",
+    description:
+      "Forecasting liquidity stress with predictive AI instead of static rules.",
+    url: "https://abhinay2025.blogspot.com/2026/01/liquidity-stress-testing-using.html",
+    tag: "LIQUIDITY",
+    source: "Blogspot",
+  },
+  {
+    title: "Real-Time Payments Fraud: Emerging Patterns Banks Can’t Ignore",
+    description:
+      "Fraud trends exploiting instant settlement and irreversibility.",
+    url: "https://dev.to/aishwarya_d_efe12263f68ac/real-time-payments-fraud-emerging-patterns-banks-cant-ignore-2cd6",
+    tag: "FRAUD",
+    source: "Dev.to",
+  },
+  {
+    title: "How ISO 20022 Changes Fraud Detection and Exception Handling",
+    description:
+      "Richer data enables smarter fraud and exception management.",
+    url: "https://dev.to/aishwarya_d_efe12263f68ac/how-iso-20022-changes-fraud-detection-and-exception-handling-4g2a",
+    tag: "ISO 20022",
+    source: "Dev.to",
+  },
+  {
+    title: "Exception-First vs Intelligence-First Payment Architectures",
+    description:
+      "Why proactive intelligence beats reactive exception handling.",
+    url: "https://abhinay2025.blogspot.com/2026/01/exception-first-vs-intelligence-first.html",
+    tag: "ARCHITECTURE",
+    source: "Blogspot",
+  },
+  {
+    title: "Why CIOs Are Moving from Dashboards to Decision Engines",
+    description:
+      "The shift from visibility tools to action-driven platforms.",
+    url: "https://abhinay2025.blogspot.com/2026/01/why-cios-are-moving-from-dashboards-to.html",
+    tag: "LEADERSHIP",
+    source: "Blogspot",
+  },
+  {
+    title: "The Role of Agentic AI in Next-Generation Treasury Platforms",
+    description:
+      "How agentic AI enables autonomous treasury decisioning.",
+    url: "https://abhinay2025.blogspot.com/2026/01/the-role-of-agentic-ai-in-next.html",
+    tag: "TREASURY AI",
+    source: "Blogspot",
+  },
+  {
+    title: "Why Manual Payment Exceptions Are Costing Banks Millions",
+    description:
+      "The hidden operational cost of manual exception handling.",
+    url: "https://aishwaryadutpala.blogspot.com/2026/01/why-manual-payment-exceptions-are.html",
+    tag: "COST",
+    source: "Blogspot",
+  },
+  {
+    title: "AI in Payment Compliance: What Regulators Actually Allow",
+    description:
+      "Understanding regulatory boundaries for AI adoption.",
+    url: "https://aishwaryadutpala.blogspot.com/2026/01/ai-in-payment-compliance-what.html",
+    tag: "REGULATION",
+    source: "Blogspot",
+  },
+  {
+    title: "Why Reconciliation Fails in High-Volume Payment Environments",
+    description:
+      "Why scale and speed break traditional reconciliation processes.",
+    url: "https://aishwaryadutpala.blogspot.com/2026/01/why-reconciliation-fails-in-high-volume.html",
+    tag: "RECONCILIATION",
+    source: "Blogspot",
+  },
+  {
+    title: "From Batch to Real-Time: Operational Gaps Banks Underestimate",
+    description:
+      "Hidden operational challenges when moving to real-time rails.",
+    url: "https://aishwaryadutpala.blogspot.com/2026/01/from-batch-to-real-time-operational.html",
+    tag: "MODERNIZATION",
+    source: "Blogspot",
+  },
+  {
+    title: "ACH Returns Explained: Root Causes, Risk, and Prevention",
+    description:
+      "Understanding ACH return drivers and how to mitigate risk.",
+    url: "https://aishwaryadutpala.blogspot.com/2026/01/ach-returns-explained-root-causes-risk.html",
+    tag: "ACH",
+    source: "Blogspot",
+  },
+  {
+    title: "How Poor Liquidity Forecasting Impacts Intraday Risk",
+    description:
+      "The downstream risk of inaccurate liquidity forecasting.",
+    url: "https://aishwaryadutpala.blogspot.com/2026/01/how-poor-liquidity-forecasting-impacts.html",
+    tag: "LIQUIDITY",
+    source: "Blogspot",
+  },
+  {
+    title: "Payment Modernization Without Replacing Your Core System",
+    description:
+      "Modernizing payments by layering intelligence, not ripping cores.",
+    url: "https://aishwaryadutpala.blogspot.com/2026/01/payment-modernization-without-replacing.html",
+    tag: "MODERNIZATION",
+    source: "Blogspot",
+  },
+  {
+    title: "The Hidden Cost of Fragmented Payment Gateways",
+    description:
+      "Operational and risk costs caused by disconnected gateways.",
+    url: "https://aishwaryadutpala.blogspot.com/2026/01/the-hidden-cost-of-fragmented-payment.html",
+    tag: "INFRASTRUCTURE",
+    source: "Blogspot",
+  },
+  {
+    title: "Why Rules-Based Automation Fails in Complex Payment Flows",
+    description:
+      "Why static rules can’t handle modern, high-variance flows.",
+    url: "https://aishwaryadutpala.blogspot.com/2026/01/why-rules-based-automation-fails-in.html",
+    tag: "AUTOMATION",
+    source: "Blogspot",
+  },
+  {
+    title: "The Future of Payment Operations: From Reactive to Predictive",
+    description:
+      "How predictive AI is redefining payment operations.",
+    url: "https://aishwaryadutpala.blogspot.com/2026/01/the-future-of-payment-operations-from.html",
+    tag: "FUTURE",
+    source: "Blogspot",
+  },
+];
+
+const colorThemes = [
+  {
+    gradient: "from-teal-50 to-white",
+    border: "border-teal-200",
+    tagBg: "bg-teal-600",
+    accent: "text-teal-700",
+    glow: "hover:shadow-teal-200/60",
+  },
+  {
+    gradient: "from-indigo-50 to-white",
+    border: "border-indigo-200",
+    tagBg: "bg-indigo-600",
+    accent: "text-indigo-700",
+    glow: "hover:shadow-indigo-200/60",
+  },
+  {
+    gradient: "from-rose-50 to-white",
+    border: "border-rose-200",
+    tagBg: "bg-rose-600",
+    accent: "text-rose-700",
+    glow: "hover:shadow-rose-200/60",
+  },
+  {
+    gradient: "from-amber-50 to-white",
+    border: "border-amber-200",
+    tagBg: "bg-amber-600",
+    accent: "text-amber-700",
+    glow: "hover:shadow-amber-200/60",
+  },
+];
+
+/* ------------------------------------------------------------------ */
+/* PAGE COMPONENT                                                     */
+/* ------------------------------------------------------------------ */
 
 export default function BlogsPage() {
   return (
     <div className="relative min-h-screen w-full overflow-hidden text-slate-900">
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-50 via-white to-sky-50">
-        <div className="absolute inset-0 bg-white/0" />
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-          }}
-        />
-      </div>
-      <div className="absolute inset-0 opacity-10">
-        <div
-          className="h-full w-full"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-            backgroundSize: "50px 50px",
-          }}
-        />
-      </div>
-
       <div className="relative z-10">
+
         <Header />
+
         <main className="mx-auto max-w-6xl px-4 pb-24 pt-16 sm:px-6 lg:px-8 lg:pt-24">
-          <motion.section
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.33, 1, 0.68, 1] as const }}
-            className="mx-auto max-w-3xl text-center sm:text-left"
-          >
-            <span className="inline-flex items-center rounded-full bg-slate-100 px-4 py-1 text-sm font-medium text-slate-700">
-              Insights & Stories
-            </span>
-            <h1 className="mt-6 text-4xl font-semibold leading-tight sm:text-5xl ">
-              Perspectives on intelligent banking, data, and design.
-            </h1>
-            <p className="mt-4 text-base text-slate-600 sm:text-lg">
-              Explore best practices, technical deep dives, and strategic viewpoints from the teams
-              building the next generation of financial intelligence.
-            </p>
-          </motion.section>
+<motion.section className="mx-auto max-w-3xl">
+  <span className="inline-flex rounded-full bg-slate-900/5 px-4 py-1 text-sm font-semibold text-slate-900">
+    Insights & Stories
+  </span>
 
-          {/* Featured Blog Cards Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: [0.33, 1, 0.68, 1] as const }}
-            className="mt-14"
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {blogPosts.slice(0, 3).map((post) => (
-                <Link
-                  key={post.id}
-                  href={`/blogs/${post.id}`}
-                  className="block h-full"
+  <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+    Perspectives on intelligent banking, data, and design.
+  </h1>
+
+  <p className="mt-4 text-base text-slate-700 sm:text-lg">
+    Practical insights, strategy, and engineering ideas shaping the future of finance.
+  </p>
+</motion.section>
+
+          {/* BLOG GRID */}
+          <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogPosts.map((post) => (
+              <a
+                key={post.id}
+                href={post.externalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block h-full"
+              >
+                <motion.article
+                  whileHover={{ y: -8 }}
+                  className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-lg hover:shadow-xl"
                 >
-                  <motion.article
-                    whileHover={{ y: -8 }}
-                    className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-lg transition-shadow hover:shadow-xl h-full"
-                  >
-                    {/* Image Section */}
-                    <div className="relative h-48 overflow-hidden bg-slate-200">
-                      <img
-                        src={post.imageUrl}
-                        alt={post.title}
-                        className="h-full w-full object-cover transition-transform group-hover:scale-105"
-                      />
-                      {/* Category Badge */}
-                      <div className="absolute top-4 left-4">
-                        <span
-                          className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white ${categoryToneClasses[post.categoryTone]}`}
-                        >
-                          {post.category.toUpperCase()}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Content Section */}
-                    <div className="flex flex-col justify-between flex-1 p-6">
-                      <div>
-                        <h3 className="text-lg font-bold leading-snug text-slate-900 mb-3">
-                          {post.title}
-                        </h3>
-                        <p className="text-sm text-slate-600 line-clamp-2 mb-4">
-                          {post.excerpt}
-                        </p>
-                      </div>
-
-                      {/* Footer */}
-                      <div className="flex flex-col gap-4 border-t border-slate-200 pt-4">
-                        <div className="flex items-center justify-between text-xs text-slate-500">
-                          <span className="font-medium">{post.author}</span>
-                          <span>{post.publishedAgo}</span>
-                        </div>
-
-                        <span className="inline-flex items-center text-sm font-semibold text-teal-600 transition-colors group-hover:text-teal-700 w-fit">
-                          Read →
-                        </span>
-                      </div>
-                    </div>
-                  </motion.article>
-                </Link>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Carousel Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.5, ease: [0.33, 1, 0.68, 1] as const }}
-            className="mt-16"
-          >
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              className="w-full"
-            >
-              <CarouselContent className="-ml-4">
-                {blogPosts.slice(3).map((post, index) => (
-                  <CarouselItem
-                    key={post.id}
-                    className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3"
-                  >
-                    <Link
-                      href={`/blogs/${post.id}`}
-                      className="block h-full"
+                  <div className="relative h-48">
+                    <img
+                      src={post.imageUrl}
+                      alt={post.title}
+                      className="h-full w-full object-cover transition-transform group-hover:scale-105"
+                    />
+                    <span
+                      className={`absolute top-4 left-4 rounded-full px-3 py-1 text-xs text-white font-semibold ${categoryToneClasses[post.categoryTone]}`}
                     >
-                      <motion.article
-                        whileHover={{ y: -10 }}
-                        className={`group flex flex-col overflow-hidden rounded-2xl p-8 transition-transform cursor-pointer h-full ${colorCycle[index % colorCycle.length]}`}
-                      >
-                        <div className="flex flex-col justify-between h-full">
-                          <div>
-                            <h3 className="text-xl font-bold leading-snug text-white mb-4">{post.title}</h3>
-                            <p className="text-sm text-white/90 mb-6">{post.excerpt}</p>
-                          </div>
+                      {post.category.toUpperCase()}
+                    </span>
+                  </div>
 
-                          <div className="flex flex-col gap-4">
-                            <div className="flex items-center justify-between text-xs text-white/80">
-                              <span className="font-semibold">{post.publishedAgo}</span>
-                            </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="mb-3 text-lg font-bold">{post.title}</h3>
+                    <p className="mb-4 text-sm text-slate-600 line-clamp-2">
+                      {post.excerpt}
+                    </p>
 
-                            <span className="inline-flex items-center text-sm font-semibold text-white transition-colors hover:text-white/80 w-fit">
-                              Learn more →
-                            </span>
-                          </div>
-                        </div>
-                      </motion.article>
-                    </Link>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="absolute -left-12 top-1/2 -translate-y-1/2 hidden lg:flex" />
-              <CarouselNext className="absolute -right-12 top-1/2 -translate-y-1/2 hidden lg:flex" />
-            </Carousel>
-          </motion.div>
+                    <div className="mt-auto border-t pt-4 text-xs text-slate-500 flex justify-between">
+                      <span>{post.author}</span>
+                      <span>{post.readTime}</span>
+                    </div>
+                  </div>
+                </motion.article>
+              </a>
+            ))}
+          </div>
+{/* BLOG GRID */}
+<div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  {blogPosts.map((post) => (
+    <a
+      key={post.id}
+      href={post.externalUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block h-full"
+    >
+      {/* card */}
+    </a>
+  ))}
+</div>
+
+
+{/* HORIZONTAL INSIGHTS CAROUSEL */}
+<section className="relative">
+  <div className="mb-8 flex items-start justify-between">
+    <h2 className="max-w-md text-3xl font-semibold text-slate-900">
+      More insights on <br /> payments & intelligence
+    </h2>
+    <span className="mt-2 text-sm text-slate-500">
+      Curated long-form reads
+    </span>
+  </div>
+
+  <Carousel opts={{ align: "start" }} className="w-full">
+    <CarouselContent className="-ml-4">
+{carouselBlogs.map((post, index) => {
+  const theme = colorThemes[index % colorThemes.length];
+
+  return (
+    <CarouselItem
+      key={index}
+      className="pl-4 basis-[300px] sm:basis-[340px] lg:basis-[380px]"
+    >
+      <a href={post.url} target="_blank" rel="noopener noreferrer">
+        <motion.div
+          whileHover={{ y: -8 }}
+          className={`
+            flex h-full min-h-[320px] flex-col rounded-2xl
+            bg-gradient-to-br ${theme.gradient}
+            border ${theme.border}
+            p-6 shadow-md transition-all
+            hover:shadow-xl ${theme.glow}
+          `}
+        >
+          <div className="mb-4 flex items-center gap-2">
+            <span
+              className={`rounded-full px-3 py-1 text-xs font-semibold text-white ${theme.tagBg}`}
+            >
+              {post.tag}
+            </span>
+            <span className="text-xs text-slate-400">
+              {post.source}
+            </span>
+          </div>
+
+          <h3 className="mb-4 text-lg font-bold leading-snug text-slate-900">
+            {post.title}
+          </h3>
+          <p className="mb-6 line-clamp-4 text-sm leading-relaxed text-slate-600">
+            {post.description}
+          </p>
+
+          <span className={`mt-auto text-sm font-semibold ${theme.accent}`}>
+            Read article →
+          </span>
+        </motion.div>
+      </a>
+    </CarouselItem>
+  );
+})}
+    </CarouselContent>
+
+    <CarouselPrevious />
+    <CarouselNext />
+  </Carousel>
+</section>
         </main>
       </div>
     </div>
   )
 }
-
-
