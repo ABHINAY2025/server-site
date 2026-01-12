@@ -213,11 +213,11 @@ const blogContent = {
       {
         type: "heading",
         level: 2,
-        text: "Ready to Transform Your Data Operations?",
+        
       },
       {
         type: "paragraph",
-        text: "Schedule a **free 20-minute data control assessment** and discover how much control you're missing.",
+        text: "Quantum Data Leap enables this intelligence through Agentic AI, real-time analytics, and autonomous decision systems.",
       },
     ],
   },
@@ -290,8 +290,7 @@ const blogContent = {
       { type: "paragraph", text: "**Intelligent liquidity management** transforms treasury from a cost center to a profit center. By automating sweeps, forecasting cash flows, and optimizing across multi-bank networks, treasurers unlock hidden value while reducing operational risk." },
       { type: "blockquote", text: "**Automate your liquidity. Amplify your returns.**" },
       { type: "divider" },
-      { type: "heading", level: 2, text: "Schedule Your Liquidity Assessment" },
-      { type: "paragraph", text: "Discover how much idle cash you're leaving on the table. Book a **free treasury optimization audit** today." },
+      { type: "paragraph", text: "Quantum Data Leap enables this intelligence through Agentic AI, real-time analytics, and autonomous decision systems." },
     ],
   },
   4: {
@@ -373,8 +372,7 @@ const blogContent = {
       { type: "paragraph", text: "**Intelligent compliance automation** transforms compliance from a cost center to a strategic advantage. By automating controls, reducing false positives, and generating audit-ready documentation, compliance teams can focus on strategic initiatives instead of firefighting." },
       { type: "blockquote", text: "**Automate compliance. Amplify trust.**" },
       { type: "divider" },
-      { type: "heading", level: 2, text: "Schedule Your Compliance Assessment" },
-      { type: "paragraph", text: "Discover how much compliance risk you're exposed to. Book a **free compliance audit** today." },
+      { type: "paragraph", text: "Quantum Data Leap enables this intelligence through Agentic AI, real-time analytics, and autonomous decision systems." },
     ],
   },
   5: {
@@ -448,8 +446,7 @@ const blogContent = {
       { type: "paragraph", text: "**Intelligent fraud detection** transforms how banks manage payment risk. By automating threat detection, reducing false positives, and enabling real-time blocking, security teams shift from 'firefighting' to 'strategy.'" },
       { type: "blockquote", text: "**Automate fraud detection. Eliminate risk. Win customer trust.**" },
       { type: "divider" },
-      { type: "heading", level: 2, text: "Schedule Your Fraud Assessment" },
-      { type: "paragraph", text: "Discover how many threats your current system is missing. Book a **free fraud risk assessment** today." },
+      { type: "paragraph", text: "Quantum Data Leap enables this intelligence through Agentic AI, real-time analytics, and autonomous decision systems." },
     ],
   },
   6: {
@@ -534,8 +531,7 @@ const blogContent = {
       { type: "paragraph", text: "**Intelligent banking** isn't the future—it's the present. Banks that delay modernization risk being outcompeted by more agile rivals. Those that embrace intelligent platforms see immediate cost reductions, revenue uplift, and regulatory confidence." },
       { type: "blockquote", text: "**The time to move is now. The future belongs to intelligent banks.**" },
       { type: "divider" },
-      { type: "heading", level: 2, text: "Start Your Intelligent Banking Journey" },
-      { type: "paragraph", text: "Schedule a **personalized 30-minute assessment** to understand how intelligent banking can transform your institution. We'll benchmark you against peers and identify quick wins." },
+      { type: "paragraph", text: "Quantum Data Leap enables this intelligence through Agentic AI, real-time analytics, and autonomous decision systems." },
     ],
   },
 }
