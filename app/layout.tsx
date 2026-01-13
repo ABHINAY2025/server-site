@@ -28,7 +28,6 @@ export default function RootLayout({
       <head>
         {/* Google Analytics */}
         <Script
-          async
           src="https://www.googletagmanager.com/gtag/js?id=G-70DFDL0XW8"
           strategy="afterInteractive"
         />
@@ -55,13 +54,11 @@ export default function RootLayout({
 
         <meta charSet="UTF-8" />
         <meta name="theme-color" content="#000000" />
-
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
-      <body>
-        {children}
-      </body>
+
+      <body>{children}</body>
     </html>
   )
 }

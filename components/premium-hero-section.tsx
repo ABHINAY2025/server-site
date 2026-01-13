@@ -96,16 +96,20 @@ export function PremiumHeroSection() {
   className="relative w-full bg-black rounded-2xl overflow-hidden"
   style={{ paddingBottom: '56.25%' }}
 >
+<div className="relative w-full aspect-video">
   <iframe
     src="https://drive.google.com/file/d/19JNH4q8s1yToCcCquhUHSXfQSWPBTWxH/preview"
     title="Quantum Data Leap Demo"
-    className="absolute inset-0 w-full h-full"
+    loading="lazy"
+    className="absolute inset-0 w-full h-full rounded-xl"
     frameBorder="0"
-    allow="autoplay; fullscreen"
+    allow="autoplay; fullscreen; encrypted-media"
     allowFullScreen
     sandbox="allow-scripts allow-same-origin allow-presentation"
     referrerPolicy="no-referrer"
   />
+</div>
+
 </div>
 
 
