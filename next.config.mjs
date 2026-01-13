@@ -6,21 +6,19 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+
   images: {
     unoptimized: false,
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
-  // Enable compression for better performance
+
   compress: true,
-  // Generate ETags for caching
   generateEtags: true,
-  // Enable SWR (Stale-While-Revalidate) caching
   swcMinify: true,
-  // Optimize production builds
   productionBrowserSourceMaps: false,
-  // Enable code splitting and lazy loading
+
   experimental: {
     optimizeCss: true,
     optimizePackageImports: [
@@ -32,11 +30,11 @@ const nextConfig = {
       'lucide-react',
     ],
   },
-  // Security headers
-  headers: async () => {
+
+  async headers() {
     return [
       {
-        source: '/:path*',
+        source: '/(.*)',
         headers: [
           {
             key: 'X-Content-Type-Options',
@@ -56,12 +54,21 @@ const nextConfig = {
           },
           {
             key: 'Permissions-Policy',
-            value: 'geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()',
-          },
-{
-            key: "Content-Security-Policy",
             value:
-              "frame-src 'self' https://drive.google.com https://www.youtube.com https://www.youtube-nocookie.com;",
+              'geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()',
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://drive.google.com https://www.youtube.com",
+              "frame-src 'self' https://drive.google.com https://www.youtube.com https://www.youtube-nocookie.com",
+              "child-src https://drive.google.com https://www.youtube.com",
+              "media-src https://drive.google.com https://*.googleusercontent.com",
+              "img-src 'self' data: https:",
+              "style-src 'self' 'unsafe-inline'",
+              "connect-src 'self'",
+            ].join('; '),
           },
         ],
       },
