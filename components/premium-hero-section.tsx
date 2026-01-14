@@ -102,8 +102,6 @@ export function PremiumHeroSection() {
     className="absolute inset-0 w-full h-full rounded-2xl"
   />
 </div>
-
-
               </div>
             </motion.div>
           </div>
