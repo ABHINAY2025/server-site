@@ -125,6 +125,231 @@ export const blogPosts: BlogPost[] = [
     externalUrl:
       "https://geekyants.com/blog/how-ai-and-machine-learning-are-strengthening-fraud-detection-in-fintech",
   },
+  {
+  id: 7,
+  title: "Fraud Risk Management Strategy for Digital Payments Operations",
+  excerpt:
+    "An overview of fraud risks in modern digital payment environments and the mitigation strategies banks use to protect customers and transactions.",
+  category: "Payments & Fraud",
+  categoryTone: "teal",
+  author: "BANKiQ",
+  authorRole: "Payments & Risk Platform",
+  publishedAgo: "2025",
+  readTime: "9 min read",
+  imageUrl:
+    "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=80",
+  externalUrl:
+    "https://bankiq.co/fraud-risk-management-strategy-for-digital-payments-operations",
+},
+{
+  id: 8,
+  title: "Payby Payments Blog: Real-Time Payments, Fraud & Innovation",
+  excerpt:
+    "A collection of ongoing articles covering real-time payments innovation, fraud trends, and emerging payment technologies.",
+  category: "Payments Innovation",
+  categoryTone: "purple",
+  author: "Payby",
+  authorRole: "Payments Technology Provider",
+  publishedAgo: "2025",
+  readTime: "8 min read",
+  imageUrl:
+    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
+  externalUrl:
+    "https://www.finextra.com/blogposting/28812/the-aml-compliance-gap-in-real-time-payments",
+},
+{
+  id: 9,
+  title: "The AML Compliance Gap in Real-Time Payments",
+  excerpt:
+    "Explains why instant payments create new AML challenges and how compliance models must evolve.",
+  category: "AML & Compliance",
+  categoryTone: "blue",
+  author: "Finextra",
+  authorRole: "Financial Services Publisher",
+  publishedAgo: "2025",
+  readTime: "7 min read",
+  imageUrl:
+    "https://images.unsplash.com/photo-1559523161-0fc0d8b38a7a?auto=format&fit=crop&w=1200&q=80",
+  externalUrl:
+    "https://www.finextra.com/blogposting/26299/the-hidden-complexity-behind-a-simple-bank-payment",
+},
+{
+  id: 10,
+  title: "The Hidden Complexity Behind a Simple Bank Payment",
+  excerpt:
+    "A deep dive into the end-to-end lifecycle of a bank payment and its operational implications.",
+  category: "Payment Operations",
+  categoryTone: "blue",
+  author: "Finextra",
+  authorRole: "Financial Services Publisher",
+  publishedAgo: "2025",
+  readTime: "10 min read",
+  imageUrl:
+    "https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80",
+  externalUrl:
+    "https://www.finextra.com/blogposting/hidden-complexity-simple-bank-payment",
+},
+{
+  id: 11,
+  title: "Keeping Payments Secure in a Real-Time World",
+  excerpt:
+    "An analysis of security risks that emerge as real-time payments scale globally.",
+  category: "Payment Security",
+  categoryTone: "teal",
+  author: "Finextra",
+  authorRole: "Financial Services Publisher",
+  publishedAgo: "2025",
+  readTime: "8 min read",
+  imageUrl:
+    "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+  externalUrl:
+    "https://www.finextra.com/blogposting/30534/keeping-payments-secure-in-a-real-time-world",
+},
+{
+  id: 12,
+  title: "Corporate Payments 2026: Real-Time Liquidity, Verification, and AI",
+  excerpt:
+    "A strategic outlook on how corporate and bank payments will evolve by 2026 with AI and real-time liquidity.",
+  category: "Future of Payments",
+  categoryTone: "purple",
+  author: "Bottomline",
+  authorRole: "Payments & Treasury Solutions",
+  publishedAgo: "2025",
+  readTime: "12 min read",
+  imageUrl:
+    "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80",
+  externalUrl:
+    "https://www.bottomline.com/resources/blog/corporate-payments-2026-real-time-liquidity-verification-and-ai-delivers",
+},
+{
+  id: 13,
+  title: "Challenges and Solutions for Real-Time Payments",
+  excerpt:
+    "Best practices and architectural guidance for managing real-time payment infrastructure.",
+  category: "Real-Time Payments",
+  categoryTone: "pink",
+  author: "IR Blog",
+  authorRole: "Payments Industry Blog",
+  publishedAgo: "2025",
+  readTime: "9 min read",
+  imageUrl:
+    "https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1200&q=80",
+  externalUrl:
+    "https://www.ir.com/blog/payments/real-time-in-the-real-world",
+},
+{
+  id: 14,
+  title: "Real-Time Payments Fraud Detection with Network Intelligence",
+  excerpt:
+    "How AI and shared network intelligence are transforming fraud detection in real-time payments.",
+  category: "AI & Fraud",
+  categoryTone: "purple",
+  author: "ACI Worldwide",
+  authorRole: "Real-Time Payments Provider",
+  publishedAgo: "2025",
+  readTime: "8 min read",
+  imageUrl:
+    "https://images.unsplash.com/photo-1542744095-291d1f67b221?auto=format&fit=crop&w=1200&q=80",
+  externalUrl:
+    "https://www.aciworldwide.com/blog/real-time-payments-fraud-detection-smashing-the-data-bottleneck-with-network-intelligence",
+},
+{
+  id: 15,
+  title: "Real-Time Payments Are Ubiquitous — Is Your Business Ready?",
+  excerpt:
+    "A readiness guide for banks and institutions adopting instant payment rails.",
+  category: "Payments Readiness",
+  categoryTone: "purple",
+  author: "Alacriti",
+  authorRole: "Payments Technology Provider",
+  publishedAgo: "2025",
+  readTime: "7 min read",
+  imageUrl:
+    "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1200&q=80",
+  externalUrl:
+    "https://www.alacriti.com/knowledge-hub/blog/real-time-payments-are-ubiquitous-is-your-business-ready-to-accept-real-time-payments",
+},
+{
+  id: 16,
+  title: "Instant Payments: Enhancing Supply Chain Management",
+  excerpt:
+    "Explores how real-time payments improve visibility, efficiency, and working capital in supply chains.",
+  category: "Business Payments",
+  categoryTone: "purple",
+  author: "PaymentsConsulting",
+  authorRole: "Payments Advisory Firm",
+  publishedAgo: "2025",
+  readTime: "6 min read",
+  imageUrl:
+    "https://images.unsplash.com/photo-1586521995568-39abaa0c2311?auto=format&fit=crop&w=1200&q=80",
+  externalUrl:
+    "https://paymentsconsulting.com/instant-payments-enhancing-supply-chain-management-efficiency-and-resilience/",
+},
+{
+  id: 17,
+  title: "ISO 20022 and Payment Compliance in 2025",
+  excerpt:
+    "A regulatory outlook on how ISO 20022 adoption is reshaping payment compliance requirements.",
+  category: "ISO 20022",
+  categoryTone: "blue",
+  author: "SuperiorPress",
+  authorRole: "Payments & Compliance Publisher",
+  publishedAgo: "2025",
+  readTime: "9 min read",
+  imageUrl:
+    "https://images.unsplash.com/photo-1554774853-719586f82d77?auto=format&fit=crop&w=1200&q=80",
+  externalUrl:
+    "https://www.superiorpress.com/blog/iso20022-compliance",
+},
+{
+  id: 18,
+  title: "Sibos 2025: Payments Innovation & ISO 20022 Takeaways",
+  excerpt:
+    "Key insights from Sibos 2025 on payments innovation, fraud prevention, and ISO 20022.",
+  category: "Industry Insights",
+  categoryTone: "teal",
+  author: "Bottomline",
+  authorRole: "Payments & Treasury Solutions",
+  publishedAgo: "2025",
+  readTime: "8 min read",
+  imageUrl:
+    "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&w=1200&q=80",
+  externalUrl:
+    "https://www.bottomline.com/resources/blog/sibos-2025-takeaways-payments-innovation-iso-20022-and-fraud-prevention",
+},
+{
+  id: 19,
+  title: "Real-Time Payments Fraud Prevention (Enterprise Focus)",
+  excerpt:
+    "Enterprise-grade approaches to fraud prevention in instant payment environments.",
+  category: "Enterprise Fraud",
+  categoryTone: "teal",
+  author: "ACI Worldwide",
+  authorRole: "Real-Time Payments Provider",
+  publishedAgo: "2025",
+  readTime: "7 min read",
+  imageUrl:
+    "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+  externalUrl:
+    "https://www.aciworldwide.com/solutions/real-time-payments-fraud-prevention",
+},
+{
+  id: 20,
+  title: "Fraud and AML Evolution in Instant Payments",
+  excerpt:
+    "An industry view on how fraud detection and AML controls must evolve for real-time payments.",
+  category: "Fraud & AML",
+  categoryTone: "blue",
+  author: "Finextra",
+  authorRole: "Financial Services Publisher",
+  publishedAgo: "2025",
+  readTime: "9 min read",
+  imageUrl:
+    "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+  externalUrl:
+    "https://www.finextra.com/blogposting/28812/the-aml-compliance-gap-in-real-time-payments?utm_source=chatgpt.com",
+},
+
 ]
 
 /* ------------------------------------------------------------------ */
@@ -747,6 +972,246 @@ export const carouselBlogs: ExternalBlog[] = [
   url: "https://aishwaryadutpala.blogspot.com/2026/01/the-growing-risk-of-shadow-payment.html",
   tag: "OPERATIONAL RISK",
   source: "Blogspot",
+},{
+  title: "Why 24×7 Payments Break Traditional Bank Control Frameworks",
+  description:
+    "Explains why legacy control frameworks fail in always-on payment environments and what must change.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/why-247-payments-break-traditional-bank.html",
+  tag: "PAYMENT CONTROLS",
+  source: "Blogspot",
 },
+{
+  title: "Payment Observability: The Missing Layer in Modern Banking Ops",
+  description:
+    "Explores why observability is critical for real-time insight into payment operations.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/payment-observability-missing-layer-in.html",
+  tag: "PAYMENT OBSERVABILITY",
+  source: "Blogspot",
+},
+{
+  title: "Intraday Credit Exposure in Instant Payments: Risks You Can’t Net Away",
+  description:
+    "Analyzes intraday credit exposure risks that arise in instant payment systems.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/intraday-credit-exposure-in-instant.html",
+  tag: "CREDIT RISK",
+  source: "Blogspot",
+},
+{
+  title: "Why Real-Time Payments Increase Operational Risk Before They Reduce It",
+  description:
+    "Explains why operational risk spikes during early adoption of real-time payments.",
+  url: "https://abhinay2025.blogspot.com/2026/01/why-real-time-payments-increase.html",
+  tag: "OPERATIONAL RISK",
+  source: "Blogspot",
+},
+{
+  title: "How Payment Latency Creates Hidden Financial and Reputational Risk",
+  description:
+    "Discusses how even small payment delays can create outsized financial and reputational damage.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/how-payment-latency-creates-hidden.html",
+  tag: "PAYMENT LATENCY",
+  source: "Blogspot",
+},
+{
+  title: "Payment Failure Analytics: How Banks Can Predict Breakpoints Early",
+  description:
+    "Shows how analytics can help banks predict payment failures before systems break.",
+  url: "https://abhinay2025.blogspot.com/2026/01/payment-failure-analytics-how-banks-can.html",
+  tag: "PAYMENT ANALYTICS",
+  source: "Blogspot",
+},
+{
+  title: "Designing Scalable Controls for Always-On Payment Systems",
+  description:
+    "Explains how to design risk and compliance controls that scale in 24x7 payment environments.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/designing-scalable-controls-for-always.html",
+  tag: "SCALABLE CONTROLS",
+  source: "Blogspot",
+},
+{
+  title: "Why Most Payment Transformation KPIs Fail to Measure Real Risk",
+  description:
+    "Analyzes why traditional KPIs don’t reflect true payment risk exposure.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/why-most-payment-transformation-kpis.html",
+  tag: "PAYMENT KPIs",
+  source: "Blogspot",
+},
+{
+  title: "Why Banks Lose Money on Payment Investigations",
+  description:
+    "Explores inefficiencies in payment investigations that silently drain bank profits.",
+  url: "https://abhinay2025.blogspot.com/2026/01/why-banks-lose-money-on-payment.html",
+  tag: "PAYMENT INVESTIGATIONS",
+  source: "Blogspot",
+},
+{
+  title: "Operational Resilience in Payments: Lessons from Real-Time Outages",
+  description:
+    "Draws lessons from real-time payment outages to strengthen operational resilience.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/operational-resilience-in-payments.html",
+  tag: "OPERATIONAL RESILIENCE",
+  source: "Blogspot",
+},
+{
+  title: "Real-Time Liquidity Buffers: How Much Is Too Much?",
+  description:
+    "Examines how banks should size liquidity buffers for instant payment rails.",
+  url: "https://abhinay2025.blogspot.com/2026/01/real-time-liquidity-buffers-how-much-is.html",
+  tag: "LIQUIDITY MANAGEMENT",
+  source: "Blogspot",
+},
+{
+  title: "Payment Data Lineage: Why Banks Struggle to Trace Transaction Decisions",
+  description:
+    "Explains why tracing end-to-end payment decisions remains difficult for banks.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/payment-data-lineage-why-banks-struggle.html",
+  tag: "DATA LINEAGE",
+  source: "Blogspot",
+},
+{
+  title: "Managing Fraud Without Slowing Payments: A False Trade-Off?",
+  description:
+    "Challenges the assumption that fraud controls must slow down payments.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/managing-fraud-without-slowing-payments.html",
+  tag: "FRAUD MANAGEMENT",
+  source: "Blogspot",
+},
+{
+  title: "Payment Message Enrichment: The Untapped Value of ISO 20022 Data",
+  description:
+    "Explores how enriched ISO 20022 data unlocks operational and risk insights.",
+  url: "https://abhinay2025.blogspot.com/2026/01/payment-message-enrichment-untapped.html",
+  tag: "ISO 20022",
+  source: "Blogspot",
+},
+{
+  title: "The Impact of Always-Available Payments on Bank Staffing Models",
+  description:
+    "Discusses how 24x7 payments force changes in staffing, skills, and shift models.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/the-impact-of-always-available-payments.html",
+  tag: "PAYMENT OPERATIONS",
+  source: "Blogspot",
+},
+{
+  title: "The False Promise of Straight-Through Processing in Payments",
+  description:
+    "Explains why full STP remains unrealistic in complex payment ecosystems.",
+  url: "https://abhinay2025.blogspot.com/2026/01/the-false-promise-of-straight-through.html",
+  tag: "STRAIGHT-THROUGH PROCESSING",
+  source: "Blogspot",
+},
+{
+  title: "Why Alert Fatigue Is the Biggest Threat to Payment Risk Teams",
+  description:
+    "Highlights how excessive alerts overwhelm risk teams and weaken controls.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/why-alert-fatigue-is-biggest-threat-to.html",
+  tag: "ALERT MANAGEMENT",
+  source: "Blogspot",
+},
+{
+  title: "How Inconsistent Payment Cutoffs Create Liquidity Blind Spots",
+  description:
+    "Explains how misaligned cutoff times distort intraday liquidity visibility.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/how-inconsistent-payment-cutoffs-create.html",
+  tag: "LIQUIDITY RISK",
+  source: "Blogspot",
+},
+{
+  title: "Why Payment Cutoff Times Don’t Work in a 24x7 World",
+  description:
+    "Explores why cutoff-based thinking fails in real-time payment systems.",
+  url: "https://abhinay2025.blogspot.com/2026/01/why-payment-cutoff-times-dont-work-in.html",
+  tag: "24x7 PAYMENTS",
+  source: "Blogspot",
+},
+{
+  title: "Treasury Blind Spots Caused by Delayed Payment Status Updates",
+  description:
+    "Discusses how delayed status updates create treasury and liquidity blind spots.",
+  url: "",
+  tag: "TREASURY RISK",
+  source: "Blogspot",
+},
+{
+  title: "Why Payment Platforms Fail Compliance Audits Despite Strong Policies",
+  description:
+    "Explains execution gaps that cause audit failures even with strong policies in place.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/why-payment-platforms-fail-compliance.html",
+  tag: "COMPLIANCE RISK",
+  source: "Blogspot",
+},
+{
+  title: "Why Real-Time Payments Break Traditional Fraud Controls",
+  description:
+    "Analyzes why legacy fraud models fail in instant payment environments.",
+  url: "https://abhinay2025.blogspot.com/2026/01/why-real-time-payments-break.html",
+  tag: "REAL-TIME FRAUD",
+  source: "Blogspot",
+},
+{
+  title: "From Transactions to Signals: Using Payment Data for Proactive Risk Detection",
+  description:
+    "Shows how payment data can be transformed into early risk signals.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/from-transactions-to-signals-using.html",
+  tag: "PROACTIVE RISK",
+  source: "Blogspot",
+},
+{
+  title: "Payment Exception Backlogs: Early Warning Signs Banks Ignore",
+  description:
+    "Explores why growing exception queues signal deeper systemic issues.",
+  url: "https://abhinay2025.blogspot.com/2026/01/payment-exception-backlogs-early.html",
+  tag: "PAYMENT EXCEPTIONS",
+  source: "Blogspot",
+},
+{
+  title: "The Growing Compliance Gap Between Batch and Real-Time Payments",
+  description:
+    "Examines compliance inconsistencies between batch and instant payment models.",
+  url: "https://abhinay2025.blogspot.com/2026/01/the-growing-compliance-gap-between.html",
+  tag: "COMPLIANCE",
+  source: "Blogspot",
+},
+{
+  title: "How Fragmented Payment Data Increases Regulatory Reporting Risk",
+  description:
+    "Explains how data fragmentation undermines regulatory reporting accuracy.",
+  url: "https://abhinay2025.blogspot.com/2026/01/how-fragmented-payment-data-increases.html",
+  tag: "REGULATORY RISK",
+  source: "Blogspot",
+},
+{
+  title: "Why Payment Monitoring Tools Fail Under Peak Load",
+  description:
+    "Analyzes system design flaws that cause monitoring failures during peak traffic.",
+  url: "https://abhinay2025.blogspot.com/2026/01/why-payment-monitoring-tools-fail-under.html",
+  tag: "PAYMENT MONITORING",
+  source: "Blogspot",
+},
+{
+  title: "The Cost of Payment Retries in High-Frequency Payment Systems",
+  description:
+    "Explores the hidden cost and risk impact of payment retries at scale.",
+  url: "https://abhinay2025.blogspot.com/2026/01/the-cost-of-payment-retries-in-high.html",
+  tag: "PAYMENT PERFORMANCE",
+  source: "Blogspot",
+},
+{
+  title: "From Alerts to Insights: Fixing Signal-to-Noise in Payment Operations",
+  description:
+    "Discusses reducing noise and extracting actionable insights from payment alerts.",
+  url: "https://abhinay2025.blogspot.com/2026/01/from-alerts-to-insights-fixing-signal.html",
+  tag: "PAYMENT INSIGHTS",
+  source: "Blogspot",
+},
+{
+  title: "Payment Control Towers: Centralizing Visibility Across Rails",
+  description:
+    "Explores how payment control towers provide unified, real-time cross-rail visibility.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/payment-control-towers-centralizing.html",
+  tag: "PAYMENT CONTROL TOWER",
+  source: "Blogspot",
+},
+
 
 ];
