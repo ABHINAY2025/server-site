@@ -1212,6 +1212,244 @@ export const carouselBlogs: ExternalBlog[] = [
   tag: "PAYMENT CONTROL TOWER",
   source: "Blogspot",
 },
-
-
+{
+  title: "Why Banks Are Rebuilding with AI & Rules Engines",
+  description:
+    "Explains why banks are replacing static logic with AI-driven rules engines to support real-time decisioning.",
+  url: "https://abhinay2025.blogspot.com/2026/01/why-banks-are-rebuilding-with-ai-rules.html",
+  tag: "AI & RULES ENGINES",
+  source: "Blogspot",
+},
+{
+  title: "Banking Is Changing: Top Fintech Blogs on AI, Quantum Data & Rules Engines (2026)",
+  description:
+    "Curated fintech insights on how AI, quantum-scale data, and rules engines are reshaping banking.",
+  url: "https://abhinay2025.blogspot.com/2026/01/banking-is-changing-top-fintech-blogs.html",
+  tag: "FINTECH TRENDS",
+  source: "Blogspot",
+},
+{
+  title: "How AI and Quantum Data Are Reshaping Banking",
+  description:
+    "Explores the impact of AI and large-scale data on modern banking architecture and decisions.",
+  url: "https://abhinay2025.blogspot.com/2026/01/how-ai-and-quantum-data-are-reshaping.html",
+  tag: "AI & DATA",
+  source: "Blogspot",
+},
+{
+  title: "The AI-Driven Banking Era: Fintech Blogs Covering Quantum Data & Rules Engines",
+  description:
+    "Examines the shift toward AI-driven banking powered by rules engines and high-scale data.",
+  url: "https://abhinay2025.blogspot.com/2026/01/the-ai-driven-banking-era-fintech-blogs.html",
+  tag: "AI BANKING",
+  source: "Blogspot",
+},
+{
+  title: "Top Fintech Blogs Explaining AI, Quantum Data & Modern Banking Architecture",
+  description:
+    "A breakdown of fintech blogs explaining modern banking architecture through AI and data.",
+  url: "https://abhinay2025.blogspot.com/2026/01/top-fintech-blogs-explaining-ai-quantum.html",
+  tag: "BANKING ARCHITECTURE",
+  source: "Blogspot",
+},
+{
+  title: "AI, Quantum Data & the New Banking Stack: The Definitive Pillar Guide for 2026",
+  description:
+    "Defines the next-generation banking stack built on AI, data scale, and rules-driven logic.",
+  url: "https://abhinay2025.blogspot.com/2026/01/ai-quantum-data-new-banking-stack.html",
+  tag: "BANKING STACK",
+  source: "Blogspot",
+},
+{
+  title: "Future-Ready Banking: Fintech Blogs on AI Decisions, Rules Engines & Data",
+  description:
+    "Insights on how banks are modernizing decision systems with AI and data-driven engines.",
+  url: "https://abhinay2025.blogspot.com/2026/01/future-ready-banking-fintech-blogs-on.html",
+  tag: "FUTURE BANKING",
+  source: "Blogspot",
+},
+{
+  title: "From Legacy Systems to AI Rules Engines: Fintech Blogs Driving the Shift",
+  description:
+    "Explores the migration from legacy banking systems to AI-powered rules engines.",
+  url: "https://abhinay2025.blogspot.com/2026/01/from-legacy-systems-to-ai-rules-engines.html",
+  tag: "LEGACY MODERNIZATION",
+  source: "Blogspot",
+},
+{
+  title: "How AI and Quantum-Scale Data Are Forcing Banks to Rethink Rules Engines",
+  description:
+    "Explains why traditional rules engines fail under AI and quantum-scale data demands.",
+  url: "https://abhinay2025.blogspot.com/2026/01/how-ai-and-quantum-scale-data-are.html",
+  tag: "RULES ENGINES",
+  source: "Blogspot",
+},
+{
+  title: "Fintech Blogs That Explain the AI & Quantum Data Shift in Modern Banking",
+  description:
+    "Highlights fintech perspectives on AI, data scale, and banking transformation.",
+  url: "https://abhinay2025.blogspot.com/2026/01/fintech-blogs-that-explain-ai-quantum.html",
+  tag: "FINTECH INSIGHTS",
+  source: "Blogspot",
+},
+{
+  title: "Banking’s AI Inflection Point: Blogs Covering Rules Engines & Quantum Data",
+  description:
+    "Discusses the critical AI inflection point redefining banking decision systems.",
+  url: "https://abhinay2025.blogspot.com/2026/01/bankings-ai-inflection-point-blogs.html",
+  tag: "AI STRATEGY",
+  source: "Blogspot",
+},
+{
+  title: "Inside the AI-Powered Bank: Fintech Blogs on Rules Engines & Data Scale",
+  description:
+    "A look inside AI-powered banks driven by massive data and modern rules engines.",
+  url: "https://abhinay2025.blogspot.com/2026/01/inside-ai-powered-bank-fintech-blogs-on.html",
+  tag: "AI BANKING",
+  source: "Blogspot",
+},
+{
+  title: "The End of Static Banking Rules: Fintech Blogs on AI & Quantum Decisioning",
+  description:
+    "Explores why static rules fail and how AI-driven decisioning replaces them.",
+  url: "https://abhinay2025.blogspot.com/2026/01/the-end-of-static-banking-rules-fintech.html",
+  tag: "DECISIONING",
+  source: "Blogspot",
+},
+{
+  title: "Why Speed Isn’t the Real Risk in Instant Payments Irreversibility",
+  description:
+    "Explains why irreversibility, not speed, creates the biggest risk in instant payments.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/1-why-speed-isnt-real-risk-in-instant.html",
+  tag: "PAYMENT RISK",
+  source: "Blogspot",
+},
+{
+  title: "Payment Decisioning vs Payment Processing: Why Banks Confuse the Two",
+  description:
+    "Clarifies the difference between decisioning and processing in payment systems.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/payment-decisioning-vs-payment.html",
+  tag: "PAYMENT DECISIONING",
+  source: "Blogspot",
+},
+{
+  title: "Why Rules Engines Matter in the Age of AI & Quantum Banking Data",
+  description:
+    "Explores the continued importance of rules engines alongside AI decision systems.",
+  url: "https://abhinay2025.blogspot.com/2026/01/why-rules-engines-matter-in-age-of-ai.html",
+  tag: "RULES ENGINES",
+  source: "Blogspot",
+},
+{
+  title: "The Hidden Cost of Over-Compliance in Real-Time Payment Systems",
+  description:
+    "Analyzes how excessive controls increase cost and friction in real-time payments.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/the-hidden-cost-of-over-compliance-in.html",
+  tag: "COMPLIANCE RISK",
+  source: "Blogspot",
+},
+{
+  title: "Banking Transformation in 2026: AI, Quantum Data & Rules-Driven Systems",
+  description:
+    "A comprehensive view of banking transformation powered by AI and rules-based logic.",
+  url: "https://abhinay2025.blogspot.com/2026/01/banking-transformation-in-2026-ai.html",
+  tag: "BANKING TRANSFORMATION",
+  source: "Blogspot",
+},
+{
+  title: "How Payment Retry Logic Quietly Distorts Risk Metrics",
+  description:
+    "Explains how retry mechanisms distort risk signals and operational metrics.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/how-payment-retry-logic-quietly.html",
+  tag: "PAYMENT RISK",
+  source: "Blogspot",
+},
+{
+  title: "When Every Transaction Is Urgent: Reprioritizing Risk in 24/7 Payments",
+  description:
+    "Discusses why 24/7 payments require new approaches to transaction prioritization.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/when-every-transaction-is-urgent.html",
+  tag: "24x7 PAYMENTS",
+  source: "Blogspot",
+},
+{
+  title: "Why Banks Lose Institutional Knowledge During Payment Platform Migrations",
+  description:
+    "Explains how platform migrations erode operational and institutional knowledge.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/why-banks-lose-institutional-knowledge.html",
+  tag: "PAYMENT TRANSFORMATION",
+  source: "Blogspot",
+},
+{
+  title: "The Myth of Straight-Through Processing in Modern Payment Flows",
+  description:
+    "Challenges the belief that straight-through processing eliminates exceptions.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/the-myth-of-straight-through-processing.html",
+  tag: "PAYMENT OPERATIONS",
+  source: "Blogspot",
+},
+{
+  title: "How Fragmented Exception Queues Create Regulatory Exposure",
+  description:
+    "Explains how fragmented exception handling increases regulatory and audit risk.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/how-fragmented-exception-queues-create.html",
+  tag: "REGULATORY RISK",
+  source: "Blogspot",
+},
+{
+  title: "Real-Time Payments and the End of End-of-Day Controls",
+  description:
+    "Explores why end-of-day controls fail in always-on payment systems.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/real-time-payments-and-end-of-end-of.html",
+  tag: "PAYMENT CONTROLS",
+  source: "Blogspot",
+},
+{
+  title: "Why Payment Rules Age Faster Than Fraud Patterns",
+  description:
+    "Analyzes why static payment rules decay faster than evolving fraud behavior.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/10-why-payment-rules-age-faster-than.html",
+  tag: "FRAUD & RULES",
+  source: "Blogspot",
+},
+{
+  title: "Operational Debt in Payments: The Risks Nobody Budgets For",
+  description:
+    "Explores hidden operational debt created by payment system shortcuts.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/operational-debt-in-payments-risks.html",
+  tag: "OPERATIONAL RISK",
+  source: "Blogspot",
+},
+{
+  title: "Payment Risk in Non-Monetary Messages: A Blind Spot in ISO 20022",
+  description:
+    "Highlights overlooked risks in non-monetary ISO 20022 payment messages.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/payment-risk-in-non-monetary-messages.html",
+  tag: "ISO 20022",
+  source: "Blogspot",
+},
+{
+  title: "Why Faster Settlement Increases Not Decreases Balance Sheet Volatility",
+  description:
+    "Explains why faster settlement can amplify, not reduce, balance sheet risk.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/why-faster-settlement-increases-not.html",
+  tag: "LIQUIDITY RISK",
+  source: "Blogspot",
+},
+{
+  title: "The Organizational Silos That Undermine Payment Modernization",
+  description:
+    "Explores how internal silos slow down payment transformation programs.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/the-organizational-silos-that-undermine.html",
+  tag: "PAYMENT MODERNIZATION",
+  source: "Blogspot",
+},
+{
+  title: "From Monitoring to Accountability: Who Actually Owns Payment Risk?",
+  description:
+    "Challenges traditional monitoring models and questions true risk ownership.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/from-monitoring-to-accountability-who.html",
+  tag: "PAYMENT RISK GOVERNANCE",
+  source: "Blogspot",
+}
 ];

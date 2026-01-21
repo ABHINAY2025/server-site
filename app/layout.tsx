@@ -13,11 +13,14 @@ export const metadata: Metadata = {
   title: 'Quantum Data Leap - Intelligent Banking Platform',
   description:
     'Transform your banking operations with intelligent data control, liquidity management, fraud detection, and automated compliance rules.',
+  icons: {
+    icon: '/logo.png',
+  },
 }
 
 export default function RootLayout({
   children,
-}: {
+}: { 
   children: React.ReactNode
 }) {
   return (
