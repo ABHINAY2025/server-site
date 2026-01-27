@@ -1451,5 +1451,245 @@ export const carouselBlogs: ExternalBlog[] = [
   url: "https://aishwaryadutpala.blogspot.com/2026/01/from-monitoring-to-accountability-who.html",
   tag: "PAYMENT RISK GOVERNANCE",
   source: "Blogspot",
-}
+},
+{
+  title: "Why Real-Time Payments Expose Gaps Between Policy and Execution",
+  description:
+    "Explores how instant payments reveal disconnects between written policy and real-world execution.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/why-real-time-payments-expose-gaps.html",
+  tag: "PAYMENT GOVERNANCE",
+  source: "Blogspot",
+},
+{
+  title: "Payment Risk Isn’t Binary: Managing Gray-Area Transactions at Scale",
+  description:
+    "Discusses managing non-binary, gray-area payment risks at enterprise scale.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/payment-risk-isnt-binary-managing-gray.html",
+  tag: "PAYMENT RISK",
+  source: "Blogspot",
+},
+{
+  title: "How Micro-Failures in Payment Systems Snowball Into Major Incidents",
+  description:
+    "Explains how small, ignored failures compound into large-scale payment outages.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/how-micro-failures-in-payment-systems.html",
+  tag: "OPERATIONAL RISK",
+  source: "Blogspot",
+},
+{
+  title: "The Cost of Treating Payment Infrastructure as “Always Available”",
+  description:
+    "Analyzes the hidden costs and risks of assuming payment systems are always available.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/the-cost-of-treating-payment.html",
+  tag: "PAYMENT INFRASTRUCTURE",
+  source: "Blogspot",
+},
+{
+  title: "Why Payment Governance Breaks Down in Federated Bank Architectures",
+  description:
+    "Explores governance failures in banks with federated payment architectures.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/why-payment-governance-breaks-down-in.html",
+  tag: "PAYMENT GOVERNANCE",
+  source: "Blogspot",
+},
+{
+  title: "Operational Resilience vs Payment Throughput: Finding the Right Balance",
+  description:
+    "Examines the trade-off between operational resilience and payment throughput.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/operational-resilience-vs-payment.html",
+  tag: "OPERATIONAL RESILIENCE",
+  source: "Blogspot",
+},
+{
+  title: "The Unseen Risk of Parallel Payment Rails Inside Large Banks",
+  description:
+    "Highlights risks created by parallel and duplicated payment rails inside banks.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/the-unseen-risk-of-parallel-payment.html",
+  tag: "PAYMENT ARCHITECTURE",
+  source: "Blogspot",
+},
+{
+  title: "Why Payment Controls Designed for Fraud Miss Operational Risk",
+  description:
+    "Explains why fraud-focused controls fail to capture broader operational risk.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/why-payment-controls-designed-for-fraud.html",
+  tag: "OPERATIONAL RISK",
+  source: "Blogspot",
+},
+{
+  title: "From Compliance Checklists to Continuous Assurance in Payments",
+  description:
+    "Argues for shifting from static compliance checklists to continuous assurance models.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/from-compliance-checklists-to.html",
+  tag: "COMPLIANCE",
+  source: "Blogspot",
+},
+{
+  title: "How Payment System Dependencies Create Single Points of Failure",
+  description:
+    "Explores how hidden dependencies create systemic payment failure risks.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/how-payment-system-dependencies-create.html",
+  tag: "SYSTEMIC RISK",
+  source: "Blogspot",
+},
+{
+  title: "The Hidden Trade-Off Between Payment Speed and Dispute Resolution",
+  description:
+    "Analyzes how faster payments complicate dispute resolution and reversals.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/the-hidden-trade-off-between-payment.html",
+  tag: "PAYMENT DISPUTES",
+  source: "Blogspot",
+},
+{
+  title: "Why Payment Modernization Fails Without Process Re-engineering",
+  description:
+    "Explains why technology upgrades fail without redesigning underlying processes.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/why-payment-modernization-fails-without.html",
+  tag: "PAYMENT MODERNIZATION",
+  source: "Blogspot",
+},
+{
+  title: "Payment Risk Ownership: Where Lines Blur Between IT, Ops, and Risk Teams",
+  description:
+    "Explores unclear ownership of payment risk across bank functions.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/payment-risk-ownership-where-lines-blur.html",
+  tag: "PAYMENT RISK GOVERNANCE",
+  source: "Blogspot",
+},
+{
+  title: "Why Transaction Success Rates Hide More Than They Reveal",
+  description:
+    "Explains why surface-level success metrics mask deeper payment risks.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/why-transaction-success-rates-hide-more.html",
+  tag: "PAYMENT METRICS",
+  source: "Blogspot",
+},
+{
+  title: "The Evolution of Payment Controls in a Post-Batch World",
+  description:
+    "Discusses how payment controls must evolve beyond batch-based models.",
+  url: "https://aishwaryadutpala.blogspot.com/2026/01/the-evolution-of-payment-controls-in.html",
+  tag: "PAYMENT CONTROLS",
+  source: "Blogspot",
+},
+{
+  title: "Why Real-Time Payments Turn Small Control Gaps Into Major Losses",
+  description:
+    "Explores how minor control gaps escalate quickly in real-time payments.",
+  url: "https://abhinay2025.blogspot.com/2026/01/why-real-time-payments-turn-small.html",
+  tag: "PAYMENT LOSSES",
+  source: "Blogspot",
+},
+{
+  title: "The Operational Risk of “Fire-and-Forget” Payment Processing",
+  description:
+    "Analyzes risks created by fire-and-forget payment execution models.",
+  url: "https://abhinay2025.blogspot.com/2026/01/the-operational-risk-of-fire-and-forget.html",
+  tag: "OPERATIONAL RISK",
+  source: "Blogspot",
+},
+{
+  title: "How Payment Prioritization Rules Distort Customer Outcomes",
+  description:
+    "Explains how prioritization logic can unintentionally harm customers.",
+  url: "https://abhinay2025.blogspot.com/2026/01/how-payment-prioritization-rules.html",
+  tag: "CUSTOMER IMPACT",
+  source: "Blogspot",
+},
+{
+  title: "Why Payment Failures Are an Enterprise Problem, Not an IT Issue",
+  description:
+    "Argues that payment failures require enterprise-wide accountability.",
+  url: "https://abhinay2025.blogspot.com/2026/01/why-payment-failures-are-enterprise.html",
+  tag: "ENTERPRISE RISK",
+  source: "Blogspot",
+},
+{
+  title: "The Hidden Cost of Manual Overrides in Automated Payment Systems",
+  description:
+    "Explores how manual overrides undermine automation and increase risk.",
+  url: "https://abhinay2025.blogspot.com/2026/01/the-hidden-cost-of-manual-overrides-in.html",
+  tag: "AUTOMATION RISK",
+  source: "Blogspot",
+},
+{
+  title: "Why Faster Payments Force Banks to Rethink Risk Appetite Statements",
+  description:
+    "Explains how faster settlement challenges traditional risk appetite models.",
+  url: "https://abhinay2025.blogspot.com/2026/01/why-faster-payments-force-banks-to.html",
+  tag: "RISK GOVERNANCE",
+  source: "Blogspot",
+},
+{
+  title: "How Poor Exception Categorization Skews Payment Risk Reporting",
+  description:
+    "Discusses how misclassified exceptions distort payment risk reporting.",
+  url: "https://abhinay2025.blogspot.com/2026/01/how-poor-exception-categorization-skews.html",
+  tag: "RISK REPORTING",
+  source: "Blogspot",
+},
+{
+  title: "Payment Readiness Testing: Why Go-Live Checklists Aren’t Enough",
+  description:
+    "Explains why true payment readiness requires more than basic go-live checks.",
+  url: "https://abhinay2025.blogspot.com/2026/01/payment-readiness-testing-why-go-live.html",
+  tag: "PAYMENT TESTING",
+  source: "Blogspot",
+},
+{
+  title: "Why Most Banks Can’t Explain Why a Payment Was Blocked",
+  description:
+    "Explores the lack of explainability in payment decisioning systems.",
+  url: "https://abhinay2025.blogspot.com/2026/01/why-most-banks-cant-explain-why-payment.html",
+  tag: "PAYMENT DECISIONING",
+  source: "Blogspot",
+},
+{
+  title: "The Risk of Over-Centralizing Payment Decision Engines",
+  description:
+    "Analyzes systemic risks of over-centralized payment decision engines.",
+  url: "https://abhinay2025.blogspot.com/2026/01/the-risk-of-over-centralizing-payment.html",
+  tag: "ARCHITECTURAL RISK",
+  source: "Blogspot",
+},
+{
+  title: "How Real-Time Payments Change the Economics of Error Correction",
+  description:
+    "Explores how instant payments raise the cost of correcting errors.",
+  url: "https://abhinay2025.blogspot.com/2026/01/how-real-time-payments-change-economics.html",
+  tag: "ERROR MANAGEMENT",
+  source: "Blogspot",
+},
+{
+  title: "Why Payment SLAs Create False Confidence During Normal Operations",
+  description:
+    "Explains why SLA compliance can mask underlying payment weaknesses.",
+  url: "https://abhinay2025.blogspot.com/2026/01/why-payment-slas-create-false.html",
+  tag: "PAYMENT SLAs",
+  source: "Blogspot",
+},
+{
+  title: "The Growing Dependency Risk Between Fraud, AML, and Payments Teams",
+  description:
+    "Explores inter-team dependencies creating systemic risk across banks.",
+  url: "https://abhinay2025.blogspot.com/2026/01/the-growing-dependency-risk-between.html",
+  tag: "CROSS-FUNCTIONAL RISK",
+  source: "Blogspot",
+},
+{
+  title: "Why Payment Transparency Matters More Than Payment Speed",
+  description:
+    "Argues transparency is more critical than raw speed in payment systems.",
+  url: "https://abhinay2025.blogspot.com/2026/01/why-payment-transparency-matters-more.html",
+  tag: "PAYMENT TRANSPARENCY",
+  source: "Blogspot",
+},
+{
+  title: "From Transaction Logs to Accountability: Auditing Decisions in Real-Time Payments",
+  description:
+    "Explores how real-time auditability enables true accountability in payments.",
+  url: "https://abhinay2025.blogspot.com/2026/01/from-transaction-logs-to-accountability.html",
+  tag: "PAYMENT AUDITABILITY",
+  source: "Blogspot",
+},
 ];
