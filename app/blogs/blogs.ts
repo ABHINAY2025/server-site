@@ -1692,4 +1692,46 @@ export const carouselBlogs: ExternalBlog[] = [
   tag: "PAYMENT AUDITABILITY",
   source: "Blogspot",
 },
+{
+  title: "The Quantum Leap: Quantum Computing and Data Centers",
+  description:
+    "Explores how quantum computing is reshaping data center architectures and infrastructure requirements.",
+  url: "https://www.databank.com/resources/blogs/the-quantum-leap-quantum-computing-and-data-centers/",
+  tag: "QUANTUM",
+  source: "DataBank",
+},
+{
+  title: "Quantum Computing — A Quantum Leap for Data Science and AI",
+  description:
+    "A Medium article on how quantum computing could accelerate data science and AI capabilities.",
+  url: "https://medium.com/@workmania15/quantum-computing-a-quantum-leap-for-data-science-and-ai-774fbf922743",
+  tag: "QUANTUM",
+  source: "Medium",
+},
+{
+  title: "Quantum Computing: The Next Big Leap for Data Science",
+  description:
+    "Discussion of quantum computing's potential impacts on data science workflows and analytics.",
+  url: "https://ioaglobal.org/blog/quantum-computing-the-next-big-leap-for-data-science/",
+  tag: "QUANTUM",
+  source: "IOA Global",
+},
+{
+  title: "Quantum Computing Leap: What to Expect Next",
+  description:
+    "An overview of practical expectations and timelines for quantum computing adoption.",
+  url: "https://cubettech.com/resources/blog/quantum-computing-leap-what-to-expect-next/",
+  tag: "QUANTUM",
+  source: "CubetTech",
+},
+{
+  title: "The Quantum Leap: Uniting Industry 4.0 and Quantum Computing",
+  description:
+    "Quantum computing harnesses extraordinary computational power, surpassing the capabilities of traditional supercomputers.",
+  url: "https://digitalisationworld.com/blog/57488/the-quantum-leap-uniting-industry-40-and-quantum-computing",
+  tag: "QUANTUM",
+  source: "Digitalisation World",
+},
+
+// NOTE: the provided Quleap URL seemed malformed ("ttps://quleap.com/blog.phph"). Please confirm the correct link if you want it included.
 ];
