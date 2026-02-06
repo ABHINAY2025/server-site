@@ -55,7 +55,7 @@ export default function PredictiveIntelligencePage() {
         </p>
       </div>
 
-      <div className="space-y-4 rounded-lg border border-border bg-gradient-to-br from-primary/10 to-primary/5 p-6">
+      {/* <div className="space-y-4 rounded-lg border border-border bg-gradient-to-br from-primary/10 to-primary/5 p-6">
         <h2 className="text-2xl font-semibold">Get Intelligent Insights</h2>
         <p className="text-muted-foreground">
           Transform your data into actionable intelligence and gain competitive advantage.
@@ -63,7 +63,7 @@ export default function PredictiveIntelligencePage() {
         <button className="mt-4 rounded-lg bg-primary px-6 py-2 font-medium text-primary-foreground transition-colors hover:bg-primary/90">
           Schedule a Demo
         </button>
-      </div>
+      </div> */}
     </motion.div>
   )
 }
