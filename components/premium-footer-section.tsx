@@ -32,13 +32,13 @@ const footerLinks = {
 }
 
 const socialLinks = [
-  { icon: Linkedin, href: "https://www.linkedin.com/company/fisecglobalinc", label: "LinkedIn" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/quantum-data-leap", label: "LinkedIn" },
 ]
 
 export function PremiumFooterSection() {
   return (
-    <footer className="relative z-10 border-t border-border bg-gradient-to-br from-white via-[#FF6B9A]/15 to-[#7B5CF6]/15">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <footer className="relative z-10 border-t border-border">
+      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 relative z-10">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-6">
           {/* Brand Section */}
           <div className="lg:col-span-2">
