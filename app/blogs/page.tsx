@@ -126,7 +126,7 @@ export default function BlogsPage() {
         <section className="mt-24">
           <div className="mb-8 flex justify-between">
             <h2 className="text-3xl font-semibold">
-              More insights on <br /> payments & intelligence
+              More insights on <br /> intelligent banking, data and design.
             </h2>
           </div>
 
