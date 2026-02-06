@@ -2,6 +2,7 @@
 
 import type React from "react"
 import { useState } from "react"
+import { motion } from "framer-motion"
 import { ChevronDown } from "lucide-react"
 
 const faqData = [
@@ -91,16 +92,15 @@ export function FAQSection() {
     setOpenItems(newOpenItems)
   }
   return (
-    <section className="w-full pb-20  px-5 relative flex flex-col justify-center items-center">
-      <div className="w-[300px] h-[500px] absolute top-[150px] left-1/2 -translate-x-1/2 origin-top-left rotate-[-33.39deg] bg-primary/10 blur-[100px] z-0" />
+    <section className="w-full pb-20 px-5 relative flex flex-col justify-center items-center overflow-hidden">
       <div className="self-stretch pt-8 pb-8 flex flex-col justify-center items-center gap-2 relative z-10">
         <div className="flex flex-col justify-start items-center gap-4">
           <h2 className="mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl">
             Frequently Asked Questions
           </h2>
-          <p className="self-stretch text-center text-[#4b535c] text-sm font-medium leading-[18.20px] break-words">
-            Everything you need to know about Pointer and how it can transform your development workflow
-          </p>
+          {/* <p className="self-stretch text-center text-[#4b535c] text-sm font-medium leading-[18.20px] break-words">
+            Everything you need to know about QDL and how it can transform your development workflow
+          </p> */}
         </div>
       </div>
       <div className="w-full max-w-[600px] pt-0.5 pb-10 flex flex-col justify-start items-start gap-4 relative z-10">
