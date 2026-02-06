@@ -21,8 +21,8 @@ export default function AutomatedWorkflowsPage() {
       className="space-y-8"
     >
       <div>
-        <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-          <Zap className="h-8 w-8" />
+        <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl" style={{background: "linear-gradient(135deg, rgba(255, 107, 154, 0.1), rgba(123, 92, 246, 0.1))"}}>
+          <Zap className="h-8 w-8" style={{background: "linear-gradient(135deg, #FF6B9A, #7B5CF6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"}} />
         </div>
         <h1 className="mb-4 text-4xl font-bold lg:text-5xl">Automated Workflows</h1>
         <p className="text-lg text-muted-foreground">
@@ -41,7 +41,7 @@ export default function AutomatedWorkflowsPage() {
               transition={{ delay: index * 0.1 }}
               className="flex items-start gap-3"
             >
-              <CheckCircle2 className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+              <CheckCircle2 className="mt-1 h-5 w-5 flex-shrink-0" style={{background: "linear-gradient(135deg, #FF6B9A, #7B5CF6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"}} />
               <span className="text-foreground">{feature}</span>
             </motion.li>
           ))}
