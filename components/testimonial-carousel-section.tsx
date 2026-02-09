@@ -8,25 +8,25 @@ import { AnimatedSection } from "./animated-section"
 const testimonials = [
   {
     quote:
-      "The AI-powered insights from QDL have been a game-changer. We're making data-driven decisions faster and with more confidence than ever before.",
+      "QDL significantly improved our data quality and fraud detection. The AI-driven insights reduced false positives and strengthened our compliance reporting. It’s now a core part of our risk operations.",
     name: "Cameron Williamson",
-    role: "IT Director",
+    role: "Head of Risk & Compliance",
     avatar: "/images/avatars/cameron-williamson.webp",
     rating: 5,
   },
   {
     quote:
-      "We started with a trial and were impressed from day one. The real-time monitoring and automated workflows have streamlined our entire operation.",
+      "QDL’s Liquidity Management Tool transformed our cash flow operations. Real-time forecasting and AI recommendations helped us reduce idle cash and improve funding efficiency.",
     name: "Darlene Robertson",
-    role: "Operations Manager",
+    role: "Treasury Director",
     avatar: "/images/avatars/darlene-robertson.webp",
     rating: 5,
   },
   {
     quote:
-      "QDL's multi-bank integration made it easy to connect all our systems. The deployment was smooth, and we saw value within the first week.",
+      "The Rules Management Bot simplified AML and KYC rule governance and reduced manual effort. Seamless integration and explainable AI made adoption fast and effective.",
     name: "Albert Flores",
-    role: "Technology Lead",
+    role: "CTO",
     avatar: "/images/avatars/albert-flores.webp",
     rating: 5,
   },
