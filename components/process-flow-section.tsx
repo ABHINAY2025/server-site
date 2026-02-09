@@ -1,8 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { color, motion } from "framer-motion"
-import { CheckCircle2, ArrowRight } from "lucide-react"
+import { motion } from "framer-motion"
+import { CheckCircle2, Zap, Lock, TrendingUp } from "lucide-react"
 import { AnimatedSection } from "./animated-section"
 
 const processSteps = [
@@ -11,28 +11,36 @@ const processSteps = [
     title: "Integrate with the System",
     description:
       "Integrate seamlessly with your existing banking infrastructure and data sources using our secure APIs.",
-    icon: CheckCircle2,
+    icon: Zap,
+    color: "from-[#FF6B9A] to-[#FF8AB8]",
+    bgColor: "rgba(255, 107, 154, 0.08)",
   },
   {
     step: "02",
     title: "Configurations",
     description:
       "Set up intelligent modules for data control, liquidity management, fraud detection, and rule automation.",
-    icon: CheckCircle2,
+    icon: Lock,
+    color: "from-[#7B5CF6] to-[#9D7FF3]",
+    bgColor: "rgba(123, 92, 246, 0.08)",
   },
   {
     step: "03",
     title: "Deploy & Automate",
     description:
       "Launch your intelligent banking platform with automated workflows that adapt to your business needs.",
-    icon: CheckCircle2,
+    icon: Zap,
+    color: "from-[#FF6B9A] to-[#FF8AB8]",
+    bgColor: "rgba(255, 107, 154, 0.08)",
   },
   {
     step: "04",
     title: "Monitor & Optimize",
     description:
       "Track performance with real-time dashboards and continuously improve with AI-powered insights.",
-    icon: CheckCircle2,
+    icon: TrendingUp,
+    color: "from-[#7B5CF6] to-[#9D7FF3]",
+    bgColor: "rgba(123, 92, 246, 0.08)",
   },
 ]
 
@@ -40,19 +48,18 @@ export function ProcessFlowSection() {
   return (
     <AnimatedSection
       id="process-section"
-      className="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8"
+      className="relative z-10 mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8"
     >
-      <div className="mx-auto max-w-3xl text-center">
+      <div className="mx-auto max-w-2xl text-center mb-20">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl"
+          className="mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl text-gray-900"
         >
           Simple
-          <span className="block bg-gradient-to-r from-[#FF6B9A] to-[#7B5CF6] bg-clip-text text-transparent
-">
+          <span className="block bg-gradient-to-r from-[#FF6B9A] to-[#7B5CF6] bg-clip-text text-transparent">
             Implementation Process
           </span>
         </motion.h2>
@@ -61,21 +68,29 @@ export function ProcessFlowSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-lg text-muted-foreground"
-          style={{color: "#4b535c"}}
+          className="text-lg font-medium"
+          style={{ color: "#4b535c" }}
         >
           Get started with QDL in four straightforward steps
         </motion.p>
       </div>
 
-      {/* Process Steps */}
-      <div className="mt-16 relative">
-        {/* Connection Line (hidden on mobile) */}
-        <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 transform -translate-y-1/2" style={{backgroundImage: "linear-gradient(to right, rgba(255, 107, 154, 0.2), rgba(123, 92, 246, 0.4), rgba(255, 107, 154, 0.2))"}} />
+      {/* Vertical Timeline */}
+      <div className="relative">
+        {/* Vertical Connecting Line */}
+        <div
+          className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1"
+          style={{
+            backgroundImage:
+              "linear-gradient(to bottom, rgba(255, 107, 154, 0.3), rgba(123, 92, 246, 0.5), rgba(255, 107, 154, 0.3))",
+          }}
+        />
 
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="space-y-10 md:space-y-12">
           {processSteps.map((process, index) => {
             const Icon = process.icon
+            const isEven = index % 2 === 0
+
             return (
               <motion.div
                 key={process.step}
@@ -88,23 +103,12 @@ export function ProcessFlowSection() {
                   damping: 15,
                   delay: index * 0.15,
                 }}
-                className="relative group"
+                className={`relative flex items-center gap-6 md:gap-12 ${
+                  !isEven && "md:flex-row-reverse"
+                }`}
               >
-                {/* Step Card */}
-                <div className="relative h-full rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-300" style={{borderColor: "rgba(0, 0, 0, 0.1)"}} onMouseEnter={(e) => {e.currentTarget.style.borderColor = "rgba(255, 107, 154, 0.5)"; e.currentTarget.style.boxShadow = "0 20px 25px -5px rgba(255, 107, 154, 0.1), 0 10px 10px -5px rgba(123, 92, 246, 0.05)";}} onMouseLeave={(e) => {e.currentTarget.style.borderColor = "rgba(0, 0, 0, 0.1)"; e.currentTarget.style.boxShadow = "0 1px 2px 0 rgb(0 0 0 / 0.05)";}}>
-                  {/* Step Number Badge */}
-                  <div className="mb-4 flex items-center justify-between">
-                    <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{color: "#22262a", backgroundColor: "rgba(255, 107, 154, 0.1)"}}>
-                      {process.step}
-                    </span>
-                    {index < processSteps.length - 1 && (
-                      <div className="hidden lg:block">
-                        <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-[#c564c2] transition-colors" />
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Icon */}
+                {/* Timeline Dot */}
+                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-12">
                   <motion.div
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -113,41 +117,122 @@ export function ProcessFlowSection() {
                       type: "spring",
                       stiffness: 200,
                       damping: 15,
-                      delay: index * 0.15 + 0.2,
+                      delay: index * 0.15 + 0.1,
                     }}
-                    className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl transition-colors group-hover:shadow-lg"
-                    style={{
-                      backgroundColor: "rgba(255, 107, 154, 0.1)",
-                      backgroundImage: "linear-gradient(135deg, rgba(255, 107, 154, 0.08), rgba(123, 92, 246, 0.08))",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = "rgba(255, 107, 154, 0.15)";
-                      e.currentTarget.style.backgroundImage = "linear-gradient(135deg, rgba(255, 107, 154, 0.15), rgba(123, 92, 246, 0.15))";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = "rgba(255, 107, 154, 0.1)";
-                      e.currentTarget.style.backgroundImage = "linear-gradient(135deg, rgba(255, 107, 154, 0.08), rgba(123, 92, 246, 0.08))";
-                    }}
+                    className="relative"
                   >
-                    <Icon className="h-6 w-6" style={{background: "linear-gradient(135deg, #FF6B9A, #7B5CF6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"}} />
+                    <div
+                      className="w-4 h-4 rounded-full border-2 border-white relative z-10"
+                      style={{
+                        background: `linear-gradient(135deg, ${process.color.split(" ")[1]}, ${process.color.split(" ")[3]})`,
+                        boxShadow: "0 0 20px rgba(255, 107, 154, 0.3)",
+                      }}
+                    />
+                    <div
+                      className="absolute inset-0 w-6 h-6 rounded-full -z-10 blur-lg"
+                      style={{
+                        background: `linear-gradient(135deg, ${process.color.split(" ")[1]}, ${process.color.split(" ")[3]})`,
+                      }}
+                    />
                   </motion.div>
-
-                  {/* Title */}
-                  <h3 className="mb-3 text-xl font-semibold text-card-foreground">
-                    {process.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-muted-foreground leading-relaxed text-sm">
-                    {process.description}
-                  </p>
                 </div>
 
-                {/* Arrow Connector for Mobile/Tablet */}
+                {/* Step Card - Left/Right */}
+                <div className="w-full md:w-1/2">
+                  <motion.div
+                    className="relative group rounded-xl border border-gray-200 bg-white p-4 shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden"
+                    whileHover={{ y: -5 }}
+                  >
+                    {/* Background Gradient Accent */}
+                    <div
+                      className="absolute -top-16 -right-16 w-40 h-40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style={{
+                        background: `radial-gradient(circle, ${process.bgColor}, transparent)`,
+                      }}
+                    />
+
+                    {/* Step Number Badge */}
+                    <div className="flex items-center justify-between mb-1 relative z-10">
+                      <span
+                        className="inline-flex items-center justify-center h-7 w-7 rounded-full font-bold text-xs text-white"
+                        style={{
+                          background: "linear-gradient(135deg, rgb(238 199 220), rgb(168 158 245))",
+                        }}
+                      >
+                        {process.step}
+                      </span>
+                    </div>
+
+                    {/* Content Flex Layout */}
+                    <div className="flex items-center gap-3 relative z-10">
+                      {/* Left Content - Title and Description */}
+                      <div className="flex-1">
+                        {/* Title */}
+                        <h3 className="mb-1 text-base font-semibold text-gray-900">
+                          {process.title}
+                        </h3>
+
+                        {/* Description */}
+                        <p
+                          className="text-xs leading-snug"
+                          style={{ color: "#4b535c" }}
+                        >
+                          {process.description}
+                        </p>
+                      </div>
+
+                      {/* Right Icon */}
+                      <motion.div
+                        initial={{ scale: 0, opacity: 0 }}
+                        whileInView={{ scale: 1, opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 200,
+                          damping: 15,
+                          delay: index * 0.15 + 0.15,
+                        }}
+                        className="flex-shrink-0"
+                      >
+                        <div
+                          className="inline-flex h-14 w-14 items-center justify-center rounded-xl"
+                          style={{
+                            backgroundColor: process.bgColor,
+                            background: `linear-gradient(135deg, ${process.bgColor}, rgba(123, 92, 246, 0.04))`,
+                          }}
+                        >
+                          <Icon
+                            className="h-7 w-7"
+                            style={{
+                              background: `linear-gradient(135deg, ${process.color
+                                .split(" ")[1]}, ${process.color.split(" ")[3]})`,
+                              WebkitBackgroundClip: "text",
+                              WebkitTextFillColor: "transparent",
+                              backgroundClip: "text",
+                            }}
+                          />
+                        </div>
+                      </motion.div>
+                    </div>
+
+                    {/* Border Gradient on Hover */}
+                    <div
+                      className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                      style={{
+                        background: `linear-gradient(135deg, rgba(255, 107, 154, 0.1), rgba(123, 92, 246, 0.1))`,
+                        border: "1px solid transparent",
+                        backgroundClip: "padding-box",
+                      }}
+                    />
+                  </motion.div>
+                </div>
+
+                {/* Spacer for layout */}
+                <div className="hidden md:block w-1/2" />
+
+                {/* Mobile Timeline Indicator */}
                 {index < processSteps.length - 1 && (
-                  <div className="lg:hidden flex justify-center my-4">
-                    <ArrowRight className="h-5 w-5 text-muted-foreground" />
-                  </div>
+                  <div className="md:hidden absolute left-[11px] top-24 w-0.5 h-12 bg-gradient-to-b from-gray-300 to-transparent" />
                 )}
               </motion.div>
             )
