@@ -5,6 +5,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import {Linkedin, Heart } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { FooterBackdrop } from "./footer-backdrop"
 
 const footerLinks = {
   product: [
@@ -37,7 +38,8 @@ const socialLinks = [
 
 export function PremiumFooterSection() {
   return (
-    <footer className="relative z-10 border-t border-border">
+    <footer className="relative z-10 border-t border-border overflow-hidden">
+      <FooterBackdrop />
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 relative z-10">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-6">
           {/* Brand Section */}
