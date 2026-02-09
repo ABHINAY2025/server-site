@@ -7,13 +7,15 @@ import { PremiumGettingStartedSection } from "@/components/premium-getting-start
 import { FAQSection } from "@/components/faq-section"
 import { PremiumFooterSection } from "@/components/premium-footer-section"
 import { FlowingArrows } from "@/components/flowing-arrows"
+import { PageBackdrop } from "@/components/page-backdrop"
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
+    <div className="min-h-screen bg-transparent relative overflow-hidden">
+      <PageBackdrop />
       <FlowingArrows />
 
-      <div className="relative z-10">
+      <div className="relative z-10 bg-transparent">
         {/* Hero Section - Full Width with Gradient */}
         <PremiumHeroSection />
 
