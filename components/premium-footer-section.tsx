@@ -66,7 +66,7 @@ export function PremiumFooterSection() {
                       aria-label={social.label}
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:border-primary hover:bg-primary/10 hover:text-primary"
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:border-[#3b094abd] hover:bg-[#3b094abd]/10 hover:text-[#3b094abd]"
                     >
                       <Icon className="h-5 w-5" />
                     </motion.a>
@@ -91,7 +91,7 @@ export function PremiumFooterSection() {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-sm text-foreground transition-colors hover:text-primary"
+                    className="text-sm text-foreground transition-colors hover:text-[#3b094abd]"
                   >
                     {link.label}
                   </a>
@@ -139,7 +139,7 @@ export function PremiumFooterSection() {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-sm text-foreground transition-colors hover:text-primary"
+                    className="text-sm text-foreground transition-colors hover:text-[#3b094abd]"
                   >
                     {link.label}
                   </a>
@@ -163,7 +163,7 @@ export function PremiumFooterSection() {
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="text-sm text-foreground transition-colors hover:text-primary"
+                    className="text-sm text-foreground transition-colors hover:text-[#3b094abd]"
                   >
                     {link.label}
                   </Link>
@@ -187,7 +187,7 @@ export function PremiumFooterSection() {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-sm text-foreground transition-colors hover:text-primary"
+                    className="text-sm text-foreground transition-colors hover:text-[#3b094abd]"
                   >
                     {link.label}
                   </a>
