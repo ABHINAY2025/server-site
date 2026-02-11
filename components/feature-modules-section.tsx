@@ -97,52 +97,91 @@ const modules = [
   },
 ]
 
+// Animated Money Symbol Component
+const AnimatedMoneySymbol = ({ delay }: { delay: number }) => {
+  const symbols = ["$", "€", "¥", "₹"]
+  const symbol = symbols[Math.floor(Math.random() * symbols.length)]
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 100, x: -50, scale: 0 }}
+      animate={{ 
+        opacity: [0, 1, 1, 0],
+        y: [100, -100],
+        x: [-50, Math.random() * 100 - 50],
+        scale: [0, 1, 1, 0],
+        rotate: [0, 360],
+      }}
+      transition={{ 
+        duration: 4,
+        delay,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }}
+      className="absolute text-5xl font-bold text-white/30"
+    >
+      {symbol}
+    </motion.div>
+  )
+}
+
 export function FeatureModulesSection() {
   return (
-    <AnimatedSection id="features-section" className="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-3xl text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
+    <AnimatedSection id="features-section" className="relative z-10 mx-auto w-full py-20 sm:py-28 lg:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Background Card Container */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl"
+          transition={{ duration: 0.8 }}
+          className="relative rounded-3xl bg-gradient-to-br from-white via-blue-50/40 to-purple-50/40 backdrop-blur-xl border border-white/70 shadow-2xl p-12 lg:p-16 overflow-hidden"
         >
-          Powerful Modules for
-          <span className="block bg-gradient-to-r from-[#FF6B9A] to-[#7B5CF6] bg-clip-text text-transparent
-">
-            Intelligent Banking
-          </span>
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-lg text-muted-foreground"
-          style={{color: "#4b535c"}}
+          {/* Decorative corner elements */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-blue-200/20 to-purple-200/20 rounded-full blur-3xl -mr-48 -mt-48 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-72 h-72 bg-gradient-to-tr from-pink-200/20 to-blue-200/20 rounded-full blur-3xl -ml-36 -mb-36 pointer-events-none" />
 
-        >
-          Comprehensive solutions designed to transform every aspect of your
-          banking operations
-        </motion.p>
-      </div>
+          {/* Content */}
+          <div className="relative z-10">
+            {/* Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+                Complete <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Feature Suite</span>
+              </h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Each module is designed with enterprise-grade security, real-time capabilities, and seamless integration to power your banking operations.
+              </p>
+            </motion.div>
 
-      {/* Staggered grid on desktop, vertical stack on mobile */}
-      <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-2">
-        {modules.map((module, index) => (
-
-
-<ModuleCard
-            key={index}
-            icon={module.icon}
-            title={module.title}
-            description={module.description}
-            features={module.features}
-            delay={index * 0.1}
-            className="h-full"
-          />
-        ))}
+            {/* 2x2 Grid Layout for cards */}
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
+              {modules.map((module, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                >
+                  <ModuleCard
+                    icon={module.icon}
+                    title={module.title}
+                    description={module.description}
+                    features={module.features}
+                    delay={index * 0.1}
+                    className="h-full"
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
     </AnimatedSection>
   )
