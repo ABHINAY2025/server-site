@@ -152,7 +152,9 @@ export function FeatureModulesSection() {
               className="text-center mb-16"
             >
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
-                Complete <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Feature Suite</span>
+                Complete{" "} <span className="bg-gradient-to-r from-[#ff6b9a] to-[#7b5cf6] bg-clip-text text-transparent">
+  Feature Suite
+</span>
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
                 Each module is designed with enterprise-grade security, real-time capabilities, and seamless integration to power your banking operations.
