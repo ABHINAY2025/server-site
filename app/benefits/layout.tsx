@@ -11,7 +11,7 @@ export default function BenefitsLayout({
   return (
     <div className="min-h-screen bg-background">
       <div className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="mx-auto max-w-4xl px-4 py-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-screen-2xl px-4 py-4 sm:px-6 lg:px-8">
           <Link
             href="/#benefits-section"
             className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
@@ -21,7 +21,7 @@ export default function BenefitsLayout({
           </Link>
         </div>
       </div>
-      <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-screen-2xl px-4 py-2 sm:px-6 lg:px-8">
         {children}
       </div>
     </div>
