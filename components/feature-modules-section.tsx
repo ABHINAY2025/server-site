@@ -10,7 +10,7 @@ import { AnimatedSection } from "./animated-section"
 const modules = [
   {
     icon: <Database className="h-7 w-7" />,
-    title: "Data Control",
+    title: "Ai Assisted Data Control",
     href: "http://10.30.0.104:3000/",
     description:
       "Take complete control of your banking data with intelligent management, real-time synchronization, and comprehensive audit trails.",
@@ -32,7 +32,7 @@ const modules = [
   },
   {
     icon: <TrendingUp className="h-7 w-7" />,
-    title: "Liquidity Management",
+    title: "Agentic Liquidity Management",
     href: "http://10.30.0.104:3000/liquidity-dashboard",
     description:
       "Optimize cash flow and liquidity with AI-powered forecasting, automated compliance, and intelligent risk management with QDL.",
@@ -54,7 +54,7 @@ const modules = [
   },
   {
     icon: <Shield className="h-7 w-7" />,
-    title: "Fraud Detection",
+    title: "Ai Assisted Fraud Detection",
     href: "http://10.30.0.104:3000/fraud-control",
     description:
       "Protect your institution with advanced AI-driven fraud detection, real-time monitoring, and automated response systems.",
@@ -76,7 +76,7 @@ const modules = [
   },
   {
     icon: <FileCode className="h-7 w-7" />,
-    title: "Rules Engine",
+    title: "Rules Engine Ai Chatbot",
     href: "http://10.30.0.104:3000/configuration",
     description:
       "Automate complex business rules and compliance policies with a flexible, no-code rule engine that adapts to your needs.",
