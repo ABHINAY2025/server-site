@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Build gates re-enabled. Suppressing these is how an undefined
+  // `--destructive` token and a dead stylesheet reached production.
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: false,
   },
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
 
   images: {
@@ -61,13 +63,18 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://drive.google.com https://www.youtube.com",
+              // googletagmanager must be allowlisted or the analytics tag in
+              // app/layout.tsx is refused by our own policy — which is why
+              // this site had no traffic data at all.
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://drive.google.com https://www.youtube.com",
               "frame-src 'self' https://drive.google.com https://www.youtube.com https://www.youtube-nocookie.com",
               "child-src https://drive.google.com https://www.youtube.com",
               "media-src https://drive.google.com https://*.googleusercontent.com",
               "img-src 'self' data: https:",
               "style-src 'self' 'unsafe-inline'",
-              "connect-src 'self'",
+              // The measurement beacon posts to these origins; `'self'` alone
+              // blocked it independently of the script-src refusal above.
+              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://www.googletagmanager.com",
             ].join('; '),
           },
         ],

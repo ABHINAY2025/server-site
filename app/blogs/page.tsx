@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client"
 
-import { Header } from "@/components/header"
 import { motion } from "framer-motion"
 import {
   Carousel,
@@ -63,9 +62,8 @@ const colorThemes = [
 export default function BlogsPage() {
   return (
     <div className="relative min-h-screen w-full text-slate-900">
-      <Header />
 
-      <main className="mx-auto max-w-6xl px-4 pb-24 pt-16 lg:pt-24">
+      <div className="mx-auto max-w-6xl px-4 pb-24 pt-16 lg:pt-24">
         {/* HERO */}
         <motion.section className="mx-auto max-w-3xl">
           <span className="inline-flex rounded-full bg-slate-900/5 px-4 py-1 text-sm font-semibold">
@@ -167,7 +165,7 @@ export default function BlogsPage() {
             <CarouselNext />
           </Carousel>
         </section>
-      </main>
+      </div>
     </div>
   )
 }

@@ -1,45 +1,28 @@
-import { PremiumHeroSection } from "@/components/premium-hero-section"
-import { FeatureModulesSection } from "@/components/feature-modules-section"
-import { ProcessFlowSection } from "@/components/process-flow-section"
-import { BenefitsSection } from "@/components/benefits-section"
-import { TestimonialCarouselSection } from "@/components/testimonial-carousel-section"
-import { PremiumGettingStartedSection } from "@/components/premium-getting-started-section"
-import { FAQSection } from "@/components/faq-section"
-import { PremiumFooterSection } from "@/components/premium-footer-section"
-import { FlowingArrows } from "@/components/flowing-arrows"
-import { PageBackdrop } from "@/components/page-backdrop"
+import { Hero } from "@/components/home/hero"
+import { Platform } from "@/components/home/platform"
+import { HowItWorks } from "@/components/home/how-it-works"
+import { Security } from "@/components/home/security"
+import { FAQ } from "@/components/home/faq"
+import { CtaBand } from "@/components/home/cta-band"
 
-export default function LandingPage() {
+/**
+ * Ordered by the sequence a bank actually moves through:
+ * what is it -> what does it do -> how does it work -> can I trust you ->
+ * what am I still unsure about -> start.
+ *
+ * Every section is a server component. The previous homepage shipped 46 of 58
+ * components as `"use client"`, almost entirely to drive scroll reveals over
+ * static content.
+ */
+export default function HomePage() {
   return (
-    <div className="min-h-screen bg-transparent relative overflow-hidden">
-      <PageBackdrop />
-      <FlowingArrows />
-
-      <div className="relative z-10 bg-transparent">
-        {/* Hero Section - Full Width with Gradient */}
-        <PremiumHeroSection />
-
-        {/* Feature Modules Section */}
-        <FeatureModulesSection />
-
-        {/* Process Flow Section */}
-        <ProcessFlowSection />
-
-        {/* Benefits Section */}
-        <BenefitsSection />
-
-        {/* Testimonials Section */}
-        <TestimonialCarouselSection />
-
-        {/* FAQ Section */}
-        <FAQSection />
-
-        {/* Getting Started Section */}
-        {/* <PremiumGettingStartedSection /> */}
-
-        {/* Footer Section */}
-        <PremiumFooterSection />
-      </div>
-    </div>
+    <>
+      <Hero />
+      <Platform />
+      <HowItWorks />
+      <Security />
+      <FAQ />
+      <CtaBand />
+    </>
   )
 }

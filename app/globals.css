@@ -2,47 +2,150 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================================
+   QDL DESIGN SYSTEM — TOKENS
+   ----------------------------------------------------------------------------
+   Single source of truth for colour. Components must never name a colour
+   directly (no `text-slate-700`, no hex literals) — only these tokens.
+
+   Every token is defined in BOTH themes in this file. A token that exists in
+   one theme and not the other is a bug: `hsl(var(--undefined))` is invalid at
+   computed-value time and silently falls back to `inherit`.
+
+   Format is an HSL triplet (no `hsl()` wrapper) so Tailwind's opacity
+   modifiers work: `bg-primary/10` -> `hsl(var(--primary) / 0.1)`.
+   ========================================================================== */
+
 @layer base {
   :root {
-    /* Updated background to F0EFEB (warm beige) and cards to FFFFFF (pure white) */
-    --background: 30 20% 94%; /* #F0EFEB - Warm light beige background */
-    --foreground: 210 11% 15%; /* #1f2937 - Dark text for 7.5:1 contrast */
+    /* --- Ground ------------------------------------------------------------
+       Neutrals carry a slight teal cast toward the accent rather than being
+       pure grey. A few percent of chroma is the difference between a palette
+       that reads as chosen and one that reads as inherited. */
+    --background: 180 8% 96%;          /* #F5F7F7 */
+    --foreground: 168 34% 6%;          /* #0B1614 */
 
-    --muted: 210 11% 92%; /* #e5e7eb - Light gray for muted elements */
-    --muted-foreground: 210 11% 40% / 0.7; /* rgba(63, 81, 107, 0.7) - Muted text */
-    --muted-foreground-light: 210 11% 40% / 0.5; /* rgba(63, 81, 107, 0.5) - Light muted text */
-    --muted-foreground-dark: 210 11% 40% / 0.6; /* rgba(63, 81, 107, 0.6) - Medium muted text */
+    --card: 0 0% 100%;                 /* #FFFFFF */
+    --card-foreground: 168 34% 6%;
 
-    /* Updated card color to FFFFFF (pure white) for clear distinction from background */
-    --card: 0 0% 100%; /* #FFFFFF - Pure white cards */
-    --card-foreground: 210 11% 15%; /* #1f2937 - Dark text on cards */
+    --popover: 0 0% 100%;
+    --popover-foreground: 168 34% 6%;
 
-    --section-bg: 30 20% 97%; /* #f5f3f0 - Slightly lighter than main background for section distinction */
-    --section-border: 30 20% 88%; /* #e8e4df - Subtle border for section separation */
+    --muted: 170 12% 93%;              /* #EAEFEE — raised surface */
+    --muted-foreground: 172 10% 32%;   /* #4A5A58 — secondary text */
+    --subtle-foreground: 170 7% 47%;   /* #6F807D — tertiary text, metadata */
 
-    --popover: 0 0% 100%; /* #FFFFFF - Pure white popover */
-    --popover-foreground: 210 11% 15%; /* #1f2937 - Dark text on popover */
+    --secondary: 170 12% 93%;
+    --secondary-foreground: 168 34% 6%;
 
-    /* Primary Accent Colors - Teal maintained for consistency */
-    --primary: 165 96% 44%; /* #0dd9c4 - Vibrant teal for light theme */
-    --primary-foreground: 0 0% 100%; /* #ffffff - White text on primary */
-    --primary-dark: 165 100% 35%; /* #00b8a9 - Darker teal for hover states */
-    --primary-light: 165 100% 85%; /* #b3f5f0 - Light teal for backgrounds */
+    --accent: 170 12% 90%;
+    --accent-foreground: 168 34% 6%;
 
-    /* Secondary Accent Colors */
-    --secondary: 210 11% 92%; /* #e5e7eb - Light gray secondary */
-    --secondary-foreground: 210 11% 15%; /* #1f2937 - Dark text on secondary */
+    /* --- Brand -------------------------------------------------------------
+       The existing QDL teal, hue preserved and lightness corrected. The
+       original #0dd9c4 scored ~2.0:1 on white and could not legally carry
+       text or an interactive state. This scores 4.9:1. */
+    --primary: 172 80% 27%;            /* #0E7C6B */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 172 81% 21%;      /* #0A5F52 */
+    --primary-wash: 166 33% 91%;       /* #E2F0ED — tint surface */
 
-    --accent: 210 11% 85%; /* #d1d5db - Light accent */
-    --accent-foreground: 210 11% 15%; /* #1f2937 - Dark text on accent */
+    /* --- Semantic ----------------------------------------------------------
+       Reserved for state. Never decorative, never used as an accent.
+       `ok` is a distinctly yellower true green so it never reads as the
+       teal brand colour. */
+    --destructive: 358 67% 46%;        /* #C4262B */
+    --destructive-foreground: 0 0% 100%;
+    --destructive-wash: 358 62% 95%;
 
-    --border: 30 20% 88%; /* #e8e4df - Warm border matching section theme */
-    --border-light: 30 20% 92% / 0.5; /* rgba(242, 240, 237, 0.5) - Very light border */
-    --border-dark: 30 20% 85% / 0.8; /* rgba(232, 228, 223, 0.8) - Medium border */
+    --warning: 31 93% 34%;             /* #A85B06 */
+    --warning-foreground: 0 0% 100%;
+    --warning-wash: 33 79% 94%;
 
-    --ring: 165 96% 44%; /* #0dd9c4 - Teal ring for focus states */
+    --success: 142 72% 29%;            /* #15803D */
+    --success-foreground: 0 0% 100%;
+    --success-wash: 138 45% 93%;
 
+    /* --- Lines & focus ---------------------------------------------------- */
+    --border: 174 11% 86%;             /* #D7DFDE */
+    --border-subtle: 174 13% 91%;
+    --input: 174 11% 86%;
+    --ring: 172 80% 27%;
+
+    /* --- Elevation ---------------------------------------------------------
+       A hairline border plus a low-alpha shadow — never shadow alone.
+       Borders survive dark mode; large diffuse shadows do not. */
+    --shadow-1: 0 1px 2px hsl(168 34% 6% / 0.06);
+    --shadow-2: 0 2px 4px hsl(168 34% 6% / 0.05), 0 8px 20px hsl(168 34% 6% / 0.06);
+    --shadow-3: 0 4px 8px hsl(168 34% 6% / 0.06), 0 16px 40px hsl(168 34% 6% / 0.08);
+
+    /* --- Geometry ----------------------------------------------------------
+       12px is the ceiling. The previous `rounded-3xl` (24px) on cards was the
+       strongest consumer-product signal in the visual language. */
     --radius: 0.5rem;
+
+    /* --- Data visualisation ------------------------------------------------
+       Fixed ordered sequence, assigned by index — never by whichever colour
+       the charting library happens to pick. Series identity must survive
+       both themes. */
+    --chart-1: 172 80% 27%;
+    --chart-2: 199 74% 34%;
+    --chart-3: 262 47% 48%;
+    --chart-4: 31 93% 34%;
+    --chart-5: 340 55% 42%;
+  }
+
+  .dark {
+    --background: 171 30% 5%;          /* #080F0E */
+    --foreground: 166 21% 92%;         /* #E8EFED */
+
+    --card: 171 22% 8%;                /* #0F1817 */
+    --card-foreground: 166 21% 92%;
+
+    --popover: 171 22% 8%;
+    --popover-foreground: 166 21% 92%;
+
+    --muted: 171 19% 11%;              /* #16211F */
+    --muted-foreground: 170 9% 64%;    /* #9AACA9 */
+    --subtle-foreground: 168 7% 49%;   /* #748582 */
+
+    --secondary: 171 19% 11%;
+    --secondary-foreground: 166 21% 92%;
+
+    --accent: 169 16% 14%;
+    --accent-foreground: 166 21% 92%;
+
+    --primary: 172 66% 50%;            /* #2DD4BF */
+    --primary-foreground: 171 30% 5%;
+    --primary-hover: 172 76% 64%;      /* #5EEAD4 */
+    --primary-wash: 170 50% 11%;       /* #0E2B27 */
+
+    --destructive: 357 100% 69%;       /* #FF6369 */
+    --destructive-foreground: 171 30% 5%;
+    --destructive-wash: 353 40% 12%;
+
+    --warning: 38 91% 55%;             /* #F5A524 */
+    --warning-foreground: 171 30% 5%;
+    --warning-wash: 36 68% 10%;
+
+    --success: 133 51% 52%;            /* #46C46A */
+    --success-foreground: 171 30% 5%;
+    --success-wash: 138 47% 10%;
+
+    --border: 169 16% 17%;             /* #253331 */
+    --border-subtle: 170 18% 13%;
+    --input: 169 16% 17%;
+    --ring: 172 66% 50%;
+
+    --shadow-1: 0 1px 2px hsl(0 0% 0% / 0.4);
+    --shadow-2: 0 2px 4px hsl(0 0% 0% / 0.3), 0 8px 20px hsl(0 0% 0% / 0.35);
+    --shadow-3: 0 4px 8px hsl(0 0% 0% / 0.35), 0 16px 40px hsl(0 0% 0% / 0.45);
+
+    --chart-1: 172 66% 50%;
+    --chart-2: 199 80% 60%;
+    --chart-3: 262 70% 70%;
+    --chart-4: 38 91% 55%;
+    --chart-5: 340 75% 65%;
   }
 }
 
@@ -50,236 +153,258 @@
   * {
     @apply border-border;
   }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
-    @apply bg-background text-foreground;
-    background-image: radial-gradient(circle, rgba(210, 180, 140, 0.15) 1px, transparent 1px);
-    background-size: 20px 20px;
-    background-position: 0 0;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  /* Focus ring defined once, at the token layer. Previously only 3 of 58
+     component files defined any focus style at all (WCAG 2.4.7). */
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: calc(var(--radius) - 2px);
+  }
+
+  /* Digits that stack in a column must align on the decimal. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.2);
   }
 }
 
-@keyframes flowingArrow {
-  0% {
+@layer components {
+  /* Skip link — first focusable element on every page. */
+  .skip-link {
+    @apply sr-only;
+  }
+  .skip-link:focus {
+    @apply not-sr-only fixed left-4 top-4 z-[100] rounded-md bg-card px-4 py-2
+           text-sm font-medium text-foreground shadow-lg ring-2 ring-ring;
+  }
+}
+
+/* ============================================================================
+   MOTION
+   ----------------------------------------------------------------------------
+   Budget: one orchestrated hero sequence, one reveal per section played once,
+   hover/focus feedback on controls. Nothing else. Only `opacity` and
+   `transform` — never height or colour on a large surface, both force paint.
+   ========================================================================== */
+
+@keyframes qdl-rise {
+  from {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translate3d(0, 8px, 0);
   }
-  10% {
+  to {
     opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
-  90% {
-    opacity: 1;
-  }
-  100% {
+}
+
+.qdl-rise {
+  animation: qdl-rise 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* --- Scroll reveal ---------------------------------------------------------
+   Driven by IntersectionObserver toggling `data-visible`. Only opacity and
+   transform animate, so the whole thing stays on the compositor. */
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 14px, 0);
+  transition:
+    opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+[data-reveal="left"]  { transform: translate3d(-18px, 0, 0); }
+[data-reveal="right"] { transform: translate3d(18px, 0, 0); }
+[data-reveal="scale"] { transform: scale(0.965); }
+
+[data-reveal][data-visible="true"] {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+/* --- Hero entrance sequence ----------------------------------------------- */
+@keyframes qdl-enter {
+  from {
     opacity: 0;
-    transform: translateX(20px);
+    transform: translate3d(0, 12px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
-
-@keyframes floatingArrow {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
+.qdl-enter {
+  animation: qdl-enter 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--enter-delay, 0ms);
 }
 
-.flowing-arrow {
-  animation: flowingArrow 2s ease-in-out infinite;
-}
-
-.floating-arrow {
-  animation: floatingArrow 3s ease-in-out infinite;
-}
-
-/* Animated Diagonal Gradient Background */
-.animated-gradient-bg {
-  background: linear-gradient(
-    135deg,
-    #7c3aed 0%,
-    #d946ef 20%,
-    #ec4899 35%,
-    #f43f5e 50%,
-    #fb7185 65%,
-    #fbbf24 80%,
-    #60a5fa 100%
-  );
-  background-size: 400% 400%;
-  animation: gradientShift 8s ease infinite, waveMotion 6s ease-in-out infinite;
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% 15%,
-    85% 35%,
-    70% 55%,
-    50% 75%,
-    20% 95%,
-    0 100%
-  );
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
+/* --- Line drawing ---------------------------------------------------------
+   For SVG paths that trace themselves in. Pair with pathLength="1". */
+@keyframes qdl-draw {
+  to {
+    stroke-dashoffset: 0;
   }
 }
-
-@keyframes waveMotion {
-  0% {
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% 15%,
-      85% 35%,
-      70% 55%,
-      50% 75%,
-      20% 95%,
-      0 100%
-    );
-  }
-  25% {
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% 12%,
-      87% 32%,
-      72% 52%,
-      52% 72%,
-      18% 92%,
-      0 100%
-    );
-  }
-  50% {
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% 18%,
-      83% 38%,
-      68% 58%,
-      48% 78%,
-      22% 98%,
-      0 100%
-    );
-  }
-  75% {
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% 12%,
-      87% 32%,
-      72% 52%,
-      52% 72%,
-      18% 92%,
-      0 100%
-    );
-  }
-  100% {
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% 15%,
-      85% 35%,
-      70% 55%,
-      50% 75%,
-      20% 95%,
-      0 100%
-    );
-  }
+.qdl-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: qdl-draw var(--draw-duration, 1400ms)
+    cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation-delay: var(--draw-delay, 0ms);
 }
 
-/* Gradient for "by" word */
-.by-gradient {
-  color: #fff;
-  background-size: 300% 100%;
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  animation: qdlFlow 3.5s ease-in-out infinite;
+/* --- A packet travelling along a path -------------------------------------- */
+@keyframes qdl-travel {
+  0%   { offset-distance: 0%;   opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+.qdl-travel {
+  animation: qdl-travel var(--travel-duration, 3s) linear infinite;
+  animation-delay: var(--travel-delay, 0ms);
 }
 
-@keyframes qdlFlow {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
+/* --- Radar sweep ----------------------------------------------------------- */
+@keyframes qdl-sweep {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.qdl-sweep {
+  transform-origin: center;
+  animation: qdl-sweep 4s linear infinite;
 }
 
-/* Smooth Wave Animations - Stripe Style Diagonal Waves */
-.wave {
+/* --- Attention pulse ------------------------------------------------------- */
+@keyframes qdl-pulse {
+  0%, 100% { opacity: 0.25; transform: scale(1); }
+  50%      { opacity: 0.9;  transform: scale(1.9); }
+}
+.qdl-pulse {
+  transform-origin: center;
+  animation: qdl-pulse 2.2s ease-in-out infinite;
+  animation-delay: var(--pulse-delay, 0ms);
+}
+
+/* --- Row streaming in ------------------------------------------------------ */
+@keyframes qdl-stream {
+  from { opacity: 0; transform: translate3d(0, -10px, 0); }
+  to   { opacity: 1; transform: none; }
+}
+.qdl-stream {
+  animation: qdl-stream 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* --- Ambient drift for decorative marks ------------------------------------ */
+@keyframes qdl-drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -7px, 0); }
+}
+.qdl-drift {
+  animation: qdl-drift var(--drift-duration, 7s) ease-in-out infinite;
+  animation-delay: var(--drift-delay, 0ms);
+}
+
+/* --- Shimmer across a surface ---------------------------------------------- */
+@keyframes qdl-shimmer {
+  from { transform: translateX(-120%); }
+  to   { transform: translateX(220%); }
+}
+.qdl-shimmer::after {
+  content: "";
   position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 200%;
-  height: 120px;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><defs><linearGradient id="waveGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%%" style="stop-color:rgba(255,255,255,0.15);stop-opacity:1" /><stop offset="100%%" style="stop-color:rgba(255,255,255,0.02);stop-opacity:1" /></linearGradient></defs><path d="M0,50 Q150,20 300,50 T600,50 T900,50 T1200,50 L1200,120 L0,120 Z" fill="url(%23waveGrad)"/></svg>') repeat-x;
-  background-size: 600px 120px;
-  animation: wave 25s ease-in-out infinite;
-  opacity: 0.8;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    hsl(var(--primary) / 0.10) 50%,
+    transparent 70%
+  );
+  animation: qdl-shimmer 5.5s ease-in-out infinite;
+  pointer-events: none;
 }
 
-.wave.wave-2 {
-  bottom: 15px;
-  height: 140px;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><defs><linearGradient id="waveGrad2" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" /><stop offset="100%%" style="stop-color:rgba(255,255,255,0.01);stop-opacity:1" /></linearGradient></defs><path d="M0,40 Q150,70 300,40 T600,40 T900,40 T1200,40 L1200,120 L0,120 Z" fill="url(%23waveGrad2)"/></svg>') repeat-x;
-  background-size: 800px 140px;
-  animation: wave 35s ease-in-out infinite reverse;
-  opacity: 0.6;
+/* --- Nav underline --------------------------------------------------------- */
+.qdl-underline {
+  position: relative;
+}
+.qdl-underline::after {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.3rem;
+  height: 1.5px;
+  border-radius: 2px;
+  background: hsl(var(--primary));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.qdl-underline:hover::after,
+.qdl-underline:focus-visible::after {
+  transform: scaleX(1);
 }
 
-.wave.wave-3 {
-  bottom: 35px;
-  height: 160px;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><defs><linearGradient id="waveGrad3" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%%" style="stop-color:rgba(255,255,255,0.08);stop-opacity:1" /><stop offset="100%%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" /></linearGradient></defs><path d="M0,60 Q150,30 300,60 T600,60 T900,60 T1200,60 L1200,120 L0,120 Z" fill="url(%23waveGrad3)"/></svg>') repeat-x;
-  background-size: 1000px 160px;
-  animation: wave 40s ease-in-out infinite;
-  opacity: 0.5;
+/* --- Card lift ------------------------------------------------------------- */
+.qdl-lift {
+  transition:
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 260ms ease;
+}
+.qdl-lift:hover {
+  transform: translate3d(0, -4px, 0);
+  box-shadow: var(--shadow-3);
 }
 
-@keyframes wave {
-  0% {
-    transform: translateX(0) translateY(0);
-  }
-  50% {
-    transform: translateX(50px) translateY(-20px);
-  }
-  100% {
-    transform: translateX(0) translateY(0);
-  }
-}
-
-/* Respect reduced motion */
+/* Honoured globally rather than per-component. The previous stylesheet
+   covered only 2 of the many animations that were running. */
 @media (prefers-reduced-motion: reduce) {
-  .animated-gradient-bg {
-    animation: none;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
-  .wave {
-    animation: none;
+
+  /* Reveal and entrance states start hidden. With animation suppressed they
+     must resolve to their final state immediately, or the content would
+     simply never appear. */
+  [data-reveal],
+  .qdl-enter,
+  .qdl-stream {
+    opacity: 1 !important;
+    transform: none !important;
   }
-}
 
+  .qdl-draw {
+    stroke-dashoffset: 0 !important;
+  }
 
-#gradient-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-
---gradient-color-1: #ffb703;
---gradient-color-2: #fb7185;
---gradient-color-3: #a78bfa;
---gradient-color-4: #7dd3fc;
+  /* Purely decorative ambient motion is dropped rather than sped up. */
+  .qdl-shimmer::after,
+  .qdl-sweep,
+  .qdl-pulse,
+  .qdl-drift,
+  .qdl-travel {
+    animation: none !important;
+  }
 }

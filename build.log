@@ -1,0 +1,49 @@
+  ▲ Next.js 14.2.25
+  - Environments: .env.local
+  - Experiments (use with caution):
+    · optimizeCss
+
+   Creating an optimized production build ...
+
+[1m[33mwarn[39m[22m - The class `duration-[900ms]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `duration-&lsqb;900ms&rsqb;` to silence this warning.
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/15) ...
+   Generating static pages (3/15) 
+   Generating static pages (7/15) 
+   Generating static pages (11/15) 
+Time 128.3394
+Time 35.5419
+ ✓ Generating static pages (15/15)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    6.71 kB         109 kB
+├ ○ /_not-found                          873 B          88.1 kB
+├ ƒ /api/demo/demo-requests              0 B                0 B
+├ ○ /benefits/automated-workflows        2.53 kB         126 kB
+├ ○ /benefits/enhanced-security          3.52 kB         127 kB
+├ ○ /benefits/multi-bank-integration     3.17 kB         127 kB
+├ ○ /benefits/natural-language-queries   3.18 kB         127 kB
+├ ○ /benefits/predictive-intelligence    3.4 kB          127 kB
+├ ○ /benefits/real-time-insights         3.09 kB         126 kB
+├ ○ /blogs                               26.1 kB         157 kB
+├ ƒ /blogs/[id]                          11.1 kB         142 kB
+├ ƒ /demo                                28.1 kB         130 kB
+├ ○ /privacy-policy                      2.04 kB         133 kB
+└ ○ /terms-of-service                    5.58 kB         136 kB
++ First Load JS shared by all            87.2 kB
+  ├ chunks/117-e6a35a2931589871.js       31.6 kB
+  ├ chunks/fd9d1056-31cd4e5e32ed9a2a.js  53.6 kB
+  └ other shared chunks (total)          1.95 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

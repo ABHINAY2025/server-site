@@ -1,11 +1,39 @@
 "use client"
 
-import { Header } from "@/components/header"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
 
-const blogContent = {
+/**
+ * Discriminated union for article body blocks.
+ *
+ * Without this the compiler widened `type` to `string` and could not narrow,
+ * so every `section.items` / `section.rows` / `section.url` access was a type
+ * error. Those errors were real and pre-existing — `ignoreBuildErrors: true`
+ * in next.config.mjs was suppressing them at build time.
+ */
+type ContentBlock =
+  | { type: "heading"; level: number; text: string }
+  | { type: "paragraph"; text: string }
+  | { type: "list"; items: string[]; ordered?: boolean }
+  | { type: "table"; headers: string[]; rows: string[][] }
+  | { type: "image"; url: string; alt: string; caption?: string }
+  | { type: "blockquote"; text: string; author?: string }
+  | { type: "divider" }
+
+type Article = {
+  title: string
+  category: string
+  author: string
+  authorRole: string
+  publishedDate: string
+  readTime: string
+  imageUrl: string
+  executiveSummary: string
+  content: ContentBlock[]
+}
+
+const blogContent: Record<number, Article> = {
   1: {
     title: "Mastering Data Control: Real-Time Banking Operations",
     category: "Technology",
@@ -209,11 +237,6 @@ const blogContent = {
       },
       {
         type: "divider",
-      },
-      {
-        type: "heading",
-        level: 2,
-        
       },
       {
         type: "paragraph",
@@ -547,13 +570,12 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
           <div className="absolute inset-0 bg-white/0" />
         </div>
         <div className="relative z-10">
-          <Header />
-          <main className="mx-auto max-w-4xl px-4 py-24 text-center">
+          <div className="mx-auto max-w-4xl px-4 py-24 text-center">
             <h1 className="text-4xl font-semibold">Post not found</h1>
             <Link href="/blogs" className="mt-4 inline-block text-slate-700 hover:text-slate-900">
               ← Back to blogs
             </Link>
-          </main>
+          </div>
         </div>
       </div>
     )
@@ -583,8 +605,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
       </div>
 
       <div className="relative z-10">
-        <Header />
-        <main className="mx-auto max-w-4xl px-4 pb-24 pt-16 sm:px-6 lg:px-8 lg:pt-24">
+        <div className="mx-auto max-w-4xl px-4 pb-24 pt-16 sm:px-6 lg:px-8 lg:pt-24">
           {/* Back button */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -843,7 +864,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
               </Link>
             </div>
           </motion.article>
-        </main>
+        </div>
       </div>
     </div>
   )

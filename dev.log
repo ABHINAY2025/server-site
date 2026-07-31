@@ -1,0 +1,24 @@
+  ▲ Next.js 14.2.25
+  - Local:        http://localhost:3000
+  - Environments: .env.local
+  - Experiments (use with caution):
+    · optimizeCss
+
+ ✓ Starting...
+ ✓ Ready in 7s
+ ○ Compiling / ...
+
+[1m[33mwarn[39m[22m - The class `duration-[900ms]` is ambiguous and matches multiple utilities.
+[1m[33mwarn[39m[22m - If this is content and not a class, replace it with `duration-&lsqb;900ms&rsqb;` to silence this warning.
+ ✓ Compiled / in 25.3s (718 modules)
+ GET / 200 in 27016ms
+ ○ Compiling /demo ...
+ ✓ Compiled /demo in 21.7s (746 modules)
+ GET /demo 200 in 20127ms
+ ○ Compiling /blogs ...
+ ✓ Compiled /blogs in 12.3s (1534 modules)
+ GET /blogs 200 in 13352ms
+ GET / 200 in 4968ms
+ ✓ Compiled in 5s (749 modules)
+ ✓ Compiled in 4.1s (749 modules)
+ ✓ Compiled in 2.4s (749 modules)
