@@ -3,151 +3,162 @@
 import * as React from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { Zap, Brain, Lock, MessageSquare, TrendingUp, Building2 } from "lucide-react"
+import { Zap, Brain, Lock, MessageSquare, TrendingUp, Building2, Search, ArrowUpRight } from "lucide-react"
 import { AnimatedSection } from "./animated-section"
+import { SpotlightReveal } from "./effects/spotlight-reveal"
 
 const benefits = [
   {
     icon: Zap,
     title: "Automated Workflows",
-    description: "Streamline operations with intelligent automation that adapts to your business needs",
+    description: "Repetitive approvals and manual checks run themselves, so your team spends time on decisions, not data entry.",
     href: "/benefits/automated-workflows",
+    metric: "1,204",
+    metricLabel: "tasks handled per day",
+    status: "ACTIVE",
   },
   {
     icon: Brain,
     title: "Predictive Intelligence",
-    description: "Make data-driven decisions with AI-powered insights and forecasting",
+    description: "See likely cash and risk trends before they happen, based on your own transaction history — not guesswork.",
     href: "/benefits/predictive-intelligence",
+    metric: "97.3%",
+    metricLabel: "forecast accuracy",
+    status: "LEARNING",
   },
   {
     icon: Lock,
     title: "Enhanced Security",
-    description: "Bank-level encryption and compliance standards protecting your data",
+    description: "Bank-grade encryption and access controls, so only the right people can see or change sensitive data.",
     href: "/benefits/enhanced-security",
+    metric: "AES-256",
+    metricLabel: "encryption standard",
+    status: "SECURED",
   },
   {
     icon: MessageSquare,
     title: "Natural Language Queries",
-    description: "Ask questions in plain English and get instant answers from your data",
+    description: "Type a question the way you'd ask a colleague, and get a straight answer pulled from your live data — no report-writing required.",
     href: "/benefits/natural-language-queries",
+    searchPrompt: "Show me last month's flagged transactions",
+    metric: "<400ms",
+    metricLabel: "average response time",
+    status: "READY",
   },
   {
     icon: TrendingUp,
     title: "Real-Time Insights",
-    description: "Monitor your operations with live dashboards and instant analytics",
+    description: "Your dashboards update the moment something changes — no waiting for an overnight batch job to catch up.",
     href: "/benefits/real-time-insights",
+    metric: "12.4K",
+    metricLabel: "updates per second",
+    status: "STREAMING",
   },
   {
     icon: Building2,
     title: "Multi-Bank Integration",
-    description: "Connect seamlessly with multiple banking systems and platforms",
+    description: "Work with several banking partners through one system, instead of juggling logins and spreadsheets for each one.",
     href: "/benefits/multi-bank-integration",
+    metric: "18",
+    metricLabel: "banks connected",
+    status: "SYNCED",
   },
 ]
 
 export function BenefitsSection() {
   return (
-    <AnimatedSection id="benefits-section" className="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-      {/* Background with subtle noise texture */}
-      <div
-        className="absolute inset-0 rounded-3xl opacity-[0.02]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-        }}
-      />
-
+    <AnimatedSection id="benefits-section" className="relative z-10 mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
       <div className="relative mx-auto max-w-3xl text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl"
-        >
-          Why Businesses Love{" "}
-            <span className="inline-block bg-gradient-to-r from-[#FF6B9A] to-[#7B5CF6] bg-clip-text text-transparent">
-              QDL
-            </span>
-
-        </motion.h2>
+        <SpotlightReveal
+          text="What changes on day one with QDL"
+          highlight="QDL"
+          className="mb-4 text-3xl font-bold text-white sm:text-4xl lg:text-5xl"
+        />
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-lg text-muted-foreground"
-          style={{color: "#4b535c"}}
-
+          className="text-lg text-white/50"
         >
-          Experience the benefits of intelligent banking automation
+          Real outcomes our banking and fintech customers see after switching to QDL
         </motion.p>
       </div>
 
-      {/* 3-column grid with icon + title + description */}
-      <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 h-full">
-        {benefits.map((benefit, index) => {
-          const Icon = benefit.icon
-          return (
-            <Link key={index} href={benefit.href} className="h-full">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 15,
-                  delay: index * 0.1,
-                }}
-                whileHover={{
-                  y: -8,
-                  transition: { type: "spring", stiffness: 300, damping: 20 },
-                }}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-sm transition-shadow hover:shadow-xl hover:shadow-primary/5 cursor-pointer h-full flex flex-col"
-              >
-                {/* Icon with spring animation */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.6 }}
+        className="relative mx-auto mt-16 max-w-4xl overflow-hidden rounded-2xl border border-white/10 bg-[#080c16] shadow-2xl"
+      >
+        {/* Console chrome */}
+        <div className="flex items-center justify-between border-b border-white/10 bg-white/[0.02] px-5 py-3">
+          <div className="flex gap-1.5">
+            <span className="h-2.5 w-2.5 rounded-full bg-red-400/70" />
+            <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/70" />
+            <span className="h-2.5 w-2.5 rounded-full bg-green-400/70" />
+          </div>
+          <span className="font-mono text-xs text-white/40">qdl // what-you-get.log</span>
+        </div>
+
+        <div className="divide-y divide-white/5">
+          {benefits.map((benefit, index) => {
+            const Icon = benefit.icon
+            return (
+              <Link key={benefit.title} href={benefit.href}>
                 <motion.div
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 200,
-                    damping: 15,
-                    delay: index * 0.1 + 0.2,
-                  }}
-                  whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-                  className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl transition-colors"
-                  style={{
-                    backgroundColor: "rgba(255, 107, 154, 0.1)",
-                    backgroundImage: "linear-gradient(135deg, rgba(255, 107, 154, 0.08), rgba(123, 92, 246, 0.08))",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = "rgba(255, 107, 154, 0.15)";
-                    e.currentTarget.style.backgroundImage = "linear-gradient(135deg, rgba(255, 107, 154, 0.15), rgba(123, 92, 246, 0.15))";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.backgroundColor = "rgba(255, 107, 154, 0.1)";
-                    e.currentTarget.style.backgroundImage = "linear-gradient(135deg, rgba(255, 107, 154, 0.08), rgba(123, 92, 246, 0.08))";
-                  }}
+                  initial={{ opacity: 0, x: -12 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: index * 0.06 }}
+                  className="group relative flex cursor-pointer flex-col gap-4 px-5 py-5 transition-colors duration-200 hover:bg-white/[0.03] sm:flex-row sm:items-center sm:gap-6 sm:px-6"
                 >
-                  <Icon className="h-7 w-7" style={{background: "linear-gradient(135deg, #FF6B9A, #7B5CF6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text"}} />
+                  {/* Icon */}
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white/5 transition-colors duration-200 group-hover:bg-teal-400/10">
+                    <Icon className="h-5 w-5 text-teal-300" />
+                  </div>
+
+                  {/* Title + description */}
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2">
+                      <h3 className="text-base font-semibold text-white">{benefit.title}</h3>
+                      <ArrowUpRight className="h-3.5 w-3.5 text-white/20 transition-colors duration-200 group-hover:text-teal-300" />
+                    </div>
+                    <p className="mt-0.5 text-sm text-white/50">{benefit.description}</p>
+
+                    {benefit.searchPrompt && (
+                      <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/30 px-3.5 py-1.5">
+                        <Search className="h-3.5 w-3.5 shrink-0 text-white/30" />
+                        <span className="truncate font-mono text-xs text-white/40">{benefit.searchPrompt}</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Live metric readout */}
+                  <div className="flex shrink-0 items-center gap-4 pl-[3.75rem] sm:pl-0">
+                    <div className="text-right">
+                      <div className="font-mono text-lg font-bold text-white">{benefit.metric}</div>
+                      <div className="font-mono text-[10px] uppercase tracking-wider text-white/30">
+                        {benefit.metricLabel}
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-1">
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75" />
+                        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-teal-400" />
+                      </span>
+                      <span className="font-mono text-[10px] font-medium tracking-wider text-teal-300">
+                        {benefit.status}
+                      </span>
+                    </div>
+                  </div>
                 </motion.div>
-
-                {/* Title */}
-                <h3 className="mb-3 text-xl font-semibold text-card-foreground">
-                  {benefit.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-muted-foreground leading-relaxed">
-                  {benefit.description}
-                </p>
-              </motion.div>
-            </Link>
-          )
-        })}
-      </div>
+              </Link>
+            )
+          })}
+        </div>
+      </motion.div>
     </AnimatedSection>
   )
 }

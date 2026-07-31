@@ -31,6 +31,8 @@ const config = {
           dark: "hsl(var(--primary-dark))",
           light: "hsl(var(--primary-light))", // Added primary-light
         },
+        "accent-teal": "hsl(var(--accent-teal))",
+        "accent-gold": "hsl(var(--accent-gold))",
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",

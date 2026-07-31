@@ -26,34 +26,10 @@ const categoryToneClasses: Record<BlogPost["categoryTone"], string> = {
 }
 
 const colorThemes = [
-  {
-    gradient: "from-teal-50 to-white",
-    border: "border-teal-200",
-    tagBg: "bg-teal-600",
-    accent: "text-teal-700",
-    glow: "hover:shadow-teal-200/60",
-  },
-  {
-    gradient: "from-indigo-50 to-white",
-    border: "border-indigo-200",
-    tagBg: "bg-indigo-600",
-    accent: "text-indigo-700",
-    glow: "hover:shadow-indigo-200/60",
-  },
-  {
-    gradient: "from-rose-50 to-white",
-    border: "border-rose-200",
-    tagBg: "bg-rose-600",
-    accent: "text-rose-700",
-    glow: "hover:shadow-rose-200/60",
-  },
-  {
-    gradient: "from-amber-50 to-white",
-    border: "border-amber-200",
-    tagBg: "bg-amber-600",
-    accent: "text-amber-700",
-    glow: "hover:shadow-amber-200/60",
-  },
+  { tagBg: "bg-teal-600", accent: "text-teal-300" },
+  { tagBg: "bg-indigo-600", accent: "text-indigo-300" },
+  { tagBg: "bg-rose-600", accent: "text-rose-300" },
+  { tagBg: "bg-amber-600", accent: "text-amber-300" },
 ]
 
 /* ------------------------------------------------------------------ */
@@ -62,21 +38,26 @@ const colorThemes = [
 
 export default function BlogsPage() {
   return (
-    <div className="relative min-h-screen w-full text-slate-900">
+    <div className="mesh-gradient-bg relative min-h-screen w-full">
       <Header />
 
-      <main className="mx-auto max-w-6xl px-4 pb-24 pt-16 lg:pt-24">
+      <main className="relative z-10 mx-auto max-w-6xl px-4 pb-24 pt-32 lg:pt-40">
         {/* HERO */}
-        <motion.section className="mx-auto max-w-3xl">
-          <span className="inline-flex rounded-full bg-slate-900/5 px-4 py-1 text-sm font-semibold">
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mx-auto max-w-3xl"
+        >
+          <span className="inline-flex items-center rounded-full border border-violet-400/30 bg-violet-500/10 px-4 py-1 text-sm font-semibold text-violet-200">
             Insights & Stories
           </span>
 
-          <h1 className="mt-6 text-4xl font-bold sm:text-5xl">
+          <h1 className="mt-6 text-4xl font-bold text-white sm:text-5xl">
             Perspectives on intelligent banking, data, and design.
           </h1>
 
-          <p className="mt-4 text-slate-700">
+          <p className="mt-4 text-white/60">
             Practical insights, strategy, and engineering ideas shaping the future of finance.
           </p>
         </motion.section>
@@ -92,7 +73,7 @@ export default function BlogsPage() {
             >
               <motion.article
                 whileHover={{ y: -8 }}
-                className="flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-lg"
+                className="flex h-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md transition-colors duration-300 hover:border-violet-400/30"
               >
                 <div className="relative h-48">
                   <img
@@ -108,11 +89,11 @@ export default function BlogsPage() {
                 </div>
 
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="mb-3 text-lg font-bold">{post.title}</h3>
-                  <p className="mb-4 text-sm text-slate-600 line-clamp-2">
+                  <h3 className="mb-3 text-lg font-bold text-white">{post.title}</h3>
+                  <p className="mb-4 text-sm text-white/50 line-clamp-2">
                     {post.excerpt}
                   </p>
-                  <div className="mt-auto flex justify-between border-t pt-4 text-xs text-slate-500">
+                  <div className="mt-auto flex justify-between border-t border-white/10 pt-4 text-xs text-white/40">
                     <span>{post.author}</span>
                     <span>{post.readTime}</span>
                   </div>
@@ -125,7 +106,7 @@ export default function BlogsPage() {
         {/* CAROUSEL */}
         <section className="mt-24">
           <div className="mb-8 flex justify-between">
-            <h2 className="text-3xl font-semibold">
+            <h2 className="text-3xl font-semibold text-white">
               More insights on <br /> payments & intelligence
             </h2>
           </div>
@@ -139,17 +120,17 @@ export default function BlogsPage() {
                     <a href={post.url} target="_blank" rel="noopener noreferrer">
                       <motion.div
                         whileHover={{ y: -8 }}
-                        className={`flex h-full flex-col rounded-2xl border bg-gradient-to-br ${theme.gradient} p-6 shadow-md`}
+                        className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md transition-colors duration-300 hover:border-teal-400/30"
                       >
-                        <div className="mb-4 flex gap-2">
+                        <div className="mb-4 flex items-center gap-2">
                           <span className={`rounded-full px-3 py-1 text-xs text-white ${theme.tagBg}`}>
                             {post.tag}
                           </span>
-                          <span className="text-xs text-slate-400">{post.source}</span>
+                          <span className="text-xs text-white/40">{post.source}</span>
                         </div>
 
-                        <h3 className="mb-4 text-lg font-bold">{post.title}</h3>
-                        <p className="mb-6 text-sm text-slate-600 line-clamp-4">
+                        <h3 className="mb-4 text-lg font-bold text-white">{post.title}</h3>
+                        <p className="mb-6 text-sm text-white/50 line-clamp-4">
                           {post.description}
                         </p>
 
@@ -163,8 +144,8 @@ export default function BlogsPage() {
               })}
             </CarouselContent>
 
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="border-white/10 bg-white/5 text-white hover:bg-white/10" />
+            <CarouselNext className="border-white/10 bg-white/5 text-white hover:bg-white/10" />
           </Carousel>
         </section>
       </main>

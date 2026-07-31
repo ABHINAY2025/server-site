@@ -67,7 +67,7 @@ const nextConfig = {
               "media-src https://drive.google.com https://*.googleusercontent.com",
               "img-src 'self' data: https:",
               "style-src 'self' 'unsafe-inline'",
-              "connect-src 'self'",
+              "connect-src 'self' https://raw.githubusercontent.com",
             ].join('; '),
           },
         ],

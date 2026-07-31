@@ -4,6 +4,9 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { StarRating } from "./star-rating"
 import { AnimatedSection } from "./animated-section"
+import { SpotlightReveal } from "./effects/spotlight-reveal"
+import { CurvedMarquee } from "./effects/curved-marquee"
+import { CoverflowGallery } from "./effects/coverflow-gallery"
 
 const testimonials = [
   {
@@ -30,93 +33,105 @@ const testimonials = [
     avatar: "/images/avatars/albert-flores.webp",
     rating: 5,
   },
+  {
+    quote:
+      "The rules engine let our compliance team ship policy changes without waiting on a dev sprint. That alone paid for the platform.",
+    name: "Annette Black",
+    role: "Compliance Lead",
+    avatar: "/images/avatars/annette-black.webp",
+    rating: 5,
+  },
+  {
+    quote:
+      "Anomaly detection caught patterns our old rule-based system never would have flagged, with far fewer false positives.",
+    name: "Cody Fisher",
+    role: "Head of Risk",
+    avatar: "/images/avatars/cody-fisher.webp",
+    rating: 5,
+  },
+  {
+    quote:
+      "Onboarding was fast, support was responsive, and the dashboards gave our execs visibility they'd been asking for for years.",
+    name: "Dianne Russell",
+    role: "VP of Banking Operations",
+    avatar: "/images/avatars/dianne-russell.webp",
+    rating: 5,
+  },
 ]
 
-type TestimonialCardProps = {
+type Testimonial = {
   quote: string
   name: string
   role: string
   avatar?: string
   rating: number
-  index: number
 }
 
-const TestimonialCard = ({ quote, name, role,  avatar, rating, index }: TestimonialCardProps) => {
+function TestimonialSlide({ quote, name, role, avatar, rating }: Testimonial) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      viewport={{ once: true, margin: "-100px" }}
-      whileHover={{ y: -4 }}
-      className="flex flex-col justify-between items-start overflow-hidden rounded-xl border border-border bg-card p-6 w-full min-h-[320px] hover:shadow-lg transition-all duration-300"
-    >
+    <div className="flex h-full w-full flex-col justify-between border border-white/10 bg-[#0b1220] p-7">
       <div className="space-y-4">
-        {/* Star Rating */}
         <StarRating rating={rating} />
-        {/* Quote */}
-        <p className="text-foreground text-base font-normal leading-relaxed">{quote}</p>
+        <p className="text-base font-normal leading-relaxed text-white/80">{quote}</p>
       </div>
-      
-      {/* Author Info */}
-      <div className="flex justify-start items-center gap-3 w-full mt-6 pt-6 border-t border-border">
+
+      <div className="mt-6 flex w-full items-center gap-3 border-t border-white/10 pt-6">
         <Image
           src={avatar || "/placeholder.svg"}
           alt={`${name} avatar`}
           width={48}
           height={48}
-          className="w-12 h-12 rounded-full ring-2 ring-border"
+          className="h-12 w-12 rounded-full ring-2 ring-white/10"
         />
-        <div className="flex flex-col justify-start items-start gap-0.5">
-          <div className="text-foreground text-sm font-semibold leading-[22px]">{name}</div>
-          <div className="text-muted-foreground text-sm font-normal leading-[22px]">
-            {role}
-            
-          </div>
+        <div className="flex flex-col items-start justify-start gap-0.5">
+          <div className="text-sm font-semibold leading-[22px] text-white">{name}</div>
+          <div className="text-sm font-normal leading-[22px] text-white/50">{role}</div>
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
 
 export function TestimonialCarouselSection() {
   return (
-    <div>
-      <AnimatedSection
-        id="testimonials-section"
-        className="relative z-10 mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8"
-      >
+    <AnimatedSection id="testimonials-section" className="relative z-10 mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-3xl text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-4 text-3xl font-bold sm:text-4xl lg:text-5xl"
-        >
-          Trusted by Industry Leaders
-        </motion.h2>
+        <SpotlightReveal
+          text="What our customers say"
+          className="mb-4 text-3xl font-bold text-white sm:text-4xl lg:text-5xl"
+        />
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-lg text-muted-foreground"
-                    style={{color: "#4b535c"}}
-
+          className="text-lg text-white/50"
         >
-          See how QDL is transforming banking operations worldwide
+          Banks, fintechs, and treasury teams on what changed after they switched to QDL
         </motion.p>
       </div>
 
-      <div className="mt-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCard key={index} {...testimonial} index={index} />
-          ))}
-        </div>
+      <div className="mt-12">
+        <CurvedMarquee />
       </div>
-      </AnimatedSection>
-    </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6 }}
+        className="mt-16"
+      >
+        <CoverflowGallery
+          items={testimonials}
+          renderItem={(t) => <TestimonialSlide {...t} />}
+          cardWidth={380}
+          cardHeight={360}
+        />
+        <p className="mt-4 text-center text-xs text-white/30">
+          Click a card, or use ← → to browse
+        </p>
+      </motion.div>
+    </AnimatedSection>
   )
 }

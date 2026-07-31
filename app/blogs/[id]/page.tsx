@@ -542,15 +542,12 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
 
   if (!post) {
     return (
-      <div className="relative min-h-screen w-full overflow-hidden text-slate-900">
-        <div className="absolute inset-0 bg-gradient-to-br from-teal-50 via-white to-sky-50">
-          <div className="absolute inset-0 bg-white/0" />
-        </div>
+      <div className="mesh-gradient-bg relative min-h-screen w-full">
         <div className="relative z-10">
           <Header />
           <main className="mx-auto max-w-4xl px-4 py-24 text-center">
-            <h1 className="text-4xl font-semibold">Post not found</h1>
-            <Link href="/blogs" className="mt-4 inline-block text-slate-700 hover:text-slate-900">
+            <h1 className="text-4xl font-semibold text-white">Post not found</h1>
+            <Link href="/blogs" className="mt-4 inline-block text-white/60 hover:text-white">
               ← Back to blogs
             </Link>
           </main>
@@ -560,31 +557,10 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
   }
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden text-slate-900">
-      {/* Background matching hero section */}
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-50 via-white to-sky-50">
-        <div className="absolute inset-0 bg-white/0" />
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-          }}
-        />
-      </div>
-      <div className="absolute inset-0 opacity-10">
-        <div
-          className="h-full w-full"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
-            backgroundSize: "50px 50px",
-          }}
-        />
-      </div>
-
+    <div className="mesh-gradient-bg relative min-h-screen w-full">
       <div className="relative z-10">
         <Header />
-        <main className="mx-auto max-w-4xl px-4 pb-24 pt-16 sm:px-6 lg:px-8 lg:pt-24">
+        <main className="mx-auto max-w-4xl px-4 pb-24 pt-32 sm:px-6 lg:px-8 lg:pt-40">
           {/* Back button */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -593,7 +569,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
           >
             <Link
               href="/blogs"
-              className="mb-8 inline-flex items-center gap-2 text-slate-600 transition-colors hover:text-slate-900"
+              className="mb-8 inline-flex items-center gap-2 text-white/60 transition-colors hover:text-white"
             >
               <ArrowLeft className="h-4 w-4" />
               <span>Back to blogs</span>

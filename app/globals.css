@@ -4,45 +4,47 @@
 
 @layer base {
   :root {
-    /* Updated background to F0EFEB (warm beige) and cards to FFFFFF (pure white) */
-    --background: 30 20% 94%; /* #F0EFEB - Warm light beige background */
-    --foreground: 210 11% 15%; /* #1f2937 - Dark text for 7.5:1 contrast */
+    /* Ultra-dark slate base with violet -> teal accent system */
+    --background: 222 60% 4%; /* #030712 - Ultra-dark slate background */
+    --foreground: 210 20% 98%; /* #f8fafc - Near-white text */
 
-    --muted: 210 11% 92%; /* #e5e7eb - Light gray for muted elements */
-    --muted-foreground: 210 11% 40% / 0.7; /* rgba(63, 81, 107, 0.7) - Muted text */
-    --muted-foreground-light: 210 11% 40% / 0.5; /* rgba(63, 81, 107, 0.5) - Light muted text */
-    --muted-foreground-dark: 210 11% 40% / 0.6; /* rgba(63, 81, 107, 0.6) - Medium muted text */
+    --muted: 222 30% 12%; /* #171e2e - Muted dark surface */
+    --muted-foreground: 215 16% 65%; /* #94a3b8 - Muted slate text */
+    --muted-foreground-light: 215 16% 65% / 0.7;
+    --muted-foreground-dark: 215 16% 65% / 0.85;
 
-    /* Updated card color to FFFFFF (pure white) for clear distinction from background */
-    --card: 0 0% 100%; /* #FFFFFF - Pure white cards */
-    --card-foreground: 210 11% 15%; /* #1f2937 - Dark text on cards */
+    /* Card is a dark solid fallback; glass surfaces use bg-white/5 + backdrop-blur utilities directly */
+    --card: 222 45% 7%; /* #0b1220 - Dark card fallback */
+    --card-foreground: 210 20% 98%;
 
-    --section-bg: 30 20% 97%; /* #f5f3f0 - Slightly lighter than main background for section distinction */
-    --section-border: 30 20% 88%; /* #e8e4df - Subtle border for section separation */
+    --section-bg: 222 55% 5%;
+    --section-border: 222 20% 20% / 0.5;
 
-    --popover: 0 0% 100%; /* #FFFFFF - Pure white popover */
-    --popover-foreground: 210 11% 15%; /* #1f2937 - Dark text on popover */
+    --popover: 222 45% 7%;
+    --popover-foreground: 210 20% 98%;
 
-    /* Primary Accent Colors - Teal maintained for consistency */
-    --primary: 165 96% 44%; /* #0dd9c4 - Vibrant teal for light theme */
-    --primary-foreground: 0 0% 100%; /* #ffffff - White text on primary */
-    --primary-dark: 165 100% 35%; /* #00b8a9 - Darker teal for hover states */
-    --primary-light: 165 100% 85%; /* #b3f5f0 - Light teal for backgrounds */
+    /* Primary accent: neon violet, fading into cyan/teal */
+    --primary: 258 90% 66%; /* #8B5CF6 - Vibrant violet */
+    --primary-foreground: 0 0% 100%;
+    --primary-dark: 258 80% 55%; /* deeper violet for hover */
+    --primary-light: 258 90% 80%;
 
-    /* Secondary Accent Colors */
-    --secondary: 210 11% 92%; /* #e5e7eb - Light gray secondary */
-    --secondary-foreground: 210 11% 15%; /* #1f2937 - Dark text on secondary */
+    --accent-teal: 173 80% 40%; /* #14B8A6 */
+    --accent-gold: 43 96% 56%; /* warm gold highlight */
 
-    --accent: 210 11% 85%; /* #d1d5db - Light accent */
-    --accent-foreground: 210 11% 15%; /* #1f2937 - Dark text on accent */
+    --secondary: 222 30% 12%;
+    --secondary-foreground: 210 20% 98%;
 
-    --border: 30 20% 88%; /* #e8e4df - Warm border matching section theme */
-    --border-light: 30 20% 92% / 0.5; /* rgba(242, 240, 237, 0.5) - Very light border */
-    --border-dark: 30 20% 85% / 0.8; /* rgba(232, 228, 223, 0.8) - Medium border */
+    --accent: 222 30% 14%;
+    --accent-foreground: 210 20% 98%;
 
-    --ring: 165 96% 44%; /* #0dd9c4 - Teal ring for focus states */
+    --border: 222 20% 20% / 0.6; /* subtle border on dark surfaces */
+    --border-light: 222 20% 25% / 0.4;
+    --border-dark: 222 20% 15% / 0.8;
 
-    --radius: 0.5rem;
+    --ring: 258 90% 66%; /* violet ring for focus states */
+
+    --radius: 1rem;
   }
 }
 
@@ -52,234 +54,130 @@
   }
   body {
     @apply bg-background text-foreground;
-    background-image: radial-gradient(circle, rgba(210, 180, 140, 0.15) 1px, transparent 1px);
-    background-size: 20px 20px;
-    background-position: 0 0;
   }
 }
 
-@keyframes flowingArrow {
-  0% {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  10% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(20px);
-  }
+/* Ultra-dark mesh/radial-beam background for hero + accents */
+.mesh-gradient-bg {
+  background-color: #030712;
+  background-image:
+    radial-gradient(60% 50% at 20% 15%, rgba(139, 92, 246, 0.35) 0%, transparent 70%),
+    radial-gradient(50% 45% at 85% 20%, rgba(20, 184, 166, 0.28) 0%, transparent 70%),
+    radial-gradient(60% 60% at 50% 100%, rgba(139, 92, 246, 0.18) 0%, transparent 70%),
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+  background-position: 0 0, 0 0, 0 0, -1px -1px, -1px -1px;
 }
 
-@keyframes floatingArrow {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-.flowing-arrow {
-  animation: flowingArrow 2s ease-in-out infinite;
-}
-
-.floating-arrow {
-  animation: floatingArrow 3s ease-in-out infinite;
-}
-
-/* Animated Diagonal Gradient Background */
-.animated-gradient-bg {
-  background: linear-gradient(
-    135deg,
-    #7c3aed 0%,
-    #d946ef 20%,
-    #ec4899 35%,
-    #f43f5e 50%,
-    #fb7185 65%,
-    #fbbf24 80%,
-    #60a5fa 100%
-  );
-  background-size: 400% 400%;
-  animation: gradientShift 8s ease infinite, waveMotion 6s ease-in-out infinite;
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% 15%,
-    85% 35%,
-    70% 55%,
-    50% 75%,
-    20% 95%,
-    0 100%
-  );
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-@keyframes waveMotion {
-  0% {
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% 15%,
-      85% 35%,
-      70% 55%,
-      50% 75%,
-      20% 95%,
-      0 100%
-    );
-  }
-  25% {
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% 12%,
-      87% 32%,
-      72% 52%,
-      52% 72%,
-      18% 92%,
-      0 100%
-    );
-  }
-  50% {
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% 18%,
-      83% 38%,
-      68% 58%,
-      48% 78%,
-      22% 98%,
-      0 100%
-    );
-  }
-  75% {
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% 12%,
-      87% 32%,
-      72% 52%,
-      52% 72%,
-      18% 92%,
-      0 100%
-    );
-  }
-  100% {
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% 15%,
-      85% 35%,
-      70% 55%,
-      50% 75%,
-      20% 95%,
-      0 100%
-    );
-  }
-}
-
-/* Gradient for "by" word */
-.by-gradient {
-  color: #fff;
-  background-size: 300% 100%;
-
+/* Shared gradient text utility: violet -> teal */
+.gradient-text-violet-teal {
+  background-image: linear-gradient(90deg, #8b5cf6 0%, #14b8a6 100%);
   -webkit-background-clip: text;
   background-clip: text;
-
-  animation: qdlFlow 3.5s ease-in-out infinite;
+  color: transparent;
 }
 
-@keyframes qdlFlow {
+/* Glow border used on primary CTAs and active states */
+.glow-border {
+  position: relative;
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.1), 0 0 24px rgba(139, 92, 246, 0.35);
+}
+
+/* Mouse-tracked spotlight overlay, positioned via --x/--y custom properties */
+.spotlight-overlay {
+  background: radial-gradient(
+    380px circle at var(--x, 50%) var(--y, 50%),
+    rgba(139, 92, 246, 0.15),
+    transparent 70%
+  );
+}
+
+/* Seamless infinite marquee */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+.marquee-pause:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* Electric Border rotating current (Features bento cards) */
+@keyframes electric-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.electric-current-spin {
+  animation: electric-spin 2.6s linear infinite;
+}
+
+/* Glitch Text RGB-split layers (FAQ hover) */
+@keyframes glitch-shift-1 {
   0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Smooth Wave Animations - Stripe Style Diagonal Waves */
-.wave {
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 200%;
-  height: 120px;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><defs><linearGradient id="waveGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%%" style="stop-color:rgba(255,255,255,0.15);stop-opacity:1" /><stop offset="100%%" style="stop-color:rgba(255,255,255,0.02);stop-opacity:1" /></linearGradient></defs><path d="M0,50 Q150,20 300,50 T600,50 T900,50 T1200,50 L1200,120 L0,120 Z" fill="url(%23waveGrad)"/></svg>') repeat-x;
-  background-size: 600px 120px;
-  animation: wave 25s ease-in-out infinite;
-  opacity: 0.8;
-}
-
-.wave.wave-2 {
-  bottom: 15px;
-  height: 140px;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><defs><linearGradient id="waveGrad2" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%%" style="stop-color:rgba(255,255,255,0.1);stop-opacity:1" /><stop offset="100%%" style="stop-color:rgba(255,255,255,0.01);stop-opacity:1" /></linearGradient></defs><path d="M0,40 Q150,70 300,40 T600,40 T900,40 T1200,40 L1200,120 L0,120 Z" fill="url(%23waveGrad2)"/></svg>') repeat-x;
-  background-size: 800px 140px;
-  animation: wave 35s ease-in-out infinite reverse;
-  opacity: 0.6;
-}
-
-.wave.wave-3 {
-  bottom: 35px;
-  height: 160px;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><defs><linearGradient id="waveGrad3" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%%" style="stop-color:rgba(255,255,255,0.08);stop-opacity:1" /><stop offset="100%%" style="stop-color:rgba(255,255,255,0);stop-opacity:1" /></linearGradient></defs><path d="M0,60 Q150,30 300,60 T600,60 T900,60 T1200,60 L1200,120 L0,120 Z" fill="url(%23waveGrad3)"/></svg>') repeat-x;
-  background-size: 1000px 160px;
-  animation: wave 40s ease-in-out infinite;
-  opacity: 0.5;
-}
-
-@keyframes wave {
-  0% {
-    transform: translateX(0) translateY(0);
+    transform: translate(0, 0);
   }
   50% {
-    transform: translateX(50px) translateY(-20px);
+    transform: translate(-2px, 1px);
   }
   100% {
-    transform: translateX(0) translateY(0);
+    transform: translate(2px, -1px);
   }
+}
+
+@keyframes glitch-shift-2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(2px, -1px);
+  }
+  100% {
+    transform: translate(-2px, 1px);
+  }
+}
+
+/* Rising Lines footer background */
+@keyframes rising-line {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+.rising-line {
+  height: 40%;
+  animation: rising-line 6s ease-in-out infinite;
 }
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .animated-gradient-bg {
+  .animate-marquee {
     animation: none;
   }
-  .wave {
+  .rising-line {
     animation: none;
+    opacity: 0.3;
   }
-}
-
-
-#gradient-canvas {
-  width: 100%;
-  height: 100%;
-  display: block;
-
---gradient-color-1: #ffb703;
---gradient-color-2: #fb7185;
---gradient-color-3: #a78bfa;
---gradient-color-4: #7dd3fc;
+  .electric-current-spin {
+    animation: none !important;
+  }
 }

@@ -95,13 +95,13 @@ export function DemoModal({ open, onOpenChange }: DemoModalProps) {
 
         {submitSuccess ? (
           <div className="flex flex-col items-center justify-center py-8 text-center">
-            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full" style={{background:"rgba(255, 107, 154, 0.1)"}}>
+            <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full" style={{background:"rgba(20, 184, 166, 0.15)"}}>
               <svg
                 className="h-6 w-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
-                style={{color:"#FF6B9A"}}
+                style={{color:"#14B8A6"}}
               >
                 <path
                   strokeLinecap="round"
@@ -127,9 +127,9 @@ export function DemoModal({ open, onOpenChange }: DemoModalProps) {
                 placeholder="John Doe"
                 {...register("name")}
                 aria-invalid={errors.name ? "true" : "false"}
-                className="focus:ring-[#FF6B9A] focus:border-[#FF6B9A]"
+                className="focus:ring-[#8B5CF6] focus:border-[#8B5CF6]"
                 style={{
-                  "--tw-ring-color": "#FF6B9A"
+                  "--tw-ring-color": "#8B5CF6"
                 } as React.CSSProperties}
               />
               {errors.name && (
@@ -147,9 +147,9 @@ export function DemoModal({ open, onOpenChange }: DemoModalProps) {
                 placeholder="john@example.com"
                 {...register("email")}
                 aria-invalid={errors.email ? "true" : "false"}
-                className="focus:ring-[#FF6B9A] focus:border-[#FF6B9A]"
+                className="focus:ring-[#8B5CF6] focus:border-[#8B5CF6]"
                 style={{
-                  "--tw-ring-color": "#FF6B9A"
+                  "--tw-ring-color": "#8B5CF6"
                 } as React.CSSProperties}
               />
               {errors.email && (
@@ -167,7 +167,7 @@ export function DemoModal({ open, onOpenChange }: DemoModalProps) {
                 value={bankSize}
                 onValueChange={(value) => setValue("bankSize", value)}
               >
-                <SelectTrigger id="bankSize" aria-invalid={errors.bankSize ? "true" : "false"} className="focus:ring-[#FF6B9A] focus:border-[#FF6B9A]" style={{"--tw-ring-color": "#FF6B9A"} as React.CSSProperties}>
+                <SelectTrigger id="bankSize" aria-invalid={errors.bankSize ? "true" : "false"} className="focus:ring-[#8B5CF6] focus:border-[#8B5CF6]" style={{"--tw-ring-color": "#8B5CF6"} as React.CSSProperties}>
                   <SelectValue placeholder="Select bank size" />
                 </SelectTrigger>
                 <SelectContent>
@@ -192,7 +192,7 @@ export function DemoModal({ open, onOpenChange }: DemoModalProps) {
                 value={role}
                 onValueChange={(value) => setValue("role", value)}
               >
-                <SelectTrigger id="role" aria-invalid={errors.role ? "true" : "false"} className="focus:ring-[#FF6B9A] focus:border-[#FF6B9A]" style={{"--tw-ring-color": "#FF6B9A"} as React.CSSProperties}>
+                <SelectTrigger id="role" aria-invalid={errors.role ? "true" : "false"} className="focus:ring-[#8B5CF6] focus:border-[#8B5CF6]" style={{"--tw-ring-color": "#8B5CF6"} as React.CSSProperties}>
                   <SelectValue placeholder="Select your role" />
                 </SelectTrigger>
                 <SelectContent>
@@ -214,7 +214,7 @@ export function DemoModal({ open, onOpenChange }: DemoModalProps) {
               type="submit"
               className="w-full font-semibold text-white transition-all hover:shadow-lg"
               style={{
-                background: "linear-gradient(90deg, #FF6B9A 0%, #7B5CF6 100%)",
+                background: "linear-gradient(90deg, #8B5CF6 0%, #14B8A6 100%)",
                 border: "none"
               }}
               disabled={isSubmitting}

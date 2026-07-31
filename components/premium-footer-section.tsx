@@ -5,13 +5,15 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import {Linkedin, Heart } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { RisingLines } from "./effects/rising-lines"
 
 const footerLinks = {
   product: [
     { label: "Data Control", href: "#" },
     { label: "Liquidity Management", href: "#" },
-    { label: "Fraud Detection", href: "#" },
-    { label: "Rules Management", href: "#" },
+    { label: "Anomaly Detection", href: "#" },
+    { label: "Rules Engine", href: "#" },
+    { label: "Connection Control", href: "#" },
   ],
  
   resources: [
@@ -37,8 +39,9 @@ const socialLinks = [
 
 export function PremiumFooterSection() {
   return (
-    <footer className="relative z-10 border-t border-border bg-gradient-to-br from-white via-[#FF6B9A]/15 to-[#7B5CF6]/15">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <footer className="relative z-10 overflow-hidden border-t border-white/10 bg-gradient-to-b from-transparent to-black/40">
+      <RisingLines />
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-6">
           {/* Brand Section */}
           <div className="lg:col-span-2">
@@ -49,9 +52,9 @@ export function PremiumFooterSection() {
               transition={{ duration: 0.6 }}
               className="space-y-4"
             >
-              <h3 className="text-2xl font-bold">QDL</h3>
-              <p className="text-muted-foreground max-w-sm">
-                Empowering Intelligent Banking Systems with AI-powered solutions
+              <h3 className="gradient-text-violet-teal text-2xl font-bold">QDL</h3>
+              <p className="max-w-sm text-white/50">
+                The one platform banks use to sync data, catch fraud, and manage rules — in real time.
               </p>
               {/* Social Icons */}
               <div className="flex gap-4">
@@ -64,7 +67,7 @@ export function PremiumFooterSection() {
                       aria-label={social.label}
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:border-primary hover:bg-primary/10 hover:text-primary"
+                      className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 transition-colors hover:border-violet-400/40 hover:bg-violet-500/10 hover:text-violet-300"
                     >
                       <Icon className="h-5 w-5" />
                     </motion.a>
@@ -81,7 +84,7 @@ export function PremiumFooterSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="mb-4 text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+            <h4 className="mb-4 text-sm font-semibold text-white/40 uppercase tracking-wider">
               Product
             </h4>
             <ul className="space-y-3">
@@ -89,7 +92,7 @@ export function PremiumFooterSection() {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-sm text-foreground transition-colors hover:text-primary"
+                    className="text-sm text-white/60 transition-colors hover:text-teal-300"
                   >
                     {link.label}
                   </a>
@@ -105,7 +108,7 @@ export function PremiumFooterSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="mb-4 text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+            <h4 className="mb-4 text-sm font-semibold text-white/40 uppercase tracking-wider">
               Company
             </h4>
             <ul className="space-y-3">
@@ -113,7 +116,7 @@ export function PremiumFooterSection() {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-sm text-foreground transition-colors hover:text-primary"
+                    className="text-sm text-white/60 transition-colors hover:text-teal-300"
                   >
                     {link.label}
                   </a>
@@ -129,7 +132,7 @@ export function PremiumFooterSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h4 className="mb-4 text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+            <h4 className="mb-4 text-sm font-semibold text-white/40 uppercase tracking-wider">
               Resources
             </h4>
             <ul className="space-y-3">
@@ -137,7 +140,7 @@ export function PremiumFooterSection() {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-sm text-foreground transition-colors hover:text-primary"
+                    className="text-sm text-white/60 transition-colors hover:text-teal-300"
                   >
                     {link.label}
                   </a>
@@ -153,7 +156,7 @@ export function PremiumFooterSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <h4 className="mb-4 text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+            <h4 className="mb-4 text-sm font-semibold text-white/40 uppercase tracking-wider">
               Legal
             </h4>
             <ul className="space-y-3">
@@ -161,7 +164,7 @@ export function PremiumFooterSection() {
                 <li key={index}>
                   <Link
                     href={link.href}
-                    className="text-sm text-foreground transition-colors hover:text-primary"
+                    className="text-sm text-white/60 transition-colors hover:text-teal-300"
                   >
                     {link.label}
                   </Link>
@@ -177,7 +180,7 @@ export function PremiumFooterSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            <h4 className="mb-4 text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+            <h4 className="mb-4 text-sm font-semibold text-white/40 uppercase tracking-wider">
               Contact Us
             </h4>
             <ul className="space-y-3">
@@ -185,7 +188,7 @@ export function PremiumFooterSection() {
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-sm text-foreground transition-colors hover:text-primary"
+                    className="text-sm text-white/60 transition-colors hover:text-teal-300"
                   >
                     {link.label}
                   </a>
@@ -201,9 +204,9 @@ export function PremiumFooterSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-12 flex flex-col items-center gap-4 border-t border-border pt-8 text-center sm:flex-row sm:justify-between"
+          className="mt-12 flex flex-col items-center gap-4 border-t border-white/10 pt-8 text-center sm:flex-row sm:justify-between"
         >
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-white/40">
             © {new Date().getFullYear()} Quantum Data Leap. All rights reserved.
           </p>
           

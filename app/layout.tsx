@@ -12,7 +12,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: 'Quantum Data Leap - Intelligent Banking Platform',
   description:
-    'Transform your banking operations with intelligent data control, liquidity management, fraud detection, and automated compliance rules.',
+    'Transform your banking operations with intelligent data control, liquidity management, anomaly detection, and automated compliance rules.',
   icons: {
     icon: '/logo.png',
   },
