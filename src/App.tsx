@@ -4,7 +4,6 @@ import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 import type { ComponentType } from 'react'
 import ScrollReveal from './components/ScrollReveal'
-import Cursor from './components/Cursor'
 import { usePath } from './router'
 
 const ROUTES: Record<string, ComponentType> = {
@@ -20,7 +19,6 @@ export default function App() {
   return (
     <>
       <ScrollReveal />
-      <Cursor />
       <Page />
     </>
   )
