@@ -1,0 +1,377 @@
+import { useState, type CSSProperties, type FormEvent } from 'react'
+import { ArrowRight, Check, Loader2 } from 'lucide-react'
+import Footer from '../components/Footer'
+import { Link } from '../router'
+
+/**
+ * The demo request page every "Request a demo" button lands on.
+ *
+ * Four questions and nothing else. The pitch sits on the left, the form on the
+ * right. Motion is confined to what it can earn: fields that acknowledge
+ * focus, a choice that confirms itself, a meter that tracks how much is left.
+ *
+ * Submissions POST to the same path server-site uses, so moving this page into
+ * that app needs no change. Override it with VITE_DEMO_ENDPOINT if the API
+ * lives elsewhere.
+ */
+
+const ENDPOINT =
+  import.meta.env.VITE_DEMO_ENDPOINT ?? '/api/demo/demo-requests'
+
+const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+const POINTS = [
+  'See QDL screen, fund and settle a payment on your own rails',
+  'Watch the assistant answer in plain language, with the figures',
+  'Walk the liquidity, fraud and rules surfaces with our team',
+  'Get a deployment shape for the core systems you already run',
+]
+
+type Status = 'idle' | 'sending' | 'sent' | 'error'
+
+function Field({
+  name,
+  label,
+  type = 'text',
+  value,
+  onChange,
+  done,
+  autoComplete,
+}: {
+  name: string
+  label: string
+  type?: string
+  value: string
+  onChange: (v: string) => void
+  done: boolean
+  autoComplete?: string
+}) {
+  return (
+    <label className="block">
+      <span className="mb-1.5 flex items-center gap-1.5 text-[13px] font-medium text-gray-900">
+        {label}
+        <span className="text-[#062698]">*</span>
+        {done && (
+          <Check
+            size={14}
+            className="ml-auto text-[#0a8f6a]"
+            strokeWidth={2.5}
+            aria-hidden="true"
+          />
+        )}
+      </span>
+
+      <input
+        name={name}
+        type={type}
+        required
+        value={value}
+        autoComplete={autoComplete}
+        onChange={(e) => onChange(e.target.value)}
+        className="h-12 w-full rounded-xl border border-gray-200 bg-[#FAFBFC] px-3.5 text-[14px] text-gray-900 outline-none transition-colors duration-200 focus:border-[#062698] focus:bg-white"
+      />
+    </label>
+  )
+}
+
+export default function Demo() {
+  const [status, setStatus] = useState<Status>('idle')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [regulated, setRegulated] = useState<'Yes' | 'No' | null>(null)
+
+  const done = [
+    name.trim().length > 1,
+    EMAIL.test(email),
+    phone.replace(/\D/g, '').length >= 7,
+    regulated !== null,
+  ]
+  const complete = done.filter(Boolean).length
+
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setStatus('sending')
+
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          phone: phone.trim(),
+          regulated: regulated ?? '',
+        }),
+      })
+      if (!res.ok) throw new Error('Request failed')
+      setStatus('sent')
+      setName('')
+      setEmail('')
+      setPhone('')
+      setRegulated(null)
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  return (
+    <main className="min-h-screen bg-[#F5F5F5]">
+      {/* This page is the destination, so the top only needs a way back */}
+      <div className="mx-auto w-full max-w-[1440px] px-5 pt-8 sm:px-8 sm:pt-10 lg:px-12">
+        <div className="flex items-center justify-between gap-6">
+          <Link to="/" className="flex shrink-0 items-center gap-2.5">
+            <img
+              src="/qdl-mark.png"
+              alt="Quantum Data Leap"
+              className="h-9 w-9 shrink-0 object-contain sm:h-10 sm:w-10"
+            />
+            <span className="wordmark text-[24px] sm:text-[28px]">
+              QDL
+            </span>
+          </Link>
+
+          <Link
+            to="/"
+            className="group inline-flex items-center gap-2 text-[14px] font-medium text-gray-600 transition-colors duration-300 hover:text-gray-900"
+          >
+            <ArrowRight
+              size={15}
+              className="rotate-180 transition-transform duration-300 group-hover:-translate-x-0.5"
+            />
+            Back to site
+          </Link>
+        </div>
+      </div>
+
+      <section className="mx-auto w-full max-w-[1440px] px-5 pb-16 pt-12 sm:px-8 sm:pb-20 sm:pt-16 lg:px-12 lg:pb-28 lg:pt-20">
+        {/* Badge row, as on every section of the site */}
+        <div className="mb-6 flex items-center gap-3 sm:mb-8">
+          <span className="rounded-full border border-gray-300 px-3 py-1 text-[12px] font-medium text-gray-900 sm:px-4 sm:py-1.5 sm:text-[13px]">
+            Request a demo
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:gap-14 xl:gap-20">
+          {/* Pitch */}
+          <div>
+            <h1
+              data-reveal
+              className="text-[clamp(1.75rem,7vw,4.2rem)] font-medium leading-[1.08] tracking-[-0.03em] text-gray-900 sm:text-[clamp(2.25rem,4.5vw,3.4rem)]"
+            >
+              Experience Quantum Data
+              <br className="hidden sm:block" />
+              <span className="sm:hidden"> </span>
+              Leap in action.
+            </h1>
+
+            <p
+              data-reveal
+              style={{ '--reveal-delay': '110ms' } as CSSProperties}
+              className="mt-6 max-w-[46ch] text-[15px] leading-[1.65] text-gray-700 sm:text-[17px]"
+            >
+              A walkthrough on your own payment flows. Ask the hard questions
+              and see how the intelligence layer sits on top of the stack you
+              already operate.
+            </p>
+
+            <ul className="mt-9 space-y-4">
+              {POINTS.map((point, i) => (
+                <li
+                  key={point}
+                  data-reveal
+                  style={{ '--reveal-delay': `${200 + i * 90}ms` } as CSSProperties}
+                  className="flex gap-3"
+                >
+                  <span className="mt-[3px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white shadow-[0_1px_4px_rgba(16,24,40,0.14)]">
+                    <Check
+                      size={12}
+                      className="text-[#062698]"
+                      strokeWidth={2.5}
+                      aria-hidden="true"
+                    />
+                  </span>
+                  <span className="text-[14px] leading-relaxed text-gray-700 sm:text-[15px]">
+                    {point}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-10 text-[14px] text-gray-500 sm:text-[15px]">
+              Prefer email?{' '}
+              <a
+                href="mailto:quantumdataleap.ai@gmail.com"
+                className="font-medium text-[#062698] underline underline-offset-2"
+              >
+                quantumdataleap.ai@gmail.com
+              </a>
+            </p>
+          </div>
+
+          {/* Form */}
+          <div
+            data-reveal
+            style={{ '--reveal-delay': '160ms' } as CSSProperties}
+            className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)]"
+          >
+            {/* How much is left, as a line across the top of the card */}
+            <div className="h-1 w-full bg-gray-200" aria-hidden="true">
+              <div
+                className="h-full bg-gradient-to-r from-[#062698] to-[#0867e6] transition-[width] duration-500 ease-out"
+                style={{ width: `${(complete / 4) * 100}%` }}
+              />
+            </div>
+
+            <div className="p-6 sm:p-8">
+              {status === 'sent' ? (
+                <div className="flex min-h-[24rem] flex-col items-center justify-center text-center">
+                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#062698]">
+                    <Check size={28} className="text-white" strokeWidth={2.5} />
+                  </span>
+                  <h2 className="mt-6 text-[22px] font-semibold tracking-[-0.02em] text-gray-900">
+                    Thanks, we have it.
+                  </h2>
+                  <p className="mt-3 max-w-[34ch] text-[14px] leading-relaxed text-gray-600">
+                    Someone from the team will be in touch shortly to arrange
+                    your walkthrough.
+                  </p>
+                  <Link
+                    to="/"
+                    className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#062698] px-5 py-3 text-[14px] font-medium text-white transition-colors duration-300 hover:bg-[#0867e6]"
+                  >
+                    Back to the site
+                  </Link>
+                </div>
+              ) : (
+                <form onSubmit={onSubmit} className="space-y-5">
+                  <div>
+                    <h2 className="text-[22px] font-semibold tracking-[-0.02em] text-gray-900">
+                      Schedule a demo
+                    </h2>
+                    <p className="mt-1 text-[13.5px] text-gray-500">
+                      Four questions, then we will do the rest.
+                    </p>
+                  </div>
+
+                  <Field
+                    name="name"
+                    label="Full name"
+                    value={name}
+                    onChange={setName}
+                    done={done[0]}
+                    autoComplete="name"
+                  />
+
+                  <Field
+                    name="email"
+                    label="Work email"
+                    type="email"
+                    value={email}
+                    onChange={setEmail}
+                    done={done[1]}
+                    autoComplete="email"
+                  />
+
+                  <Field
+                    name="phone"
+                    label="Phone number"
+                    type="tel"
+                    value={phone}
+                    onChange={setPhone}
+                    done={done[2]}
+                    autoComplete="tel"
+                  />
+
+                  <fieldset className="pt-1">
+                    <legend className="text-[13px] font-medium text-gray-900">
+                      Are you a regulated financial institution?
+                    </legend>
+                    <div className="mt-2.5 grid grid-cols-2 gap-3">
+                      {(['Yes', 'No'] as const).map((value) => {
+                        const active = regulated === value
+                        return (
+                          <label key={value} className="relative cursor-pointer">
+                            <input
+                              type="radio"
+                              name="regulated"
+                              value={value}
+                              required
+                              checked={active}
+                              onChange={() => setRegulated(value)}
+                              className="peer sr-only"
+                            />
+                            <span
+                              className={`flex h-12 items-center justify-center gap-2 rounded-xl border text-[14px] font-medium transition-all duration-200 peer-focus-visible:ring-2 peer-focus-visible:ring-[#062698] peer-focus-visible:ring-offset-2 ${
+                                active
+                                  ? 'border-[#062698] bg-[#eef2ff] text-[#062698] shadow-[0_8px_20px_-12px_rgba(6,38,152,0.75)]'
+                                  : 'border-gray-200 bg-white text-gray-600'
+                              }`}
+                            >
+                              {active && (
+                                <Check size={14} strokeWidth={2.5} aria-hidden="true" />
+                              )}
+                              {value}
+                            </span>
+                          </label>
+                        )
+                      })}
+                    </div>
+                  </fieldset>
+
+                  <button
+                    type="submit"
+                    disabled={status === 'sending'}
+                    className="group mt-1 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#062698] text-[15px] font-medium text-white transition-colors duration-300 hover:bg-[#0867e6] disabled:opacity-70"
+                  >
+                    {status === 'sending' ? (
+                      <>
+                        <Loader2 size={16} className="animate-spin" />
+                        Sending
+                      </>
+                    ) : (
+                      <>
+                        Request a demo
+                        <ArrowRight
+                          size={16}
+                          className="transition-transform duration-300 group-hover:translate-x-1"
+                        />
+                      </>
+                    )}
+                  </button>
+
+                  {status === 'error' && (
+                    <p className="text-[13px] leading-relaxed text-[#b0163f]">
+                      Something went wrong sending that. Please try again, or
+                      email us at{' '}
+                      <a
+                        href="mailto:quantumdataleap.ai@gmail.com"
+                        className="font-medium underline underline-offset-2"
+                      >
+                        quantumdataleap.ai@gmail.com
+                      </a>
+                      .
+                    </p>
+                  )}
+
+                  <p className="text-[12px] leading-relaxed text-gray-500">
+                    By submitting this form you agree to our{' '}
+                    <Link
+                      to="/privacy-policy"
+                      className="underline underline-offset-2"
+                    >
+                      Privacy Policy
+                    </Link>
+                    .
+                  </p>
+                </form>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </main>
+  )
+}
