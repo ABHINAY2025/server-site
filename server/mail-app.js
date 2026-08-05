@@ -89,7 +89,7 @@ function escapeHtml(value) {
  * a crafted name could inject extra headers. Quotes are stripped too, since the
  * result is wrapped in them.
  */
-function headerSafe(value) {
+export function headerSafe(value) {
   return String(value)
     .replace(/[\r\n]+/g, ' ')
     .replace(/["\\]/g, '')
@@ -97,7 +97,7 @@ function headerSafe(value) {
     .slice(0, 78)
 }
 
-function formatReceived(date) {
+export function formatReceived(date) {
   return date.toLocaleString('en-GB', {
     day: 'numeric',
     month: 'long',
@@ -109,7 +109,7 @@ function formatReceived(date) {
 }
 
 /** The notification that goes to the team when someone asks for a demo. */
-function notification({ name, email, phone, regulated, receivedAt, from, to }) {
+export function notification({ name, email, phone, regulated, receivedAt, from, to }) {
   const fields = [
     ['Phone', phone],
     ['Regulated institution', regulated || 'Not answered'],
@@ -195,7 +195,7 @@ const NEXT_STEPS = [
  * Inline styles and a table layout, because that is what mail clients render
  * reliably. No images, so nothing depends on remote content being unblocked.
  */
-function acknowledgement({ name, email, from }) {
+export function acknowledgement({ name, email, from }) {
   const firstName = name.split(/\s+/)[0]
 
   return {
@@ -280,7 +280,7 @@ function acknowledgement({ name, email, from }) {
  * Returns a problem string rather than exiting, so mounting inside the dev
  * server cannot take the dev server down with it.
  */
-async function buildTransport() {
+export async function buildTransport() {
   if (process.env.MAIL_DEV_ECHO === '1') {
     return { transporter: null, mode: 'echo' }
   }
