@@ -12,8 +12,18 @@ import { useEffect, useRef } from 'react'
  * keep the native arrow.
  */
 
-/** How tightly the arrow tracks the pointer. 1 would be no lag at all. */
-const EASE = 0.38
+/**
+ * How tightly the arrow tracks the pointer, where 1 is no lag at all.
+ *
+ * Kept high on purpose. A trailing cursor looks good in isolation but the
+ * arrow is the only aiming feedback once the native one is hidden, so lag
+ * reads directly as "I cannot hit this button".
+ */
+const EASE = 0.72
+
+/** Fields where the native caret beats a decorative arrow. */
+const TEXT_FIELDS =
+  'textarea, [contenteditable="true"], input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="reset"]):not([type="file"])'
 
 export default function Cursor() {
   const arrowRef = useRef<HTMLDivElement>(null)
@@ -48,14 +58,18 @@ export default function Cursor() {
       root.classList.remove('cursor-visible')
     }
 
-    /* Grow the arrow over anything clickable, so the pointer still signals
-       affordance the way the native one did. */
+    /* Grow the arrow over anything clickable, and stand down entirely over
+       text entry so the native caret can do its job. */
     const onOver = (event: PointerEvent) => {
       const el = event.target as Element | null
-      const interactive = el?.closest?.(
-        'a, button, [role="button"], input, textarea, select, label, summary',
+
+      const overText = Boolean(el?.closest?.(TEXT_FIELDS))
+      root.classList.toggle('cursor-text', overText)
+
+      const interactive = Boolean(
+        el?.closest?.('a, button, [role="button"], select, label, summary'),
       )
-      root.classList.toggle('cursor-active', Boolean(interactive))
+      root.classList.toggle('cursor-active', interactive && !overText)
     }
 
     const tick = () => {
@@ -77,7 +91,12 @@ export default function Cursor() {
       window.removeEventListener('pointermove', onMove)
       window.removeEventListener('pointerover', onOver)
       document.removeEventListener('pointerleave', onLeave)
-      root.classList.remove('cursor-custom', 'cursor-visible', 'cursor-active')
+      root.classList.remove(
+        'cursor-custom',
+        'cursor-visible',
+        'cursor-active',
+        'cursor-text',
+      )
     }
   }, [])
 
