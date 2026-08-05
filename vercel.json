@@ -6,7 +6,6 @@
   "installCommand": "npm install",
   "rewrites": [
     {
-      "comment": "Client-side routes have no file on disk. Anything that is not an API call and not a real file falls back to the app shell, so /demo and the legal pages survive a direct visit or a refresh.",
       "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
