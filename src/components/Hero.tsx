@@ -2,6 +2,14 @@ import type { CSSProperties } from 'react'
 import { BadgeCheck } from 'lucide-react'
 import { Shader, ChromaFlow, FilmGrain, FlutedGlass, Swirl } from 'shaders/react'
 import DemoLink from './DemoLink'
+import { Link } from '../router'
+
+/** Three destinations, no more. Anything longer becomes a menu to manage. */
+const NAV = [
+  { label: 'Blog', to: '/blog' },
+  { label: 'Data handling', to: '/data-handling' },
+  { label: 'Request a demo', to: '/demo' },
+]
 
 export default function Hero() {
   return (
@@ -35,15 +43,29 @@ export default function Hero() {
         </FilmGrain>
       </Shader>
 
-      {/* Brand mark, sitting in the space the navigation used to occupy */}
+      {/* Brand mark left, three destinations right */}
       <div className="relative z-20 mx-auto w-full max-w-[1440px] px-5 pt-8 sm:px-8 sm:pt-10 lg:px-12">
-        <div data-reveal className="flex items-center gap-2.5">
-          <img
-            src="/qdl-mark.png"
-            alt="Quantum Data Leap"
-            className="h-9 w-9 shrink-0 object-contain sm:h-10 sm:w-10"
-          />
-          <span className="wordmark text-[28px] sm:text-[34px]">QDL</span>
+        <div data-reveal className="flex items-center justify-between gap-6">
+          <Link to="/" className="flex shrink-0 items-center gap-2.5">
+            <img
+              src="/qdl-mark.png"
+              alt="Quantum Data Leap"
+              className="h-9 w-9 shrink-0 object-contain sm:h-10 sm:w-10"
+            />
+            <span className="wordmark text-[28px] sm:text-[34px]">QDL</span>
+          </Link>
+
+          <nav className="flex items-center gap-1 sm:gap-2">
+            {NAV.map((item) => (
+              <Link
+                key={item.label}
+                to={item.to}
+                className="rounded-full px-3 py-2 text-[13px] font-medium text-gray-700 transition-colors duration-300 hover:bg-white/70 hover:text-gray-900 sm:px-4 sm:text-[14px]"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </div>
       </div>
 
@@ -64,7 +86,7 @@ export default function Hero() {
 
         {/* Each line rises from behind its own mask, one after the other */}
         <h1 className="text-[clamp(1.75rem,7vw,4.2rem)] font-medium leading-[1.08] tracking-[-0.03em] text-gray-900 sm:text-[clamp(2.5rem,5vw,4.2rem)]">
-          {['Your platform needs intelligence,', 'powered by Quantum Data Leap.'].map(
+          {['Fewer exceptions.', 'Higher STP.', 'No replatforming.'].map(
             (line, i) => (
               <span key={line} className="reveal-mask block">
                 <span
@@ -89,9 +111,9 @@ export default function Hero() {
           style={{ '--reveal-delay': '310ms' } as CSSProperties}
           className="mt-6 max-w-[46rem] text-[15px] leading-[1.6] text-gray-700 sm:mt-7 sm:text-[17px]"
         >
-          The industry does not have a payment problem. It has an intelligence
-          problem. QDL connects the core systems your institution already
-          operates to screen, fund and settle every payment.
+          US regional banks settle a smaller share of payments first-pass than
+          the top tier, and pay the difference in manual repair work. QDL
+          corrects payment data in flight, on the core you already run.
         </p>
 
         <div
@@ -107,10 +129,7 @@ export default function Hero() {
               strokeWidth={1.75}
             />
             <span className="text-[13px] font-medium text-gray-900 sm:text-[14px]">
-              ISO 20022 Certified
-            </span>
-            <span className="rounded bg-gray-900 px-1.5 py-0.5 text-[10px] text-white sm:px-2 sm:text-[11px]">
-              pacs.008
+              Built for ISO 20022 payment messaging
             </span>
           </div>
         </div>

@@ -22,14 +22,16 @@ function LinkedInIcon({ className = '' }: { className?: string }) {
  */
 
 const LINKS = [
-  { label: 'Contact sales', href: 'mailto:quantumdataleap.ai@gmail.com', external: true },
+  { label: 'Contact sales', href: 'mailto:support@quantumdataleap.ai', external: true },
   { label: 'Privacy Policy', href: '/privacy-policy', external: false },
   { label: 'Terms of Service', href: '/terms-of-service', external: false },
 ]
 
 export default function Footer() {
   return (
-    <footer className="border-t border-gray-200 bg-white">
+    <footer className="bg-white">
+      {/* The brand gradient as a hairline, closing the page */}
+      <div className="qdl-gradient-bg h-px w-full" aria-hidden="true" />
       <div className="mx-auto w-full max-w-[1440px] px-5 pb-8 pt-10 sm:px-8 sm:pb-10 sm:pt-12 lg:px-12">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
           {/* Brand */}

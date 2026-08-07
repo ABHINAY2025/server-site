@@ -1,19 +1,26 @@
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 
-/** Figures from server-site/components/operational-savings-section.tsx */
+/**
+ * Detection alongside false positives, deliberately. A detection rate on its
+ * own says nothing: a model that flags everything scores 100% and buries the
+ * team. The pair is what an operations lead actually needs.
+ */
 const STATS = [
-  { to: 99.4, decimals: 1, suffix: '%', label: 'of anomalies flagged in flight' },
-  { to: 90, decimals: 0, suffix: '%', label: 'less time to resolve each case' },
   {
-    to: 280,
-    decimals: 0,
-    prefix: '$',
-    suffix: 'M',
-    label: 'returned in annual operating cost',
+    to: 99.4,
+    decimals: 1,
+    suffix: '%',
+    label: 'detection rate on anomalies, scored in flight',
+  },
+  {
+    to: 1.8,
+    decimals: 1,
+    suffix: '%',
+    label: 'false positive rate, so review queues stay small',
   },
 ]
 
-const STANDARDS = ['ISO 20022', 'pacs.008', 'SWIFT']
+const STANDARDS = ['ISO 20022', 'ACH', 'Fedwire', 'RTP']
 const DURATION = 1500
 
 function Stat({
@@ -56,7 +63,7 @@ function Stat({
 
   return (
     <div className="px-2 py-8 text-center sm:px-6 sm:py-0">
-      <p className="text-[clamp(2.5rem,6vw,3.75rem)] font-semibold leading-none tracking-[-0.035em] tabular-nums text-[#062698]">
+      <p className="qdl-gradient-text text-[clamp(2.5rem,6vw,3.75rem)] font-semibold leading-none tracking-[-0.035em] tabular-nums">
         <span aria-hidden="true">
           {prefix}
           {value.toFixed(decimals)}
@@ -136,7 +143,7 @@ export default function Numbers() {
           ))}
         </div>
 
-        <div className="mt-10 grid divide-y divide-gray-200 px-5 sm:mt-14 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:px-8 lg:px-12">
+        <div className="mt-10 grid divide-y divide-gray-200 px-5 sm:mt-14 sm:grid-cols-2 sm:divide-x sm:divide-y-0 sm:px-8 lg:px-12">
           {STATS.map((stat, i) => (
             <div
               key={stat.label}

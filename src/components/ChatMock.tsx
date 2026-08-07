@@ -29,11 +29,11 @@ const THREAD: Msg[] = [
   { role: 'user', text: 'What is our net position today?' },
   {
     role: 'bot',
-    text: '₹31.2 Cr across every rail, up 6.4% on yesterday.',
+    text: '$38.4M across every rail, up 6.4% on yesterday.',
     reply: 'position',
   },
   { role: 'user', text: 'Break that down by rail.' },
-  { role: 'bot', text: 'NEFT carries most of it.', reply: 'rails' },
+  { role: 'bot', text: 'ACH carries most of it.', reply: 'rails' },
   { role: 'user', text: 'How is straight through processing tracking?' },
   {
     role: 'bot',
@@ -46,10 +46,10 @@ const THREAD: Msg[] = [
     text: '412 payments held. Velocity is driving most of it.',
     reply: 'risk',
   },
-  { role: 'user', text: 'Pay ₹24,00,000 to Meridian Textiles today' },
+  { role: 'user', text: 'Repair and release the Meridian wire' },
   {
     role: 'bot',
-    text: 'One beneficiary identified. Screened and funded, ready to send.',
+    text: 'Beneficiary address completed from the counterparty record. Ready for your approval.',
     reply: 'payment',
   },
 ]
@@ -69,7 +69,7 @@ function PositionFigure() {
       <p className={EYEBROW}>Net position today</p>
       <div className="mt-1 flex items-baseline gap-2">
         <span className="text-[20px] font-semibold leading-none tracking-[-0.03em] text-gray-900">
-          ₹31.2 Cr
+          $38.4M
         </span>
         <span className="text-[11px] font-semibold text-[#0e9f6e]">▲ 6.4%</span>
       </div>
@@ -96,9 +96,9 @@ function PositionFigure() {
 }
 
 const RAIL_ROWS = [
-  { label: 'NEFT', value: '₹18.4 Cr', pct: 82, tone: '#2778fc' },
-  { label: 'RTGS', value: '₹9.1 Cr', pct: 54, tone: '#b0169c' },
-  { label: 'IMPS', value: '₹3.7 Cr', pct: 31, tone: '#fb5725' },
+  { label: 'ACH', value: '$22.6M', pct: 82, tone: '#2778fc' },
+  { label: 'Fedwire', value: '$11.2M', pct: 54, tone: '#b0169c' },
+  { label: 'RTP', value: '$4.6M', pct: 31, tone: '#fb5725' },
 ]
 
 function RailsFigure() {
@@ -216,26 +216,55 @@ function RiskFigure() {
 
 const CHECKS = [
   { label: 'Sanctions', value: 'Clear' },
-  { label: 'Risk score', value: '12 / low' },
   { label: 'Liquidity', value: 'Funded' },
 ]
+
+/** The confidence the engine puts on its own repair. */
+const CONFIDENCE = 96
 
 function PaymentFigure() {
   return (
     <div className={PANEL}>
       <div className="flex items-baseline justify-between">
         <span className="text-[12px] font-semibold text-gray-900">
-          Meridian Textiles
+          Meridian Manufacturing
         </span>
         <span className="text-[13px] font-semibold text-gray-900">
-          ₹24,00,000
+          $240,000.00
         </span>
       </div>
       <p className="mt-0.5 text-[11px] text-gray-400">
-        NEFT · HDFC0000123 · value today
+        Fedwire · ABA 021000021 · value today
       </p>
 
-      <ul className="mt-2.5 space-y-1.5 border-t border-gray-200 pt-2.5">
+      {/* What was repaired, and how sure the engine is about it */}
+      <div className="mt-2.5 rounded-lg bg-[#f5f6f8] p-2.5">
+        <div className="flex items-baseline justify-between">
+          <span className="text-[10px] font-semibold uppercase tracking-[0.1em] text-gray-500">
+            Repair confidence
+          </span>
+          <span className="text-[13px] font-semibold tabular-nums text-[#0e9f6e]">
+            {CONFIDENCE}%
+          </span>
+        </div>
+        <span className="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-[#e3e6ec]">
+          <span
+            className="sr-chat-grow block h-full rounded-full"
+            style={
+              {
+                width: `${CONFIDENCE}%`,
+                background: 'linear-gradient(90deg,#0867e6,#0e9f6e)',
+                '--i': 0,
+              } as CSSProperties
+            }
+          />
+        </span>
+        <p className="mt-1.5 text-[10.5px] leading-snug text-gray-500">
+          Beneficiary address completed from the counterparty record
+        </p>
+      </div>
+
+      <ul className="mt-2.5 space-y-1.5">
         {CHECKS.map((c) => (
           <li key={c.label} className="flex items-center gap-2 text-[11px]">
             <svg viewBox="0 0 16 16" className="h-3 w-3" fill="none" aria-hidden="true">
@@ -254,14 +283,23 @@ function PaymentFigure() {
         ))}
       </ul>
 
-      <div className="mt-3 flex gap-2">
-        <span className="flex-1 rounded-lg bg-[#062698] px-3 py-1.5 text-center text-[11.5px] font-semibold text-white">
-          Approve and send
+      {/* Nothing releases itself. A person approves, amends or refuses. */}
+      <div className="mt-3 grid grid-cols-3 gap-1.5">
+        <span className="rounded-lg bg-[#062698] px-2 py-1.5 text-center text-[11px] font-semibold text-white">
+          Approve
         </span>
-        <span className="rounded-lg border border-gray-200 px-3 py-1.5 text-[11.5px] font-medium text-gray-600">
-          Edit
+        <span className="rounded-lg border border-gray-200 px-2 py-1.5 text-center text-[11px] font-medium text-gray-700">
+          Modify
+        </span>
+        <span className="rounded-lg border border-gray-200 px-2 py-1.5 text-center text-[11px] font-medium text-[#b0163f]">
+          Reject
         </span>
       </div>
+
+      <p className="mt-2.5 border-t border-gray-200 pt-2 text-[10px] leading-snug text-gray-400">
+        Audit record #48213 · maker J. Alvarez · checker pending · every field
+        change retained
+      </p>
     </div>
   )
 }

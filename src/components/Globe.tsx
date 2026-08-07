@@ -23,22 +23,27 @@ function toVec3(lat: number, lng: number, r = RADIUS) {
   )
 }
 
+/* US clearing centres and Federal Reserve districts, with the handful of
+   overseas corridors a regional bank actually touches through correspondents. */
 const HUBS: Record<string, [number, number]> = {
-  mumbai: [19.08, 72.88],
-  singapore: [1.35, 103.82],
-  london: [51.5, -0.13],
   newYork: [40.71, -74.01],
-  dubai: [25.2, 55.27],
-  frankfurt: [50.11, 8.68],
-  tokyo: [35.68, 139.65],
-  sydney: [-33.87, 151.21],
-  saoPaulo: [-23.55, -46.63],
+  chicago: [41.88, -87.63],
+  dallas: [32.78, -96.8],
+  atlanta: [33.75, -84.39],
   sanFrancisco: [37.77, -122.42],
-  hongKong: [22.32, 114.17],
-  zurich: [47.37, 8.54],
-  johannesburg: [-26.2, 28.05],
+  charlotte: [35.23, -80.84],
+  minneapolis: [44.98, -93.27],
+  kansasCity: [39.1, -94.58],
+  boston: [42.36, -71.06],
+  denver: [39.74, -104.99],
+  philadelphia: [39.95, -75.17],
+  richmond: [37.54, -77.44],
+  stLouis: [38.63, -90.2],
+  cleveland: [41.5, -81.69],
+  seattle: [47.61, -122.33],
+  london: [51.5, -0.13],
   toronto: [43.65, -79.38],
-  riyadh: [24.71, 46.68],
+  frankfurt: [50.11, 8.68],
 }
 
 /** Corridors cycle the warm end of the logo: orange, magenta and amber.
@@ -46,26 +51,31 @@ const HUBS: Record<string, [number, number]> = {
 const CORRIDOR_COLOURS = [0xff5f03, 0xfb5725, 0xfc9a1b, 0xff8c42]
 
 const ROUTES: Array<[keyof typeof HUBS, keyof typeof HUBS]> = [
-  ["mumbai", "singapore"],
-  ["mumbai", "london"],
-  ["mumbai", "dubai"],
-  ["london", "newYork"],
-  ["newYork", "saoPaulo"],
-  ["singapore", "tokyo"],
-  ["frankfurt", "mumbai"],
-  ["singapore", "sydney"],
-  ["sanFrancisco", "tokyo"],
-  ["newYork", "sanFrancisco"],
-  ["hongKong", "singapore"],
-  ["hongKong", "london"],
-  ["zurich", "dubai"],
-  ["johannesburg", "london"],
-  ["johannesburg", "dubai"],
-  ["toronto", "frankfurt"],
-  ["riyadh", "mumbai"],
-  ["riyadh", "frankfurt"],
-  ["toronto", "newYork"],
-  ["saoPaulo", "johannesburg"],
+  ["newYork", "chicago"],
+  ["chicago", "dallas"],
+  ["newYork", "atlanta"],
+  ["atlanta", "dallas"],
+  ["sanFrancisco", "denver"],
+  ["denver", "chicago"],
+  ["charlotte", "newYork"],
+  ["charlotte", "atlanta"],
+  ["minneapolis", "chicago"],
+  ["kansasCity", "dallas"],
+  ["kansasCity", "minneapolis"],
+  ["boston", "newYork"],
+  ["philadelphia", "newYork"],
+  ["richmond", "charlotte"],
+  ["stLouis", "chicago"],
+  ["cleveland", "philadelphia"],
+  ["seattle", "sanFrancisco"],
+  ["seattle", "minneapolis"],
+  ["dallas", "denver"],
+  ["stLouis", "kansasCity"],
+  /* Correspondent corridors */
+  ["newYork", "london"],
+  ["newYork", "toronto"],
+  ["chicago", "toronto"],
+  ["newYork", "frankfurt"],
 ]
 
 /** Great-circle arc lifted off the surface. */
@@ -270,7 +280,10 @@ export default function Globe({ className = "" }: { className?: string }) {
     // --- Drag to spin ---
     let dragging = false
     let lastX = 0
-    let spin = -1.1
+    /* Opens facing North America. A point sits front-of-camera when its
+       longitude plus this rotation reaches 90 degrees, so roughly 95W needs
+       185 degrees, or 3.23 radians. */
+    let spin = 3.23
     let velocity = 0.09 // radians per second, the idle drift
 
     const onDown = (e: PointerEvent) => {

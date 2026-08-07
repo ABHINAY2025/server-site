@@ -152,10 +152,10 @@ export default function LegalLayout({ doc }: { doc: LegalDoc }) {
               <p className="mt-2 text-[14px] leading-relaxed text-gray-600">
                 Write to{' '}
                 <a
-                  href="mailto:quantumdataleap.ai@gmail.com"
+                  href="mailto:support@quantumdataleap.ai"
                   className="font-medium text-[#062698] underline underline-offset-2"
                 >
-                  quantumdataleap.ai@gmail.com
+                  support@quantumdataleap.ai
                 </a>{' '}
                 and someone from the team will come back to you.
               </p>

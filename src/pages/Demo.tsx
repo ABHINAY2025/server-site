@@ -198,13 +198,41 @@ export default function Demo() {
               ))}
             </ul>
 
-            <p className="mt-10 text-[14px] text-gray-500 sm:text-[15px]">
+            {/* Secondary route in, for anyone not ready to book time */}
+            <div
+              data-reveal
+              style={{ '--reveal-delay': '560ms' } as CSSProperties}
+              className="mt-10 rounded-2xl border border-gray-200 bg-white p-6 sm:p-7"
+            >
+              <p className="qdl-gradient-text text-[10.5px] font-semibold uppercase tracking-[0.12em]">
+                No meeting required
+              </p>
+              <h2 className="mt-2.5 text-[18px] font-semibold tracking-[-0.01em] text-gray-900 sm:text-[20px]">
+                Free repair analysis
+              </h2>
+              <p className="mt-2 text-[14px] leading-relaxed text-gray-600">
+                Send a transaction sample and receive a breakdown of what could
+                have been repaired automatically.
+              </p>
+              <a
+                href="mailto:support@quantumdataleap.ai?subject=Free%20repair%20analysis&body=Attach%20a%20transaction%20sample%20and%20we%20will%20come%20back%20with%20a%20breakdown%20of%20what%20could%20have%20been%20repaired%20automatically."
+                className="group mt-5 inline-flex items-center gap-2.5 rounded-full border border-gray-300 px-5 py-2.5 text-[13.5px] font-medium text-gray-900 transition-colors duration-300 hover:border-gray-900 sm:text-[14px]"
+              >
+                Send a sample
+                <ArrowRight
+                  size={15}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
+              </a>
+            </div>
+
+            <p className="mt-8 text-[14px] text-gray-500 sm:text-[15px]">
               Prefer email?{' '}
               <a
-                href="mailto:quantumdataleap.ai@gmail.com"
+                href="mailto:support@quantumdataleap.ai"
                 className="font-medium text-[#062698] underline underline-offset-2"
               >
-                quantumdataleap.ai@gmail.com
+                support@quantumdataleap.ai
               </a>
             </p>
           </div>
@@ -340,15 +368,20 @@ export default function Demo() {
                     )}
                   </button>
 
+                  {/* Sets the expectation the moment they commit to sending */}
+                  <p className="text-center text-[12.5px] text-gray-500">
+                    We respond within one business day.
+                  </p>
+
                   {status === 'error' && (
                     <p className="text-[13px] leading-relaxed text-[#b0163f]">
                       Something went wrong sending that. Please try again, or
                       email us at{' '}
                       <a
-                        href="mailto:quantumdataleap.ai@gmail.com"
+                        href="mailto:support@quantumdataleap.ai"
                         className="font-medium underline underline-offset-2"
                       >
-                        quantumdataleap.ai@gmail.com
+                        support@quantumdataleap.ai
                       </a>
                       .
                     </p>

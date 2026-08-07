@@ -5,21 +5,22 @@ import ChatMock from './ChatMock'
    of the initial bundle and fetched when this section is reached. */
 const Globe = lazy(() => import('./Globe'))
 
+/* Outcomes a bank can expect, rather than figures describing our own reach. */
 const FACTS = [
   {
-    figure: '20',
-    label: 'payment corridors',
-    body: 'Domestic and cross border, carried on one position.',
+    figure: '4 in 5',
+    label: 'exceptions never reach a person',
+    body: 'Repaired in flight, so your operations queue shrinks as volume grows.',
   },
   {
-    figure: '15',
-    label: 'financial centres',
-    body: 'Mumbai to Singapore, London to New York, settled continuously.',
+    figure: 'Same day',
+    label: 'rule changes go live',
+    body: 'Business users edit rules in plain language, with maker and checker approval.',
   },
   {
-    figure: '24/7',
-    label: 'real-time screening',
-    body: 'Every payment scored as it moves, not in an overnight batch.',
+    figure: 'No',
+    label: 'core migration required',
+    body: 'QDL runs beside the core you already operate. Nothing gets replaced.',
   },
 ]
 
@@ -33,7 +34,7 @@ export default function Bento() {
           className="mb-6 flex items-center gap-3 px-5 sm:mb-8 sm:px-8 lg:px-12"
         >
           <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-900 text-[11px] font-semibold text-white sm:h-7 sm:w-7 sm:text-[12px]">
-            3
+            4
           </span>
           <span className="rounded-full border border-gray-200 px-3 py-1 text-[12px] font-medium text-gray-900 sm:px-4 sm:py-1.5 sm:text-[13px]">
             The platform in motion
@@ -82,11 +83,11 @@ export default function Bento() {
                   Global corridors
                 </p>
                 <h3 className="mt-3 text-[20px] font-semibold leading-snug tracking-[-0.01em] text-gray-900 sm:text-[23px]">
-                  Every rail, every currency, one live position
+                  ACH, Fedwire and RTP on one live position
                 </h3>
                 <p className="mt-2.5 text-[13px] leading-relaxed text-gray-600 sm:text-[14px]">
-                  Corridors light as value moves between financial centres. Drag
-                  to spin the globe.
+                  Corridors light as value moves between Federal Reserve
+                  districts and your correspondents. Drag to spin the globe.
                 </p>
               </div>
 

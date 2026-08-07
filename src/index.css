@@ -17,6 +17,28 @@
 @tailwind components;
 @tailwind utilities;
 
+/* The brand gradient as text. Used sparingly: on figures that carry the
+   argument and on the QDL column heading, so it marks what matters rather than
+   decorating everything. The solid colour is declared first as the fallback,
+   since the technique needs transparent text. */
+.qdl-gradient-text {
+  color: #062698;
+}
+
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+  .qdl-gradient-text {
+    background: linear-gradient(100deg, #0867e6 0%, #7b1fb5 52%, #fb5725 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* Same gradient as a surface, for rules and small accents. */
+.qdl-gradient-bg {
+  background: linear-gradient(100deg, #0867e6 0%, #7b1fb5 52%, #fb5725 100%);
+}
+
 /* The QDL wordmark. Slanted and set in the brand gradient so it reads as a
    logotype rather than as a bold word sitting next to the icon.
    The skew is applied as a transform rather than as italic: Space Grotesk ships
