@@ -108,12 +108,30 @@ export default function Blog() {
           data-reveal
           className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4"
         >
+          {/* Both lines rise from behind their own mask, as the hero does */}
           <div>
-            <h2 className="text-[clamp(1.5rem,4vw,2.6rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-gray-900">
-              Latest updates
+            <h2 className="reveal-mask text-[clamp(1.5rem,4vw,2.6rem)] font-semibold leading-[1.12] tracking-[-0.02em] text-gray-900">
+              <span
+                data-reveal
+                style={{ '--reveal-y': '100%' } as CSSProperties}
+                className="block"
+              >
+                Latest updates
+              </span>
             </h2>
-            <p className="mt-1 text-[clamp(1.1rem,2.6vw,1.7rem)] font-medium leading-tight tracking-[-0.02em] text-gray-400">
-              Insight and analysis from Quantum Data Leap.
+            <p className="reveal-mask mt-1 text-[clamp(1.1rem,2.6vw,1.7rem)] font-medium leading-tight tracking-[-0.02em] text-gray-400">
+              <span
+                data-reveal
+                style={
+                  {
+                    '--reveal-y': '100%',
+                    '--reveal-delay': '110ms',
+                  } as CSSProperties
+                }
+                className="block"
+              >
+                Insight and analysis from Quantum Data Leap.
+              </span>
             </p>
           </div>
 
@@ -151,15 +169,26 @@ export default function Blog() {
             rel={external ? 'noopener noreferrer' : undefined}
             className="group relative min-w-0 flex-1 overflow-hidden rounded-2xl bg-[#0b1c3d]"
           >
-            <img
-              key={post.image}
-              src={post.image}
-              alt=""
-              className="sr-spot-in h-[18rem] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03] sm:h-[24rem] lg:h-[30rem]"
-            />
+            {/* Every image is mounted and crossfaded rather than swapped by
+                key. Remounting restarts the fetch and decode, so the entrance
+                animation played over a blank frame and the picture appeared
+                afterwards, which read as no animation at all. */}
+            <div className="relative h-[18rem] w-full sm:h-[24rem] lg:h-[30rem]">
+              {POSTS.map((item, i) => (
+                <img
+                  key={item.title}
+                  src={item.image}
+                  alt=""
+                  aria-hidden={i !== active}
+                  className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-700 ease-out group-hover:scale-[1.03] ${
+                    i === active ? 'opacity-100' : 'opacity-0'
+                  }`}
+                />
+              ))}
+            </div>
 
             <span
-              className="absolute inset-0"
+              className="pointer-events-none absolute inset-0"
               style={{
                 background:
                   'linear-gradient(0deg, rgba(4,12,30,0.86) 0%, rgba(4,12,30,0.25) 42%, rgba(4,12,30,0) 72%)',
