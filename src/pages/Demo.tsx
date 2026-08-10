@@ -144,9 +144,11 @@ export default function Demo() {
         </div>
       </div>
 
-      <section className="mx-auto w-full max-w-[1440px] px-5 pb-16 pt-12 sm:px-8 sm:pb-20 sm:pt-16 lg:px-12 lg:pb-28 lg:pt-20">
+      {/* Tighter than a content section. The form is the point of this page, so
+          it should be reachable without scrolling on a laptop. */}
+      <section className="mx-auto w-full max-w-[1440px] px-5 pb-16 pt-8 sm:px-8 sm:pb-20 sm:pt-10 lg:px-12 lg:pb-24 lg:pt-10">
         {/* Badge row, as on every section of the site */}
-        <div className="mb-6 flex items-center gap-3 sm:mb-8">
+        <div className="mb-4 flex items-center gap-3 sm:mb-5">
           <span className="rounded-full border border-gray-300 px-3 py-1 text-[12px] font-medium text-gray-900 sm:px-4 sm:py-1.5 sm:text-[13px]">
             Request a demo
           </span>
@@ -157,7 +159,7 @@ export default function Demo() {
           <div>
             <h1
               data-reveal
-              className="text-[clamp(1.75rem,7vw,4.2rem)] font-medium leading-[1.08] tracking-[-0.03em] text-gray-900 sm:text-[clamp(2.25rem,4.5vw,3.4rem)]"
+              className="text-[clamp(1.6rem,6vw,2.6rem)] font-medium leading-[1.1] tracking-[-0.03em] text-gray-900 sm:text-[clamp(2rem,3.4vw,2.75rem)]"
             >
               Experience Quantum Data
               <br className="hidden sm:block" />
@@ -168,14 +170,14 @@ export default function Demo() {
             <p
               data-reveal
               style={{ '--reveal-delay': '110ms' } as CSSProperties}
-              className="mt-6 max-w-[46ch] text-[15px] leading-[1.65] text-gray-700 sm:text-[17px]"
+              className="mt-4 max-w-[46ch] text-[14.5px] leading-[1.6] text-gray-700 sm:text-[15.5px]"
             >
               A walkthrough on your own payment flows. Ask the hard questions
               and see how the intelligence layer sits on top of the stack you
               already operate.
             </p>
 
-            <ul className="mt-9 space-y-4">
+            <ul className="mt-6 space-y-3">
               {POINTS.map((point, i) => (
                 <li
                   key={point}
@@ -202,7 +204,7 @@ export default function Demo() {
             <div
               data-reveal
               style={{ '--reveal-delay': '560ms' } as CSSProperties}
-              className="mt-10 rounded-2xl border border-gray-200 bg-white p-6 sm:p-7"
+              className="mt-7 rounded-2xl border border-gray-200 bg-white p-5 sm:p-6"
             >
               <p className="qdl-gradient-text text-[10.5px] font-semibold uppercase tracking-[0.12em]">
                 No meeting required
@@ -226,15 +228,6 @@ export default function Demo() {
               </a>
             </div>
 
-            <p className="mt-8 text-[14px] text-gray-500 sm:text-[15px]">
-              Prefer email?{' '}
-              <a
-                href="mailto:support@quantumdataleap.ai"
-                className="font-medium text-[#062698] underline underline-offset-2"
-              >
-                support@quantumdataleap.ai
-              </a>
-            </p>
           </div>
 
           {/* Form */}
@@ -251,7 +244,7 @@ export default function Demo() {
               />
             </div>
 
-            <div className="p-6 sm:p-8">
+            <div className="p-5 sm:p-6">
               {status === 'sent' ? (
                 <div className="flex min-h-[24rem] flex-col items-center justify-center text-center">
                   <span className="flex h-14 w-14 items-center justify-center rounded-full bg-[#062698]">
@@ -272,7 +265,7 @@ export default function Demo() {
                   </Link>
                 </div>
               ) : (
-                <form onSubmit={onSubmit} className="space-y-5">
+                <form onSubmit={onSubmit} className="space-y-4">
                   <div>
                     <h2 className="text-[22px] font-semibold tracking-[-0.02em] text-gray-900">
                       Schedule a demo

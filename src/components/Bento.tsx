@@ -87,7 +87,7 @@ export default function Bento() {
                 </h3>
                 <p className="mt-2.5 text-[13px] leading-relaxed text-gray-600 sm:text-[14px]">
                   Corridors light as value moves between Federal Reserve
-                  districts and your correspondents. Drag to spin the globe.
+                  districts and your correspondents. Drag to spin and tilt.
                 </p>
               </div>
 

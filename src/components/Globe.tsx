@@ -277,26 +277,38 @@ export default function Globe({ className = "" }: { className?: string }) {
     const ro = new ResizeObserver(resize)
     ro.observe(host)
 
-    // --- Drag to spin ---
+    // --- Drag to spin and tilt ---
     let dragging = false
     let lastX = 0
+    let lastY = 0
     /* Opens facing North America. A point sits front-of-camera when its
        longitude plus this rotation reaches 90 degrees, so roughly 95W needs
        185 degrees, or 3.23 radians. */
     let spin = 3.23
     let velocity = 0.09 // radians per second, the idle drift
 
+    /* Vertical drag. Clamped short of the poles: past about 70 degrees the
+       globe reads as upside down and the corridors stop making sense. */
+    let tilt = 0
+    const TILT_LIMIT = 1.2
+
     const onDown = (e: PointerEvent) => {
       dragging = true
       lastX = e.clientX
+      lastY = e.clientY
       host.setPointerCapture(e.pointerId)
     }
     const onMove = (e: PointerEvent) => {
       if (!dragging) return
+
       const dx = e.clientX - lastX
       lastX = e.clientX
       spin += dx * 0.005
       velocity = dx * 0.25 // carry the throw
+
+      const dy = e.clientY - lastY
+      lastY = e.clientY
+      tilt = Math.min(TILT_LIMIT, Math.max(-TILT_LIMIT, tilt + dy * 0.005))
     }
     const onUp = (e: PointerEvent) => {
       dragging = false
@@ -307,7 +319,10 @@ export default function Globe({ className = "" }: { className?: string }) {
     host.addEventListener("pointermove", onMove)
     host.addEventListener("pointerup", onUp)
     host.addEventListener("pointercancel", onUp)
-    host.style.touchAction = "pan-y"
+    /* The globe now claims vertical drag too, so the page can no longer scroll
+       from a gesture that starts on it. "none" rather than "pan-y" is what
+       makes the tilt usable on a touchscreen. */
+    host.style.touchAction = "none"
     host.style.cursor = "grab"
 
     let raf = 0
@@ -328,6 +343,7 @@ export default function Globe({ className = "" }: { className?: string }) {
           spin += velocity * dt
         }
         globe.rotation.y = spin
+        globe.rotation.x = tilt
       }
 
       // Run each comet along its arc

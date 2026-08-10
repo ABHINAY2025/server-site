@@ -109,22 +109,24 @@ export default function LegacyComparison() {
                 {row.dimension}
               </h3>
 
-              {/* Legacy */}
-              <div className="flex items-baseline gap-3">
-                <span className="w-[6.5rem] shrink-0 text-[16px] font-semibold tabular-nums text-gray-400">
+              {/* Legacy. Figure above its description rather than beside it:
+                  the values are words as often as numbers, so no fixed column
+                  width fits them all. */}
+              <div>
+                <span className="block text-[16px] font-semibold text-gray-400">
                   {row.legacyFigure}
                 </span>
-                <span className="text-[13px] leading-snug text-gray-500 sm:text-[14px]">
+                <span className="mt-1 block text-[13px] leading-snug text-gray-500 sm:text-[14px]">
                   {row.legacy}
                 </span>
               </div>
 
               {/* QDL */}
-              <div className="flex items-baseline gap-3">
-                <span className="qdl-gradient-text w-[6.5rem] shrink-0 text-[21px] font-semibold tabular-nums tracking-[-0.02em] sm:text-[23px]">
+              <div>
+                <span className="qdl-gradient-text block text-[21px] font-semibold leading-tight tracking-[-0.02em] sm:text-[23px]">
                   {row.qdlFigure}
                 </span>
-                <span className="text-[13px] leading-snug text-gray-900 sm:text-[14px]">
+                <span className="mt-1 block text-[13px] leading-snug text-gray-900 sm:text-[14px]">
                   {row.qdl}
                 </span>
               </div>
