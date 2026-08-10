@@ -151,6 +151,41 @@
   animation-delay: 60ms;
 }
 
+/* ---------- Blog strips ----------
+   Width is set here rather than with Tailwind variants: stacking a responsive
+   width against a hover width leaves two rules of competing specificity, and
+   which one wins is not obvious from the markup. One class, three states.
+
+   The open panel beside these is flex-1, so as a strip interpolates its width
+   the panel is re-laid out on every frame and shrinks in step. */
+.blog-strip {
+  width: 4.5rem;
+  flex: 0 0 auto;
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.blog-strip:hover,
+.blog-strip:focus-visible {
+  width: 8rem;
+}
+
+@media (min-width: 1024px) {
+  .blog-strip {
+    width: 5.5rem;
+  }
+
+  .blog-strip:hover,
+  .blog-strip:focus-visible {
+    width: 10rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-strip {
+    transition: none;
+  }
+}
+
 /* ---------- Scroll reveal ----------
    Text rises into place as it is reached. The hidden state is scoped to
    .js-reveal, which the observer adds at runtime, so nothing is hidden from a

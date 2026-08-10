@@ -218,7 +218,7 @@ export default function Blog() {
                   type="button"
                   onClick={() => setActive(i)}
                   aria-label={`Open: ${item.title}`}
-                  className="group relative h-[24rem] w-[4.5rem] shrink-0 overflow-hidden rounded-2xl bg-[#0b1c3d] transition-[width] duration-500 ease-out hover:w-[6rem] lg:h-[30rem] lg:w-[5.5rem] lg:hover:w-[7rem]"
+                  className="blog-strip group relative h-[24rem] overflow-hidden rounded-2xl bg-[#0b1c3d] lg:h-[30rem]"
                 >
                   <img
                     src={item.image}
@@ -226,9 +226,14 @@ export default function Blog() {
                     className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   />
                   <span
-                    className="absolute inset-0 bg-black/10 transition-colors duration-300 group-hover:bg-black/0"
+                    className="absolute inset-0 bg-black/25 transition-colors duration-300 group-hover:bg-black/5"
                     aria-hidden="true"
                   />
+
+                  {/* The title fades up once there is room for it */}
+                  <span className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 p-3 text-left text-[12.5px] font-semibold leading-tight text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                    {item.title}
+                  </span>
                 </button>
               ),
             )}
