@@ -86,7 +86,7 @@ export default function Hero() {
 
         {/* Each line rises from behind its own mask, one after the other */}
         <h1 className="text-[clamp(1.75rem,7vw,4.2rem)] font-medium leading-[1.08] tracking-[-0.03em] text-gray-900 sm:text-[clamp(2.5rem,5vw,4.2rem)]">
-          {['Fewer exceptions.', 'Higher STP.', 'No replatforming.'].map(
+          {['Every payment,', 'right on the first pass.'].map(
             (line, i) => (
               <span key={line} className="reveal-mask block">
                 <span
@@ -111,9 +111,9 @@ export default function Hero() {
           style={{ '--reveal-delay': '310ms' } as CSSProperties}
           className="mt-6 max-w-[46rem] text-[15px] leading-[1.6] text-gray-700 sm:mt-7 sm:text-[17px]"
         >
-          US regional banks settle a smaller share of payments first-pass than
-          the top tier, and pay the difference in manual repair work. QDL
-          corrects payment data in flight, on the core you already run.
+          QDL repairs payment data before it reaches an exception queue, lifting
+          straight-through rates for US regional banks on the core they already
+          operate. No migration, no replatforming.
         </p>
 
         <div
