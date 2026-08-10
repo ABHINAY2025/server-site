@@ -21,8 +21,12 @@ function LinkedInIcon({ className = '' }: { className?: string }) {
  * becoming another section of it. Carried over from server-site.
  */
 
+/* Contact sales goes to the demo form rather than opening a mail client. A
+   mailto depends on the visitor having one configured, and loses the enquiry
+   into a personal inbox instead of the form's logged, acknowledged flow. */
 const LINKS = [
-  { label: 'Contact sales', href: 'mailto:support@quantumdataleap.ai', external: true },
+  { label: 'Contact sales', href: '/demo', external: false },
+  { label: 'Data handling', href: '/data-handling', external: false },
   { label: 'Privacy Policy', href: '/privacy-policy', external: false },
   { label: 'Terms of Service', href: '/terms-of-service', external: false },
 ]
