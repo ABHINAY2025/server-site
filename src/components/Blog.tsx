@@ -81,6 +81,16 @@ const POSTS: Post[] = [
 
 export default function Blog() {
   const [active, setActive] = useState(0)
+  /* Where the pointer can hover, a panel is already open by the time it is
+     clicked, so the click should follow the link. Where it cannot, the first
+     tap has to open the panel instead, or a reader is sent to an article they
+     never saw. */
+  const [canHover, setCanHover] = useState(true)
+
+  useEffect(() => {
+    setCanHover(window.matchMedia('(hover: hover)').matches)
+  }, [])
+
   /* Pointing at a panel opens it without committing the selection, so the
      accordion answers immediately and the row returns to the chosen story on
      the way out. */
@@ -172,19 +182,34 @@ export default function Blog() {
         >
           {POSTS.map((item, i) => {
             const isOpen = i === open
+            const isExternal = item.url.startsWith('http')
+            const hasArticle = item.url !== '#'
+
             return (
-              <button
+              <a
                 key={item.title}
-                type="button"
+                href={item.url}
+                target={isExternal ? '_blank' : undefined}
+                rel={isExternal ? 'noopener noreferrer' : undefined}
                 data-open={isOpen}
                 onMouseEnter={() => setHovered(i)}
                 onMouseLeave={() => setHovered(null)}
                 onFocus={() => setHovered(i)}
                 onBlur={() => setHovered(null)}
-                onClick={() => setActive(i)}
+                onClick={(event) => {
+                  /* A closed panel on a touch screen opens rather than
+                     navigating. A placeholder link never navigates at all,
+                     since "#" would only jump the page to the top. */
+                  if ((!canHover && !isOpen) || !hasArticle) {
+                    event.preventDefault()
+                    setActive(i)
+                    return
+                  }
+                  setActive(i)
+                }}
                 aria-label={`${item.title}. ${item.tag}.`}
                 aria-current={isOpen}
-                className="blog-item group relative h-[18rem] min-w-0 overflow-hidden rounded-2xl bg-[#0b1c3d] text-left sm:h-[24rem] lg:h-[30rem]"
+                className="blog-item group relative block h-[18rem] min-w-0 overflow-hidden rounded-2xl bg-[#0b1c3d] text-left sm:h-[24rem] lg:h-[30rem]"
               >
                 <img
                   src={item.image}
@@ -225,7 +250,7 @@ export default function Blog() {
                     {item.title}
                   </span>
                 </span>
-              </button>
+              </a>
             )
           })}
         </div>
