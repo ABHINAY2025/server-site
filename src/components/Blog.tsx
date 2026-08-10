@@ -81,10 +81,16 @@ const POSTS: Post[] = [
 
 export default function Blog() {
   const [active, setActive] = useState(0)
-  const post = POSTS[active]
+  /* Pointing at a panel opens it without committing the selection, so the
+     accordion answers immediately and the row returns to the chosen story on
+     the way out. */
+  const [hovered, setHovered] = useState<number | null>(null)
+  const open = hovered ?? active
+  const post = POSTS[open]
   const external = post.url.startsWith('http')
 
   const step = useCallback((direction: 1 | -1) => {
+    setHovered(null)
     setActive((current) => (current + direction + POSTS.length) % POSTS.length)
   }, [])
 
@@ -155,89 +161,73 @@ export default function Blog() {
           </div>
         </div>
 
-        {/* Panel and strips */}
+        {/* One accordion row. Pointing at a panel opens it the whole way and
+            the rest fall back to slivers. Every image stays mounted, so an
+            open never waits on a fetch. */}
         <div
           data-blog-rail
           data-reveal
           style={{ '--reveal-delay': '120ms' } as CSSProperties}
           className="mt-8 flex gap-2.5 sm:mt-10"
         >
-          {/* The open story */}
-          <a
-            href={post.url}
-            target={external ? '_blank' : undefined}
-            rel={external ? 'noopener noreferrer' : undefined}
-            className="group relative min-w-0 flex-1 overflow-hidden rounded-2xl bg-[#0b1c3d]"
-          >
-            {/* Every image is mounted and crossfaded rather than swapped by
-                key. Remounting restarts the fetch and decode, so the entrance
-                animation played over a blank frame and the picture appeared
-                afterwards, which read as no animation at all. */}
-            <div className="relative h-[18rem] w-full sm:h-[24rem] lg:h-[30rem]">
-              {POSTS.map((item, i) => (
+          {POSTS.map((item, i) => {
+            const isOpen = i === open
+            return (
+              <button
+                key={item.title}
+                type="button"
+                data-open={isOpen}
+                onMouseEnter={() => setHovered(i)}
+                onMouseLeave={() => setHovered(null)}
+                onFocus={() => setHovered(i)}
+                onBlur={() => setHovered(null)}
+                onClick={() => setActive(i)}
+                aria-label={`${item.title}. ${item.tag}.`}
+                aria-current={isOpen}
+                className="blog-item group relative h-[18rem] min-w-0 overflow-hidden rounded-2xl bg-[#0b1c3d] text-left sm:h-[24rem] lg:h-[30rem]"
+              >
                 <img
-                  key={item.title}
                   src={item.image}
                   alt=""
-                  aria-hidden={i !== active}
-                  className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-700 ease-out group-hover:scale-[1.03] ${
-                    i === active ? 'opacity-100' : 'opacity-0'
-                  }`}
+                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
                 />
-              ))}
-            </div>
 
-            <span
-              className="pointer-events-none absolute inset-0"
-              style={{
-                background:
-                  'linear-gradient(0deg, rgba(4,12,30,0.86) 0%, rgba(4,12,30,0.25) 42%, rgba(4,12,30,0) 72%)',
-              }}
-              aria-hidden="true"
-            />
+                {/* Closed panels sit back so the open one carries the section */}
+                <span
+                  className={`pointer-events-none absolute inset-0 transition-opacity duration-500 ${
+                    isOpen ? 'opacity-0' : 'opacity-100'
+                  }`}
+                  style={{ background: 'rgba(4,12,30,0.45)' }}
+                  aria-hidden="true"
+                />
 
-            <div
-              key={`copy-${post.image}`}
-              className="sr-spot-copy-in absolute inset-x-0 bottom-0 p-5 sm:p-7"
-            >
-              <span className="inline-flex rounded-md bg-white/20 px-2.5 py-1 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-white backdrop-blur-sm">
-                {post.tag}
-              </span>
-              <h3 className="mt-3 text-[22px] font-semibold leading-tight tracking-[-0.02em] text-white sm:text-[28px]">
-                {post.title}
-              </h3>
-            </div>
-          </a>
+                <span
+                  className="pointer-events-none absolute inset-0"
+                  style={{
+                    background:
+                      'linear-gradient(0deg, rgba(4,12,30,0.86) 0%, rgba(4,12,30,0.25) 42%, rgba(4,12,30,0) 72%)',
+                  }}
+                  aria-hidden="true"
+                />
 
-          {/* The rest, as strips. Hidden where there is no room for them. */}
-          <div className="hidden gap-2.5 md:flex">
-            {POSTS.map((item, i) =>
-              i === active ? null : (
-                <button
-                  key={item.title}
-                  type="button"
-                  onClick={() => setActive(i)}
-                  aria-label={`Open: ${item.title}`}
-                  className="blog-strip group relative h-[24rem] overflow-hidden rounded-2xl bg-[#0b1c3d] lg:h-[30rem]"
+                {/* Copy only once the panel is wide enough to hold it */}
+                <span
+                  className={`pointer-events-none absolute inset-x-0 bottom-0 block whitespace-nowrap p-5 transition-all duration-500 sm:p-7 ${
+                    isOpen
+                      ? 'translate-y-0 opacity-100 delay-150'
+                      : 'translate-y-3 opacity-0'
+                  }`}
                 >
-                  <img
-                    src={item.image}
-                    alt=""
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  <span
-                    className="absolute inset-0 bg-black/25 transition-colors duration-300 group-hover:bg-black/5"
-                    aria-hidden="true"
-                  />
-
-                  {/* The title fades up once there is room for it */}
-                  <span className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-2 p-3 text-left text-[12.5px] font-semibold leading-tight text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                  <span className="inline-flex rounded-md bg-white/20 px-2.5 py-1 text-[10.5px] font-semibold uppercase tracking-[0.12em] text-white backdrop-blur-sm">
+                    {item.tag}
+                  </span>
+                  <span className="mt-3 block text-[22px] font-semibold leading-tight tracking-[-0.02em] text-white sm:text-[28px]">
                     {item.title}
                   </span>
-                </button>
-              ),
-            )}
-          </div>
+                </span>
+              </button>
+            )
+          })}
         </div>
 
         {/* Description and link, beneath the panel */}
