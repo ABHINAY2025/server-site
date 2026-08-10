@@ -125,6 +125,11 @@ export default function Globe({ className = "" }: { className?: string }) {
     camera.position.set(0, 0, 4.1)
 
     const globe = new THREE.Group()
+    /* Yaw before pitch, then roll. With the default XYZ order the pitch is
+       applied before the spin, so dragging vertically swings the globe about a
+       world axis and it reads as inverted once it has been spun. YXZ is the
+       turntable order: spin first, tilt in view space, axial tilt last. */
+    globe.rotation.order = "YXZ"
     globe.rotation.z = (-18 * Math.PI) / 180 // axial tilt
     scene.add(globe)
 

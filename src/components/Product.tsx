@@ -30,7 +30,7 @@ export default function Product() {
           className="mb-6 flex items-center gap-3 px-5 sm:mb-8 sm:px-8 lg:px-12"
         >
           <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-gray-900 text-[11px] font-semibold text-white sm:h-7 sm:w-7 sm:text-[12px]">
-            3
+            2
           </span>
           <span className="rounded-full border border-gray-300 px-3 py-1 text-[12px] font-medium text-gray-900 sm:px-4 sm:py-1.5 sm:text-[13px]">
             The product

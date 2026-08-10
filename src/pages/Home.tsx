@@ -1,26 +1,32 @@
 import Hero from '../components/Hero'
-import Numbers from '../components/Numbers'
 import OperationalEfficiency from '../components/OperationalEfficiency'
 import Product from '../components/Product'
 import Bento from '../components/Bento'
+import Numbers from '../components/Numbers'
 import LegacyComparison from '../components/LegacyComparison'
 import Integrations from '../components/Integrations'
 import Blog from '../components/Blog'
-import People from '../components/People'
 import Footer from '../components/Footer'
 
+/**
+ * The order is the argument.
+ *
+ * Establish the problem and the research behind it, introduce the product as
+ * the answer, then show it working. Proof and comparison come after the reader
+ * already understands what they are looking at, which is where figures land
+ * hardest.
+ */
 export default function Home() {
   return (
     <main>
       <Hero />
-      <Numbers />
       <OperationalEfficiency />
       <Product />
       <Bento />
+      <Numbers />
       <LegacyComparison />
       <Integrations />
       <Blog />
-      <People />
       <Footer />
     </main>
   )

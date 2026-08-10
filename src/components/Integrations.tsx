@@ -1,63 +1,50 @@
 import type { CSSProperties } from 'react'
-import {
-  Database,
-  Radio,
-  FileSpreadsheet,
-  Landmark,
-  Cloud,
-  Workflow,
-  ShieldCheck,
-  Boxes,
-} from 'lucide-react'
 
 /**
  * Supported connectors.
  *
  * Grouped by how the data actually arrives rather than by vendor, because the
  * question a bank asks is "can you read what we already produce", not "is my
- * logo on your website".
+ * logo on your website". Photography rather than line icons, so the section
+ * reads as financial infrastructure rather than as a developer tools page.
  */
 
 const CONNECTORS = [
   {
-    icon: Landmark,
+    image: '/images/stock/payments.jpg',
     name: 'Core banking',
     detail: 'FIS, Fiserv, Jack Henry and in-house cores, read beside the ledger',
+    systems: ['FIS', 'Fiserv', 'Jack Henry'],
   },
   {
-    icon: Radio,
+    image: '/images/stock/real-time-payments.jpg',
     name: 'Payment rails',
-    detail: 'ACH, Fedwire, RTP and FedNow, ingested as messages arrive',
+    detail: 'Messages ingested as they arrive, across every domestic rail',
+    systems: ['ACH', 'Fedwire', 'RTP', 'FedNow'],
   },
   {
-    icon: Workflow,
-    name: 'Streaming',
-    detail: 'Kafka and Kinesis topics, consumed continuously',
+    image: '/images/stock/automation.jpg',
+    name: 'Streaming and batch',
+    detail: 'Continuous topics or scheduled files, whichever you already run',
+    systems: ['Kafka', 'Kinesis', 'SFTP', 'NACHA'],
   },
   {
-    icon: Database,
+    image: '/images/stock/agentic-ai.jpg',
     name: 'Warehouses',
-    detail: 'Snowflake, Databricks, BigQuery and Redshift',
+    detail: 'Read directly from the analytics estate, with no copy step',
+    systems: ['Snowflake', 'Databricks', 'BigQuery', 'Redshift'],
   },
   {
-    icon: FileSpreadsheet,
-    name: 'Batch and files',
-    detail: 'NACHA, BAI2, MT and ISO 20022 files over SFTP',
+    image: '/images/stock/fraud.jpg',
+    name: 'Risk and compliance',
+    detail: 'Case management and screening, kept in step with decisions',
+    systems: ['Sanctions screening', 'Case management'],
   },
   {
-    icon: Cloud,
-    name: 'Cloud storage',
-    detail: 'S3, Azure Blob and GCS, scheduled or event driven',
-  },
-  {
-    icon: Boxes,
-    name: 'Operational systems',
-    detail: 'Case management, sanctions screening and ERP',
-  },
-  {
-    icon: ShieldCheck,
+    image: '/images/stock/compliance.jpg',
     name: 'Identity',
-    detail: 'SAML and OIDC through Okta, Entra ID and Ping',
+    detail: 'Single sign-on through the provider your bank already uses',
+    systems: ['Okta', 'Entra ID', 'Ping', 'SAML'],
   },
 ]
 
@@ -95,28 +82,52 @@ export default function Integrations() {
           with it.
         </p>
 
-        <div className="grid grid-cols-1 gap-4 px-5 sm:grid-cols-2 sm:gap-5 sm:px-8 lg:grid-cols-4 lg:px-12">
-          {CONNECTORS.map((connector, i) => {
-            const Icon = connector.icon
-            return (
-              <article
-                key={connector.name}
-                data-reveal
-                style={{ '--reveal-delay': `${(i % 4) * 90}ms` } as CSSProperties}
-                className="group rounded-2xl border border-gray-200 bg-white p-5 transition-shadow duration-300 hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)] sm:p-6"
-              >
-                <span className="qdl-gradient-bg flex h-10 w-10 items-center justify-center rounded-xl">
-                  <Icon size={18} className="text-white" strokeWidth={1.9} />
-                </span>
-                <h3 className="mt-4 text-[15px] font-semibold tracking-[-0.01em] text-gray-900 sm:text-[16px]">
+        <div className="grid grid-cols-1 gap-5 px-5 sm:grid-cols-2 sm:gap-6 sm:px-8 lg:grid-cols-3 lg:px-12">
+          {CONNECTORS.map((connector, i) => (
+            <article
+              key={connector.name}
+              data-reveal
+              style={{ '--reveal-delay': `${(i % 3) * 90}ms` } as CSSProperties}
+              className="group overflow-hidden rounded-2xl border border-gray-200 bg-white transition-shadow duration-300 hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)]"
+            >
+              <div className="relative h-[9.5rem] overflow-hidden bg-[#0b1c3d] sm:h-[10.5rem]">
+                <img
+                  src={connector.image}
+                  alt=""
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                />
+                <span
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      'linear-gradient(0deg, rgba(4,12,30,0.72) 0%, rgba(4,12,30,0.1) 55%, rgba(4,12,30,0) 100%)',
+                  }}
+                  aria-hidden="true"
+                />
+                <h3 className="absolute inset-x-0 bottom-0 p-5 text-[17px] font-semibold tracking-[-0.01em] text-white sm:text-[18px]">
                   {connector.name}
                 </h3>
-                <p className="mt-1.5 text-[13px] leading-relaxed text-gray-600">
+              </div>
+
+              <div className="p-5 sm:p-6">
+                <p className="text-[13px] leading-relaxed text-gray-600 sm:text-[14px]">
                   {connector.detail}
                 </p>
-              </article>
-            )
-          })}
+
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {connector.systems.map((system) => (
+                    <span
+                      key={system}
+                      className="rounded-full border border-gray-200 px-2.5 py-1 text-[11.5px] font-medium text-gray-600"
+                    >
+                      {system}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
