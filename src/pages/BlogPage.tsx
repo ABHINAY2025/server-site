@@ -1,6 +1,7 @@
 import { ArrowRight } from 'lucide-react'
 import Footer from '../components/Footer'
 import Blog from '../components/Blog'
+import BlogArchive from '../components/BlogArchive'
 import { Link } from '../router'
 
 export default function BlogPage() {
@@ -31,6 +32,7 @@ export default function BlogPage() {
       </div>
 
       <Blog />
+      <BlogArchive />
       <Footer />
     </main>
   )

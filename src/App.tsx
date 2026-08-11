@@ -5,6 +5,7 @@ import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
 import DataHandling from './pages/DataHandling'
 import BlogPage from './pages/BlogPage'
+import ArticlePage from './pages/ArticlePage'
 import ScrollReveal from './components/ScrollReveal'
 import { usePath } from './router'
 
@@ -16,14 +17,18 @@ const ROUTES: Record<string, ComponentType> = {
   '/terms-of-service': Terms,
 }
 
+/** The one route with a variable in it: /blog/<slug>. */
+const ARTICLE = /^\/blog\/([\w-]+)\/?$/
+
 export default function App() {
   const path = usePath()
+  const article = ARTICLE.exec(path)
   const Page = ROUTES[path] ?? Home
 
   return (
     <>
       <ScrollReveal />
-      <Page />
+      {article ? <ArticlePage slug={article[1]} /> : <Page />}
     </>
   )
 }
