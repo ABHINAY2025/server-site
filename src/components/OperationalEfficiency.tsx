@@ -7,27 +7,32 @@ import { useEffect, useRef, useState, type CSSProperties } from 'react'
  * chart is the gap: the largest banks clear almost everything first-pass, and
  * every tier below pays for the difference in salaried hours. A regional bank
  * should be able to find its own band before it reads a word of copy.
+ *
+ * No percentage is published against a tier. Straight-through rates move with
+ * product mix, corridor and cut-off, so a figure printed beside a bank's own
+ * name invites an argument about the number instead of the gap. The bars carry
+ * the comparison; the scale underneath says which way is better.
  */
 
 type Tier = {
   label: string
   detail: string
-  /** Typical straight-through rate for the tier, as a percentage. */
-  stp: number
+  /** Relative bar length only, never rendered as a figure. */
+  reach: number
   /** True for the band this site is written for. */
   focus?: boolean
 }
 
 const TIERS: Tier[] = [
-  { label: 'Money center', detail: 'Over $500B in assets', stp: 97 },
-  { label: 'Super-regional', detail: '$100B to $500B', stp: 92 },
-  { label: 'Regional', detail: '$10B to $100B', stp: 84, focus: true },
-  { label: 'Community', detail: 'Under $10B', stp: 73 },
+  { label: 'Money center', detail: 'Over $500B in assets', reach: 97 },
+  { label: 'Super-regional', detail: '$100B to $500B', reach: 92 },
+  { label: 'Regional', detail: '$10B to $100B', reach: 84, focus: true },
+  { label: 'Community', detail: 'Under $10B', reach: 73 },
 ]
 
 function Bar({ tier, run, index }: { tier: Tier; run: boolean; index: number }) {
   return (
-    <div className="grid grid-cols-[minmax(0,8.5rem)_minmax(0,1fr)_auto] items-center gap-3 sm:grid-cols-[minmax(0,12rem)_minmax(0,1fr)_auto] sm:gap-6">
+    <div className="grid grid-cols-[minmax(0,8.5rem)_minmax(0,1fr)] items-center gap-3 sm:grid-cols-[minmax(0,12rem)_minmax(0,1fr)] sm:gap-6">
       <div>
         <p
           className={`text-[13.5px] font-semibold tracking-[-0.01em] sm:text-[15px] ${
@@ -47,19 +52,11 @@ function Bar({ tier, run, index }: { tier: Tier; run: boolean; index: number }) 
             tier.focus ? 'qdl-gradient-bg' : 'bg-gray-400'
           }`}
           style={{
-            width: run ? `${tier.stp}%` : '0%',
+            width: run ? `${tier.reach}%` : '0%',
             transitionDelay: `${index * 130}ms`,
           }}
         />
       </div>
-
-      <span
-        className={`w-[3.4rem] text-right text-[15px] font-semibold tabular-nums sm:text-[17px] ${
-          tier.focus ? 'qdl-gradient-text' : 'text-gray-500'
-        }`}
-      >
-        {tier.stp}%
-      </span>
     </div>
   )
 }
@@ -143,7 +140,7 @@ export default function OperationalEfficiency() {
         >
           <div className="rounded-2xl border border-gray-200 bg-white p-6 sm:p-9">
             <p className="text-[10.5px] font-semibold uppercase tracking-[0.12em] text-gray-400">
-              Typical straight-through rate by bank tier
+              Where straight-through processing typically sits, by bank tier
             </p>
 
             <div className="mt-7 space-y-6 sm:space-y-7">
@@ -152,11 +149,22 @@ export default function OperationalEfficiency() {
               ))}
             </div>
 
+            {/* The scale replaces the figures: it tells the reader which end of
+                the bar is the good end without printing a rate. */}
+            <div className="mt-6 grid grid-cols-[minmax(0,8.5rem)_minmax(0,1fr)] gap-3 sm:grid-cols-[minmax(0,12rem)_minmax(0,1fr)] sm:gap-6">
+              <span />
+              <span className="flex items-center justify-between text-[10.5px] font-medium uppercase tracking-[0.12em] text-gray-400">
+                <span>More hands on</span>
+                <span>More first-pass</span>
+              </span>
+            </div>
+
             <p className="mt-8 border-t border-gray-200 pt-5 text-[12.5px] leading-relaxed text-gray-500">
               Straight-through processing is the share of payments that settle
-              without anyone touching them. Indicative industry ranges, shown to
-              locate your own bank rather than to benchmark it. The regional band
-              is highlighted.
+              without anyone touching them. Relative positions only, shown to
+              locate your own bank rather than to benchmark it, since the rate
+              itself moves with product mix and corridor. The regional band is
+              highlighted.
             </p>
           </div>
         </div>
