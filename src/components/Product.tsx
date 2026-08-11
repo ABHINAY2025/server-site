@@ -22,7 +22,10 @@ const PILLARS = [
 
 export default function Product() {
   return (
-    <section className="overflow-hidden bg-[#F5F5F5] pb-16 pt-16 sm:pb-20 sm:pt-20 lg:pb-28 lg:pt-28">
+    <section
+      id="product"
+      className="overflow-hidden bg-[#F5F5F5] pb-16 pt-16 sm:pb-20 sm:pt-20 lg:pb-28 lg:pt-28"
+    >
       <div className="mx-auto w-full max-w-[1440px]">
         {/* Badge row */}
         <div

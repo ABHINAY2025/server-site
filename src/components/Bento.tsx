@@ -26,7 +26,10 @@ const FACTS = [
 
 export default function Bento() {
   return (
-    <section className="overflow-hidden bg-white pb-16 pt-16 sm:pb-20 sm:pt-20 lg:pb-28 lg:pt-28">
+    <section
+      id="platform"
+      className="overflow-hidden bg-white pb-16 pt-16 sm:pb-20 sm:pt-20 lg:pb-28 lg:pt-28"
+    >
       <div className="mx-auto w-full max-w-[1440px]">
         {/* Badge row */}
         <div
@@ -65,6 +68,7 @@ export default function Bento() {
         <div className="grid grid-cols-1 gap-5 px-5 sm:gap-6 sm:px-8 md:grid-cols-12 lg:px-12">
           {/* Globe */}
           <article
+            id="corridors"
             data-reveal
             className="relative overflow-hidden rounded-2xl bg-[#EFEFEF] md:col-span-7"
           >
@@ -106,6 +110,7 @@ export default function Bento() {
 
           {/* Assistant */}
           <article
+            id="assistant"
             data-reveal
             style={{ '--reveal-delay': '110ms' } as CSSProperties}
             className="flex flex-col rounded-2xl border border-gray-200 bg-[#F5F5F5] p-6 sm:p-8 md:col-span-5"

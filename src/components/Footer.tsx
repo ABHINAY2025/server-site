@@ -1,3 +1,4 @@
+import { Globe, Mail } from 'lucide-react'
 import { Link } from '../router'
 
 /** lucide dropped brand marks in v1, so the LinkedIn glyph is drawn inline */
@@ -16,86 +17,187 @@ function LinkedInIcon({ className = '' }: { className?: string }) {
 }
 
 /**
- * A two line footer: the mark and what the company does on one row, the
- * copyright underneath. Deliberately small, so it closes the page rather than
- * becoming another section of it. Carried over from server-site.
+ * The site map, at the end of the page.
+ *
+ * Every destination here resolves to something that exists: a route, a section
+ * of the home page, or an address someone answers. Capability names that had no
+ * page behind them are pointed at the section that demonstrates them instead,
+ * which is the honest version of the same menu.
  */
 
-/* Contact sales goes to the demo form rather than opening a mail client. A
-   mailto depends on the visitor having one configured, and loses the enquiry
-   into a personal inbox instead of the form's logged, acknowledged flow. */
-const LINKS = [
-  { label: 'Contact sales', href: '/demo', external: false },
-  { label: 'Data handling', href: '/data-handling', external: false },
-  { label: 'Privacy Policy', href: '/privacy-policy', external: false },
-  { label: 'Terms of Service', href: '/terms-of-service', external: false },
+type FooterLink = { label: string; href: string; external?: boolean }
+
+/* What the platform does, each pointing at the part of the site that shows it */
+const SOLUTIONS: FooterLink[] = [
+  { label: 'Automated repair', href: '/#product' },
+  { label: 'Predictive intelligence', href: '/#outcomes' },
+  { label: 'Real-time insights', href: '/#platform' },
+  { label: 'Natural language queries', href: '/#assistant' },
+  { label: 'Multi-rail coverage', href: '/#corridors' },
+  { label: 'Enhanced security', href: '/data-handling' },
 ]
+
+const COMPANY: FooterLink[] = [
+  { label: 'Contact sales', href: '/demo' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Common questions', href: '/#faq' },
+  {
+    label: 'FiSec Global',
+    href: 'https://fisecglobal.net/',
+    external: true,
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/quantum-data-leap',
+    external: true,
+  },
+]
+
+const LEGAL: FooterLink[] = [
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'Terms of Service', href: '/terms-of-service' },
+  { label: 'Data handling', href: '/data-handling' },
+  { label: 'Security', href: '/privacy-policy#security' },
+]
+
+const SOCIALS = [
+  {
+    label: 'QDL on LinkedIn',
+    href: 'https://www.linkedin.com/company/quantum-data-leap',
+    icon: <LinkedInIcon className="h-3.5 w-3.5" />,
+  },
+  {
+    label: 'FiSec Global',
+    href: 'https://fisecglobal.net/',
+    icon: <Globe className="h-4 w-4" strokeWidth={1.75} />,
+  },
+  {
+    label: 'Email QDL',
+    href: 'mailto:support@quantumdataleap.ai',
+    icon: <Mail className="h-4 w-4" strokeWidth={1.75} />,
+  },
+]
+
+const linkClass =
+  'text-[13.5px] text-gray-600 transition-colors duration-300 hover:text-[#062698]'
+
+/* A hash destination has to stay a plain anchor. The router pushes a pathname
+   and scrolls to the top, which is exactly wrong for a link into a section. */
+function FooterAnchor({ link }: { link: FooterLink }) {
+  if (link.external) {
+    return (
+      <a
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={linkClass}
+      >
+        {link.label}
+      </a>
+    )
+  }
+  if (link.href.includes('#')) {
+    return (
+      <a href={link.href} className={linkClass}>
+        {link.label}
+      </a>
+    )
+  }
+  return (
+    <Link to={link.href} className={linkClass}>
+      {link.label}
+    </Link>
+  )
+}
+
+function Column({ title, links }: { title: string; links: FooterLink[] }) {
+  return (
+    <div>
+      <h2 className="text-[13.5px] font-semibold tracking-[-0.01em] text-gray-900">
+        {title}
+      </h2>
+      <ul className="mt-4 space-y-3">
+        {links.map((link) => (
+          <li key={link.label}>
+            <FooterAnchor link={link} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
 
 export default function Footer() {
   return (
     <footer className="bg-white">
-      {/* The brand gradient as a hairline, closing the page */}
-      <div className="qdl-gradient-bg h-px w-full" aria-hidden="true" />
+      {/* The brand band, cut on the diagonal so the footer opens rather than
+          just stopping. Decorative only. */}
+      <div
+        aria-hidden="true"
+        className="h-10 w-full sm:h-14 lg:h-16"
+        style={{
+          background:
+            'linear-gradient(100deg, #14225c 0%, #2b1c6e 46%, #5c1a4f 100%)',
+          clipPath: 'polygon(0 0, 100% 0, 100% 18%, 0 100%)',
+        }}
+      />
+
       <div className="mx-auto w-full max-w-[1440px] px-5 pb-8 pt-10 sm:px-8 sm:pb-10 sm:pt-12 lg:px-12">
-        <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
+        <div className="grid gap-10 sm:grid-cols-2 sm:gap-12 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)_minmax(0,1fr)]">
           {/* Brand */}
-          <div className="flex items-center gap-3">
-            <Link to="/" className="flex shrink-0 items-center gap-2.5">
+          <div>
+            <Link to="/" className="inline-flex items-center gap-2.5">
               <img
                 src="/qdl-mark.png"
                 alt="Quantum Data Leap"
-                className="h-8 w-8 object-contain"
+                className="h-10 w-10 object-contain"
               />
-              <span className="wordmark text-[22px]">
-                QDL
-              </span>
+              <span className="wordmark text-[24px]">QDL</span>
             </Link>
-            <span
-              className="hidden h-4 w-px bg-gray-200 sm:block"
-              aria-hidden="true"
-            />
-            <p className="hidden max-w-[22rem] text-[13px] leading-snug text-gray-500 sm:block">
-              Intelligent banking systems, powered by applied artificial
-              intelligence.
+
+            <p className="mt-4 max-w-[20rem] text-[13.5px] leading-relaxed text-gray-600">
+              Empowering intelligent banking systems with AI-powered solutions,
+              built for US regional banks.
             </p>
+
+            <div className="mt-6 flex items-center gap-2.5">
+              {SOCIALS.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target={
+                    social.href.startsWith('mailto:') ? undefined : '_blank'
+                  }
+                  rel={
+                    social.href.startsWith('mailto:')
+                      ? undefined
+                      : 'noopener noreferrer'
+                  }
+                  aria-label={social.label}
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 text-gray-600 transition-colors duration-300 hover:border-[#062698] hover:text-[#062698]"
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
           </div>
 
-          {/* Links */}
-          <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">
-            {LINKS.map((link) =>
-              link.external ? (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="text-[13.5px] text-gray-600 transition-colors duration-300 hover:text-[#062698]"
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link
-                  key={link.label}
-                  to={link.href}
-                  className="text-[13.5px] text-gray-600 transition-colors duration-300 hover:text-[#062698]"
-                >
-                  {link.label}
-                </Link>
-              ),
-            )}
-            <a
-              href="https://www.linkedin.com/company/quantum-data-leap"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="QDL on LinkedIn"
-              className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-gray-200 text-gray-600 transition-colors duration-300 hover:border-[#062698] hover:text-[#062698]"
-            >
-              <LinkedInIcon className="h-3.5 w-3.5" />
-            </a>
-          </nav>
+          <Column title="Solutions" links={SOLUTIONS} />
+          <Column title="Company" links={COMPANY} />
         </div>
 
-        <p className="mt-6 border-t border-gray-200 pt-5 text-[13px] text-gray-500">
-          © {new Date().getFullYear()} Quantum Data Leap. All rights reserved.
-        </p>
+        {/* Bottom bar */}
+        <div className="mt-10 flex flex-col gap-4 border-t border-gray-200 pt-5 sm:mt-12 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-[13px] text-gray-500">
+            © {new Date().getFullYear()} Quantum Data Leap. All rights reserved.
+          </p>
+
+          <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            {LEGAL.map((link) => (
+              <FooterAnchor key={link.label} link={link} />
+            ))}
+          </nav>
+        </div>
       </div>
     </footer>
   )

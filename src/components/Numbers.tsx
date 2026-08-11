@@ -99,6 +99,7 @@ export default function Numbers() {
 
   return (
     <section
+      id="outcomes"
       ref={ref}
       className="bg-white pb-12 pt-16 sm:pb-16 sm:pt-20 lg:pb-24 lg:pt-28"
     >
