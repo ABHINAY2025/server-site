@@ -5,6 +5,7 @@ import Bento from '../components/Bento'
 import Numbers from '../components/Numbers'
 import LegacyComparison from '../components/LegacyComparison'
 import Blog from '../components/Blog'
+import Faq from '../components/Faq'
 import Footer from '../components/Footer'
 
 /**
@@ -25,6 +26,7 @@ export default function Home() {
       <Numbers />
       <LegacyComparison />
       <Blog />
+      <Faq />
       <Footer />
     </main>
   )
