@@ -181,7 +181,7 @@ export default function OperationalEfficiency() {
             1
           </span>
           <span className="rounded-full border border-gray-300 px-3 py-1 text-[12px] font-medium text-gray-900 sm:px-4 sm:py-1.5 sm:text-[13px]">
-            Where QDL adds value
+            operational efficiency
           </span>
         </div>
 
