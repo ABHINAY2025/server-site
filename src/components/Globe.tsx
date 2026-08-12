@@ -13,13 +13,22 @@ const RADIUS = 1
 const LAT_STEP = 1.7
 const LNG_STEP = 1.7
 
+/**
+ * Geographic coordinates to a point on the sphere.
+ *
+ * Longitude drives x through sine and z through cosine, not the other way
+ * round. Swapping them mirrors the world east to west: the camera-facing
+ * meridian lands at 90E and everything east of it draws to the left, so the
+ * continents come out backwards. With this order 0 faces the camera and east
+ * runs to the right, as a map does.
+ */
 function toVec3(lat: number, lng: number, r = RADIUS) {
   const phi = (lat * Math.PI) / 180
   const lambda = (lng * Math.PI) / 180
   return new THREE.Vector3(
-    r * Math.cos(phi) * Math.cos(lambda),
-    r * Math.sin(phi),
     r * Math.cos(phi) * Math.sin(lambda),
+    r * Math.sin(phi),
+    r * Math.cos(phi) * Math.cos(lambda),
   )
 }
 
@@ -289,7 +298,9 @@ export default function Globe({ className = "" }: { className?: string }) {
     /* Opens facing North America. A point sits front-of-camera when its
        longitude plus this rotation reaches 90 degrees, so roughly 95W needs
        185 degrees, or 3.23 radians. */
-    let spin = 3.23
+    /* Opens on North America. A longitude faces the camera when it plus this
+       rotation reaches zero, so roughly 95W needs +95 degrees, 1.66 radians. */
+    let spin = 1.66
     let velocity = 0.09 // radians per second, the idle drift
 
     /* Vertical drag. Clamped short of the poles: past about 70 degrees the

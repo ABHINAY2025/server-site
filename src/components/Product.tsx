@@ -1,22 +1,27 @@
 import type { CSSProperties } from 'react'
 import DemoLink from './DemoLink'
 
-/** The three intelligence pillars, from the FiSec Global corporate deck */
+/** Two intelligence pillars, adapted from the FiSec Global corporate deck. */
 const PILLARS = [
   {
-    title: 'Agentic AI Rules Engine',
-    lead: 'Rules that reason, adapt and act autonomously.',
-    body: 'Traditional rule engines are static, brittle and expensive to maintain. QDL evaluates payment data in context, learns from outcomes and adjusts decisions in real time. Institutions improve data quality, reduce exceptions and increase straight-through processing without constant manual tuning.',
+    title: 'Payment Intelligence',
+    lead: 'Every payment evaluated, repaired and released in context.',
+    body: 'Payment data arrives incomplete, and a static rule engine can only stop what it does not recognise. QDL reads each message in context, completes the missing fields from the records it already holds, and scores the transaction for risk as it moves. Exceptions are corrected before they reach a queue, and the rules improve from outcomes rather than from a rewrite.',
+    points: [
+      'Data repaired in flight, before settlement',
+      'Risk scored at the moment of the transaction',
+      'Rules that learn from outcomes, with maker and checker approval',
+    ],
   },
   {
-    title: 'Liquidity Intelligence and Forecasting',
+    title: 'Liquidity Intelligence',
     lead: 'A forward position, not an end of day balance.',
-    body: 'Liquidity management today is reactive, fragmented and backward looking. QDL provides real-time visibility and forward-looking insight across accounts, currencies and institutions, enabling treasury teams to anticipate liquidity needs, optimize cash utilization and reduce idle or trapped funds.',
-  },
-  {
-    title: 'AI-Powered Fraud Intelligence',
-    lead: 'Detected at the moment the transaction occurs.',
-    body: 'Fraud systems typically depend on static thresholds and known patterns, making them slow to respond to emerging threats. QDL combines supervised and unsupervised learning with contextual payment data to identify suspicious behaviour earlier, reduce false positives and adapt to new fraud patterns without manual rule rewrites.',
+    body: 'Liquidity management today is reactive, fragmented and backward looking. QDL projects the position continuously across accounts, currencies and institutions, so treasury can see what is coming rather than reconcile what has already happened. Funding decisions move from after-the-fact adjustment to planning against a forecast.',
+    points: [
+      'Position projected continuously as payments move',
+      'One view across accounts, currencies and correspondents',
+      'Idle and trapped balances surfaced while they can still be used',
+    ],
   },
 ]
 
@@ -45,7 +50,7 @@ export default function Product() {
           style={{ '--reveal-delay': '80ms' } as CSSProperties}
           className="mb-8 px-5 text-[clamp(1.75rem,7vw,4.2rem)] font-medium leading-[1.08] tracking-[-0.03em] text-gray-900 sm:mb-10 sm:px-8 sm:text-[clamp(2.5rem,5vw,4.2rem)] lg:px-12"
         >
-          Three intelligence pillars.
+          Two intelligence pillars.
         </h2>
 
         <div className="px-5 sm:px-8 lg:px-12">
@@ -55,16 +60,16 @@ export default function Product() {
             className="max-w-[52rem] text-[15px] font-medium leading-[1.65] text-gray-900 sm:text-[17px]"
           >
             Quantum Data Leap is the flagship product of FiSec Global Inc. It is
-            built around three tightly integrated intelligence pillars that
-            redefine how financial institutions manage payments, liquidity and
-            risk. QDL is not a collection of tools. It is an intelligent
-            foundation that moves institutions from reactive payment operations
-            to adaptive, data-driven financial intelligence.
+            built around two tightly integrated intelligence pillars that
+            redefine how financial institutions manage payments and liquidity.
+            QDL is not a collection of tools. It is an intelligent foundation
+            that moves institutions from reactive payment operations to
+            adaptive, data-driven financial intelligence.
           </p>
         </div>
 
         {/* Pillars */}
-        <div className="mt-12 grid grid-cols-1 gap-5 px-5 sm:gap-6 sm:px-8 lg:mt-16 lg:grid-cols-3 lg:gap-7 lg:px-12">
+        <div className="mt-12 grid grid-cols-1 gap-5 px-5 sm:gap-6 sm:px-8 lg:mt-16 lg:grid-cols-2 lg:gap-7 lg:px-12">
           {PILLARS.map((pillar, i) => (
             <article
               key={pillar.title}
@@ -87,6 +92,20 @@ export default function Product() {
               <p className="mt-4 text-[13px] leading-relaxed text-gray-600 sm:text-[14px]">
                 {pillar.body}
               </p>
+
+              <ul className="mt-5 space-y-2.5 border-t border-gray-200 pt-5">
+                {pillar.points.map((point) => (
+                  <li key={point} className="flex gap-2.5">
+                    <span
+                      className="qdl-gradient-bg mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full"
+                      aria-hidden="true"
+                    />
+                    <span className="text-[13px] leading-snug text-gray-900 sm:text-[13.5px]">
+                      {point}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </article>
           ))}
         </div>
