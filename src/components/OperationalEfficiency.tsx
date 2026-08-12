@@ -190,10 +190,10 @@ export default function OperationalEfficiency() {
           style={{ '--reveal-delay': '80ms' } as CSSProperties}
           className="mb-6 px-5 text-[clamp(1.5rem,4vw,3.2rem)] font-medium leading-[1.12] tracking-[-0.02em] text-gray-900 sm:mb-8 sm:px-8 lg:px-12"
         >
-          What changes for your bank,
+          The work your teams
           <br className="hidden sm:block" />
           <span className="sm:hidden"> </span>
-          and by how much.
+          stop doing.
         </h2>
 
         <div
