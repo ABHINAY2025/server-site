@@ -133,7 +133,7 @@ export default function Demo() {
             'radial-gradient(125% 108% at 100% 0%, #000 0%, #000 34%, transparent 72%)',
         }}
       >
-        <DnaRibbon className="absolute inset-0 h-full w-full opacity-70" />
+        <DnaRibbon className="absolute inset-0 h-full w-full opacity-95" />
       </div>
 
       {/* This page is the destination, so the top only needs a way back */}

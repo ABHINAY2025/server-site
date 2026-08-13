@@ -1,18 +1,23 @@
 import { useEffect, useRef } from 'react'
 
 /**
- * A double helix drawn to canvas, used as page decoration.
+ * A twisted ribbon, drawn as solid colour.
  *
- * Two strands run a quarter-turn apart with rungs between them, so it reads as
- * DNA rather than as a ribbon. Colour is sampled from the QDL palette by
- * position along the strand and the sample point drifts over time, so the
- * colours travel through the helix instead of sitting still.
+ * The two edges of the ribbon are sine curves half a turn apart, so they cross
+ * wherever the twist goes edge on. Between two crossings the edges bow away
+ * from each other and enclose a petal, and every petal is filled rather than
+ * outlined. That is what makes it read as a solid waving band instead of a
+ * pair of wires.
  *
- * Canvas rather than SVG: a few hundred segments redrawn every frame is
- * cheaper as immediate-mode drawing than as that many live DOM nodes.
+ * Each face is shaded by which way it is turned: the half of a turn facing the
+ * viewer is brighter and more opaque than the half turned away, which is what
+ * gives a flat fill the appearance of twisting through depth.
+ *
+ * Canvas rather than SVG, since a few hundred filled quads redrawn every frame
+ * is far cheaper drawn than held as that many live DOM nodes.
  */
 
-/** The palette the colour travels through, looping back to the first. */
+/** The palette colour travels through, looping back to the first. */
 const STOPS = [
   [39, 120, 252], // azure
   [123, 31, 181], // violet
@@ -21,7 +26,7 @@ const STOPS = [
   [252, 154, 27], // amber
 ]
 
-/** Samples the looping palette at p, where p wraps at 1. */
+/** Samples the looping palette at p, which wraps at 1. */
 function sample(p: number) {
   const t = ((p % 1) + 1) % 1
   const scaled = t * STOPS.length
@@ -30,11 +35,20 @@ function sample(p: number) {
   const a = STOPS[i % STOPS.length]
   const b = STOPS[(i + 1) % STOPS.length]
   return [
-    Math.round(a[0] + (b[0] - a[0]) * f),
-    Math.round(a[1] + (b[1] - a[1]) * f),
-    Math.round(a[2] + (b[2] - a[2]) * f),
+    a[0] + (b[0] - a[0]) * f,
+    a[1] + (b[1] - a[1]) * f,
+    a[2] + (b[2] - a[2]) * f,
   ]
 }
+
+/** Layered bands, so the composition has depth rather than one lone ribbon. */
+const BANDS = [
+  { amp: 0.34, turns: 2.6, phase: 0, offset: -0.06, weight: 1, speed: 1 },
+  { amp: 0.26, turns: 3.4, phase: 1.9, offset: 0.1, weight: 0.62, speed: 1.25 },
+  { amp: 0.19, turns: 4.3, phase: 3.6, offset: 0.02, weight: 0.4, speed: 0.82 },
+]
+
+const SEGMENTS = 150
 
 export default function DnaRibbon({ className = '' }: { className?: string }) {
   const ref = useRef<HTMLCanvasElement>(null)
@@ -53,8 +67,8 @@ export default function DnaRibbon({ className = '' }: { className?: string }) {
     let height = 0
 
     const resize = () => {
-      /* Cap the pixel ratio. Beyond 2 the extra fidelity is invisible on a
-         soft-edged graphic and the fill cost rises with its square. */
+      /* Capped at 2: past that the extra fidelity is invisible on a
+         soft-edged graphic while fill cost rises with its square. */
       const dpr = Math.min(window.devicePixelRatio || 1, 2)
       width = host.clientWidth
       height = host.clientHeight
@@ -69,8 +83,7 @@ export default function DnaRibbon({ className = '' }: { className?: string }) {
     const ro = new ResizeObserver(resize)
     ro.observe(host)
 
-    /* Held still while the section is off screen, so an unseen canvas is not
-       repainting sixty times a second. */
+    /* Held still while off screen, so an unseen canvas is not repainting. */
     let visible = true
     const io = new IntersectionObserver(
       ([entry]) => {
@@ -80,69 +93,63 @@ export default function DnaRibbon({ className = '' }: { className?: string }) {
     )
     io.observe(host)
 
-    const SEGMENTS = 240
-    const TURNS = 3.1
-    /* The helix runs diagonally, as the reference does. */
-    const TILT = -0.42
-
     const draw = (time: number) => {
       ctx.clearRect(0, 0, width, height)
       if (!width || !height) return
 
-      const phase = reduced ? 0 : time * 0.00022
-      const colourDrift = reduced ? 0 : time * 0.00007
+      const t = reduced ? 0 : time
+      const drift = t * 0.00006
 
       ctx.save()
-      ctx.translate(width * 0.52, height * 0.34)
-      ctx.rotate(TILT)
+      ctx.translate(width * 0.5, height * 0.36)
+      ctx.rotate(-0.4)
+      /* Normal compositing, deliberately. Additive blending would be right on
+         a dark page, but this one sits on near-white: adding to it only drives
+         the fill toward white and the colour disappears. */
+      ctx.globalCompositeOperation = 'source-over'
 
-      const span = Math.hypot(width, height) * 1.15
-      const amp = Math.min(height, 620) * 0.3
+      const span = Math.hypot(width, height) * 1.2
       const half = span / 2
+      const base = Math.min(height, 700)
 
-      /* Rungs first, so the strands read as passing in front of them. */
-      ctx.lineCap = 'round'
-      for (let i = 0; i <= SEGMENTS; i += 5) {
-        const u = i / SEGMENTS
-        const x = -half + u * span
-        const angle = u * Math.PI * 2 * TURNS + phase
-        const y1 = Math.sin(angle) * amp
-        const y2 = Math.sin(angle + Math.PI) * amp
-        /* Rungs fade as the strand turns edge on, which is what sells depth */
-        const face = Math.abs(Math.cos(angle))
-        const [r, g, b] = sample(u * 0.85 + colourDrift)
+      for (const band of BANDS) {
+        const amp = base * band.amp
+        const phase = band.phase + t * 0.00025 * band.speed
+        const yShift = base * band.offset
 
-        ctx.strokeStyle = `rgba(${r},${g},${b},${0.1 + face * 0.16})`
-        ctx.lineWidth = 2
-        ctx.beginPath()
-        ctx.moveTo(x, y1)
-        ctx.lineTo(x, y2)
-        ctx.stroke()
-      }
-
-      /* Then each strand, one segment at a time so colour can vary along it. */
-      for (const offset of [0, Math.PI]) {
         for (let i = 0; i < SEGMENTS; i++) {
           const u = i / SEGMENTS
           const uNext = (i + 1) / SEGMENTS
           const x = -half + u * span
           const xNext = -half + uNext * span
-          const angle = u * Math.PI * 2 * TURNS + phase + offset
-          const angleNext = uNext * Math.PI * 2 * TURNS + phase + offset
 
-          const y = Math.sin(angle) * amp
-          const yNext = Math.sin(angleNext) * amp
+          const angle = u * Math.PI * 2 * band.turns + phase
+          const angleNext = uNext * Math.PI * 2 * band.turns + phase
 
-          /* Depth: the near half of each turn is thicker and more opaque */
-          const depth = (Math.cos(angle) + 1) / 2
-          const [r, g, b] = sample(u * 0.85 + colourDrift)
+          /* Two edges half a turn apart. They meet wherever sine crosses zero,
+             which is what pinches the fill into petals. */
+          const edgeA = Math.sin(angle) * amp + yShift
+          const edgeANext = Math.sin(angleNext) * amp + yShift
+          const edgeB = -Math.sin(angle) * amp + yShift
+          const edgeBNext = -Math.sin(angleNext) * amp + yShift
 
-          ctx.strokeStyle = `rgba(${r},${g},${b},${0.3 + depth * 0.6})`
-          ctx.lineWidth = 3 + depth * 11
+          /* Which way this part of the twist is facing, 0 to 1. */
+          const facing = (Math.cos(angle) + 1) / 2
+          const [r, g, b] = sample(u * 0.8 + drift + band.phase * 0.05)
+
+          /* The face turned away is dimmer, so the band reads as twisting.
+             Weighted for a light page: a fill this size needs real opacity to
+             register as colour rather than as a haze. */
+          const alpha = (0.16 + facing * 0.5) * band.weight
+
+          ctx.fillStyle = `rgba(${r | 0},${g | 0},${b | 0},${alpha})`
           ctx.beginPath()
-          ctx.moveTo(x, y)
-          ctx.lineTo(xNext, yNext)
-          ctx.stroke()
+          ctx.moveTo(x, edgeA)
+          ctx.lineTo(xNext, edgeANext)
+          ctx.lineTo(xNext, edgeBNext)
+          ctx.lineTo(x, edgeB)
+          ctx.closePath()
+          ctx.fill()
         }
       }
 
