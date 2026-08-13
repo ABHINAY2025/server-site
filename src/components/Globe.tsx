@@ -134,11 +134,15 @@ export default function Globe({ className = "" }: { className?: string }) {
     camera.position.set(0, 0, 4.1)
 
     const globe = new THREE.Group()
-    /* Yaw before pitch, then roll. With the default XYZ order the pitch is
-       applied before the spin, so dragging vertically swings the globe about a
-       world axis and it reads as inverted once it has been spun. YXZ is the
-       turntable order: spin first, tilt in view space, axial tilt last. */
-    globe.rotation.order = "YXZ"
+    /* Rotation order is left at the default XYZ, which builds Rx · Ry · Rz and
+       therefore applies the axial roll first, then the spin, then the tilt last
+       in world space. World X is the screen horizontal, so vertical drag always
+       pitches about the axis under the pointer no matter how far the globe has
+       been spun.
+
+       YXZ is the wrong choice here despite sounding like the turntable order:
+       it puts the yaw outermost, so the tilt axis is carried around by the spin
+       and the two controls cross-couple once the globe has turned. */
     globe.rotation.z = (-18 * Math.PI) / 180 // axial tilt
     scene.add(globe)
 
@@ -295,9 +299,6 @@ export default function Globe({ className = "" }: { className?: string }) {
     let dragging = false
     let lastX = 0
     let lastY = 0
-    /* Opens facing North America. A point sits front-of-camera when its
-       longitude plus this rotation reaches 90 degrees, so roughly 95W needs
-       185 degrees, or 3.23 radians. */
     /* Opens on North America. A longitude faces the camera when it plus this
        rotation reaches zero, so roughly 95W needs +95 degrees, 1.66 radians. */
     let spin = 1.66
