@@ -1,5 +1,5 @@
 import { useState, type CSSProperties, type FormEvent } from 'react'
-import { ArrowRight, Check, Loader2 } from 'lucide-react'
+import { ArrowRight, Check, Copy, Loader2 } from 'lucide-react'
 import { Shader, FlowingGradient } from 'shaders/react'
 import Footer from '../components/Footer'
 import { Link } from '../router'
@@ -20,6 +20,9 @@ const ENDPOINT =
   import.meta.env.VITE_DEMO_ENDPOINT ?? '/api/demo/demo-requests'
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+/** Where transaction samples go. */
+const SAMPLE_ADDRESS = 'quantumdataleap.ai@gmail.com'
 
 const POINTS = [
   'See QDL screen, fund and settle a payment on your own rails',
@@ -81,6 +84,24 @@ export default function Demo() {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [regulated, setRegulated] = useState<'Yes' | 'No' | null>(null)
+  const [copied, setCopied] = useState(false)
+
+  const copyAddress = async () => {
+    try {
+      await navigator.clipboard.writeText(SAMPLE_ADDRESS)
+    } catch {
+      /* Clipboard access can be refused, and an unusable button is worse than
+         a visible address. Select it instead so it can be copied by hand. */
+      const node = document.createElement('textarea')
+      node.value = SAMPLE_ADDRESS
+      document.body.appendChild(node)
+      node.select()
+      document.execCommand('copy')
+      node.remove()
+    }
+    setCopied(true)
+    window.setTimeout(() => setCopied(false), 2200)
+  }
 
   const done = [
     name.trim().length > 1,
@@ -244,16 +265,49 @@ export default function Demo() {
                 Send a transaction sample and receive a breakdown of what could
                 have been repaired automatically.
               </p>
-              <a
-                href="mailto:quantumdataleap.ai@gmail.com?subject=Free%20repair%20analysis&body=Attach%20a%20transaction%20sample%20and%20we%20will%20come%20back%20with%20a%20breakdown%20of%20what%20could%20have%20been%20repaired%20automatically."
-                className="group mt-5 inline-flex items-center gap-2.5 rounded-full border border-gray-300 px-5 py-2.5 text-[13.5px] font-medium text-gray-900 transition-colors duration-300 hover:border-gray-900 sm:text-[14px]"
-              >
-                Send a sample
-                <ArrowRight
-                  size={15}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
-                />
-              </a>
+              <div className="mt-5 flex flex-wrap items-center gap-3">
+                <a
+                  href={`mailto:${SAMPLE_ADDRESS}?subject=Free%20repair%20analysis&body=Attach%20a%20transaction%20sample%20and%20we%20will%20come%20back%20with%20a%20breakdown%20of%20what%20could%20have%20been%20repaired%20automatically.`}
+                  className="group inline-flex items-center gap-2.5 rounded-full border border-gray-300 px-5 py-2.5 text-[13.5px] font-medium text-gray-900 transition-colors duration-300 hover:border-gray-900 sm:text-[14px]"
+                >
+                  Send a sample
+                  <ArrowRight
+                    size={15}
+                    className="transition-transform duration-300 group-hover:translate-x-1"
+                  />
+                </a>
+
+                {/* A mailto only works if the machine has a mail client
+                    registered for it. Where it does not, the button does
+                    nothing at all, so the address is offered directly too. */}
+                <button
+                  type="button"
+                  onClick={copyAddress}
+                  className="inline-flex items-center gap-2 rounded-full px-3 py-2.5 text-[13px] font-medium text-gray-600 transition-colors duration-300 hover:text-gray-900"
+                >
+                  {copied ? (
+                    <>
+                      <Check size={14} className="text-[#0a8f6a]" strokeWidth={2.5} />
+                      Address copied
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={14} />
+                      Copy the address
+                    </>
+                  )}
+                </button>
+              </div>
+
+              <p className="mt-3 text-[12.5px] text-gray-500">
+                Or write to{' '}
+                <a
+                  href={`mailto:${SAMPLE_ADDRESS}`}
+                  className="font-medium text-[#062698] underline underline-offset-2"
+                >
+                  {SAMPLE_ADDRESS}
+                </a>
+              </p>
             </div>
 
           </div>
