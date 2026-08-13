@@ -1,5 +1,6 @@
 import { useState, type CSSProperties, type FormEvent } from 'react'
 import { ArrowRight, Check, Loader2 } from 'lucide-react'
+import { Shader, FlowingGradient } from 'shaders/react'
 import Footer from '../components/Footer'
 import { Link } from '../router'
 
@@ -116,9 +117,36 @@ export default function Demo() {
   }
 
   return (
-    <main className="min-h-screen bg-[#F5F5F5]">
+    <main className="relative min-h-screen overflow-hidden bg-[#F5F5F5]">
+      {/* Flowing colour band behind the page.
+          Masked from the top right and faded out well before it reaches the
+          copy or the form, so it stays decoration rather than competing with
+          the thing the page is actually for. Inert, and if WebGPU is
+          unavailable the canvas simply stays transparent. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[75vh] select-none"
+        style={{
+          maskImage:
+            'radial-gradient(125% 105% at 100% 0%, #000 0%, #000 32%, transparent 70%)',
+          WebkitMaskImage:
+            'radial-gradient(125% 105% at 100% 0%, #000 0%, #000 32%, transparent 70%)',
+        }}
+      >
+        <Shader className="absolute inset-0 opacity-80">
+          <FlowingGradient
+            colorA="#eef2ff"
+            colorB="#2778fc"
+            colorC="#b0169c"
+            colorD="#fb5725"
+            speed={0.35}
+            distortion={0.62}
+          />
+        </Shader>
+      </div>
+
       {/* This page is the destination, so the top only needs a way back */}
-      <div className="mx-auto w-full max-w-[1440px] px-5 pt-8 sm:px-8 sm:pt-10 lg:px-12">
+      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pt-8 sm:px-8 sm:pt-10 lg:px-12">
         <div className="flex items-center justify-between gap-6">
           <Link to="/" className="flex shrink-0 items-center gap-2.5">
             <img
@@ -146,7 +174,7 @@ export default function Demo() {
 
       {/* Tighter than a content section. The form is the point of this page, so
           it should be reachable without scrolling on a laptop. */}
-      <section className="mx-auto w-full max-w-[1440px] px-5 pb-16 pt-8 sm:px-8 sm:pb-20 sm:pt-10 lg:px-12 lg:pb-24 lg:pt-10">
+      <section className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-16 pt-8 sm:px-8 sm:pb-20 sm:pt-10 lg:px-12 lg:pb-24 lg:pt-10">
         {/* Badge row, as on every section of the site */}
         <div className="mb-4 flex items-center gap-3 sm:mb-5">
           <span className="rounded-full border border-gray-300 px-3 py-1 text-[12px] font-medium text-gray-900 sm:px-4 sm:py-1.5 sm:text-[13px]">
@@ -397,7 +425,9 @@ export default function Demo() {
         </div>
       </section>
 
-      <Footer />
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </main>
   )
 }
