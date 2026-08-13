@@ -151,6 +151,27 @@
   animation-delay: 60ms;
 }
 
+/* Orbit paths turn slowly, so the connector ring is not completely inert. */
+.sr-orbit {
+  animation: srOrbit 90s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+@keyframes srOrbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sr-orbit {
+    animation: none;
+  }
+}
+
 /* ---------- Blog accordion ----------
    One row of panels. The open one takes every pixel the others are not using,
    so pointing at a strip opens it the whole way rather than nudging it wider.

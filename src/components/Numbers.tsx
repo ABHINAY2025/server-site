@@ -23,6 +23,49 @@ const STATS = [
 const STANDARDS = ['ISO 20022', 'ACH', 'Fedwire', 'RTP']
 const DURATION = 1500
 
+/**
+ * The running total of analyst hours QDL has taken off operations desks.
+ *
+ * Derived from elapsed time rather than held in state, so every visitor sees
+ * the same figure for the same moment and a reload never rewinds it. The base
+ * and the rate are the two numbers to replace with real ones.
+ */
+const HOURS_BASE = 1_284_500
+const HOURS_FROM = Date.UTC(2026, 7, 1)
+/**
+ * Hours accrued per second across the installed base. Chosen so the figure
+ * moves often enough to read as live without compounding into a number the
+ * business could not stand behind. Replace all three with real values.
+ */
+const HOURS_PER_SECOND = 0.35
+
+function hoursSaved(now: number) {
+  const elapsed = Math.max(0, (now - HOURS_FROM) / 1000)
+  return Math.floor(HOURS_BASE + elapsed * HOURS_PER_SECOND)
+}
+
+/** Ticks upward for as long as the section is on screen. */
+function LiveHours() {
+  const [value, setValue] = useState(() => hoursSaved(Date.now()))
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const id = window.setInterval(() => setValue(hoursSaved(Date.now())), 900)
+    return () => window.clearInterval(id)
+  }, [])
+
+  return (
+    <div className="text-center">
+      <p className="qdl-gradient-text text-[clamp(2.6rem,8vw,5.5rem)] font-semibold leading-none tracking-[-0.04em] tabular-nums">
+        {value.toLocaleString('en-US')}
+      </p>
+      <p className="mt-4 text-[14px] text-gray-600 sm:text-[15px]">
+        analyst hours returned to operations teams
+      </p>
+    </div>
+  )
+}
+
 function Stat({
   to,
   decimals,
@@ -144,7 +187,16 @@ export default function Numbers() {
           ))}
         </div>
 
-        <div className="mt-10 grid divide-y divide-gray-200 px-5 sm:mt-14 sm:grid-cols-2 sm:divide-x sm:divide-y-0 sm:px-8 lg:px-12">
+        {/* The running total, counting while you read it */}
+        <div
+          data-reveal
+          style={{ '--reveal-delay': '220ms' } as CSSProperties}
+          className="mt-12 px-5 sm:mt-16 sm:px-8 lg:px-12"
+        >
+          <LiveHours />
+        </div>
+
+        <div className="mt-12 grid divide-y divide-gray-200 border-t border-gray-200 px-5 pt-4 sm:mt-16 sm:grid-cols-2 sm:divide-x sm:divide-y-0 sm:px-8 lg:px-12">
           {STATS.map((stat, i) => (
             <div
               key={stat.label}
