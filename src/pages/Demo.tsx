@@ -1,6 +1,6 @@
 import { useState, type CSSProperties, type FormEvent } from 'react'
 import { ArrowRight, Check, Loader2 } from 'lucide-react'
-import DnaRibbon from '../components/DnaRibbon'
+import { Shader, FlowingGradient } from 'shaders/react'
 import Footer from '../components/Footer'
 import { Link } from '../router'
 
@@ -125,15 +125,24 @@ export default function Demo() {
           unavailable the canvas simply stays transparent. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[78vh] select-none"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[75vh] select-none"
         style={{
           maskImage:
-            'radial-gradient(125% 108% at 100% 0%, #000 0%, #000 34%, transparent 72%)',
+            'radial-gradient(125% 105% at 100% 0%, #000 0%, #000 32%, transparent 70%)',
           WebkitMaskImage:
-            'radial-gradient(125% 108% at 100% 0%, #000 0%, #000 34%, transparent 72%)',
+            'radial-gradient(125% 105% at 100% 0%, #000 0%, #000 32%, transparent 70%)',
         }}
       >
-        <DnaRibbon className="absolute inset-0 h-full w-full opacity-95" />
+        <Shader className="absolute inset-0 opacity-80">
+          <FlowingGradient
+            colorA="#eef2ff"
+            colorB="#2778fc"
+            colorC="#b0169c"
+            colorD="#fb5725"
+            speed={0.35}
+            distortion={0.62}
+          />
+        </Shader>
       </div>
 
       {/* This page is the destination, so the top only needs a way back */}
