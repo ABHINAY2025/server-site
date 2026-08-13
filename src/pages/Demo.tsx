@@ -23,6 +23,29 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 /** Where transaction samples go. */
 const SAMPLE_ADDRESS = 'quantumdataleap.ai@gmail.com'
+const SAMPLE_SUBJECT = 'Free repair analysis'
+const SAMPLE_BODY =
+  'Attach a transaction sample and we will come back with a breakdown of what could have been repaired automatically.'
+
+/**
+ * Gmail's compose window, opened in the browser.
+ *
+ * A mailto delegates to whatever the operating system has registered, which on
+ * a machine with no mail client, or one pointed at an app the visitor does not
+ * use, means the button appears to do nothing. This opens a compose window
+ * directly instead, so the action works without any local setup.
+ */
+const GMAIL_COMPOSE =
+  'https://mail.google.com/mail/?view=cm&fs=1' +
+  `&to=${encodeURIComponent(SAMPLE_ADDRESS)}` +
+  `&su=${encodeURIComponent(SAMPLE_SUBJECT)}` +
+  `&body=${encodeURIComponent(SAMPLE_BODY)}`
+
+/** The same message handed to a desktop client, for anyone who prefers one. */
+const MAILTO =
+  `mailto:${SAMPLE_ADDRESS}` +
+  `?subject=${encodeURIComponent(SAMPLE_SUBJECT)}` +
+  `&body=${encodeURIComponent(SAMPLE_BODY)}`
 
 const POINTS = [
   'See QDL screen, fund and settle a payment on your own rails',
@@ -265,48 +288,49 @@ export default function Demo() {
                 Send a transaction sample and receive a breakdown of what could
                 have been repaired automatically.
               </p>
-              <div className="mt-5 flex flex-wrap items-center gap-3">
-                <a
-                  href={`mailto:${SAMPLE_ADDRESS}?subject=Free%20repair%20analysis&body=Attach%20a%20transaction%20sample%20and%20we%20will%20come%20back%20with%20a%20breakdown%20of%20what%20could%20have%20been%20repaired%20automatically.`}
-                  className="group inline-flex items-center gap-2.5 rounded-full border border-gray-300 px-5 py-2.5 text-[13.5px] font-medium text-gray-900 transition-colors duration-300 hover:border-gray-900 sm:text-[14px]"
-                >
-                  Send a sample
-                  <ArrowRight
-                    size={15}
-                    className="transition-transform duration-300 group-hover:translate-x-1"
-                  />
-                </a>
+              {/* Opens a compose window in the browser, so it works whatever
+                  the machine has registered for mail. */}
+              <a
+                href={GMAIL_COMPOSE}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-5 inline-flex items-center gap-2.5 rounded-full border border-gray-300 px-5 py-2.5 text-[13.5px] font-medium text-gray-900 transition-colors duration-300 hover:border-gray-900 sm:text-[14px]"
+              >
+                Send a sample
+                <ArrowRight
+                  size={15}
+                  className="transition-transform duration-300 group-hover:translate-x-1"
+                />
+              </a>
 
-                {/* A mailto only works if the machine has a mail client
-                    registered for it. Where it does not, the button does
-                    nothing at all, so the address is offered directly too. */}
+              <p className="mt-3.5 flex flex-wrap items-center gap-x-2 gap-y-1 text-[12.5px] text-gray-500">
+                <a
+                  href={MAILTO}
+                  className="font-medium text-[#062698] underline underline-offset-2"
+                >
+                  Use your own mail app
+                </a>
+                <span aria-hidden="true">·</span>
                 <button
                   type="button"
                   onClick={copyAddress}
-                  className="inline-flex items-center gap-2 rounded-full px-3 py-2.5 text-[13px] font-medium text-gray-600 transition-colors duration-300 hover:text-gray-900"
+                  className="inline-flex items-center gap-1.5 font-medium text-[#062698] underline underline-offset-2"
                 >
                   {copied ? (
                     <>
-                      <Check size={14} className="text-[#0a8f6a]" strokeWidth={2.5} />
-                      Address copied
+                      <Check size={13} className="text-[#0a8f6a]" strokeWidth={2.5} />
+                      Copied
                     </>
                   ) : (
                     <>
-                      <Copy size={14} />
+                      <Copy size={13} />
                       Copy the address
                     </>
                   )}
                 </button>
-              </div>
-
-              <p className="mt-3 text-[12.5px] text-gray-500">
-                Or write to{' '}
-                <a
-                  href={`mailto:${SAMPLE_ADDRESS}`}
-                  className="font-medium text-[#062698] underline underline-offset-2"
-                >
+                <span className="w-full text-gray-400 sm:w-auto">
                   {SAMPLE_ADDRESS}
-                </a>
+                </span>
               </p>
             </div>
 
