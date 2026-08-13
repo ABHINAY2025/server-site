@@ -1,6 +1,6 @@
 import { useState, type CSSProperties, type FormEvent } from 'react'
 import { ArrowRight, Check, Loader2 } from 'lucide-react'
-import { Shader, FlowingGradient } from 'shaders/react'
+import DnaRibbon from '../components/DnaRibbon'
 import Footer from '../components/Footer'
 import { Link } from '../router'
 
@@ -125,24 +125,15 @@ export default function Demo() {
           unavailable the canvas simply stays transparent. */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-[75vh] select-none"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[78vh] select-none"
         style={{
           maskImage:
-            'radial-gradient(125% 105% at 100% 0%, #000 0%, #000 32%, transparent 70%)',
+            'radial-gradient(125% 108% at 100% 0%, #000 0%, #000 34%, transparent 72%)',
           WebkitMaskImage:
-            'radial-gradient(125% 105% at 100% 0%, #000 0%, #000 32%, transparent 70%)',
+            'radial-gradient(125% 108% at 100% 0%, #000 0%, #000 34%, transparent 72%)',
         }}
       >
-        <Shader className="absolute inset-0 opacity-80">
-          <FlowingGradient
-            colorA="#eef2ff"
-            colorB="#2778fc"
-            colorC="#b0169c"
-            colorD="#fb5725"
-            speed={0.35}
-            distortion={0.62}
-          />
-        </Shader>
+        <DnaRibbon className="absolute inset-0 h-full w-full opacity-70" />
       </div>
 
       {/* This page is the destination, so the top only needs a way back */}
@@ -245,7 +236,7 @@ export default function Demo() {
                 have been repaired automatically.
               </p>
               <a
-                href="mailto:support@quantumdataleap.ai?subject=Free%20repair%20analysis&body=Attach%20a%20transaction%20sample%20and%20we%20will%20come%20back%20with%20a%20breakdown%20of%20what%20could%20have%20been%20repaired%20automatically."
+                href="mailto:quantumdataleap.ai@gmail.com?subject=Free%20repair%20analysis&body=Attach%20a%20transaction%20sample%20and%20we%20will%20come%20back%20with%20a%20breakdown%20of%20what%20could%20have%20been%20repaired%20automatically."
                 className="group mt-5 inline-flex items-center gap-2.5 rounded-full border border-gray-300 px-5 py-2.5 text-[13.5px] font-medium text-gray-900 transition-colors duration-300 hover:border-gray-900 sm:text-[14px]"
               >
                 Send a sample
