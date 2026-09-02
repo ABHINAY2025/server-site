@@ -196,6 +196,18 @@ export default function Footer() {
             {LEGAL.map((link) => (
               <FooterAnchor key={link.label} link={link} />
             ))}
+
+            {/* Consent has to be withdrawable as easily as it was given, so
+                the banner can always be reopened from here. */}
+            <button
+              type="button"
+              onClick={() =>
+                window.dispatchEvent(new Event('qdl:cookie-settings'))
+              }
+              className="text-[13.5px] text-gray-600 transition-colors duration-300 hover:text-[#062698]"
+            >
+              Cookie settings
+            </button>
           </nav>
         </div>
       </div>

@@ -30,6 +30,26 @@ function recordSubmission(record) {
   }
 }
 
+const EVENTS_PATH = path.join(DATA_DIR, 'events.jsonl')
+
+/**
+ * Appends an analytics event.
+ *
+ * Same append-only shape as the submission log. Note that this is a local file:
+ * on a serverless host the filesystem is ephemeral, so a real deployment wants
+ * a database or an analytics service here rather than a disk write.
+ */
+function recordEvent(event) {
+  try {
+    fs.mkdirSync(DATA_DIR, { recursive: true })
+    fs.appendFileSync(EVENTS_PATH, `${JSON.stringify(event)}
+`)
+  } catch (err) {
+    /* Analytics must never take the request down with it. */
+    console.error('[events] could not write:', err.message)
+  }
+}
+
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 /** Retries transient SMTP failures. Nobody is watching the response now. */
@@ -396,6 +416,32 @@ export async function createMailApp() {
   const recent = new Map()
   const WINDOW = 60_000
   const MAX_PER_WINDOW = 5
+
+  /**
+   * Analytics events.
+   *
+   * The client only calls this once the visitor has consented, so nothing
+   * arrives here from someone who declined. Kept deliberately thin: a name, a
+   * path and a per-tab session id, with no IP, no user agent and no cookie, so
+   * there is nothing stored that identifies a person.
+   */
+  app.post('/api/events', (req, res) => {
+    const name = String(req.body?.name ?? '').trim().slice(0, 60)
+    const path = String(req.body?.path ?? '').trim().slice(0, 200)
+    if (!name || !path) return res.status(400).end()
+
+    recordEvent({
+      name,
+      path,
+      referrer: String(req.body?.referrer ?? '').slice(0, 200),
+      session: String(req.body?.session ?? '').slice(0, 64),
+      at: new Date().toISOString(),
+      props: typeof req.body?.props === 'object' ? req.body.props : undefined,
+    })
+
+    /* 204: the page is not waiting on an answer, and sendBeacon ignores one. */
+    res.status(204).end()
+  })
 
   app.get('/api/health', (_req, res) =>
     res.json({

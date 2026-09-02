@@ -7,6 +7,7 @@ import DataHandling from './pages/DataHandling'
 import BlogPage from './pages/BlogPage'
 import ArticlePage from './pages/ArticlePage'
 import ScrollReveal from './components/ScrollReveal'
+import CookieConsent from './components/CookieConsent'
 import { usePath } from './router'
 
 const ROUTES: Record<string, ComponentType> = {
@@ -28,6 +29,7 @@ export default function App() {
   return (
     <>
       <ScrollReveal />
+      <CookieConsent />
       {article ? <ArticlePage slug={article[1]} /> : <Page />}
     </>
   )
