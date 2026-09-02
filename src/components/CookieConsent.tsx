@@ -52,6 +52,10 @@ function Toggle({
   label: string
 }) {
   return (
+    /* The knob sits in normal flow and is moved with translate, rather than
+       being positioned absolutely. An absolute knob needs an explicit left, and
+       without one it falls back to its static position, so the translate
+       carries it outside the track. Centring it in a flex row cannot drift. */
     <button
       type="button"
       role="switch"
@@ -59,13 +63,13 @@ function Toggle({
       aria-label={label}
       disabled={disabled}
       onClick={() => onChange(!checked)}
-      className={`relative h-6 w-11 shrink-0 rounded-full transition-colors duration-200 ${
+      className={`inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 ${
         checked ? 'bg-[#2778fc]' : 'bg-white/25'
-      } ${disabled ? 'cursor-not-allowed opacity-50' : ''}`}
+      } ${disabled ? 'cursor-not-allowed opacity-60' : 'cursor-pointer'}`}
     >
       <span
-        className={`absolute top-0.5 h-5 w-5 rounded-full bg-white transition-transform duration-200 ${
-          checked ? 'translate-x-[1.375rem]' : 'translate-x-0.5'
+        className={`h-5 w-5 rounded-full bg-white shadow-[0_1px_3px_rgba(0,0,0,0.35)] transition-transform duration-200 ease-out ${
+          checked ? 'translate-x-[1.375rem]' : 'translate-x-[0.125rem]'
         }`}
       />
     </button>
