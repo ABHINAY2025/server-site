@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react'
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from 'react'
 
 /**
  * Legacy stack against QDL, cut down to the reconciliation story.
@@ -14,6 +14,8 @@ type Row = {
   legacyFigure: string
   qdl: string
   qdlFigure: string
+  /** Shown in the panel that follows the pointer across this row. */
+  image: string
 }
 
 const ROWS: Row[] = [
@@ -23,6 +25,7 @@ const ROWS: Row[] = [
     legacy: 'Typical for a US regional bank today',
     qdlFigure: '98%',
     qdl: 'Released first-pass, no operator involved',
+    image: '/images/product/straight-through.jpg',
   },
   {
     dimension: 'Data repair',
@@ -30,6 +33,7 @@ const ROWS: Row[] = [
     legacy: 'An analyst opens each exception and fixes the field',
     qdlFigure: 'In flight',
     qdl: 'Corrected before the payment reaches a queue',
+    image: '/images/product/data-repair.jpg',
   },
   {
     dimension: 'Reconciliation',
@@ -37,6 +41,7 @@ const ROWS: Row[] = [
     legacy: 'Breaks surface after the cycle has closed',
     qdlFigure: 'Continuous',
     qdl: 'Positions agree as payments move, not overnight',
+    image: '/images/product/reconciliation.jpg',
   },
   {
     dimension: 'Case resolution',
@@ -44,10 +49,51 @@ const ROWS: Row[] = [
     legacy: 'Investigation time rises with volume',
     qdlFigure: '90% faster',
     qdl: 'Context arrives with the case, already assembled',
+    image: '/images/product/case-resolution.jpg',
   },
 ]
 
+const PANEL_W = 460
+const PANEL_H = 216
+
 export default function LegacyComparison() {
+  /* Which row the pointer is over, and where to put the panel. */
+  const [active, setActive] = useState<number | null>(null)
+  const [pos, setPos] = useState({ x: 0, y: 0 })
+  const [enabled, setEnabled] = useState(false)
+  const frame = useRef(0)
+
+  /* Pointer devices only. There is no hover on touch, and a panel chasing a
+     finger would sit underneath it. */
+  useEffect(() => {
+    setEnabled(
+      window.matchMedia('(hover: hover)').matches &&
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    )
+  }, [])
+
+  const move = useCallback((event: React.PointerEvent) => {
+    const { clientX, clientY } = event
+    /* Coalesced into a frame: pointermove fires far more often than the screen
+       refreshes, so setting state on every event is wasted work. */
+    cancelAnimationFrame(frame.current)
+    frame.current = requestAnimationFrame(() => {
+      setPos({
+        /* Clamped, so a row near an edge cannot push the panel off screen. */
+        x: Math.min(
+          Math.max(clientX + 28, 12),
+          window.innerWidth - PANEL_W - 12,
+        ),
+        y: Math.min(
+          Math.max(clientY - PANEL_H / 2, 12),
+          window.innerHeight - PANEL_H - 12,
+        ),
+      })
+    })
+  }, [])
+
+  useEffect(() => () => cancelAnimationFrame(frame.current), [])
+
   return (
     <section className="overflow-hidden bg-[#F5F5F5] pb-16 pt-16 sm:pb-20 sm:pt-20 lg:pb-28 lg:pt-28">
       <div className="mx-auto w-full max-w-[1440px]">
@@ -103,7 +149,12 @@ export default function LegacyComparison() {
               key={row.dimension}
               data-reveal
               style={{ '--reveal-delay': `${i * 70}ms` } as CSSProperties}
-              className="grid grid-cols-1 gap-4 border-b border-gray-300 py-6 transition-colors duration-200 hover:bg-white/60 lg:grid-cols-[minmax(0,13rem)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-6 lg:py-7"
+              onPointerEnter={enabled ? () => setActive(i) : undefined}
+              onPointerLeave={enabled ? () => setActive(null) : undefined}
+              onPointerMove={enabled ? move : undefined}
+              className={`grid grid-cols-1 gap-4 border-b border-gray-300 py-6 transition-colors duration-200 lg:grid-cols-[minmax(0,13rem)_minmax(0,1fr)_minmax(0,1fr)] lg:gap-6 lg:py-7 ${
+                active === i ? 'bg-white' : 'hover:bg-white/60'
+              }`}
             >
               <h3 className="text-[15px] font-semibold tracking-[-0.01em] text-gray-900 sm:text-[16px]">
                 {row.dimension}
@@ -134,6 +185,36 @@ export default function LegacyComparison() {
           ))}
         </div>
       </div>
+
+      {/* One shared panel pinned to the pointer. Every image is mounted and
+          crossfaded rather than swapped by key: remounting restarts the fetch,
+          so the first hover over each row would flash an empty frame. */}
+      {enabled && (
+        <div
+          aria-hidden="true"
+          className={`pointer-events-none fixed z-50 overflow-hidden rounded-xl border border-black/5 bg-white shadow-[0_24px_60px_-18px_rgba(16,24,40,0.45)] transition-opacity duration-200 ${
+            active === null ? 'opacity-0' : 'opacity-100'
+          }`}
+          style={{
+            left: `${pos.x}px`,
+            top: `${pos.y}px`,
+            width: `${PANEL_W}px`,
+            height: `${PANEL_H}px`,
+          }}
+        >
+          {ROWS.map((row, i) => (
+            <img
+              key={row.dimension}
+              src={row.image}
+              alt=""
+              loading="lazy"
+              className={`absolute inset-0 h-full w-full object-cover object-left-top transition-opacity duration-300 ${
+                active === i ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
+          ))}
+        </div>
+      )}
     </section>
   )
 }
