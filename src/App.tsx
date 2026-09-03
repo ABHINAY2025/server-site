@@ -9,6 +9,7 @@ import ArticlePage from './pages/ArticlePage'
 import SolutionPage from './pages/SolutionPage'
 import ScrollReveal from './components/ScrollReveal'
 import CookieConsent from './components/CookieConsent'
+import EasterEgg from './components/EasterEgg'
 import { useEffect } from 'react'
 import { usePath } from './router'
 import { captureAttribution } from './lib/utm'
@@ -45,6 +46,7 @@ export default function App() {
     <>
       <ScrollReveal />
       <CookieConsent />
+      <EasterEgg />
       {solution ? (
         <SolutionPage solution={solution} />
       ) : article ? (
