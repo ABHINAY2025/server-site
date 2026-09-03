@@ -6,6 +6,7 @@ import { Link } from '../router'
 import { getAttribution } from '../lib/utm'
 import { gaEvent } from '../lib/ga'
 import { useSeo } from '../lib/seo'
+import HoverVideoList, { type VideoRow } from '../components/HoverVideoList'
 
 /**
  * The demo request page every "Request a demo" button lands on.
@@ -50,11 +51,24 @@ const MAILTO =
   `?subject=${encodeURIComponent(SAMPLE_SUBJECT)}` +
   `&body=${encodeURIComponent(SAMPLE_BODY)}`
 
-const POINTS = [
-  'See QDL screen, fund and settle a payment on your own rails',
-  'Watch the assistant answer in plain language, with the figures',
-  'Walk the liquidity, fraud and rules surfaces with our team',
-  'Get a deployment shape for the core systems you already run',
+/* Shown as numbered rows, each revealing the product video on hover. */
+const POINTS: VideoRow[] = [
+  {
+    title: 'Screen, fund and settle',
+    body: 'Watch a payment move across your own rails, repaired in flight before it reaches an operations queue.',
+  },
+  {
+    title: 'Ask in plain language',
+    body: 'The assistant answers with the figure rather than a paragraph, and executes on the instruction you give it.',
+  },
+  {
+    title: 'Walk the surfaces',
+    body: 'Liquidity, fraud and rules, with our team, on the flows your desk actually works.',
+  },
+  {
+    title: 'Get a deployment shape',
+    body: 'How QDL sits beside the core systems you already run, with no migration in the plan.',
+  },
 ]
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
@@ -263,28 +277,13 @@ export default function Demo() {
               already operate.
             </p>
 
-            <ul className="mt-6 space-y-3">
-              {POINTS.map((point, i) => (
-                <li
-                  key={point}
-                  data-reveal
-                  style={{ '--reveal-delay': `${200 + i * 90}ms` } as CSSProperties}
-                  className="flex gap-3"
-                >
-                  <span className="mt-[3px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white shadow-[0_1px_4px_rgba(16,24,40,0.14)]">
-                    <Check
-                      size={12}
-                      className="text-[#062698]"
-                      strokeWidth={2.5}
-                      aria-hidden="true"
-                    />
-                  </span>
-                  <span className="text-[14px] leading-relaxed text-gray-700 sm:text-[15px]">
-                    {point}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            <div data-reveal style={{ '--reveal-delay': '200ms' } as CSSProperties} className="mt-8">
+              <HoverVideoList
+                rows={POINTS}
+                src="/video/qdl-demo.mp4"
+                poster="/video/qdl-demo-poster.jpg"
+              />
+            </div>
 
             {/* Secondary route in, for anyone not ready to book time */}
             <div
