@@ -6,7 +6,7 @@ import { Link } from '../router'
 import { getAttribution } from '../lib/utm'
 import { gaEvent } from '../lib/ga'
 import { useSeo } from '../lib/seo'
-import HoverVideoList, { type VideoRow } from '../components/HoverVideoList'
+import EmbeddedVideo from '../components/EmbeddedVideo'
 
 /**
  * The demo request page every "Request a demo" button lands on.
@@ -50,26 +50,6 @@ const MAILTO =
   `mailto:${SAMPLE_ADDRESS}` +
   `?subject=${encodeURIComponent(SAMPLE_SUBJECT)}` +
   `&body=${encodeURIComponent(SAMPLE_BODY)}`
-
-/* Shown as numbered rows, each revealing the product video on hover. */
-const POINTS: VideoRow[] = [
-  {
-    title: 'Screen, fund and settle',
-    body: 'Watch a payment move across your own rails, repaired in flight before it reaches an operations queue.',
-  },
-  {
-    title: 'Ask in plain language',
-    body: 'The assistant answers with the figure rather than a paragraph, and executes on the instruction you give it.',
-  },
-  {
-    title: 'Walk the surfaces',
-    body: 'Liquidity, fraud and rules, with our team, on the flows your desk actually works.',
-  },
-  {
-    title: 'Get a deployment shape',
-    body: 'How QDL sits beside the core systems you already run, with no migration in the plan.',
-  },
-]
 
 type Status = 'idle' | 'sending' | 'sent' | 'error'
 
@@ -277,13 +257,11 @@ export default function Demo() {
               already operate.
             </p>
 
-            <div data-reveal style={{ '--reveal-delay': '200ms' } as CSSProperties} className="mt-8">
-              <HoverVideoList
-                rows={POINTS}
-                src="/video/qdl-demo.mp4"
-                poster="/video/qdl-demo-poster.jpg"
-              />
-            </div>
+            <EmbeddedVideo
+              src="/video/qdl-demo.mp4"
+              poster="/video/qdl-demo-poster.jpg"
+              className="mt-8 shadow-[0_18px_50px_-24px_rgba(16,24,40,0.4)]"
+            />
 
             {/* Secondary route in, for anyone not ready to book time */}
             <div
