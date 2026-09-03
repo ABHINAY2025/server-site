@@ -70,7 +70,11 @@ export default function EmbeddedVideo({
          is not forwarded to the DOM on its own, so the reveal would silently
          never run. */
       data-reveal
-      className={`group relative overflow-hidden rounded-2xl bg-[#0b1c3d] ${className}`}
+      /* The container sets the ratio and the video fills it absolutely.
+         Sizing both of them independently left sub-pixel gaps at the edges,
+         and any background behind the video showed through as dark lines. No
+         background colour here for the same reason. */
+      className={`group relative aspect-video overflow-hidden rounded-2xl ${className}`}
     >
       <video
         ref={videoRef}
@@ -80,7 +84,7 @@ export default function EmbeddedVideo({
         loop
         playsInline
         preload="metadata"
-        className="aspect-video h-full w-full object-cover"
+        className="absolute inset-0 block h-full w-full object-cover"
       />
 
       {/* Sound only. No border, no plate: a white glyph on a soft shadow so it

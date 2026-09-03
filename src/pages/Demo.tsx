@@ -234,7 +234,7 @@ export default function Demo() {
           </span>
         </div>
 
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:gap-14 xl:gap-20">
+        <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:gap-14 xl:gap-20">
           {/* Pitch */}
           <div>
             <h1
@@ -331,7 +331,7 @@ export default function Demo() {
           <div
             data-reveal
             style={{ '--reveal-delay': '160ms' } as CSSProperties}
-            className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)]"
+            className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] lg:sticky lg:top-6"
           >
             {/* How much is left, as a line across the top of the card */}
             <div className="h-1 w-full bg-gray-200" aria-hidden="true">
