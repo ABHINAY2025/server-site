@@ -80,7 +80,7 @@ export default function Hero() {
             style={{ '--reveal-y': '100%' } as CSSProperties}
             className="block"
           >
-            FiSec Global
+            Quantum Data Leap
           </span>
         </p>
 

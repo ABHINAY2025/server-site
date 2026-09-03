@@ -7,6 +7,7 @@ import {
   type Consent,
 } from '../lib/consent'
 import { initAnalytics, trackPageView } from '../lib/analytics'
+import { initGoogleAnalytics } from '../lib/ga'
 
 /**
  * Cookie consent.
@@ -86,8 +87,12 @@ export default function CookieConsent() {
 
   useEffect(() => {
     setDecided(getConsent())
-    const stop = initAnalytics()
-    return stop
+    const stopAnalytics = initAnalytics()
+    const stopGa = initGoogleAnalytics()
+    return () => {
+      stopAnalytics()
+      stopGa()
+    }
   }, [])
 
   /* A page view is raised on load and on every route change. It is only sent

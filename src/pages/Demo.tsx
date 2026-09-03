@@ -3,6 +3,9 @@ import { ArrowRight, Check, Copy, Loader2 } from 'lucide-react'
 import { Shader, FlowingGradient } from 'shaders/react'
 import Footer from '../components/Footer'
 import { Link } from '../router'
+import { getAttribution } from '../lib/utm'
+import { gaEvent } from '../lib/ga'
+import { useSeo } from '../lib/seo'
 
 /**
  * The demo request page every "Request a demo" button lands on.
@@ -102,6 +105,13 @@ function Field({
 }
 
 export default function Demo() {
+  useSeo({
+    title: 'Request a Demo | Quantum Data Leap',
+    description:
+      'See QDL repair payment data on your own flows. A walkthrough across ACH, Fedwire and RTP, on the core you already run. We respond within one business day.',
+    path: '/demo',
+  })
+
   const [status, setStatus] = useState<Status>('idle')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -147,9 +157,13 @@ export default function Demo() {
           email: email.trim(),
           phone: phone.trim(),
           regulated: regulated ?? '',
+          /* Which campaign produced this lead, captured on arrival */
+          attribution: getAttribution(),
         }),
       })
       if (!res.ok) throw new Error('Request failed')
+      /* The conversion GA4 counts. Only reaches GA if analytics is consented. */
+      gaEvent('generate_lead', { form: 'demo_request' })
       setStatus('sent')
       setName('')
       setEmail('')

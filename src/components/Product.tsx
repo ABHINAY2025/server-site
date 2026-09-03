@@ -1,7 +1,7 @@
 import type { CSSProperties } from 'react'
 import DemoLink from './DemoLink'
 
-/** Two intelligence pillars, adapted from the FiSec Global corporate deck. */
+/** The two intelligence pillars the platform is built around. */
 const PILLARS = [
   {
     title: 'Payment Intelligence',
@@ -59,7 +59,7 @@ export default function Product() {
             style={{ '--reveal-delay': '160ms' } as CSSProperties}
             className="max-w-[52rem] text-[15px] font-medium leading-[1.65] text-gray-900 sm:text-[17px]"
           >
-            Quantum Data Leap is the flagship product of FiSec Global Inc. It is
+            Quantum Data Leap is an intelligent banking platform. It is
             built around two tightly integrated intelligence pillars that
             redefine how financial institutions manage payments and liquidity.
             QDL is not a collection of tools. It is an intelligent foundation

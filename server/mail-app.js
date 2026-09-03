@@ -117,6 +117,15 @@ export function headerSafe(value) {
     .slice(0, 78)
 }
 
+/** Campaign attribution, flattened for an email body. */
+function describeAttribution(a) {
+  if (!a || typeof a !== 'object') return 'Direct'
+  const parts = Object.entries(a)
+    .filter(([, v]) => typeof v === 'string' && v)
+    .map(([k, v]) => `${k}=${String(v).slice(0, 120)}`)
+  return parts.length ? parts.join(' · ') : 'Direct'
+}
+
 export function formatReceived(date) {
   return date.toLocaleString('en-GB', {
     day: 'numeric',
@@ -129,11 +138,13 @@ export function formatReceived(date) {
 }
 
 /** The notification that goes to the team when someone asks for a demo. */
-export function notification({ name, email, phone, regulated, receivedAt, from, to }) {
+export function notification({ name, email, phone, regulated, receivedAt, from, to, attribution }) {
   const fields = [
     ['Phone', phone],
     ['Regulated institution', regulated || 'Not answered'],
     ['Received', formatReceived(receivedAt)],
+    /* Which campaign produced the lead, so marketing spend can be attributed */
+    ['Source', describeAttribution(attribution)],
   ]
 
   return {
@@ -234,7 +245,6 @@ export function acknowledgement({ name, email, from }) {
       `If anything is urgent, reply to this message or write to ${from}.`,
       '',
       'Quantum Data Leap',
-      'FiSec Global Inc.',
     ].join('\n'),
     html: `
 <div style="margin:0;padding:24px;background:#f5f5f5;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif">
@@ -285,7 +295,7 @@ export function acknowledgement({ name, email, from }) {
             <a href="mailto:${escapeHtml(from)}" style="color:#062698;text-decoration:underline">${escapeHtml(from)}</a>.
           </p>
           <p style="margin:16px 0 0;font-size:12px;color:#9ca3af">
-            Quantum Data Leap, FiSec Global Inc.
+            Quantum Data Leap
           </p>
         </div>
       </td>
@@ -471,6 +481,11 @@ export async function createMailApp() {
     const email = String(req.body?.email ?? '').trim()
     const phone = String(req.body?.phone ?? '').trim()
     const regulated = String(req.body?.regulated ?? '').trim()
+    /* Campaign parameters the browser captured on the landing URL. */
+    const attribution =
+      req.body?.attribution && typeof req.body.attribution === 'object'
+        ? req.body.attribution
+        : undefined
 
     if (name.length < 2 || !EMAIL.test(email) || phone.replace(/\D/g, '').length < 7) {
       return res.status(400).json({ error: 'Please check the details and try again.' })
@@ -526,6 +541,7 @@ export async function createMailApp() {
               receivedAt,
               from: mailFrom,
               to: mailTo,
+              attribution,
             }),
           ),
         ),

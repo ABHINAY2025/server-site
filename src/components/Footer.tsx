@@ -1,4 +1,4 @@
-import { Globe, Mail } from 'lucide-react'
+import { Mail } from 'lucide-react'
 import { Link } from '../router'
 
 /** lucide dropped brand marks in v1, so the LinkedIn glyph is drawn inline */
@@ -42,11 +42,6 @@ const COMPANY: FooterLink[] = [
   { label: 'Blog', href: '/blog' },
   { label: 'Common questions', href: '/#faq' },
   {
-    label: 'FiSec Global',
-    href: 'https://fisecglobal.net/',
-    external: true,
-  },
-  {
     label: 'LinkedIn',
     href: 'https://www.linkedin.com/company/quantum-data-leap',
     external: true,
@@ -65,11 +60,6 @@ const SOCIALS = [
     label: 'QDL on LinkedIn',
     href: 'https://www.linkedin.com/company/quantum-data-leap',
     icon: <LinkedInIcon className="h-3.5 w-3.5" />,
-  },
-  {
-    label: 'FiSec Global',
-    href: 'https://fisecglobal.net/',
-    icon: <Globe className="h-4 w-4" strokeWidth={1.75} />,
   },
   {
     label: 'Email QDL',

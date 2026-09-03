@@ -8,6 +8,7 @@ import Integrations from '../components/Integrations'
 import Blog from '../components/Blog'
 import Faq from '../components/Faq'
 import Footer from '../components/Footer'
+import { useSeo } from '../lib/seo'
 
 /**
  * The order is the argument.
@@ -18,6 +19,13 @@ import Footer from '../components/Footer'
  * hardest.
  */
 export default function Home() {
+  useSeo({
+    title: 'Quantum Data Leap | Payment Data Intelligence for US Regional Banks',
+    description:
+      'Repair payment data before it becomes an exception. QDL lifts straight-through processing for US regional banks across ACH, Fedwire and RTP, with no replatforming.',
+    path: '/',
+  })
+
   return (
     <main>
       <Hero />

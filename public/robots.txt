@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Nothing here should be indexed as a landing page
+Disallow: /api/
+
+Sitemap: https://quantumdataleap.ai/sitemap.xml

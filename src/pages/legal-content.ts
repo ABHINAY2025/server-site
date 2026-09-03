@@ -30,7 +30,7 @@ export const PRIVACY: LegalDoc = {
   intro: [
     {
       kind: 'p',
-      text: 'This privacy notice discloses the privacy practices for fisecglobal.net. This privacy notice applies solely to information collected by this website. It will notify you of the following:',
+      text: 'This privacy notice discloses the privacy practices for quantumdataleap.ai. This privacy notice applies solely to information collected by this website. It will notify you of the following:',
     },
   ],
   sections: [
@@ -127,7 +127,7 @@ export const TERMS: LegalDoc = {
   intro: [
     {
       kind: 'p',
-      text: 'Quantum Data Leap is a global IT services provider which applies domain and technology innovation to accelerate business outcomes for our clients. FiSec has created the website www.fisecglobal.net (the "Website") to showcase Quantum Data Leap global IT services capabilities, including those of its wholly and partly owned subsidiaries. The Website is provided for informational purposes only by Quantum Data Leap.',
+      text: 'Quantum Data Leap provides intelligent banking infrastructure, applying domain and technology innovation to accelerate business outcomes for financial institutions. Quantum Data Leap has created the website www.quantumdataleap.ai (the "Website") to showcase its payment intelligence capabilities. The Website is provided for informational purposes only by Quantum Data Leap.',
     },
     {
       kind: 'p',
