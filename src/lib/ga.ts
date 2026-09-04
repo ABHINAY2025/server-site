@@ -5,13 +5,25 @@
  * runs and sets cookies before anyone has been asked anything, which makes the
  * consent banner decorative. This injects it after a decision and never before.
  *
- * Set VITE_GA4_ID to the measurement ID (G-XXXXXXXXXX). With it unset, nothing
- * loads at all, which is the correct behaviour in development.
+ * The measurement ID lives in site.json. It is public by nature, since it ships
+ * in the page source of every site that uses GA, so keeping it in the repo
+ * costs nothing and means a deploy cannot silently lose analytics the way an
+ * unset build variable does. VITE_GA4_ID overrides it, and setting that to an
+ * empty string switches GA off entirely, which is what a preview build wants.
  */
 
 import { hasConsent, onConsentChange } from './consent'
 
-const GA_ID = import.meta.env.VITE_GA4_ID as string | undefined
+import site from '../content/site.json'
+
+/* An empty override falls through rather than switching GA off. Treating it as
+   "off" is how the tag vanished in the first place: Vite inlines the variable,
+   so an unset one makes the !GA_ID guard below statically true, and the
+   minifier then proves the whole loader unreachable and deletes it. The result
+   is a build with no analytics and no error to explain why. Only a non-empty
+   value overrides, so the failure needs an explicit act. */
+const override = import.meta.env.VITE_GA4_ID as string | undefined
+const GA_ID = (override && override.trim()) || site.ga4Id
 
 declare global {
   interface Window {

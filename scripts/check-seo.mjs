@@ -144,6 +144,32 @@ if (dnsVerified) pass(`Search Console verified by DNS on ${apex}, covering both 
 else if (tagged) pass('Search Console verification tag carries a real token, covering this host only')
 else fail('Search Console can verify neither by DNS nor by tag, so there is no way to ask Google to recrawl')
 
+/* GA is injected after consent, so it is never in the served HTML and its
+   absence there proves nothing. What can be checked is whether the build still
+   contains a loader to inject: an unset VITE_GA4_ID inlines as undefined, the
+   guard in lib/ga.ts goes statically false, and the minifier removes the tag
+   entirely. Nothing fails, the site just stops measuring. */
+console.log(`
+Analytics
+`)
+
+const bundle = body.match(/src="(\/assets\/index-[^"]+\.js)"/)?.[1]
+if (!bundle) {
+  warn('could not find the main bundle in the served HTML')
+} else {
+  const { res: b, error: be } = await get(`https://${serving}${bundle}`, 'follow')
+  if (be || !b.ok) {
+    warn(`could not read ${bundle}`)
+  } else {
+    const code = await b.text()
+    const id = code.match(/G-[A-Z0-9]{8,}/)?.[0]
+    const loader = code.includes('googletagmanager')
+    if (id && loader) pass(`GA4 ${id} built in, injected on consent`)
+    else if (id) fail(`measurement ID ${id} is in the build but the gtag loader was tree-shaken out`)
+    else fail('no GA4 measurement ID in the build, so nothing is being measured')
+  }
+}
+
 /* robots.txt and the sitemap are fetched directly, so a redirect between them
    and the serving host is an extra hop on every crawl. */
 console.log(`\nCrawl files\n`)
