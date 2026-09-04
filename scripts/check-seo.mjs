@@ -65,7 +65,18 @@ for (const h of [apex, `www.${apex}`]) {
   else fail(`https://${h}/ returned ${detail}`)
 }
 
-const serving = Object.entries(seen).find(([, v]) => v.status === 200)?.[0]
+const answering = Object.entries(seen).filter(([, v]) => v.status === 200)
+if (answering.length > 1) {
+  warn(
+    `${answering.map(([h]) => h).join(' and ')} both return 200; one should redirect to the other, ` +
+      'or the same pages compete as two sites and the canonical tag is the only thing arbitrating',
+  )
+}
+
+/* Prefer the host the canonical names, so the rest of the run reports on the
+   version meant to rank rather than whichever answered first. */
+const preferred = answering.find(([h]) => h === host)?.[0]
+const serving = preferred ?? answering[0]?.[0]
 if (!serving) {
   console.log('\nNo host returned 200. Stopping.\n')
   process.exit(1)
@@ -157,11 +168,10 @@ const bundle = body.match(/src="(\/assets\/index-[^"]+\.js)"/)?.[1]
 if (!bundle) {
   warn('could not find the main bundle in the served HTML')
 } else {
-  const { res: b, error: be } = await get(`https://${serving}${bundle}`, 'follow')
+  const { res: b, body: code, error: be } = await get(`https://${serving}${bundle}`, 'follow')
   if (be || !b.ok) {
     warn(`could not read ${bundle}`)
   } else {
-    const code = await b.text()
     const id = code.match(/G-[A-Z0-9]{8,}/)?.[0]
     const loader = code.includes('googletagmanager')
     if (id && loader) pass(`GA4 ${id} built in, injected on consent`)
