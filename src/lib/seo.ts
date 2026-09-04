@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 
+import site from '../content/site.json'
+
 /**
  * Per-page metadata.
  *
@@ -14,12 +16,10 @@ import { useEffect } from 'react'
  * that right needs the routes prerendered at build time.
  */
 
-export const SITE = {
-  name: 'Quantum Data Leap',
-  origin: 'https://quantumdataleap.ai',
-  /* Falls back to the mark until a proper social card image exists. */
-  image: '/qdl-mark.png',
-} as const
+/* Shared with the structured data written into index.html at build time, so
+   the identity a crawler reads without running JavaScript cannot drift from the
+   one the app writes after it has. */
+export const SITE = site
 
 type Seo = {
   title: string

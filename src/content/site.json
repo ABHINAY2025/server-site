@@ -1,0 +1,9 @@
+{
+  "name": "Quantum Data Leap",
+  "shortName": "QDL",
+  "origin": "https://quantumdataleap.ai",
+  "logo": "/qdl-mark.png",
+  "image": "/qdl-mark.png",
+  "description": "QDL repairs payment data before it reaches an exception queue, lifting straight-through rates for US regional banks on the core they already operate. No migration, no replatforming.",
+  "sameAs": ["https://www.linkedin.com/company/quantum-data-leap"]
+}
