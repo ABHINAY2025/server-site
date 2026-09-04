@@ -14,6 +14,8 @@
  *   npm run check:seo -- https://example.vercel.app
  */
 
+import { resolveTxt } from 'node:dns/promises'
+
 import site from '../src/content/site.json' with { type: 'json' }
 
 const origin = process.argv[2] ?? site.origin
@@ -124,9 +126,23 @@ const placeholder = body.match(/%VITE_[A-Z0-9_]+%/)
 if (placeholder) fail(`${placeholder[0]} shipped unsubstituted; the variable is unset in the build environment`)
 else pass('no unsubstituted build variables')
 
+/* Verification is checked at the domain rather than in the markup. A Domain
+   property proves the apex and www at once, which is the point of using one on
+   a site that answers on both, and it leaves no tag in the HTML to find. */
 const verification = body.match(/name="google-site-verification"[^>]+content="([^"]*)"/)?.[1]
-if (verification && !verification.startsWith('%')) pass('Search Console verification tag carries a real token')
-else warn('no usable verification tag; fine if the property is verified by DNS, which also covers both hosts')
+const tagged = Boolean(verification) && !verification.startsWith('%')
+
+let txt = []
+try {
+  txt = (await resolveTxt(apex)).flat()
+} catch (err) {
+  if (err.code !== 'ENODATA' && err.code !== 'ENOTFOUND') warn(`could not read TXT records for ${apex}: ${err.code}`)
+}
+const dnsVerified = txt.some((r) => r.startsWith('google-site-verification='))
+
+if (dnsVerified) pass(`Search Console verified by DNS on ${apex}, covering both hosts`)
+else if (tagged) pass('Search Console verification tag carries a real token, covering this host only')
+else fail('Search Console can verify neither by DNS nor by tag, so there is no way to ask Google to recrawl')
 
 /* robots.txt and the sitemap are fetched directly, so a redirect between them
    and the serving host is an extra hop on every crawl. */
